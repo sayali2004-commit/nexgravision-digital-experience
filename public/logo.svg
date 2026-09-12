@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <linearGradient id="blueLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#003399"/>
+      <stop offset="30%" stop-color="#0055DD"/>
+      <stop offset="60%" stop-color="#0077FF"/>
+      <stop offset="100%" stop-color="#00AAFF"/>
+    </linearGradient>
+    <linearGradient id="blueHighlight" x1="0%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%" stop-color="#00CCFF" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#0055DD" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="silverRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667788"/>
+      <stop offset="25%" stop-color="#AABBCC"/>
+      <stop offset="50%" stop-color="#DDEEFF"/>
+      <stop offset="75%" stop-color="#BBC8D4"/>
+      <stop offset="100%" stop-color="#778899"/>
+    </linearGradient>
+    <linearGradient id="silverHighlight" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#8899AA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="edgeBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0088FF"/>
+      <stop offset="100%" stop-color="#003399"/>
+    </linearGradient>
+    <linearGradient id="edgeSilver" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#CCDDEE"/>
+      <stop offset="100%" stop-color="#556677"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softShadow">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- N letter - Blue metallic 3D -->
+  <g filter="url(#softShadow)">
+    <!-- N left pillar -->
+    <path d="M35 55 L35 185 L58 185 L58 55 Z" fill="url(#blueLeft)" stroke="url(#edgeBlue)" stroke-width="0.8"/>
+    <!-- N diagonal -->
+    <path d="M35 55 L100 185 L122 185 L57 55 Z" fill="url(#blueLeft)" stroke="url(#edgeBlue)" stroke-width="0.8"/>
+    <!-- N right pillar -->
+    <path d="M100 55 L100 185 L122 185 L122 55 Z" fill="url(#blueLeft)" stroke="url(#edgeBlue)" stroke-width="0.8"/>
+    <!-- Blue highlight shine -->
+    <path d="M35 55 L35 110 L57 55 Z" fill="url(#blueHighlight)" opacity="0.5"/>
+    <path d="M35 55 L78 120 L58 55 Z" fill="url(#blueHighlight)" opacity="0.2"/>
+    <!-- Edge highlight -->
+    <path d="M35 55 L35 185" stroke="#00AAFF" strokeWidth="1" opacity="0.4"/>
+    <path d="M35 55 L122 55" stroke="#00AAFF" strokeWidth="0.8" opacity="0.3"/>
+  </g>
+
+  <!-- G letter - Silver/Chrome metallic 3D -->
+  <g filter="url(#softShadow)">
+    <!-- G main body - outer arc -->
+    <path d="M130 62 Q178 62 192 105 Q200 130 192 158 Q180 190 145 195 L145 172 Q168 168 178 148 Q186 130 182 108 Q176 82 152 72 L130 72 Z" fill="url(#silverRight)" stroke="url(#edgeSilver)" stroke-width="0.8"/>
+    <!-- G horizontal bar -->
+    <path d="M155 120 L192 120 L192 145 L155 145 Z" fill="url(#silverRight)" stroke="url(#edgeSilver)" stroke-width="0.8"/>
+    <!-- Silver highlight shine -->
+    <path d="M130 62 Q170 62 180 75 L160 72 Q142 72 135 82 L130 62 Z" fill="url(#silverHighlight)" opacity="0.4"/>
+    <path d="M192 120 L192 130 L180 120 Z" fill="url(#silverHighlight)" opacity="0.3"/>
+    <!-- Edge highlights -->
+    <path d="M192 105 L192 145" stroke="#DDEEFF" strokeWidth="0.8" opacity="0.4"/>
+    <path d="M130 62 L145 62" stroke="#DDEEFF" strokeWidth="0.6" opacity="0.3"/>
+  </g>
+
+  <!-- Subtle glow at intersection -->
+  <ellipse cx="125" cy="130" rx="15" ry="25" fill="url(#blueLeft)" opacity="0.08" filter="url(#glow)"/>
+</svg>
