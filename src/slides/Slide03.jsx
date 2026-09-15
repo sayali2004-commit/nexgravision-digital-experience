@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { SLIDES } from "../config/content";
 import SlideBackground from "../components/SlideBackground";
 
-const data = SLIDES[2];
+const data = SLIDES[3];
 
 export default function Slide03({ isActive }) {
   const wrapRef = useRef(null);

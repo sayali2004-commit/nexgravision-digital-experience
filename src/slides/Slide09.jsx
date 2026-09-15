@@ -4,7 +4,7 @@ import { SLIDES } from "../config/content";
 import { IMAGES } from "../config/assets";
 import SlideBackground from "../components/SlideBackground";
 
-const data = SLIDES[8];
+const data = SLIDES[9];
 
 export default function Slide09({ isActive }) {
   const wrapRef = useRef(null);

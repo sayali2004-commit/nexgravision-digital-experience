@@ -4,7 +4,7 @@ import { SLIDES } from "../config/content";
 import { TECH_STACK } from "../config/assets";
 import SlideBackground from "../components/SlideBackground";
 
-const data = SLIDES[3];
+const data = SLIDES[4];
 
 export default function Slide04({ isActive }) {
   const wrapRef = useRef(null);

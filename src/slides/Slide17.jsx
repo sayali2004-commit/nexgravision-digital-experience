@@ -4,7 +4,7 @@ import { SLIDES } from "../config/content";
 import { CLIENT_LOGOS } from "../config/assets";
 import SlideBackground from "../components/SlideBackground";
 
-const data = SLIDES[15];
+const data = SLIDES[1];
 
 export default function Slide17({ isActive }) {
   const wrapRef = useRef(null);

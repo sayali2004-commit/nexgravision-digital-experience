@@ -5,7 +5,7 @@ import { BRAND } from "../config/brand";
 import { BrandLogo } from "../config/assets";
 import SlideBackground from "../components/SlideBackground";
 
-const data = SLIDES[14];
+const data = SLIDES[15];
 
 export default function Slide15({ isActive, onNavigate }) {
   const wrapRef = useRef(null);
