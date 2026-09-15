@@ -109,7 +109,7 @@ const styles = {
   },
   heading: {
     fontFamily: "var(--font-serif)",
-    fontSize: "clamp(48px, 6.5vw, 84px)",
+    fontSize: "clamp(36px, 4.5vw, 58px)",
     fontWeight: 700,
     color: "#FFFFFF",
     lineHeight: 1.1,

@@ -143,7 +143,7 @@ const styles = {
   },
   headline: {
     fontFamily: "var(--font-serif)",
-    fontSize: "clamp(30px, 3.8vw, 48px)",
+    fontSize: "clamp(22px, 2.8vw, 34px)",
     fontWeight: 700,
     color: "#FFFFFF",
     lineHeight: 1.15,
@@ -168,7 +168,7 @@ const styles = {
   },
   statNumber: {
     fontFamily: "var(--font-serif)",
-    fontSize: "clamp(32px, 3.5vw, 44px)",
+    fontSize: "clamp(26px, 3vw, 38px)",
     fontWeight: 700,
     background: "linear-gradient(135deg, #7DD3FC 0%, #00B4D8 100%)",
     WebkitBackgroundClip: "text",

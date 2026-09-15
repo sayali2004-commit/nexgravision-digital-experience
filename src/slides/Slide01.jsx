@@ -148,7 +148,7 @@ const styles = {
   },
   headline: {
     fontFamily: "var(--font-serif)",
-    fontSize: "clamp(34px, 4.4vw, 56px)",
+    fontSize: "clamp(26px, 3.2vw, 40px)",
     fontWeight: 700,
     color: "#FFFFFF",
     lineHeight: 1.15,
