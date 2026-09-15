@@ -181,6 +181,30 @@ body {
   }
 }
 
+/* Brand Logo Image Animation */
+.brand-logo-img {
+  display: inline-block;
+  animation: brand-logo-float 4s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+.brand-logo-img:hover {
+  animation-play-state: paused;
+  transform: translateY(-2px);
+}
+
+@keyframes brand-logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 4px 10px rgba(245, 158, 11, 0.3));
+  }
+  50% {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 8px 18px rgba(245, 158, 11, 0.55));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
