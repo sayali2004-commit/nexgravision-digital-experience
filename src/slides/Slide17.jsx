@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { SLIDES } from "../config/content";
 import { CLIENT_LOGOS } from "../config/assets";
@@ -11,10 +11,15 @@ export default function Slide17({ isActive }) {
   const tagRef = useRef(null);
   const headlineRef = useRef(null);
   const descRef = useRef(null);
-  const row1Ref = useRef(null);
-  const row2Ref = useRef(null);
+  const stageRef = useRef(null);
   const counterRef = useRef(null);
   const hasAnimated = useRef(false);
+  const angleRef = useRef(0);
+  const rafRef = useRef(null);
+  const pausedRef = useRef(false);
+
+  const logoCount = CLIENT_LOGOS.length;
+  const angleStep = (2 * Math.PI) / logoCount;
 
   useEffect(() => {
     if (!isActive || hasAnimated.current) return;
@@ -31,22 +36,74 @@ export default function Slide17({ isActive }) {
     gsap.set(descRef.current, { opacity: 0, y: 15 });
     tl.to(descRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.45);
 
-    gsap.set([row1Ref.current, row2Ref.current], { opacity: 0, y: 20 });
-    tl.to(row1Ref.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.5);
-    tl.to(row2Ref.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.65);
+    gsap.set(stageRef.current, { opacity: 0, scale: 0.9 });
+    tl.to(stageRef.current, { opacity: 1, scale: 1, duration: 0.9, ease: "expo.out" }, 0.5);
 
     gsap.set(counterRef.current, { opacity: 0 });
     tl.to(counterRef.current, { opacity: 1, duration: 0.5 }, 0.8);
   }, [isActive]);
 
-  const duplicatedRow1 = [...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS];
-  const duplicatedRow2 = [...CLIENT_LOGOS.slice(4), ...CLIENT_LOGOS.slice(0, 4), ...CLIENT_LOGOS.slice(4), ...CLIENT_LOGOS.slice(0, 4), ...CLIENT_LOGOS.slice(4), ...CLIENT_LOGOS.slice(0, 4)];
+  const animate = useCallback(() => {
+    if (!stageRef.current || pausedRef.current) {
+      rafRef.current = requestAnimationFrame(animate);
+      return;
+    }
+
+    angleRef.current += 0.004;
+    const items = stageRef.current.querySelectorAll(".showcase-item");
+    const centerX = stageRef.current.offsetWidth / 2;
+
+    items.forEach((item, i) => {
+      const angle = angleRef.current + i * angleStep;
+      const x = Math.sin(angle);
+      const z = Math.cos(angle);
+
+      const normalizedZ = (z + 1) / 2;
+      const scale = 0.5 + normalizedZ * 0.6;
+      const opacity = 0.25 + normalizedZ * 0.75;
+      const blur = (1 - normalizedZ) * 2;
+      const zIndex = Math.round(normalizedZ * 100);
+      const translateX = x * 38;
+      const translateZ = z * 60;
+
+      item.style.transform = `translateX(${translateX}%) translateZ(${translateZ}px) scale(${scale})`;
+      item.style.opacity = opacity;
+      item.style.filter = `blur(${blur}px) brightness(${0.7 + normalizedZ * 0.45})`;
+      item.style.zIndex = zIndex;
+
+      const glowIntensity = Math.pow(normalizedZ, 3);
+      const glowEl = item.querySelector(".logo-glow-ring");
+      if (glowEl) {
+        glowEl.style.opacity = glowIntensity * 0.7;
+        glowEl.style.boxShadow = `0 0 ${20 + glowIntensity * 30}px ${5 + glowIntensity * 15}px rgba(0,180,216,${0.15 + glowIntensity * 0.35})`;
+      }
+
+      const nameEl = item.querySelector(".logo-label");
+      if (nameEl) {
+        nameEl.style.opacity = 0.3 + normalizedZ * 0.7;
+        nameEl.style.color = normalizedZ > 0.85 ? "#7DD3FC" : "#64748B";
+      }
+    });
+
+    rafRef.current = requestAnimationFrame(animate);
+  }, [angleStep]);
+
+  useEffect(() => {
+    if (!isActive) return;
+    rafRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [isActive, animate]);
+
+  const handleMouseEnter = () => { pausedRef.current = true; };
+  const handleMouseLeave = () => { pausedRef.current = false; };
 
   return (
     <div ref={wrapRef} style={styles.wrap}>
       <SlideBackground
-        orbColor="radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%)"
-        orbPosition={{ top: "50%", left: "50%" }}
+        orbColor="radial-gradient(circle, rgba(0,180,216,0.06) 0%, transparent 70%)"
+        orbPosition={{ top: "55%", left: "50%" }}
       />
 
       <div style={styles.container}>
@@ -62,30 +119,23 @@ export default function Slide17({ isActive }) {
           </p>
         </div>
 
-        {/* Row 1 - scrolls left */}
-        <div ref={row1Ref} style={styles.marqueeWrap}>
-          <div style={styles.marqueeTrack} className="marquee-left">
-            {duplicatedRow1.map((logo, i) => (
-              <div key={`r1-${i}`} style={styles.logoCard}>
-                <div style={styles.logoGlow} />
+        <div
+          ref={stageRef}
+          style={styles.stage}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {CLIENT_LOGOS.map((logo, i) => (
+            <div key={i} className="showcase-item" style={styles.showcaseItem}>
+              <div className="logo-glow-ring" style={styles.glowRing} />
+              <div style={styles.logoCard}>
                 <img src={logo.url} alt={logo.name} style={styles.logoImg} />
-                <div style={styles.logoName}>{logo.name}</div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Row 2 - scrolls right */}
-        <div ref={row2Ref} style={styles.marqueeWrap}>
-          <div style={styles.marqueeTrack} className="marquee-right">
-            {duplicatedRow2.map((logo, i) => (
-              <div key={`r2-${i}`} style={styles.logoCard}>
-                <div style={styles.logoGlow} />
-                <img src={logo.url} alt={logo.name} style={styles.logoImg} />
-                <div style={styles.logoName}>{logo.name}</div>
+              <div className="logo-label" style={styles.logoName}>
+                {logo.name}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -105,7 +155,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "clamp(20px, 4vw, 48px) 0",
+    padding: "clamp(16px, 3vw, 40px) 0",
     overflow: "hidden",
   },
   container: {
@@ -115,11 +165,11 @@ const styles = {
     alignItems: "center",
     zIndex: 2,
     position: "relative",
-    gap: "clamp(16px, 2.5vw, 28px)",
   },
   header: {
     textAlign: "center",
     padding: "0 24px",
+    marginBottom: "clamp(20px, 3vw, 40px)",
   },
   headline: {
     fontFamily: "var(--font-serif)",
@@ -138,67 +188,72 @@ const styles = {
     maxWidth: 460,
     margin: "0 auto",
   },
-  marqueeWrap: {
+  stage: {
+    position: "relative",
     width: "100%",
-    overflow: "hidden",
-    position: "relative",
-    maskImage: "linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
-    WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
-    padding: "8px 0",
-  },
-  marqueeTrack: {
+    maxWidth: 1000,
+    height: "clamp(200px, 35vh, 320px)",
+    perspective: "900px",
+    perspectiveOrigin: "50% 50%",
     display: "flex",
-    gap: "clamp(12px, 2vw, 24px)",
-    width: "max-content",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "default",
+    marginTop: "clamp(10px, 2vw, 30px)",
   },
-  logoCard: {
-    position: "relative",
-    flexShrink: 0,
-    width: "clamp(140px, 18vw, 200px)",
-    height: "clamp(120px, 15vw, 160px)",
-    borderRadius: 18,
-    border: "1px solid rgba(0,180,216,0.15)",
-    background: "linear-gradient(145deg, rgba(16,24,40,0.8) 0%, rgba(10,16,30,0.9) 100%)",
-    backdropFilter: "blur(12px)",
-    WebkitBackdropFilter: "blur(12px)",
+  showcaseItem: {
+    position: "absolute",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
-    padding: "16px 12px",
-    cursor: "default",
-    transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)",
-    overflow: "hidden",
+    gap: 12,
+    transformStyle: "preserve-3d",
+    transition: "none",
   },
-  logoGlow: {
+  glowRing: {
     position: "absolute",
-    top: "-50%",
-    left: "-50%",
-    width: "200%",
-    height: "200%",
-    background: "radial-gradient(circle at 50% 50%, rgba(0,180,216,0.06) 0%, transparent 50%)",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -55%)",
+    width: "clamp(130px, 20vw, 180px)",
+    height: "clamp(130px, 20vw, 180px)",
+    borderRadius: "50%",
+    background: "transparent",
     pointerEvents: "none",
-    transition: "opacity 0.4s ease",
+    opacity: 0,
+    zIndex: 0,
   },
-  logoImg: {
-    maxWidth: "70%",
-    maxHeight: "65%",
-    objectFit: "contain",
-    filter: "brightness(0.95) saturate(0.9)",
-    transition: "all 0.4s ease",
+  logoCard: {
+    width: "clamp(100px, 16vw, 160px)",
+    height: "clamp(100px, 16vw, 160px)",
+    borderRadius: 20,
+    border: "1px solid rgba(0,180,216,0.12)",
+    background: "linear-gradient(145deg, rgba(16,24,40,0.85) 0%, rgba(8,13,26,0.95) 100%)",
+    backdropFilter: "blur(16px)",
+    WebkitBackdropFilter: "blur(16px)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "clamp(16px, 2.5vw, 24px)",
     position: "relative",
     zIndex: 1,
+    boxShadow: "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)",
+  },
+  logoImg: {
+    maxWidth: "100%",
+    maxHeight: "100%",
+    objectFit: "contain",
+    filter: "saturate(0.9)",
   },
   logoName: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(10px, 1vw, 12px)",
-    fontWeight: 500,
-    color: "#64748B",
+    fontSize: "clamp(10px, 1vw, 13px)",
+    fontWeight: 600,
     letterSpacing: "0.04em",
     textAlign: "center",
+    whiteSpace: "nowrap",
     position: "relative",
     zIndex: 1,
-    transition: "color 0.4s ease",
+    transition: "color 0.3s ease",
   },
 };
