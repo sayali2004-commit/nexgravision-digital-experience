@@ -24,6 +24,18 @@ export const IMAGES = {
   rohitDeshmukh: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80',
 };
 
+// Client Logos
+export const CLIENT_LOGOS = [
+  { name: 'Bramha', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/bramha_logo1.png' },
+  { name: 'Vithai', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/vithai%20%20logo.png' },
+  { name: 'Dafalapur Urban', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/Dafalapur%20Urban.png' },
+  { name: 'Dhasampada', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/Dhasampada%20Logo.png' },
+  { name: 'Padmavati', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/padmavati%20logo.png' },
+  { name: 'Suryoday', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/Suryoday%20Icon.png' },
+  { name: 'Shri Vitthal', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/SHRI%20VITTHAL.png' },
+  { name: 'LKP', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/LKP.png' },
+];
+
 // 12 Authentic Tech Stack SVGs
 export const TECH_STACK = [
   {

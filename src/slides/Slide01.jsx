@@ -126,7 +126,7 @@ export default function Slide01({ isActive, onNavigate }) {
       {/* Counter + progress bar at bottom-left */}
       <div ref={counterRef} style={styles.counterWrap}>
         <span className="slide-counter" style={{ position: "static" }}>
-          01 / 16
+          01 / 17
         </span>
         <div style={styles.progressTrack}>
           <div style={styles.progressFill} />

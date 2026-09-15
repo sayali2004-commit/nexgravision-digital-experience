@@ -16,6 +16,7 @@ import Slide13 from "../slides/Slide13";
 import Slide14 from "../slides/Slide14";
 import Slide15 from "../slides/Slide15";
 import Slide16 from "../slides/Slide16";
+import Slide17 from "../slides/Slide17";
 import Navigation from "./Navigation";
 import Progress from "./Progress";
 
@@ -36,6 +37,7 @@ const SLIDE_COMPONENTS = [
   Slide14,
   Slide15,
   Slide16,
+  Slide17,
 ];
 const TOTAL = SLIDE_COMPONENTS.length;
 
@@ -74,6 +76,10 @@ function getTransitionStyle(from, to) {
     "14->13": { type: "converge", duration: 0.75 },
     "14->15": { type: "darkExpand", duration: 0.8 },
     "15->14": { type: "darkExpand", duration: 0.8 },
+    "15->16": { type: "converge", duration: 0.75 },
+    "16->15": { type: "converge", duration: 0.75 },
+    "16->17": { type: "gradientWipe", duration: 0.8 },
+    "17->16": { type: "gradientWipe", duration: 0.8 },
   };
 
   return transitions[pair] || { type: "default", duration: 0.65, dir };

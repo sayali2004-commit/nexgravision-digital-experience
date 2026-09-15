@@ -191,6 +191,12 @@ export const SLIDES = [
   },
   {
     id: 16,
+    label: "Our Clients",
+    headline: "Trusted by Leading Brands",
+    description: "We are proud to work with these amazing organizations.",
+  },
+  {
+    id: 17,
     label: "Thank You",
     headline: "Thank You!",
     subheadline: "Let's Build the Future Together",
