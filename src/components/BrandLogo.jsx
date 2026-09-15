@@ -1,8 +1,10 @@
 import React from "react";
 
 export default function BrandLogo({ size = 38 }) {
+  const textOffset = size + 10;
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+    <div style={{ display: "inline-flex", flexDirection: "column", gap: 0 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <img
           src="/LOGOIMG.png"
@@ -17,9 +19,9 @@ export default function BrandLogo({ size = 38 }) {
         <div
           style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: size * 0.55,
+            fontSize: size * 0.5,
             fontWeight: 700,
-            letterSpacing: "0.04em",
+            letterSpacing: "0.03em",
             color: "#FFFFFF",
             lineHeight: 1.1,
           }}
@@ -30,12 +32,13 @@ export default function BrandLogo({ size = 38 }) {
       <div
         style={{
           fontFamily: "'Plus Jakarta Sans', sans-serif",
-          fontSize: Math.max(9, size * 0.22),
+          fontSize: Math.max(8, size * 0.2),
           fontWeight: 400,
-          letterSpacing: "0.06em",
-          color: "#94A3B8",
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          color: "#64748B",
+          paddingLeft: textOffset,
           marginTop: 4,
-          marginLeft: size + 10,
         }}
       >
         Ideas to Intelligent Solutions
