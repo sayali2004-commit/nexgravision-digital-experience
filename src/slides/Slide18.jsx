@@ -6,74 +6,72 @@ import SlideBackground from "../components/SlideBackground";
 const data = SLIDES[2];
 
 const SOLUTIONS = [
-  "Web Applications",
-  "Mobile Experiences",
-  "Cloud Solutions",
-  "AI & Automation",
-  "Business Systems",
-  "Digital Experiences",
+  { name: "Web Applications", icon: "◈" },
+  { name: "Mobile Experiences", icon: "◇" },
+  { name: "Cloud Solutions", icon: "△" },
+  { name: "AI & Automation", icon: "○" },
+  { name: "Business Systems", icon: "□" },
+  { name: "Digital Experiences", icon: "◎" },
 ];
 
-const FLOAT_DURATIONS = [4.5, 5.0, 4.2, 5.3, 4.8, 4.6];
-const FLOAT_DELAYS = [0, 0.8, 1.6, 0.4, 1.2, 2.0];
+const ANGLES = [0, 60, 120, 180, 240, 300];
 
 export default function Slide18({ isActive }) {
   const wrapRef = useRef(null);
   const tagRef = useRef(null);
   const headlineRef = useRef(null);
-  const line1Ref = useRef(null);
-  const line2Ref = useRef(null);
   const coreRef = useRef(null);
-  const coreRingRef = useRef(null);
-  const linesRef = useRef(null);
-  const solutionsRef = useRef(null);
+  const svgRef = useRef(null);
+  const nodesRef = useRef(null);
   const subRef = useRef(null);
   const brandRef = useRef(null);
   const counterRef = useRef(null);
   const hasAnimated = useRef(false);
-  const [hoveredIdx, setHoveredIdx] = useState(null);
+  const [hovered, setHovered] = useState(-1);
+
+  const getNodePos = (angleDeg, containerSize) => {
+    const rad = (angleDeg - 90) * (Math.PI / 180);
+    const r = containerSize * 0.38;
+    return { x: Math.cos(rad) * r, y: Math.sin(rad) * r };
+  };
 
   const buildEntrance = useCallback(() => {
-    if (!coreRef.current || !linesRef.current || !solutionsRef.current) return;
+    const tl = gsap.timeline({ delay: 0.2 });
 
-    const tl = gsap.timeline({ delay: 0.3 });
+    gsap.set(tagRef.current, { opacity: 0, x: -20 });
+    tl.to(tagRef.current, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0);
 
-    gsap.set(tagRef.current, { opacity: 0, x: -15 });
-    tl.to(tagRef.current, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+    gsap.set(headlineRef.current, { opacity: 0, y: 30, filter: "blur(8px)" });
+    tl.to(headlineRef.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.0, ease: "power3.out" }, 0.15);
 
-    gsap.set(coreRef.current, { opacity: 0, scale: 0.5 });
-    tl.to(coreRef.current, { opacity: 1, scale: 1, duration: 1.0, ease: "back.out(1.4)" }, 0.3);
+    gsap.set(coreRef.current, { opacity: 0, scale: 0.4 });
+    tl.to(coreRef.current, { opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.2)" }, 0.4);
 
-    gsap.set(coreRingRef.current, { opacity: 0, scale: 0.3 });
-    tl.to(coreRingRef.current, { opacity: 1, scale: 1, duration: 1.2, ease: "power3.out" }, 0.5);
+    const paths = svgRef.current?.querySelectorAll(".e-path");
+    if (paths) {
+      paths.forEach((p, i) => {
+        const len = p.getTotalLength();
+        gsap.set(p, { strokeDasharray: len, strokeDashoffset: len, opacity: 0 });
+        tl.to(p, { strokeDashoffset: 0, opacity: 1, duration: 0.8, ease: "power2.inOut" }, 0.8 + i * 0.08);
+      });
+    }
 
-    const lineEls = linesRef.current.querySelectorAll(".conn-line");
-    lineEls.forEach((line, i) => {
-      const len = line.getTotalLength();
-      gsap.set(line, { strokeDasharray: len, strokeDashoffset: len, opacity: 0 });
-      tl.to(line, { strokeDashoffset: 0, opacity: 1, duration: 0.7, ease: "power2.inOut" }, 0.8 + i * 0.1);
-    });
+    const nds = nodesRef.current?.querySelectorAll(".e-node");
+    if (nds) {
+      nds.forEach((n, i) => {
+        gsap.set(n, { opacity: 0, scale: 0.5 });
+        tl.to(n, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.4)" }, 1.0 + i * 0.1);
+      });
+    }
 
-    const solEls = solutionsRef.current.querySelectorAll(".solution-node");
-    solEls.forEach((el, i) => {
-      gsap.set(el, { opacity: 0, scale: 0.7 });
-      tl.to(el, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.3)" }, 1.0 + i * 0.12);
-    });
-
-    gsap.set(line1Ref.current, { opacity: 0, y: 30, filter: "blur(6px)" });
-    tl.to(line1Ref.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" }, 1.6);
-
-    gsap.set(line2Ref.current, { opacity: 0, y: 30, filter: "blur(6px)" });
-    tl.to(line2Ref.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" }, 1.8);
-
-    gsap.set(subRef.current, { opacity: 0, y: 15 });
-    tl.to(subRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 2.1);
+    gsap.set(subRef.current, { opacity: 0, y: 20 });
+    tl.to(subRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 1.7);
 
     gsap.set(brandRef.current, { opacity: 0 });
-    tl.to(brandRef.current, { opacity: 1, duration: 0.5 }, 2.3);
+    tl.to(brandRef.current, { opacity: 1, duration: 0.5 }, 2.0);
 
     gsap.set(counterRef.current, { opacity: 0 });
-    tl.to(counterRef.current, { opacity: 1, duration: 0.5 }, 2.4);
+    tl.to(counterRef.current, { opacity: 1, duration: 0.4 }, 2.1);
   }, []);
 
   useEffect(() => {
@@ -83,143 +81,155 @@ export default function Slide18({ isActive }) {
   }, [isActive, buildEntrance]);
 
   useEffect(() => {
-    if (isActive && hasAnimated.current) {
-      hasAnimated.current = false;
-      const timer = setTimeout(() => {
-        hasAnimated.current = true;
-        buildEntrance();
-      }, 50);
-      return () => clearTimeout(timer);
-    }
+    if (!isActive || !hasAnimated.current) return;
+    hasAnimated.current = false;
+    const t = setTimeout(() => { hasAnimated.current = true; buildEntrance(); }, 60);
+    return () => clearTimeout(t);
   }, [isActive, buildEntrance]);
 
-  const getSolutionPosition = (index, containerW, containerH) => {
-    const angle = (index * 60 - 90) * (Math.PI / 180);
-    const isMobile = containerW < 600;
-    const radiusX = isMobile ? containerW * 0.32 : containerW * 0.35;
-    const radiusY = isMobile ? containerH * 0.32 : containerH * 0.35;
-    return {
-      x: containerW / 2 + Math.cos(angle) * radiusX,
-      y: containerH / 2 + Math.sin(angle) * radiusY,
-    };
-  };
+  const svgSize = 600;
 
   return (
-    <div ref={wrapRef} style={styles.wrap}>
+    <div ref={wrapRef} style={S.wrap}>
       <SlideBackground
         orbColor="radial-gradient(circle, rgba(0,180,216,0.06) 0%, transparent 70%)"
-        orbPosition={{ top: "45%", left: "50%" }}
+        orbPosition={{ top: "50%", left: "50%" }}
       />
 
-      <div style={styles.layout}>
-        {/* Header */}
-        <div style={styles.header}>
-          <div ref={tagRef} className="section-tag">
-            // One Core. Every Possibility.
-          </div>
-          <div ref={headlineRef} style={styles.headlineBlock}>
-            <span ref={line1Ref} style={styles.line1}>One Company.</span>
-            <span ref={line2Ref} style={styles.line2}>One Software.</span>
+      <div style={S.layout}>
+        {/* Top section */}
+        <div style={S.top}>
+          <div ref={tagRef} className="section-tag">// One Core. Every Possibility.</div>
+          <div ref={headlineRef} style={S.headlineWrap}>
+            <span style={S.line1}>One Company.</span>
+            <span style={S.line2}>One Software.</span>
           </div>
         </div>
 
-        {/* Ecosystem Visual */}
-        <div style={styles.ecosystem}>
-          <div style={styles.ecosystemInner}>
-            {/* Connection Lines SVG */}
-            <svg ref={linesRef} style={styles.linesSvg} viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet">
+        {/* Ecosystem — the main visual */}
+        <div style={S.ecosystem}>
+          <div style={S.ecoInner}>
+            {/* SVG connection lines + particles */}
+            <svg ref={svgRef} style={S.svg} viewBox={`-${svgSize/2} -${svgSize/2} ${svgSize} ${svgSize}`}>
               <defs>
-                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#00B4D8" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#00B4D8" stopOpacity="0.15" />
+                <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#00B4D8" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#00B4D8" stopOpacity="0.08" />
                 </linearGradient>
+                <radialGradient id="coreRadial">
+                  <stop offset="0%" stopColor="#00B4D8" stopOpacity="0.15" />
+                  <stop offset="100%" stopColor="#00B4D8" stopOpacity="0" />
+                </radialGradient>
+                <filter id="glow1">
+                  <feGaussianBlur stdDeviation="2" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
               </defs>
-              {SOLUTIONS.map((_, i) => {
-                const pos = getSolutionPosition(i, 600, 400);
-                const isHov = hoveredIdx === i;
+
+              {/* Ambient rings */}
+              {[0.42, 0.36, 0.30].map((r, i) => (
+                <circle key={`ring${i}`} cx={0} cy={0} r={svgSize * r} fill="none"
+                  stroke="rgba(0,180,216,0.06)" strokeWidth="0.5"
+                  strokeDasharray={i === 0 ? "none" : `${4 + i * 2} ${6 + i * 3}`}
+                />
+              ))}
+
+              {/* Core glow */}
+              <circle cx={0} cy={0} r={svgSize * 0.1} fill="url(#coreRadial)" />
+
+              {/* Connection lines */}
+              {ANGLES.map((angle, i) => {
+                const pos = getNodePos(angle, svgSize);
+                const isH = hovered === i;
                 return (
-                  <line
-                    key={i}
-                    className="conn-line"
-                    x1={300}
-                    y1={200}
-                    x2={pos.x}
-                    y2={pos.y}
-                    stroke={isHov ? "rgba(0,180,216,0.6)" : "url(#lineGrad)"}
-                    strokeWidth={isHov ? 1.5 : 0.8}
-                    style={{ transition: "stroke 0.3s ease, stroke-width 0.3s ease" }}
+                  <line key={`l${i}`} className="e-path"
+                    x1={0} y1={0} x2={pos.x} y2={pos.y}
+                    stroke={isH ? "rgba(0,180,216,0.6)" : "url(#lg1)"}
+                    strokeWidth={isH ? 1.5 : 0.8}
+                    filter={isH ? "url(#glow1)" : undefined}
+                    style={{ transition: "all 0.35s ease" }}
                   />
                 );
               })}
-              {/* Subtle particles on lines */}
-              {SOLUTIONS.map((_, i) => {
-                const pos = getSolutionPosition(i, 600, 400);
+
+              {/* Traveling particles */}
+              {ANGLES.map((angle, i) => {
+                const pos = getNodePos(angle, svgSize);
                 return (
-                  <circle key={`p-${i}`} r="2" fill="rgba(0,180,216,0.4)">
-                    <animateMotion
-                      dur={`${3 + i * 0.5}s`}
-                      repeatCount="indefinite"
-                      path={`M300,200 L${pos.x},${pos.y}`}
-                    />
-                    <animate
-                      attributeName="opacity"
-                      values="0;0.6;0"
-                      dur={`${3 + i * 0.5}s`}
-                      repeatCount="indefinite"
-                    />
+                  <circle key={`p${i}`} r="2.5" fill="#00B4D8" opacity="0">
+                    <animateMotion dur={`${2.5 + i * 0.4}s`} repeatCount="indefinite"
+                      path={`M0,0 L${pos.x},${pos.y}`} />
+                    <animate attributeName="opacity" values="0;0.5;0"
+                      dur={`${2.5 + i * 0.4}s`} repeatCount="indefinite" />
+                    <animate attributeName="r" values="1.5;3;1.5"
+                      dur={`${2.5 + i * 0.4}s`} repeatCount="indefinite" />
                   </circle>
                 );
               })}
             </svg>
 
-            {/* Central Core */}
-            <div ref={coreRef} style={styles.coreWrap}>
-              <div ref={coreRingRef} style={styles.coreRing} />
-              <div style={styles.coreInner}>
-                <div style={styles.coreDot} />
-                <div style={styles.coreLabel}>DIGITAL<br/>CORE</div>
+            {/* Core center */}
+            <div ref={coreRef} style={S.core}>
+              <div style={S.coreRingOuter} />
+              <div style={S.coreRingMid} />
+              <div style={S.coreRingInner} />
+              <div style={S.coreBox}>
+                <div style={S.coreIcon}>◆</div>
+                <div style={S.coreTitle}>NEXGRAVISION</div>
+                <div style={S.coreDivider} />
+                <div style={S.coreSub}>Digital Core</div>
               </div>
             </div>
 
-            {/* Solution Nodes */}
-            <div ref={solutionsRef} style={styles.solutionsLayer}>
-              {SOLUTIONS.map((name, i) => {
-                const pos = getSolutionPosition(i, 100, 100);
-                const isHov = hoveredIdx === i;
+            {/* Solution nodes */}
+            <div ref={nodesRef} style={S.nodesLayer}>
+              {ANGLES.map((angle, i) => {
+                const pos = getNodePos(angle, 100);
+                const isH = hovered === i;
+                const sol = SOLUTIONS[i];
                 return (
-                  <div
-                    key={i}
-                    className="solution-node"
+                  <div key={i} className="e-node"
                     style={{
-                      ...styles.solutionNode,
-                      left: `${pos.x}%`,
-                      top: `${pos.y}%`,
-                      transform: `translate(-50%, -50%) ${isHov ? "scale(1.1)" : "scale(1)"}`,
-                      animationDuration: `${FLOAT_DURATIONS[i]}s`,
-                      animationDelay: `${FLOAT_DELAYS[i]}s`,
+                      ...S.node,
+                      left: `calc(50% + ${pos.x}%)`,
+                      top: `calc(50% + ${pos.y}%)`,
+                      transform: `translate(-50%, -50%) scale(${isH ? 1.12 : 1})`,
                     }}
-                    onMouseEnter={() => setHoveredIdx(i)}
-                    onMouseLeave={() => setHoveredIdx(null)}
+                    onMouseEnter={() => setHovered(i)}
+                    onMouseLeave={() => setHovered(-1)}
                   >
                     <div style={{
-                      ...styles.nodeGlow,
-                      opacity: isHov ? 0.5 : 0.15,
-                      boxShadow: isHov
-                        ? "0 0 24px rgba(0,180,216,0.4), 0 0 48px rgba(0,180,216,0.15)"
-                        : "0 0 12px rgba(0,180,216,0.15)",
+                      ...S.nodeGlow,
+                      opacity: isH ? 0.6 : 0.2,
+                      boxShadow: isH
+                        ? "0 0 30px rgba(0,180,216,0.4), 0 0 60px rgba(0,180,216,0.15)"
+                        : "0 0 15px rgba(0,180,216,0.1)",
                     }} />
                     <div style={{
-                      ...styles.nodeDot,
-                      background: isHov ? "#7DD3FC" : "#00B4D8",
-                      boxShadow: isHov
-                        ? "0 0 12px rgba(0,180,216,0.6)"
-                        : "0 0 6px rgba(0,180,216,0.3)",
-                    }} />
-                    <div style={{
-                      ...styles.nodeLabel,
-                      color: isHov ? "#E0F2FE" : "#CBD5E1",
+                      ...S.nodeDot,
+                      background: isH
+                        ? "linear-gradient(135deg, #7DD3FC, #00B4D8)"
+                        : "linear-gradient(135deg, rgba(0,180,216,0.6), rgba(0,180,216,0.3))",
+                      boxShadow: isH
+                        ? "0 0 14px rgba(0,180,216,0.7)"
+                        : "0 0 8px rgba(0,180,216,0.3)",
                     }}>
-                      {name}
+                      <span style={S.nodeIcon}>{sol.icon}</span>
+                    </div>
+                    <div style={{
+                      ...S.nodeCard,
+                      borderColor: isH ? "rgba(0,180,216,0.3)" : "rgba(0,180,216,0.08)",
+                      background: isH
+                        ? "linear-gradient(145deg, rgba(0,180,216,0.12) 0%, rgba(10,16,30,0.85) 100%)"
+                        : "linear-gradient(145deg, rgba(16,24,40,0.6) 0%, rgba(10,16,30,0.75) 100%)",
+                      boxShadow: isH
+                        ? "0 8px 32px rgba(0,180,216,0.15), inset 0 1px 0 rgba(0,180,216,0.1)"
+                        : "0 4px 16px rgba(0,0,0,0.2)",
+                    }}>
+                      <span style={{
+                        ...S.nodeLabel,
+                        color: isH ? "#E0F2FE" : "#CBD5E1",
+                      }}>{sol.name}</span>
                     </div>
                   </div>
                 );
@@ -228,226 +238,151 @@ export default function Slide18({ isActive }) {
           </div>
         </div>
 
-        {/* Supporting text */}
-        <div style={styles.bottom}>
-          <p ref={subRef} style={styles.subtext}>
-            {data.subheadline}
-          </p>
-          <div ref={brandRef} style={styles.brandTag}>
-            <div style={styles.brandDot} />
-            <span style={styles.brandText}>NexGravision</span>
+        {/* Bottom */}
+        <div style={S.bottom}>
+          <p ref={subRef} style={S.subtext}>{data.subheadline}</p>
+          <div ref={brandRef} style={S.brandTag}>
+            <div style={S.brandDot} />
+            <span style={S.brandText}>NexGravision</span>
           </div>
         </div>
       </div>
 
-      <div ref={counterRef} className="slide-counter">
-        03 / 5
-      </div>
+      <div ref={counterRef} className="slide-counter">03 / 5</div>
     </div>
   );
 }
 
-const styles = {
+const S = {
   wrap: {
-    position: "absolute",
-    inset: 0,
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "clamp(12px, 2vw, 32px) clamp(16px, 4vw, 60px)",
+    position: "absolute", inset: 0, width: "100%", height: "100%",
+    display: "flex", alignItems: "center", justifyContent: "center",
+    padding: "clamp(12px, 2vw, 32px) clamp(14px, 3.5vw, 56px)",
     overflow: "hidden",
   },
   layout: {
-    width: "100%",
-    maxWidth: 1100,
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-between",
-    zIndex: 2,
-    position: "relative",
+    width: "100%", maxWidth: 1100, height: "100%",
+    display: "flex", flexDirection: "column", alignItems: "center",
+    justifyContent: "space-between", zIndex: 2, position: "relative",
   },
-  header: {
-    textAlign: "center",
-    flexShrink: 0,
-  },
-  headlineBlock: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: 2,
+  top: { textAlign: "center", flexShrink: 0 },
+  headlineWrap: {
+    display: "flex", flexDirection: "column", alignItems: "center", gap: 0, marginTop: 6,
   },
   line1: {
-    fontFamily: "var(--font-serif)",
-    fontSize: "clamp(24px, 4vw, 48px)",
-    fontWeight: 700,
-    color: "#FFFFFF",
-    lineHeight: 1.1,
-    letterSpacing: "-0.02em",
-    display: "block",
+    fontFamily: "var(--font-serif)", fontSize: "clamp(22px, 3.2vw, 40px)",
+    fontWeight: 700, color: "#FFFFFF", lineHeight: 1.1, letterSpacing: "-0.02em", display: "block",
   },
   line2: {
-    fontFamily: "var(--font-serif)",
-    fontSize: "clamp(24px, 4vw, 48px)",
-    fontWeight: 700,
+    fontFamily: "var(--font-serif)", fontSize: "clamp(22px, 3.2vw, 40px)",
+    fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", display: "block",
     background: "linear-gradient(135deg, #7DD3FC 0%, #00B4D8 40%, #0284C7 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    lineHeight: 1.1,
-    letterSpacing: "-0.02em",
-    display: "block",
-    filter: "drop-shadow(0 2px 16px rgba(0,180,216,0.25))",
+    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+    filter: "drop-shadow(0 2px 12px rgba(0,180,216,0.2))",
   },
   ecosystem: {
-    flex: 1,
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: 0,
+    flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 0,
   },
-  ecosystemInner: {
-    position: "relative",
-    width: "100%",
-    maxWidth: 700,
-    aspectRatio: "3 / 2",
+  ecoInner: {
+    position: "relative", width: "100%", maxWidth: 650, aspectRatio: "1 / 1",
   },
-  linesSvg: {
-    position: "absolute",
-    inset: 0,
-    width: "100%",
-    height: "100%",
-    pointerEvents: "none",
-    zIndex: 0,
+  svg: {
+    position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 0,
   },
-  coreWrap: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    zIndex: 2,
+  core: {
+    position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: 5,
+    display: "flex", alignItems: "center", justifyContent: "center",
   },
-  coreRing: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "clamp(90px, 14vw, 130px)",
-    height: "clamp(90px, 14vw, 130px)",
-    borderRadius: "50%",
-    border: "1px solid rgba(0,180,216,0.2)",
-    animation: "core-pulse 4s ease-in-out infinite",
+  coreRingOuter: {
+    position: "absolute", width: "clamp(100px, 15vw, 150px)", height: "clamp(100px, 15vw, 150px)",
+    borderRadius: "50%", border: "1px solid rgba(0,180,216,0.12)",
+    animation: "core-pulse 5s ease-in-out infinite",
   },
-  coreInner: {
-    width: "clamp(72px, 11vw, 100px)",
-    height: "clamp(72px, 11vw, 100px)",
-    borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(0,180,216,0.15) 0%, rgba(0,180,216,0.05) 60%, transparent 100%)",
-    border: "1.5px solid rgba(0,180,216,0.3)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 4,
-    boxShadow: "0 0 40px rgba(0,180,216,0.15), inset 0 0 20px rgba(0,180,216,0.05)",
+  coreRingMid: {
+    position: "absolute", width: "clamp(80px, 12vw, 120px)", height: "clamp(80px, 12vw, 120px)",
+    borderRadius: "50%", border: "0.5px solid rgba(0,180,216,0.18)",
+    animation: "core-pulse 5s ease-in-out infinite 0.8s",
   },
-  coreDot: {
-    width: 8,
-    height: 8,
-    borderRadius: "50%",
-    background: "#00B4D8",
-    boxShadow: "0 0 12px rgba(0,180,216,0.6)",
+  coreRingInner: {
+    position: "absolute", width: "clamp(60px, 9vw, 90px)", height: "clamp(60px, 9vw, 90px)",
+    borderRadius: "50%", border: "0.5px solid rgba(0,180,216,0.22)",
+    animation: "core-pulse 4s ease-in-out infinite 1.6s",
   },
-  coreLabel: {
-    fontFamily: "var(--font-mono)",
-    fontSize: "clamp(7px, 0.8vw, 9px)",
-    fontWeight: 700,
-    color: "#7DD3FC",
-    letterSpacing: "0.15em",
-    textAlign: "center",
-    lineHeight: 1.3,
+  coreBox: {
+    display: "flex", flexDirection: "column", alignItems: "center", gap: 4,
+    padding: "clamp(14px, 2vw, 24px) clamp(20px, 2.5vw, 32px)",
+    borderRadius: 16,
+    background: "linear-gradient(145deg, rgba(8,14,28,0.95) 0%, rgba(4,8,18,0.98) 100%)",
+    border: "1px solid rgba(0,180,216,0.15)",
+    backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+    boxShadow: "0 0 50px rgba(0,180,216,0.1), 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(0,180,216,0.08)",
   },
-  solutionsLayer: {
-    position: "absolute",
-    inset: 0,
-    zIndex: 3,
+  coreIcon: {
+    fontSize: "clamp(14px, 1.8vw, 20px)", color: "#00B4D8",
+    textShadow: "0 0 12px rgba(0,180,216,0.6)", marginBottom: 2,
   },
-  solutionNode: {
-    position: "absolute",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: 6,
-    cursor: "default",
-    transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1)",
+  coreTitle: {
+    fontFamily: "var(--font-mono)", fontSize: "clamp(10px, 1.2vw, 13px)",
+    fontWeight: 700, color: "#E0F2FE", letterSpacing: "0.2em", textAlign: "center",
+  },
+  coreDivider: {
+    width: "70%", height: 1, borderRadius: 1,
+    background: "linear-gradient(90deg, transparent, rgba(0,180,216,0.3), transparent)",
+    margin: "2px 0",
+  },
+  coreSub: {
+    fontFamily: "var(--font-serif)", fontSize: "clamp(9px, 0.9vw, 11px)",
+    fontWeight: 400, fontStyle: "italic", color: "#7DD3FC",
+    letterSpacing: "0.06em", textAlign: "center",
+  },
+  nodesLayer: {
+    position: "absolute", inset: 0, zIndex: 10,
+  },
+  node: {
+    position: "absolute", display: "flex", flexDirection: "column", alignItems: "center",
+    gap: 6, cursor: "default", transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1)",
     animation: "float-node ease-in-out infinite",
   },
   nodeGlow: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 48,
-    height: 48,
-    borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(0,180,216,0.3) 0%, transparent 70%)",
-    pointerEvents: "none",
-    transition: "opacity 0.3s ease, box-shadow 0.3s ease",
+    position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+    width: 60, height: 60, borderRadius: "50%",
+    background: "radial-gradient(circle, rgba(0,180,216,0.25) 0%, transparent 70%)",
+    pointerEvents: "none", transition: "all 0.4s ease",
   },
   nodeDot: {
-    width: 10,
-    height: 10,
-    borderRadius: "50%",
-    transition: "all 0.3s ease",
-    zIndex: 1,
+    width: "clamp(32px, 4vw, 44px)", height: "clamp(32px, 4vw, 44px)",
+    borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center",
+    transition: "all 0.35s ease", zIndex: 1,
+  },
+  nodeIcon: {
+    fontSize: "clamp(12px, 1.4vw, 16px)", color: "#E0F2FE", opacity: 0.9,
+  },
+  nodeCard: {
+    padding: "6px 14px", borderRadius: 10,
+    border: "1px solid rgba(0,180,216,0.08)",
+    backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
+    transition: "all 0.35s ease",
   },
   nodeLabel: {
-    fontFamily: "var(--font-sans)",
-    fontSize: "clamp(9px, 1vw, 12px)",
-    fontWeight: 600,
-    letterSpacing: "0.02em",
-    textAlign: "center",
-    whiteSpace: "nowrap",
-    transition: "color 0.3s ease",
-    textShadow: "0 1px 8px rgba(0,0,0,0.6)",
+    fontFamily: "var(--font-sans)", fontSize: "clamp(9px, 0.9vw, 12px)",
+    fontWeight: 600, letterSpacing: "0.02em", textAlign: "center",
+    whiteSpace: "nowrap", transition: "color 0.3s ease",
   },
   bottom: {
-    flexShrink: 0,
-    textAlign: "center",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: 12,
+    flexShrink: 0, textAlign: "center", display: "flex", flexDirection: "column",
+    alignItems: "center", gap: 10,
   },
   subtext: {
-    fontFamily: "var(--font-sans)",
-    fontSize: "clamp(12px, 1.2vw, 15px)",
-    color: "#94A3B8",
-    lineHeight: 1.7,
-    maxWidth: 480,
-    fontWeight: 400,
+    fontFamily: "var(--font-sans)", fontSize: "clamp(12px, 1.1vw, 14px)",
+    color: "#94A3B8", lineHeight: 1.7, maxWidth: 460, fontWeight: 400,
   },
-  brandTag: {
-    display: "flex",
-    alignItems: "center",
-    gap: 8,
-  },
+  brandTag: { display: "flex", alignItems: "center", gap: 8 },
   brandDot: {
-    width: 5,
-    height: 5,
-    borderRadius: "50%",
-    background: "#00B4D8",
+    width: 5, height: 5, borderRadius: "50%", background: "#00B4D8",
     boxShadow: "0 0 6px rgba(0,180,216,0.4)",
   },
   brandText: {
-    fontFamily: "var(--font-mono)",
-    fontSize: "clamp(9px, 0.9vw, 11px)",
-    fontWeight: 500,
-    color: "#64748B",
-    letterSpacing: "0.12em",
-    textTransform: "uppercase",
+    fontFamily: "var(--font-mono)", fontSize: "clamp(9px, 0.85vw, 11px)",
+    fontWeight: 500, color: "#64748B", letterSpacing: "0.12em", textTransform: "uppercase",
   },
 };
