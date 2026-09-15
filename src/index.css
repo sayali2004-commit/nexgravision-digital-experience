@@ -213,6 +213,48 @@ body {
   }
 }
 
+/* ===== MARQUEE LOGO CAROUSEL ===== */
+.marquee-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+.marquee-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+
+.marquee-left:hover,
+.marquee-right:hover {
+  animation-play-state: paused;
+}
+
+.logo-card:hover {
+  border-color: rgba(0, 180, 216, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(0, 180, 216, 0.15), inset 0 1px 0 rgba(0, 180, 216, 0.1) !important;
+  transform: translateY(-4px) !important;
+}
+
+.logo-card:hover .logo-img {
+  filter: brightness(1.15) saturate(1.1) !important;
+}
+
+.logo-card:hover .logo-name {
+  color: #7DD3FC !important;
+}
+
+.logo-card:hover .logo-glow {
+  opacity: 1 !important;
+}
+
 /* ===== RESPONSIVE: Tablet (max-width: 1024px) ===== */
 @media (max-width: 1024px) {
   .bg-ambient-warm { width: 400px !important; height: 400px !important; }
