@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SLIDES } from "../config/content";
-import { BrandLogo, IMAGES } from "../config/assets";
+import { IMAGES } from "../config/assets";
 
 const data = SLIDES[15];
 
@@ -9,7 +9,6 @@ export default function Slide16({ isActive }) {
   const wrapRef = useRef(null);
   const headingRef = useRef(null);
   const subRef = useRef(null);
-  const logoRef = useRef(null);
   const counterRef = useRef(null);
   const hasAnimated = useRef(false);
 
@@ -19,26 +18,18 @@ export default function Slide16({ isActive }) {
 
     const tl = gsap.timeline({ delay: 0.2 });
 
-    // Heading
     gsap.set(headingRef.current, { opacity: 0, scale: 0.9, y: 30, filter: "blur(6px)" });
     tl.to(headingRef.current, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 1.0, ease: "power3.out" }, 0.2);
 
-    // Subheading
     gsap.set(subRef.current, { opacity: 0, y: 20 });
     tl.to(subRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.55);
 
-    // Center Logo
-    gsap.set(logoRef.current, { opacity: 0, scale: 0.85, y: 20 });
-    tl.to(logoRef.current, { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "back.out(1.4)" }, 0.8);
-
-    // Counter
     gsap.set(counterRef.current, { opacity: 0 });
-    tl.to(counterRef.current, { opacity: 1, duration: 0.5 }, 1.1);
+    tl.to(counterRef.current, { opacity: 1, duration: 0.5 }, 0.8);
   }, [isActive]);
 
   return (
     <div ref={wrapRef} style={styles.wrap}>
-      {/* Cinematic Sunset Mountain Backdrop */}
       <div style={styles.bgImageWrap}>
         <img
           src={IMAGES.mountainSunset}
@@ -56,10 +47,6 @@ export default function Slide16({ isActive }) {
         <p ref={subRef} style={styles.subheading}>
           {data.subheadline}
         </p>
-
-        <div ref={logoRef} style={styles.logoWrap}>
-          <BrandLogo size={64} />
-        </div>
       </div>
 
       <div ref={counterRef} className="slide-counter">
@@ -122,19 +109,6 @@ const styles = {
     fontWeight: 500,
     color: "#7DD3FC",
     letterSpacing: "0.02em",
-    marginBottom: 24,
     textShadow: "0 4px 20px rgba(0,0,0,0.8)",
-  },
-  logoWrap: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "rgba(10, 17, 40, 0.6)",
-    backdropFilter: "blur(12px)",
-    WebkitBackdropFilter: "blur(12px)",
-    border: "1px solid rgba(255, 255, 255, 0.12)",
-    borderRadius: 9999,
-    padding: "14px 32px",
-    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
   },
 };
