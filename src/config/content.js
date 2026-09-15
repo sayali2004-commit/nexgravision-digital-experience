@@ -183,20 +183,6 @@ export const SLIDES = [
   },
   {
     id: 16,
-    label: "Footer",
-    headline: "NexGravision",
-    tagline: "Ideas to Intelligent Solutions",
-    description: "Let's build something amazing together.\nYour Vision • Our Technology • Success.",
-    quickLinks: ["Home", "About", "Services", "Projects", "Contact"],
-    services: ["Web Development", "Mobile Apps", "Cloud & DevOps", "UI/UX Design", "API Integration"],
-    contactInfo: {
-      phone: "+91 98765 43210",
-      email: "info@nexgravision.com",
-      address: "Sangli, Maharashtra, India",
-    },
-  },
-  {
-    id: 17,
     label: "Thank You",
     headline: "Thank You!",
     subheadline: "Let's Build the Future Together",
