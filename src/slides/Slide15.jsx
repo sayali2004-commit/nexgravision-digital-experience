@@ -61,7 +61,7 @@ export default function Slide15({ isActive, onNavigate }) {
         <div style={styles.mainContent}>
           {/* Brand Info */}
           <div ref={brandRef} style={styles.brandBlock}>
-            <BrandLogo size={42} />
+            <BrandLogo size={54} />
 
             <p style={styles.brandDesc}>
               Let's build something amazing together.<br />
