@@ -14,14 +14,14 @@ export default function Navigation({ onPrev, onNext, current, total }) {
   };
 
   const btnBase = {
-    width: 38,
-    height: 38,
+    width: 40,
+    height: 40,
     borderRadius: "50%",
-    border: "1px solid rgba(255, 255, 255, 0.12)",
-            background: "rgba(8, 13, 26, 0.75)",
+    border: "1.5px solid rgba(0, 180, 216, 0.35)",
+    background: "rgba(0, 180, 216, 0.08)",
     backdropFilter: "blur(12px)",
     WebkitBackdropFilter: "blur(12px)",
-    color: "#F8FAFC",
+    color: "#7DD3FC",
     cursor: "pointer",
     display: "flex",
     alignItems: "center",
@@ -29,6 +29,7 @@ export default function Navigation({ onPrev, onNext, current, total }) {
     transition: "all 0.25s ease",
     pointerEvents: "auto",
     outline: "none",
+    boxShadow: "0 0 12px rgba(0, 180, 216, 0.15)",
   };
 
   const disabled = (dir) => dir === "prev" ? current === 0 : current === total - 1;
@@ -46,15 +47,15 @@ export default function Navigation({ onPrev, onNext, current, total }) {
           }}
           onMouseEnter={(e) => {
             if (!disabled("prev")) {
-              e.currentTarget.style.background = "rgba(0, 180, 216, 0.2)";
-              e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.5)";
-              e.currentTarget.style.color = "#7DD3FC";
+              e.currentTarget.style.background = "rgba(0, 180, 216, 0.25)";
+              e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.6)";
+              e.currentTarget.style.boxShadow = "0 0 20px rgba(0, 180, 216, 0.3)";
             }
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(8, 13, 26, 0.75)";
-            e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.12)";
-            e.currentTarget.style.color = "#F8FAFC";
+            e.currentTarget.style.background = "rgba(0, 180, 216, 0.08)";
+            e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.35)";
+            e.currentTarget.style.boxShadow = "0 0 12px rgba(0, 180, 216, 0.15)";
           }}
           aria-label="Previous Slide"
         >
@@ -73,15 +74,15 @@ export default function Navigation({ onPrev, onNext, current, total }) {
           }}
           onMouseEnter={(e) => {
             if (!disabled("next")) {
-              e.currentTarget.style.background = "rgba(0, 180, 216, 0.2)";
-              e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.5)";
-              e.currentTarget.style.color = "#7DD3FC";
+              e.currentTarget.style.background = "rgba(0, 180, 216, 0.25)";
+              e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.6)";
+              e.currentTarget.style.boxShadow = "0 0 20px rgba(0, 180, 216, 0.3)";
             }
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(8, 13, 26, 0.75)";
-            e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.12)";
-            e.currentTarget.style.color = "#F8FAFC";
+            e.currentTarget.style.background = "rgba(0, 180, 216, 0.08)";
+            e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.35)";
+            e.currentTarget.style.boxShadow = "0 0 12px rgba(0, 180, 216, 0.15)";
           }}
           aria-label="Next Slide"
         >
@@ -95,16 +96,19 @@ export default function Navigation({ onPrev, onNext, current, total }) {
           style={{
             ...btnBase,
             background: "rgba(0, 180, 216, 0.1)",
-            borderColor: "rgba(0, 180, 216, 0.25)",
-            color: "#7DD3FC"
+            borderColor: "rgba(0, 180, 216, 0.35)",
+            color: "#7DD3FC",
+            boxShadow: "0 0 14px rgba(0, 180, 216, 0.2)"
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.background = "rgba(0, 180, 216, 0.25)";
             e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.6)";
+            e.currentTarget.style.boxShadow = "0 0 20px rgba(0, 180, 216, 0.3)";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = "rgba(0, 180, 216, 0.1)";
-            e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.25)";
+            e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.35)";
+            e.currentTarget.style.boxShadow = "0 0 14px rgba(0, 180, 216, 0.2)";
           }}
           title="Toggle Fullscreen (F)"
           aria-label="Fullscreen"

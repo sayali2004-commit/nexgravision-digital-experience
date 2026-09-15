@@ -58,6 +58,12 @@ export default function Slide01({ isActive, onNavigate }) {
       <div ref={streakRef} style={styles.streaksWrap}>
         <div style={styles.streak1} />
         <div style={styles.streak2} />
+        <div style={{...styles.streak1, right: "18%", width: 2, opacity: 0.6, filter: "blur(4px)"}} />
+        <div style={{...styles.streak2, right: "22%", width: 2, opacity: 0.4, filter: "blur(5px)"}} />
+        <div style={{...styles.streak1, right: "28%", width: 1.5, opacity: 0.3, filter: "blur(6px)"}} />
+        {/* Left side streaks */}
+        <div style={{...styles.streak1, right: "auto", left: "8%", width: 2, opacity: 0.3, filter: "blur(5px)"}} />
+        <div style={{...styles.streak2, right: "auto", left: "15%", width: 1.5, opacity: 0.2, filter: "blur(6px)"}} />
       </div>
 
       <div style={styles.container}>
@@ -88,6 +94,19 @@ export default function Slide01({ isActive, onNavigate }) {
           </div>
 
           <div ref={visualRef} style={styles.rightCol}>
+            {/* Bright glow behind image */}
+            <div style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "120%",
+              height: "130%",
+              background: "radial-gradient(ellipse at center, rgba(0,180,216,0.2) 0%, rgba(0,180,216,0.08) 40%, transparent 70%)",
+              filter: "blur(30px)",
+              pointerEvents: "none",
+              zIndex: 0,
+            }} />
             <div style={styles.imageMaskOuter}>
               <div style={styles.imageMaskInner}>
                 <img
@@ -140,9 +159,9 @@ const styles = {
     position: "absolute",
     top: "-20%",
     right: "5%",
-    width: 3,
+    width: 4,
     height: "140%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,216,0.15) 40%, rgba(0,180,216,0.25) 50%, rgba(0,180,216,0.15) 60%, transparent 100%)",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,216,0.3) 40%, rgba(0,180,216,0.5) 50%, rgba(0,180,216,0.3) 60%, transparent 100%)",
     transform: "rotate(25deg)",
     filter: "blur(2px)",
   },
@@ -150,9 +169,9 @@ const styles = {
     position: "absolute",
     top: "-10%",
     right: "12%",
-    width: 2,
+    width: 3,
     height: "130%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,216,0.08) 45%, rgba(0,180,216,0.15) 50%, rgba(0,180,216,0.08) 55%, transparent 100%)",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,216,0.15) 45%, rgba(0,180,216,0.3) 50%, rgba(0,180,216,0.15) 55%, transparent 100%)",
     transform: "rotate(22deg)",
     filter: "blur(3px)",
   },
@@ -224,8 +243,8 @@ const styles = {
     height: "clamp(300px, 50vh, 480px)",
     borderRadius: "200px 28px 28px 200px",
     padding: 2,
-    background: "linear-gradient(135deg, rgba(0,180,216,0.7) 0%, rgba(0,180,216,0.3) 40%, rgba(56,189,248,0.15) 70%, transparent 100%)",
-    boxShadow: "0 20px 60px -15px rgba(0,0,0,0.8), 0 0 50px rgba(0,180,216,0.2), 0 0 100px rgba(0,180,216,0.08)",
+    background: "linear-gradient(135deg, rgba(0,180,216,0.8) 0%, rgba(0,180,216,0.45) 40%, rgba(56,189,248,0.25) 70%, transparent 100%)",
+    boxShadow: "0 20px 60px -15px rgba(0,0,0,0.8), 0 0 60px rgba(0,180,216,0.3), 0 0 120px rgba(0,180,216,0.12)",
   },
   imageMaskInner: {
     width: "100%",
@@ -255,12 +274,12 @@ const styles = {
   },
   glowAccentLeft: {
     position: "absolute",
-    left: -20,
-    top: "15%",
-    width: 40,
-    height: "70%",
-    background: "radial-gradient(ellipse at right, rgba(0,180,216,0.35) 0%, transparent 70%)",
-    filter: "blur(12px)",
+    left: -30,
+    top: "10%",
+    width: 60,
+    height: "80%",
+    background: "radial-gradient(ellipse at right, rgba(0,180,216,0.5) 0%, transparent 70%)",
+    filter: "blur(15px)",
     pointerEvents: "none",
   },
   counterWrap: {
