@@ -9,6 +9,12 @@ export const SLIDES = [
   },
   {
     id: 2,
+    label: "Our Clients",
+    headline: "Trusted by Leading Brands",
+    description: "We are proud to work with these amazing organizations.",
+  },
+  {
+    id: 3,
     label: "About Us",
     headline: "Building Digital\nSolutions with Passion",
     description: "NexGravision is a young and innovative software company focused on delivering high-quality, scalable and user-friendly digital products. We turn ideas into powerful solutions that create real value for businesses.",
@@ -20,7 +26,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     label: "Our Services",
     headline: "What We Offer",
     description: "From concept to deployment, we provide end-to-end software solutions tailored to your needs.",
@@ -34,13 +40,13 @@ export const SLIDES = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     label: "Our Tech Stack",
     headline: "Technologies We Use",
     description: "We work with modern and reliable technologies to build future-ready solutions.",
   },
   {
-    id: 5,
+    id: 6,
     label: "Featured Projects",
     headline: "Our Latest Work",
     description: "We build solutions that are creative, functional and make an impact.",
@@ -63,7 +69,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     label: "How It Works",
     headline: "Simple Process,\nPowerful Results",
     steps: [
@@ -74,7 +80,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 7,
+    id: 8,
     label: "Why Choose Us",
     headline: "Your Success\nIs Our Priority",
     reasons: [
@@ -85,7 +91,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 8,
+    id: 9,
     label: "Testimonials",
     headline: "What Our Clients Say",
     testimonials: [
@@ -107,7 +113,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 9,
+    id: 10,
     label: "Our Process",
     headline: "From Idea to Impact",
     processSteps: [
@@ -118,7 +124,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 10,
+    id: 11,
     label: "Build for Every Platform",
     headline: "Web & Mobile Applications",
     features: [
@@ -129,7 +135,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 11,
+    id: 12,
     label: "Our Team",
     headline: "Passionate. Skilled. Collaborative.",
     description: "A dedicated team of developers, designers and problem solvers working together to bring your ideas to life.",
@@ -141,7 +147,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 12,
+    id: 13,
     label: "Get In Touch",
     headline: "Let's Build Something Great",
     description: "Have a project in mind?\nWe'd love to hear from you.",
@@ -152,7 +158,7 @@ export const SLIDES = [
     },
   },
   {
-    id: 13,
+    id: 14,
     label: "Our Mission & Vision",
     headline: "What Drives Us",
     mission: {
@@ -165,7 +171,7 @@ export const SLIDES = [
     },
   },
   {
-    id: 14,
+    id: 15,
     label: "Our Impact",
     headline: "Numbers That Speak",
     stats: [
@@ -176,7 +182,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 15,
+    id: 16,
     label: "Footer",
     headline: "NexGravision",
     tagline: "Ideas to Intelligent Solutions",
@@ -188,12 +194,6 @@ export const SLIDES = [
       email: "info@nexgravision.com",
       address: "Sangli, Maharashtra, India",
     },
-  },
-  {
-    id: 16,
-    label: "Our Clients",
-    headline: "Trusted by Leading Brands",
-    description: "We are proud to work with these amazing organizations.",
   },
   {
     id: 17,

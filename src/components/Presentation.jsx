@@ -22,6 +22,7 @@ import Progress from "./Progress";
 
 const SLIDE_COMPONENTS = [
   Slide01,
+  Slide17,
   Slide02,
   Slide03,
   Slide04,
@@ -37,7 +38,6 @@ const SLIDE_COMPONENTS = [
   Slide14,
   Slide15,
   Slide16,
-  Slide17,
 ];
 const TOTAL = SLIDE_COMPONENTS.length;
 

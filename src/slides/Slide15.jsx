@@ -172,7 +172,7 @@ export default function Slide15({ isActive, onNavigate }) {
       </div>
 
       <div ref={counterRef} className="slide-counter">
-        15 / 17
+        16 / 17
       </div>
     </div>
   );
