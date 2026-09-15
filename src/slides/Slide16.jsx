@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SLIDES } from "../config/content";
-import { IMAGES } from "../config/assets";
+import { BrandLogo, IMAGES } from "../config/assets";
 
 const data = SLIDES[15];
 
@@ -9,6 +9,7 @@ export default function Slide16({ isActive }) {
   const wrapRef = useRef(null);
   const headingRef = useRef(null);
   const subRef = useRef(null);
+  const logoRef = useRef(null);
   const counterRef = useRef(null);
   const hasAnimated = useRef(false);
 
@@ -23,6 +24,9 @@ export default function Slide16({ isActive }) {
 
     gsap.set(subRef.current, { opacity: 0, y: 20 });
     tl.to(subRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.55);
+
+    gsap.set(logoRef.current, { opacity: 0, scale: 0.85, y: 20 });
+    tl.to(logoRef.current, { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "back.out(1.4)" }, 0.8);
 
     gsap.set(counterRef.current, { opacity: 0 });
     tl.to(counterRef.current, { opacity: 1, duration: 0.5 }, 0.8);
@@ -47,6 +51,10 @@ export default function Slide16({ isActive }) {
         <p ref={subRef} style={styles.subheading}>
           {data.subheadline}
         </p>
+
+        <div ref={logoRef}>
+          <BrandLogo size={64} />
+        </div>
       </div>
 
       <div ref={counterRef} className="slide-counter">
