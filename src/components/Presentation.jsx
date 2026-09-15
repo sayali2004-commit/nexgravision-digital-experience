@@ -2,10 +2,6 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import Slide01 from "../slides/Slide01";
 import Slide10 from "../slides/Slide10";
-import Slide11 from "../slides/Slide11";
-import Slide12 from "../slides/Slide12";
-import Slide13 from "../slides/Slide13";
-import Slide14 from "../slides/Slide14";
 import Slide16 from "../slides/Slide16";
 import Slide17 from "../slides/Slide17";
 import Navigation from "./Navigation";
@@ -15,10 +11,6 @@ const SLIDE_COMPONENTS = [
   Slide01,
   Slide17,
   Slide10,
-  Slide11,
-  Slide12,
-  Slide13,
-  Slide14,
   Slide16,
 ];
 const TOTAL = SLIDE_COMPONENTS.length;
@@ -34,14 +26,6 @@ function getTransitionStyle(from, to) {
     "2->1": { type: "maskReveal", duration: 0.75 },
     "2->3": { type: "morphSlide", duration: 0.75 },
     "3->2": { type: "morphSlide", duration: 0.75 },
-    "3->4": { type: "neuralMorph", duration: 0.75 },
-    "4->3": { type: "neuralMorph", duration: 0.75 },
-    "4->5": { type: "gradientWipe", duration: 0.8 },
-    "5->4": { type: "gradientWipe", duration: 0.8 },
-    "5->6": { type: "converge", duration: 0.75 },
-    "6->5": { type: "converge", duration: 0.75 },
-    "6->7": { type: "darkExpand", duration: 0.8 },
-    "7->6": { type: "darkExpand", duration: 0.8 },
   };
 
   return transitions[pair] || { type: "default", duration: 0.65, dir };

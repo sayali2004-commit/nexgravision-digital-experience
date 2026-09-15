@@ -26,53 +26,6 @@ export const SLIDES = [
   },
   {
     id: 4,
-    label: "Our Team",
-    headline: "Passionate. Skilled. Collaborative.",
-    description: "A dedicated team of developers, designers and problem solvers working together to bring your ideas to life.",
-    team: [
-      { name: "Sayali Patil", role: "Frontend Developer" },
-      { name: "Anant Patil", role: "Backend Developer" },
-      { name: "Sneha More", role: "UI/UX Designer" },
-      { name: "Rohit Deshmukh", role: "Full Stack Developer" },
-    ],
-  },
-  {
-    id: 5,
-    label: "Get In Touch",
-    headline: "Let's Build Something Great",
-    description: "Have a project in mind?\nWe'd love to hear from you.",
-    contact: {
-      phone: "+91 98765 43210",
-      email: "info@nexgravision.com",
-      address: "Sangli, Maharashtra, India",
-    },
-  },
-  {
-    id: 6,
-    label: "Our Mission & Vision",
-    headline: "What Drives Us",
-    mission: {
-      title: "Our Mission",
-      description: "To deliver innovative and reliable software solutions that empower businesses and individuals to achieve more.",
-    },
-    vision: {
-      title: "Our Vision",
-      description: "To become a trusted global technology partner known for quality, innovation and customer satisfaction.",
-    },
-  },
-  {
-    id: 7,
-    label: "Our Impact",
-    headline: "Numbers That Speak",
-    stats: [
-      { number: "50+", label: "Happy Clients" },
-      { number: "100+", label: "Projects Delivered" },
-      { number: "5+", label: "Years of Experience" },
-      { number: "100%", label: "Client Satisfaction" },
-    ],
-  },
-  {
-    id: 8,
     label: "Thank You",
     headline: "Thank You!",
     subheadline: "Let's Build the Future Together",
