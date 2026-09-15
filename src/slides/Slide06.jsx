@@ -91,7 +91,7 @@ export default function Slide06({ isActive }) {
           {/* Glowing connecting line */}
           <div ref={lineRef} style={styles.connectingLine} />
 
-          <div style={styles.stepsRow}>
+          <div style={styles.stepsRow} className="steps-responsive">
             {data.steps.map((step, i) => (
               <div
                 key={i}
@@ -131,7 +131,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
   },
   container: {
     width: "100%",
@@ -143,7 +143,7 @@ const styles = {
     position: "relative",
   },
   header: {
-    marginBottom: 60,
+    marginBottom: "clamp(30px, 5vw, 60px)",
     textAlign: "left",
   },
   headline: {

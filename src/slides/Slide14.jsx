@@ -62,7 +62,7 @@ export default function Slide14({ isActive }) {
         </div>
 
         {/* 4 Stat Cards */}
-        <div style={styles.statsRow}>
+        <div className="stats-row-responsive" style={styles.statsRow}>
           {data.stats.map((stat, i) => (
             <div
               key={i}
@@ -125,7 +125,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
     overflow: "hidden",
   },
   container: {
@@ -156,7 +156,7 @@ const styles = {
     width: "100%",
   },
   card: {
-    padding: "36px 24px",
+    padding: "clamp(20px, 3vw, 36px) clamp(16px, 2vw, 24px)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

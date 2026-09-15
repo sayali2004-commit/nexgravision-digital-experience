@@ -94,7 +94,7 @@ export default function Slide02({ isActive }) {
           </p>
 
           {/* 4 Feature Badges */}
-          <div style={styles.badgesRow}>
+          <div style={styles.badgesRow} className="grid-2-responsive">
             {data.values.map((v, i) => (
               <div
                 key={i}
@@ -142,7 +142,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
   },
   container: {
     width: "100%",
@@ -150,12 +150,13 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: 56,
+    gap: "clamp(24px, 4vw, 56px)",
+    flexWrap: "wrap",
     zIndex: 2,
     position: "relative",
   },
   leftCol: {
-    flex: "0 0 54%",
+    flex: "1 1 400px",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
@@ -212,7 +213,7 @@ const styles = {
     whiteSpace: "pre-line",
   },
   rightCol: {
-    flex: "0 0 44%",
+    flex: "1 1 350px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

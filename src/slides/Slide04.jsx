@@ -66,7 +66,7 @@ export default function Slide04({ isActive }) {
         </div>
 
         {/* 6 Columns x 2 Rows Grid */}
-        <div style={styles.grid}>
+        <div style={styles.grid} className="grid-6-responsive">
           {TECH_STACK.map((tech, i) => (
             <div
               key={i}
@@ -105,7 +105,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
   },
   container: {
     width: "100%",

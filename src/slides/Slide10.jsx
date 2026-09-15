@@ -154,7 +154,7 @@ export default function Slide10({ isActive }) {
         </div>
 
         {/* Bottom Feature Badges */}
-        <div style={styles.featuresRow}>
+        <div className="features-responsive" style={styles.featuresRow}>
           {data.features.map((f, i) => (
             <div
               key={i}
@@ -186,7 +186,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
   },
   container: {
     width: "100%",
@@ -214,12 +214,13 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    gap: 36,
+    gap: "clamp(16px, 3vw, 36px)",
+    flexWrap: "wrap",
     marginBottom: 36,
   },
   phoneFrame: {
-    width: 150,
-    height: 270,
+    width: "clamp(100px, 15vw, 150px)",
+    height: "clamp(180px, 25vw, 270px)",
     borderRadius: 28,
     background: "#0C1424",
     border: "3px solid rgba(0, 180, 216, 0.4)",

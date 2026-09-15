@@ -89,7 +89,7 @@ export default function Slide07({ isActive }) {
             Is Our Priority
           </h2>
 
-          <div style={styles.grid2x2}>
+          <div style={styles.grid2x2} className="grid-2-responsive">
             {data.reasons.map((reason, i) => (
               <div
                 key={i}
@@ -141,7 +141,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
   },
   container: {
     width: "100%",
@@ -150,11 +150,12 @@ const styles = {
     alignItems: "center",
     justifyContent: "space-between",
     gap: 56,
+    flexWrap: "wrap",
     zIndex: 2,
     position: "relative",
   },
   leftCol: {
-    flex: "0 0 54%",
+    flex: "1 1 400px",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
@@ -211,7 +212,7 @@ const styles = {
     whiteSpace: "pre-line",
   },
   rightCol: {
-    flex: "0 0 44%",
+    flex: "1 1 350px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

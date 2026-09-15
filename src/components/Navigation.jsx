@@ -14,8 +14,8 @@ export default function Navigation({ onPrev, onNext, current, total }) {
   };
 
   const btnBase = {
-    width: 40,
-    height: 40,
+    width: "clamp(32px, 4vw, 40px)",
+    height: "clamp(32px, 4vw, 40px)",
     borderRadius: "50%",
     border: "1.5px solid rgba(0, 180, 216, 0.35)",
     background: "rgba(0, 180, 216, 0.08)",
@@ -129,8 +129,8 @@ export default function Navigation({ onPrev, onNext, current, total }) {
 const styles = {
   wrap: {
     position: "fixed",
-    bottom: 28,
-    right: 48,
+    bottom: "clamp(12px, 2vw, 28px)",
+    right: "clamp(12px, 3vw, 48px)",
     display: "flex",
     alignItems: "center",
     pointerEvents: "none",
@@ -138,7 +138,7 @@ const styles = {
   },
   right: {
     display: "flex",
-    gap: 8,
+    gap: 6,
     pointerEvents: "auto",
     alignItems: "center",
   },

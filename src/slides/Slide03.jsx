@@ -101,7 +101,7 @@ export default function Slide03({ isActive }) {
         </div>
 
         {/* 3x2 Grid */}
-        <div style={styles.grid}>
+        <div style={styles.grid} className="grid-3-responsive">
           {data.services.map((svc, i) => (
             <div
               key={i}
@@ -140,7 +140,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
   },
   container: {
     width: "100%",
@@ -178,7 +178,7 @@ const styles = {
     width: "100%",
   },
   card: {
-    padding: "32px 24px",
+    padding: "clamp(20px, 2.5vw, 32px) clamp(16px, 2vw, 24px)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

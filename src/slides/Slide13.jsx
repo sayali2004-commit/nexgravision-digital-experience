@@ -62,7 +62,7 @@ export default function Slide13({ isActive }) {
         </div>
 
         {/* 2 Glass Cards */}
-        <div style={styles.cardsRow}>
+        <div className="grid-2-responsive" style={styles.cardsRow}>
           {/* Mission Card */}
           <div
             ref={(el) => (cardRefs.current[0] = el)}
@@ -117,7 +117,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
     overflow: "hidden",
   },
   bgImageWrap: {
@@ -165,7 +165,7 @@ const styles = {
     width: "100%",
   },
   card: {
-    padding: "36px 32px",
+    padding: "clamp(20px, 3vw, 36px) clamp(16px, 2.5vw, 32px)",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",

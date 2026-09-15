@@ -8,10 +8,11 @@ export default function SlideBackground({ orbColor, orbPosition, showGrid = true
       <div className="bg-ambient-blue" style={{ bottom: "5%", left: "5%" }} />
       {orbColor && (
         <div
+          className="slide-orb"
           style={{
             position: "absolute",
-            width: 650,
-            height: 650,
+            width: "clamp(300px, 50vw, 650px)",
+            height: "clamp(300px, 50vw, 650px)",
             borderRadius: "50%",
             filter: "blur(130px)",
             pointerEvents: "none",

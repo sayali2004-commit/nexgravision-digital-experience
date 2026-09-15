@@ -77,7 +77,7 @@ export default function Slide05({ isActive }) {
         </div>
 
         {/* 3 Project Cards */}
-        <div style={styles.cardsRow}>
+        <div style={styles.cardsRow} className="grid-3-responsive">
           {data.projects.map((project, i) => (
             <div
               key={i}
@@ -136,7 +136,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
   },
   container: {
     width: "100%",
@@ -170,7 +170,7 @@ const styles = {
   cardsRow: {
     display: "grid",
     gridTemplateColumns: "repeat(3, 1fr)",
-    gap: 24,
+    gap: "clamp(12px, 2vw, 24px)",
     width: "100%",
   },
   card: {

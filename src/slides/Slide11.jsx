@@ -73,7 +73,7 @@ export default function Slide11({ isActive }) {
         </div>
 
         {/* 4 Team Member Columns */}
-        <div style={styles.teamRow}>
+        <div className="team-row-responsive" style={styles.teamRow}>
           {data.team.map((member, i) => (
             <div
               key={i}
@@ -126,7 +126,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
   },
   container: {
     width: "100%",
@@ -171,8 +171,8 @@ const styles = {
     cursor: "default",
   },
   avatarRing: {
-    width: 104,
-    height: 104,
+    width: "clamp(80px, 12vw, 104px)",
+    height: "clamp(80px, 12vw, 104px)",
     borderRadius: "50%",
     padding: 3,
     border: "2px solid rgba(0, 180, 216, 0.4)",

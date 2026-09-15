@@ -64,7 +64,7 @@ export default function Slide08({ isActive }) {
         </div>
 
         {/* 3 Testimonial Cards */}
-        <div style={styles.cardsRow}>
+        <div style={styles.cardsRow} className="testimonials-responsive">
           {data.testimonials.map((t, i) => (
             <div
               key={i}
@@ -118,7 +118,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
   },
   container: {
     width: "100%",
@@ -148,7 +148,7 @@ const styles = {
     width: "100%",
   },
   card: {
-    padding: "32px 28px 28px",
+    padding: "clamp(20px, 2.5vw, 32px) clamp(16px, 2vw, 28px) clamp(16px, 2vw, 28px)",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",

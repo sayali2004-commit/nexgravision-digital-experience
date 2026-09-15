@@ -67,7 +67,7 @@ export default function Slide17({ isActive }) {
           </p>
         </div>
 
-        <div ref={carouselRef} style={styles.carouselWrap}>
+        <div ref={carouselRef} className="carousel-responsive" style={styles.carouselWrap}>
           {/* Left column - vertical scroll */}
           <div style={styles.logoColumn}>
             <div style={styles.logoTrack}>
@@ -192,7 +192,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "48px 72px",
+    padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
     overflow: "hidden",
   },
   container: {
@@ -229,13 +229,13 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    gap: 48,
+    gap: "clamp(16px, 3vw, 48px)",
     width: "100%",
     height: "clamp(280px, 45vh, 400px)",
     position: "relative",
   },
   logoColumn: {
-    flex: "0 0 100px",
+    flex: "0 0 clamp(60px, 10vw, 100px)",
     height: "100%",
     overflow: "hidden",
     position: "relative",
@@ -252,8 +252,8 @@ const styles = {
     flexShrink: 0,
   },
   logoFrame: {
-    width: 80,
-    height: 80,
+    width: "clamp(56px, 8vw, 80px)",
+    height: "clamp(56px, 8vw, 80px)",
     borderRadius: 16,
     border: "1.5px solid rgba(0,180,216,0.12)",
     background: "rgba(16,24,40,0.6)",
@@ -271,7 +271,7 @@ const styles = {
     filter: "brightness(1.1)",
   },
   activeArea: {
-    flex: "0 0 260px",
+    flex: "clamp(160px, 50vw, 260px)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -288,16 +288,16 @@ const styles = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -55%)",
-    width: 220,
-    height: 220,
+    width: "clamp(160px, 40vw, 220px)",
+    height: "clamp(160px, 40vw, 220px)",
     borderRadius: "50%",
     background: "radial-gradient(circle, rgba(0,180,216,0.2) 0%, transparent 70%)",
     filter: "blur(25px)",
     pointerEvents: "none",
   },
   activeBorder: {
-    width: 180,
-    height: 180,
+    width: "clamp(120px, 35vw, 180px)",
+    height: "clamp(120px, 35vw, 180px)",
     borderRadius: 24,
     border: "2px solid rgba(0,180,216,0.5)",
     background: "rgba(16,24,40,0.7)",
