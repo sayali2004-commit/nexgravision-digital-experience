@@ -272,6 +272,18 @@ body {
   50% { transform: translateY(-6px); }
 }
 
+/* ===== CORE PULSE ===== */
+@keyframes core-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.12); opacity: 1; }
+}
+
+/* ===== FLOAT NODE ===== */
+@keyframes float-node {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-5px); }
+}
+
 /* ===== CLIENT GRID RESPONSIVE ===== */
 @media (max-width: 768px) {
   .client-grid-responsive { grid-template-columns: repeat(2, 1fr) !important; }
