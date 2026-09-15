@@ -15,6 +15,12 @@ export const SLIDES = [
   },
   {
     id: 3,
+    label: "One Company. One Software.",
+    headline: "One Company.\nOne Software.",
+    subheadline: "One vision, engineered into one intelligent digital experience.",
+  },
+  {
+    id: 4,
     label: "Build for Every Platform",
     headline: "Web & Mobile Applications",
     features: [
@@ -25,7 +31,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     label: "Thank You",
     headline: "Thank You!",
     subheadline: "Let's Build the Future Together",

@@ -255,6 +255,17 @@ body {
   opacity: 1 !important;
 }
 
+/* ===== ORBITAL RING ANIMATIONS ===== */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-medium {
+  from { transform: rotateX(60deg) rotate(0deg); }
+  to { transform: rotateX(60deg) rotate(360deg); }
+}
+
 /* ===== RESPONSIVE: Tablet (max-width: 1024px) ===== */
 @media (max-width: 1024px) {
   .bg-ambient-warm { width: 400px !important; height: 400px !important; }

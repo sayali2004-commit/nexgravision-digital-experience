@@ -4,12 +4,14 @@ import Slide01 from "../slides/Slide01";
 import Slide10 from "../slides/Slide10";
 import Slide16 from "../slides/Slide16";
 import Slide17 from "../slides/Slide17";
+import Slide18 from "../slides/Slide18";
 import Navigation from "./Navigation";
 import Progress from "./Progress";
 
 const SLIDE_COMPONENTS = [
   Slide01,
   Slide17,
+  Slide18,
   Slide10,
   Slide16,
 ];
@@ -22,10 +24,12 @@ function getTransitionStyle(from, to) {
   const transitions = {
     "0->1": { type: "gradientWipe", duration: 0.8 },
     "1->0": { type: "gradientWipe", duration: 0.8 },
-    "1->2": { type: "maskReveal", duration: 0.75 },
-    "2->1": { type: "maskReveal", duration: 0.75 },
-    "2->3": { type: "morphSlide", duration: 0.75 },
-    "3->2": { type: "morphSlide", duration: 0.75 },
+    "1->2": { type: "converge", duration: 0.8 },
+    "2->1": { type: "converge", duration: 0.8 },
+    "2->3": { type: "maskReveal", duration: 0.75 },
+    "3->2": { type: "maskReveal", duration: 0.75 },
+    "3->4": { type: "morphSlide", duration: 0.75 },
+    "4->3": { type: "morphSlide", duration: 0.75 },
   };
 
   return transitions[pair] || { type: "default", duration: 0.65, dir };
