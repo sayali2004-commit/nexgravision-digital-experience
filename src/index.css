@@ -287,7 +287,15 @@ body {
 /* ===== FLOAT GALLERY ===== */
 @keyframes float-gallery {
   0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-  50% { transform: translate(-50%, -50%) translateY(-8px); }
+  50% { transform: translate(-50%, -50%) translateY(calc(-1 * var(--float-amp, 8px))); }
+}
+
+/* ===== PARTICLE DRIFT ===== */
+@keyframes particle-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.15; }
+  25% { transform: translate(4px, -6px) scale(1.2); opacity: 0.35; }
+  50% { transform: translate(-3px, -10px) scale(0.8); opacity: 0.2; }
+  75% { transform: translate(5px, -4px) scale(1.1); opacity: 0.3; }
 }
 
 /* ===== CLIENT GRID RESPONSIVE ===== */
