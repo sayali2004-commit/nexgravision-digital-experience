@@ -1,14 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import Slide01 from "../slides/Slide01";
-import Slide02 from "../slides/Slide02";
-import Slide03 from "../slides/Slide03";
-import Slide04 from "../slides/Slide04";
-import Slide05 from "../slides/Slide05";
-import Slide06 from "../slides/Slide06";
-import Slide07 from "../slides/Slide07";
-import Slide08 from "../slides/Slide08";
-import Slide09 from "../slides/Slide09";
 import Slide10 from "../slides/Slide10";
 import Slide11 from "../slides/Slide11";
 import Slide12 from "../slides/Slide12";
@@ -22,14 +14,6 @@ import Progress from "./Progress";
 const SLIDE_COMPONENTS = [
   Slide01,
   Slide17,
-  Slide02,
-  Slide03,
-  Slide04,
-  Slide05,
-  Slide06,
-  Slide07,
-  Slide08,
-  Slide09,
   Slide10,
   Slide11,
   Slide12,
@@ -48,32 +32,16 @@ function getTransitionStyle(from, to) {
     "1->0": { type: "gradientWipe", duration: 0.8 },
     "1->2": { type: "maskReveal", duration: 0.75 },
     "2->1": { type: "maskReveal", duration: 0.75 },
-    "2->3": { type: "lineExpand", duration: 0.8 },
-    "3->2": { type: "lineExpand", duration: 0.8 },
-    "3->4": { type: "morphSlide", duration: 0.75 },
-    "4->3": { type: "morphSlide", duration: 0.75 },
-    "4->5": { type: "zoomType", duration: 0.7 },
-    "5->4": { type: "zoomType", duration: 0.7 },
-    "5->6": { type: "darkExpand", duration: 0.8 },
-    "6->5": { type: "darkExpand", duration: 0.8 },
-    "6->7": { type: "neuralMorph", duration: 0.75 },
-    "7->6": { type: "neuralMorph", duration: 0.75 },
-    "7->8": { type: "roadmapTravel", duration: 0.75 },
-    "8->7": { type: "roadmapTravel", duration: 0.75 },
-    "8->9": { type: "converge", duration: 0.75 },
-    "9->8": { type: "converge", duration: 0.75 },
-    "9->10": { type: "maskReveal", duration: 0.75 },
-    "10->9": { type: "maskReveal", duration: 0.75 },
-    "10->11": { type: "neuralMorph", duration: 0.75 },
-    "11->10": { type: "neuralMorph", duration: 0.75 },
-    "11->12": { type: "morphSlide", duration: 0.75 },
-    "12->11": { type: "morphSlide", duration: 0.75 },
-    "12->13": { type: "gradientWipe", duration: 0.8 },
-    "13->12": { type: "gradientWipe", duration: 0.8 },
-    "13->14": { type: "converge", duration: 0.75 },
-    "14->13": { type: "converge", duration: 0.75 },
-    "14->15": { type: "darkExpand", duration: 0.8 },
-    "15->14": { type: "darkExpand", duration: 0.8 },
+    "2->3": { type: "morphSlide", duration: 0.75 },
+    "3->2": { type: "morphSlide", duration: 0.75 },
+    "3->4": { type: "neuralMorph", duration: 0.75 },
+    "4->3": { type: "neuralMorph", duration: 0.75 },
+    "4->5": { type: "gradientWipe", duration: 0.8 },
+    "5->4": { type: "gradientWipe", duration: 0.8 },
+    "5->6": { type: "converge", duration: 0.75 },
+    "6->5": { type: "converge", duration: 0.75 },
+    "6->7": { type: "darkExpand", duration: 0.8 },
+    "7->6": { type: "darkExpand", duration: 0.8 },
   };
 
   return transitions[pair] || { type: "default", duration: 0.65, dir };

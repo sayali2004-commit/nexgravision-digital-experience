@@ -15,116 +15,6 @@ export const SLIDES = [
   },
   {
     id: 3,
-    label: "About Us",
-    headline: "Building Digital\nSolutions with Passion",
-    description: "NexGravision is a young and innovative software company focused on delivering high-quality, scalable and user-friendly digital products. We turn ideas into powerful solutions that create real value for businesses.",
-    values: [
-      { icon: "innovation", title: "Innovation\nDriven" },
-      { icon: "client", title: "Client\nFocused" },
-      { icon: "quality", title: "Quality\nFirst" },
-      { icon: "support", title: "Long-Term\nSupport" },
-    ],
-  },
-  {
-    id: 4,
-    label: "Our Services",
-    headline: "What We Offer",
-    description: "From concept to deployment, we provide end-to-end software solutions tailored to your needs.",
-    services: [
-      { id: "web", title: "Web Application\nDevelopment" },
-      { id: "mobile", title: "Mobile Application\nDevelopment" },
-      { id: "cloud", title: "Cloud & DevOps\nSolutions" },
-      { id: "uiux", title: "UI/UX Design" },
-      { id: "api", title: "API Integration" },
-      { id: "support", title: "Maintenance & Support" },
-    ],
-  },
-  {
-    id: 5,
-    label: "Our Tech Stack",
-    headline: "Technologies We Use",
-    description: "We work with modern and reliable technologies to build future-ready solutions.",
-  },
-  {
-    id: 6,
-    label: "Featured Projects",
-    headline: "Our Latest Work",
-    description: "We build solutions that are creative, functional and make an impact.",
-    projects: [
-      {
-        title: "Crop Disease Detection",
-        tags: "Java | JSP | MySQL",
-        category: "Farmers' Help",
-      },
-      {
-        title: "Nursing College Website",
-        tags: "HTML | CSS | JS",
-        category: "Educational Platform",
-      },
-      {
-        title: "Sharada Consultant",
-        tags: "HTML | CSS | JS",
-        category: "Real Estate Website",
-      },
-    ],
-  },
-  {
-    id: 7,
-    label: "How It Works",
-    headline: "Simple Process,\nPowerful Results",
-    steps: [
-      { num: "01", title: "Discuss\nYour Idea", desc: "Tell us what\nyou need" },
-      { num: "02", title: "Plan & Design", desc: "We create a\nstrategy & design" },
-      { num: "03", title: "Develop", desc: "Build with\nmodern tech" },
-      { num: "04", title: "Launch & Support", desc: "Deploy and\nscale together" },
-    ],
-  },
-  {
-    id: 8,
-    label: "Why Choose Us",
-    headline: "Your Success\nIs Our Priority",
-    reasons: [
-      { id: "team", title: "Expert Team", desc: "Skilled developers &\ncreative minds" },
-      { id: "time", title: "On-Time Delivery", desc: "We respect your time" },
-      { id: "process", title: "Transparent Process", desc: "Clear communication\nat every step" },
-      { id: "price", title: "Affordable Pricing", desc: "Quality solutions\nwithin your budget" },
-    ],
-  },
-  {
-    id: 9,
-    label: "Testimonials",
-    headline: "What Our Clients Say",
-    testimonials: [
-      {
-        quote: "NexGravision delivered our project on time with excellent quality. Their team is professional and supportive.",
-        name: "Priya Sharma",
-        role: "Business Owner",
-      },
-      {
-        quote: "The website they built for us is modern, fast and exactly what we needed. Highly recommended!",
-        name: "Rahul Deshmukh",
-        role: "Founder",
-      },
-      {
-        quote: "Great communication, creative solutions and amazing support even after delivery.",
-        name: "Sneha Kulkarni",
-        role: "Client",
-      },
-    ],
-  },
-  {
-    id: 10,
-    label: "Our Process",
-    headline: "From Idea to Impact",
-    processSteps: [
-      { num: "01", title: "Discover", desc: "Understand your goals & requirements" },
-      { num: "02", title: "Design", desc: "Create wireframes & UI/UX designs" },
-      { num: "03", title: "Develop", desc: "Build, test and ensure quality" },
-      { num: "04", title: "Deploy", desc: "Launch and provide ongoing support" },
-    ],
-  },
-  {
-    id: 11,
     label: "Build for Every Platform",
     headline: "Web & Mobile Applications",
     features: [
@@ -135,7 +25,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 12,
+    id: 4,
     label: "Our Team",
     headline: "Passionate. Skilled. Collaborative.",
     description: "A dedicated team of developers, designers and problem solvers working together to bring your ideas to life.",
@@ -147,7 +37,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 13,
+    id: 5,
     label: "Get In Touch",
     headline: "Let's Build Something Great",
     description: "Have a project in mind?\nWe'd love to hear from you.",
@@ -158,7 +48,7 @@ export const SLIDES = [
     },
   },
   {
-    id: 14,
+    id: 6,
     label: "Our Mission & Vision",
     headline: "What Drives Us",
     mission: {
@@ -171,7 +61,7 @@ export const SLIDES = [
     },
   },
   {
-    id: 15,
+    id: 7,
     label: "Our Impact",
     headline: "Numbers That Speak",
     stats: [
@@ -182,7 +72,7 @@ export const SLIDES = [
     ],
   },
   {
-    id: 16,
+    id: 8,
     label: "Thank You",
     headline: "Thank You!",
     subheadline: "Let's Build the Future Together",

@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { SLIDES } from "../config/content";
 import { IMAGES } from "../config/assets";
 
-const data = SLIDES[13];
+const data = SLIDES[5];
 
 export default function Slide13({ isActive }) {
   const wrapRef = useRef(null);
@@ -102,7 +102,7 @@ export default function Slide13({ isActive }) {
       </div>
 
       <div ref={counterRef} className="slide-counter">
-        14 / 16
+        06 / 8
       </div>
     </div>
   );

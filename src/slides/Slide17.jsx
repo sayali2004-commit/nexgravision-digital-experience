@@ -90,7 +90,7 @@ export default function Slide17({ isActive }) {
       </div>
 
       <div ref={counterRef} className="slide-counter">
-        02 / 16
+        02 / 8
       </div>
     </div>
   );
