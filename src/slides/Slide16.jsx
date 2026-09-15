@@ -120,7 +120,7 @@ const styles = {
     fontFamily: "var(--font-sans)",
     fontSize: "clamp(16px, 1.8vw, 22px)",
     fontWeight: 500,
-    color: "#FDE68A",
+    color: "#7DD3FC",
     letterSpacing: "0.02em",
     marginBottom: 24,
     textShadow: "0 4px 20px rgba(0,0,0,0.8)",

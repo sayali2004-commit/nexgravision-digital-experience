@@ -48,7 +48,7 @@ export default function Slide09({ isActive }) {
   return (
     <div ref={wrapRef} style={styles.wrap}>
       <SlideBackground
-        orbColor="radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%)"
+        orbColor="radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 70%)"
         orbPosition={{ top: "45%", left: "70%" }}
       />
 
@@ -157,18 +157,18 @@ const styles = {
     width: 38,
     height: 38,
     borderRadius: "50%",
-    border: "1.5px solid #F59E0B",
-    background: "rgba(245, 158, 11, 0.08)",
+    border: "1.5px solid #00B4D8",
+    background: "rgba(0, 180, 216, 0.08)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     fontFamily: "var(--font-mono)",
     fontSize: 13,
     fontWeight: 700,
-    color: "#F59E0B",
+    color: "#00B4D8",
     flexShrink: 0,
     marginTop: 2,
-    boxShadow: "0 0 14px rgba(245, 158, 11, 0.2)",
+    boxShadow: "0 0 14px rgba(0, 180, 216, 0.2)",
   },
   stepText: {
     display: "flex",
@@ -200,8 +200,8 @@ const styles = {
     height: "clamp(280px, 42vh, 390px)",
     borderRadius: "38% 62% 63% 37% / 41% 44% 56% 59%",
     padding: 2,
-    background: "linear-gradient(135deg, rgba(245,158,11,0.6) 0%, rgba(56,189,248,0.2) 100%)",
-    boxShadow: "0 20px 60px -15px rgba(0,0,0,0.8), 0 0 40px rgba(245,158,11,0.2)",
+    background: "linear-gradient(135deg, rgba(0,180,216,0.6) 0%, rgba(56,189,248,0.2) 100%)",
+    boxShadow: "0 20px 60px -15px rgba(0,0,0,0.8), 0 0 40px rgba(0,180,216,0.2)",
   },
   organicMaskInner: {
     width: "100%",
@@ -226,7 +226,7 @@ const styles = {
     position: "absolute",
     inset: -1,
     borderRadius: "38% 62% 63% 37% / 41% 44% 56% 59%",
-    border: "1px solid rgba(245, 158, 11, 0.4)",
+    border: "1px solid rgba(0, 180, 216, 0.4)",
     pointerEvents: "none",
   },
 };

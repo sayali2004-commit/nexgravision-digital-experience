@@ -72,7 +72,7 @@ export default function Slide13({ isActive }) {
             onMouseLeave={(e) => gsap.to(e.currentTarget, { y: 0, duration: 0.3 })}
           >
             <div style={styles.iconCircle}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
               </svg>
@@ -90,7 +90,7 @@ export default function Slide13({ isActive }) {
             onMouseLeave={(e) => gsap.to(e.currentTarget, { y: 0, duration: 0.3 })}
           >
             <div style={styles.iconCircle}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
                 <circle cx="12" cy="12" r="3" />
               </svg>
@@ -177,12 +177,12 @@ const styles = {
     width: 50,
     height: 50,
     borderRadius: 14,
-    background: "rgba(245, 158, 11, 0.12)",
-    border: "1px solid rgba(245, 158, 11, 0.3)",
+    background: "rgba(0, 180, 216, 0.12)",
+    border: "1px solid rgba(0, 180, 216, 0.3)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: "0 0 20px rgba(245, 158, 11, 0.2)",
+    boxShadow: "0 0 20px rgba(0, 180, 216, 0.2)",
   },
   cardTitle: {
     fontFamily: "var(--font-sans)",

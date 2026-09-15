@@ -49,7 +49,7 @@ export default function Slide08({ isActive }) {
   return (
     <div ref={wrapRef} style={styles.wrap}>
       <SlideBackground
-        orbColor="radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%)"
+        orbColor="radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 70%)"
         orbPosition={{ top: "45%", left: "50%" }}
       />
 
@@ -160,7 +160,7 @@ const styles = {
     fontFamily: "var(--font-serif)",
     fontSize: 44,
     lineHeight: 1,
-    color: "#F59E0B",
+    color: "#00B4D8",
     marginBottom: 14,
     opacity: 0.9,
   },
@@ -182,8 +182,8 @@ const styles = {
     height: 44,
     borderRadius: "50%",
     overflow: "hidden",
-    border: "2px solid rgba(245, 158, 11, 0.5)",
-    boxShadow: "0 0 14px rgba(245, 158, 11, 0.25)",
+    border: "2px solid rgba(0, 180, 216, 0.5)",
+    boxShadow: "0 0 14px rgba(0, 180, 216, 0.25)",
     flexShrink: 0,
   },
   avatarImg: {

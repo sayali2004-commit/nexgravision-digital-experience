@@ -88,7 +88,7 @@ function applyTransition(fromEl, toEl, style, onComplete) {
     case "gradientWipe": {
       const overlay = document.createElement("div");
       overlay.style.cssText =
-        "position:absolute;inset:0;z-index:999;pointer-events:none;background:radial-gradient(circle at center,#0A1128 0%,#060B18 100%);";
+        "position:absolute;inset:0;z-index:999;pointer-events:none;background:radial-gradient(circle at center,#0C1222 0%,#080D1A 100%);";
       fromEl.parentElement.appendChild(overlay);
       gsap.set(overlay, { opacity: 0 });
       tl.to(overlay, { opacity: 1, duration: d * 0.4, ease: "power2.in" });
@@ -107,7 +107,7 @@ function applyTransition(fromEl, toEl, style, onComplete) {
     case "lineExpand": {
       const line = document.createElement("div");
       line.style.cssText =
-        "position:absolute;top:50%;left:0;width:0;height:2px;z-index:999;pointer-events:none;background:linear-gradient(90deg,#F59E0B,#38BDF8);box-shadow:0 0 20px rgba(245,158,11,0.6);";
+        "position:absolute;top:50%;left:0;width:0;height:2px;z-index:999;pointer-events:none;background:linear-gradient(90deg,#00B4D8,#38BDF8);box-shadow:0 0 20px rgba(0,180,216,0.6);";
       fromEl.parentElement.appendChild(line);
       tl.to(fromEl, { opacity: 0, duration: d * 0.3, ease: "power2.in", pointerEvents: "none" });
       tl.to(line, { width: "100%", duration: d * 0.4, ease: "power3.out" });
@@ -131,11 +131,11 @@ function applyTransition(fromEl, toEl, style, onComplete) {
     case "darkExpand": {
       const dark = document.createElement("div");
       dark.style.cssText =
-        "position:absolute;inset:0;z-index:999;pointer-events:none;background:radial-gradient(circle at center,transparent 0%,#060B18 0%);";
+        "position:absolute;inset:0;z-index:999;pointer-events:none;background:radial-gradient(circle at center,transparent 0%,#080D1A 0%);";
       fromEl.parentElement.appendChild(dark);
       tl.to(fromEl, { opacity: 0, duration: d * 0.2, pointerEvents: "none" });
       tl.to(dark, {
-        background: "radial-gradient(circle at center,transparent 0%,#060B18 100%)",
+        background: "radial-gradient(circle at center,transparent 0%,#080D1A 100%)",
         duration: d * 0.35,
         ease: "power2.in",
       });
@@ -349,7 +349,7 @@ const styles = {
     width: "100vw",
     height: "100vh",
     overflow: "hidden",
-    background: "linear-gradient(180deg, #060B18 0%, #0A1128 50%, #0E1736 100%)",
+    background: "linear-gradient(180deg, #080D1A 0%, #0C1222 50%, #101828 100%)",
   },
   controlsWrap: {
     position: "fixed",

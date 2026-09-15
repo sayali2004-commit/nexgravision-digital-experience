@@ -3,29 +3,25 @@ export const BRAND = {
   tagline: "Ideas to Intelligent Solutions",
   headline: "Innovative Software Solutions for a Smarter Tomorrow",
 
-  // Warm Gold / Amber primary + Sapphire / Cyan secondary
-  primaryColor: "#F59E0B",
-  primaryLight: "#FDE68A",
-  primaryDark: "#D97706",
+  primaryColor: "#00B4D8",
+  primaryLight: "#7DD3FC",
+  primaryDark: "#0284C7",
   secondaryColor: "#38BDF8",
-  accentGlow: "rgba(245, 158, 11, 0.4)",
-  accentGlowSoft: "rgba(245, 158, 11, 0.15)",
+  accentGlow: "rgba(0, 180, 216, 0.4)",
+  accentGlowSoft: "rgba(0, 180, 216, 0.15)",
 
-  // Backgrounds
-  dark: "#060B18",
-  darkSurface: "#0A1128",
-  darkCard: "#0E1736",
-  darkCardHover: "#132048",
+  dark: "#080D1A",
+  darkSurface: "#0C1222",
+  darkCard: "#101828",
+  darkCardHover: "#162036",
 
-  // Text
   textPrimary: "#FFFFFF",
   textSecondary: "#94A3B8",
   textMuted: "#64748B",
 
-  // Gradients
-  gradientGold: "linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%)",
-  gradientCard: "linear-gradient(180deg, rgba(14,23,54,0.7) 0%, rgba(10,17,40,0.85) 100%)",
-  gradientSubtle: "linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(56,189,248,0.05) 100%)",
+  gradientPrimary: "linear-gradient(135deg, #7DD3FC 0%, #00B4D8 50%, #0284C7 100%)",
+  gradientCard: "linear-gradient(180deg, rgba(16,24,40,0.7) 0%, rgba(12,18,34,0.85) 100%)",
+  gradientSubtle: "linear-gradient(135deg, rgba(0,180,216,0.1) 0%, rgba(56,189,248,0.05) 100%)",
 
   website: "https://nexgravision.com",
   email: "info@nexgravision.com",

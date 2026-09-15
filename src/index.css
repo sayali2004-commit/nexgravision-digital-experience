@@ -7,13 +7,13 @@
 }
 
 :root {
-  --bg-dark: #060B18;
-  --bg-surface: #0A1128;
-  --bg-card: #0E1736;
-  --gold-primary: #F59E0B;
-  --gold-light: #FDE68A;
-  --gold-dark: #D97706;
-  --gold-glow: rgba(245, 158, 11, 0.35);
+  --bg-dark: #080D1A;
+  --bg-surface: #0C1222;
+  --bg-card: #101828;
+  --gold-primary: #00B4D8;
+  --gold-light: #7DD3FC;
+  --gold-dark: #0284C7;
+  --gold-glow: rgba(0, 180, 216, 0.35);
   --cyan-accent: #38BDF8;
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-display: 'Cinzel', serif;
@@ -28,7 +28,7 @@ html, body, #root {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #060B18;
+  background-color: #080D1A;
   color: #F8FAFC;
 }
 
@@ -44,8 +44,8 @@ body {
 }
 
 ::selection {
-  background: rgba(245, 158, 11, 0.35);
-  color: #FFFBEB;
+  background: rgba(0, 180, 216, 0.35);
+  color: #ECFEFF;
 }
 
 .slide {
@@ -72,8 +72,8 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(245, 158, 11, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 158, 11, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(0, 180, 216, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 216, 0.025) 1px, transparent 1px);
   background-size: 80px 80px;
   pointer-events: none;
   opacity: 0.6;
@@ -87,7 +87,7 @@ body {
   filter: blur(120px);
   pointer-events: none;
   opacity: 0.08;
-  background: radial-gradient(circle, #F59E0B 0%, rgba(217, 119, 6, 0) 70%);
+  background: radial-gradient(circle, #00B4D8 0%, rgba(2, 132, 199, 0) 70%);
 }
 
 .bg-ambient-blue {
@@ -103,7 +103,7 @@ body {
 
 /* Glass Card Helper */
 .glass-card {
-  background: rgba(14, 23, 54, 0.7);
+  background: rgba(16, 24, 40, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -112,8 +112,8 @@ body {
 }
 
 .glass-card:hover {
-  border-color: rgba(245, 158, 11, 0.35);
-  box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.15);
+  border-color: rgba(0, 180, 216, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(0, 180, 216, 0.15);
 }
 
 /* Gold CTA Button */
@@ -121,8 +121,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
-  color: #060B18;
+  background: linear-gradient(135deg, #7DD3FC 0%, #00B4D8 50%, #0284C7 100%);
+  color: #080D1A;
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 700;
@@ -131,14 +131,14 @@ body {
   border-radius: 9999px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 180, 216, 0.35);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
 }
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(245, 158, 11, 0.5);
+  box-shadow: 0 6px 25px rgba(0, 180, 216, 0.5);
   filter: brightness(1.05);
 }
 
@@ -197,11 +197,11 @@ body {
   0%,
   100% {
     transform: translateY(0);
-    filter: drop-shadow(0 4px 10px rgba(245, 158, 11, 0.3));
+    filter: drop-shadow(0 4px 10px rgba(0, 180, 216, 0.3));
   }
   50% {
     transform: translateY(-3px);
-    filter: drop-shadow(0 8px 18px rgba(245, 158, 11, 0.55));
+    filter: drop-shadow(0 8px 18px rgba(0, 180, 216, 0.55));
   }
 }
 

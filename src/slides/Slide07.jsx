@@ -47,24 +47,24 @@ export default function Slide07({ isActive }) {
 
   const reasonIcons = [
     // Expert Team
-    <svg key="team" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="team" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
       <circle cx="9" cy="7" r="4" />
       <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>,
     // On-Time Delivery
-    <svg key="ontime" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="ontime" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
     </svg>,
     // Transparent Process
-    <svg key="transparent" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="transparent" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
       <circle cx="12" cy="12" r="3" />
     </svg>,
     // Affordable Pricing
-    <svg key="price" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="price" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
       <line x1="7" y1="7" x2="7.01" y2="7" />
     </svg>,
@@ -73,7 +73,7 @@ export default function Slide07({ isActive }) {
   return (
     <div ref={wrapRef} style={styles.wrap}>
       <SlideBackground
-        orbColor="radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%)"
+        orbColor="radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 70%)"
         orbPosition={{ top: "40%", left: "70%" }}
       />
 
@@ -185,8 +185,8 @@ const styles = {
     width: 44,
     height: 44,
     borderRadius: 12,
-    background: "rgba(245, 158, 11, 0.1)",
-    border: "1px solid rgba(245, 158, 11, 0.25)",
+    background: "rgba(0, 180, 216, 0.1)",
+    border: "1px solid rgba(0, 180, 216, 0.25)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -223,8 +223,8 @@ const styles = {
     height: "clamp(280px, 42vh, 380px)",
     borderRadius: "140px 24px 24px 140px",
     padding: 2,
-    background: "linear-gradient(135deg, rgba(245, 158, 11, 0.5) 0%, rgba(56, 189, 248, 0.15) 100%)",
-    boxShadow: "0 20px 50px -10px rgba(0,0,0,0.7), 0 0 35px rgba(245,158,11,0.15)",
+    background: "linear-gradient(135deg, rgba(0, 180, 216, 0.5) 0%, rgba(56, 189, 248, 0.15) 100%)",
+    boxShadow: "0 20px 50px -10px rgba(0,0,0,0.7), 0 0 35px rgba(0,180,216,0.15)",
   },
   curvedFrameInner: {
     width: "100%",
@@ -248,7 +248,7 @@ const styles = {
     position: "absolute",
     inset: -1,
     borderRadius: "140px 24px 24px 140px",
-    border: "1px solid rgba(245, 158, 11, 0.35)",
+    border: "1px solid rgba(0, 180, 216, 0.35)",
     pointerEvents: "none",
   },
 };

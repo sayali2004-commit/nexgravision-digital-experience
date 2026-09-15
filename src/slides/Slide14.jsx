@@ -47,7 +47,7 @@ export default function Slide14({ isActive }) {
   return (
     <div ref={wrapRef} style={styles.wrap}>
       <SlideBackground
-        orbColor="radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%)"
+        orbColor="radial-gradient(circle, rgba(0,180,216,0.12) 0%, transparent 70%)"
         orbPosition={{ top: "45%", left: "50%" }}
       />
 
@@ -84,15 +84,15 @@ export default function Slide14({ isActive }) {
         <svg viewBox="0 0 1440 220" fill="none" style={styles.waveSvg} preserveAspectRatio="none">
           <defs>
             <linearGradient id="goldWaveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#F59E0B" stopOpacity="0" />
-              <stop offset="35%" stopColor="#FDE68A" stopOpacity="0.4" />
-              <stop offset="65%" stopColor="#F59E0B" stopOpacity="0.5" />
+              <stop offset="0%" stopColor="#00B4D8" stopOpacity="0" />
+              <stop offset="35%" stopColor="#7DD3FC" stopOpacity="0.4" />
+              <stop offset="65%" stopColor="#00B4D8" stopOpacity="0.5" />
               <stop offset="100%" stopColor="#38BDF8" stopOpacity="0" />
             </linearGradient>
             <linearGradient id="goldWaveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#F59E0B" stopOpacity="0" />
-              <stop offset="45%" stopColor="#F59E0B" stopOpacity="0.25" />
-              <stop offset="75%" stopColor="#FDE68A" stopOpacity="0.3" />
+              <stop offset="0%" stopColor="#00B4D8" stopOpacity="0" />
+              <stop offset="45%" stopColor="#00B4D8" stopOpacity="0.25" />
+              <stop offset="75%" stopColor="#7DD3FC" stopOpacity="0.3" />
               <stop offset="100%" stopColor="#0284C7" stopOpacity="0" />
             </linearGradient>
           </defs>
@@ -170,11 +170,11 @@ const styles = {
     fontFamily: "var(--font-serif)",
     fontSize: "clamp(32px, 3.5vw, 44px)",
     fontWeight: 700,
-    background: "linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%)",
+    background: "linear-gradient(135deg, #7DD3FC 0%, #00B4D8 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     lineHeight: 1,
-    filter: "drop-shadow(0 2px 10px rgba(245,158,11,0.25))",
+    filter: "drop-shadow(0 2px 10px rgba(0,180,216,0.25))",
   },
   statLabel: {
     fontFamily: "var(--font-sans)",

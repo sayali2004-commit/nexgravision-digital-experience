@@ -29,12 +29,12 @@ const styles = {
   track: {
     width: "100%",
     height: "100%",
-    background: "rgba(245, 158, 11, 0.08)",
+    background: "rgba(0, 180, 216, 0.08)",
   },
   fill: {
     height: "100%",
-    background: "linear-gradient(90deg, #D97706, #F59E0B, #FDE68A)",
+    background: "linear-gradient(90deg, #0284C7, #00B4D8, #7DD3FC)",
     transition: "width 0.6s cubic-bezier(0.22, 1, 0.36, 1)",
-    boxShadow: "0 0 12px rgba(245, 158, 11, 0.6)",
+    boxShadow: "0 0 12px rgba(0, 180, 216, 0.6)",
   },
 };

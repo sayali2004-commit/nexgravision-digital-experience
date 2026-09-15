@@ -46,22 +46,22 @@ export default function Slide10({ isActive }) {
 
   const featureIcons = [
     // Responsive Design
-    <svg key="responsive" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="responsive" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
       <line x1="8" y1="21" x2="16" y2="21" />
       <line x1="12" y1="17" x2="12" y2="21" />
     </svg>,
     // Fast Performance
-    <svg key="fast" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="fast" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
     </svg>,
     // User Friendly
-    <svg key="user" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="user" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
       <circle cx="12" cy="7" r="4" />
     </svg>,
     // Scalable
-    <svg key="scalable" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="scalable" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
       <polyline points="17 6 23 6 23 12" />
     </svg>,
@@ -114,7 +114,7 @@ export default function Slide10({ isActive }) {
               <div style={styles.laptopTopBar}>
                 <div style={styles.trafficLights}>
                   <div style={{ ...styles.trafficDot, background: "#EF4444" }} />
-                  <div style={{ ...styles.trafficDot, background: "#F59E0B" }} />
+                  <div style={{ ...styles.trafficDot, background: "#00B4D8" }} />
                   <div style={{ ...styles.trafficDot, background: "#10B981" }} />
                 </div>
                 <div style={styles.laptopUrl}>nexgravision.cloud/analytics</div>
@@ -144,7 +144,7 @@ export default function Slide10({ isActive }) {
                     <div style={{ ...styles.chartBar, height: "55%" }} />
                     <div style={{ ...styles.chartBar, height: "85%" }} />
                     <div style={{ ...styles.chartBar, height: "65%" }} />
-                    <div style={{ ...styles.chartBar, height: "95%", background: "#F59E0B" }} />
+                    <div style={{ ...styles.chartBar, height: "95%", background: "#00B4D8" }} />
                   </div>
                 </div>
               </div>
@@ -221,13 +221,13 @@ const styles = {
     width: 150,
     height: 270,
     borderRadius: 28,
-    background: "#080E24",
-    border: "3px solid rgba(245, 158, 11, 0.4)",
+    background: "#0C1424",
+    border: "3px solid rgba(0, 180, 216, 0.4)",
     padding: "8px 6px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    boxShadow: "0 20px 40px rgba(0,0,0,0.6), 0 0 25px rgba(245,158,11,0.15)",
+    boxShadow: "0 20px 40px rgba(0,0,0,0.6), 0 0 25px rgba(0,180,216,0.15)",
     flexShrink: 0,
   },
   phoneSpeaker: {
@@ -241,7 +241,7 @@ const styles = {
     width: "100%",
     flex: 1,
     borderRadius: 18,
-    background: "#0F1A3B",
+    background: "#101E38",
     padding: "10px 8px",
     display: "flex",
     flexDirection: "column",
@@ -257,7 +257,7 @@ const styles = {
     width: 6,
     height: 6,
     borderRadius: "50%",
-    background: "#F59E0B",
+    background: "#00B4D8",
   },
   phoneTitle: {
     fontFamily: "var(--font-mono)",
@@ -274,7 +274,7 @@ const styles = {
     fontFamily: "var(--font-sans)",
     fontSize: 13,
     fontWeight: 700,
-    color: "#F59E0B",
+    color: "#00B4D8",
   },
   phoneStatLbl: {
     fontSize: 8,
@@ -289,7 +289,7 @@ const styles = {
   },
   phoneBarFill: {
     height: "100%",
-    background: "linear-gradient(90deg, #38BDF8, #F59E0B)",
+    background: "linear-gradient(90deg, #38BDF8, #00B4D8)",
   },
   laptopFrame: {
     width: "clamp(340px, 44vw, 480px)",
@@ -301,7 +301,7 @@ const styles = {
     width: "100%",
     height: 250,
     borderRadius: "14px 14px 0 0",
-    background: "#080E24",
+    background: "#0C1424",
     border: "2px solid rgba(255,255,255,0.12)",
     borderBottom: "none",
     overflow: "hidden",
@@ -311,7 +311,7 @@ const styles = {
   },
   laptopTopBar: {
     height: 24,
-    background: "#0B132E",
+    background: "#0E1830",
     borderBottom: "1px solid rgba(255,255,255,0.06)",
     display: "flex",
     alignItems: "center",
@@ -341,7 +341,7 @@ const styles = {
   },
   laptopSidebar: {
     width: 44,
-    background: "#060A1A",
+    background: "#0A1020",
     borderRight: "1px solid rgba(255,255,255,0.05)",
     padding: "12px 6px",
     display: "flex",
@@ -353,8 +353,8 @@ const styles = {
     width: 24,
     height: 14,
     borderRadius: 4,
-    background: "rgba(245,158,11,0.25)",
-    border: "1px solid #F59E0B",
+    background: "rgba(0,180,216,0.25)",
+    border: "1px solid #00B4D8",
   },
   sbItem: {
     width: 24,
@@ -410,7 +410,7 @@ const styles = {
   laptopBase: {
     width: "116%",
     height: 10,
-    background: "linear-gradient(180deg, #1E293B 0%, #0F172A 100%)",
+    background: "linear-gradient(180deg, #1E293B 0%, #0C1222 100%)",
     borderRadius: "0 0 10px 10px",
     borderTop: "1px solid rgba(255,255,255,0.2)",
     boxShadow: "0 10px 25px rgba(0,0,0,0.5)",
@@ -430,8 +430,8 @@ const styles = {
     width: 36,
     height: 36,
     borderRadius: 10,
-    background: "rgba(245,158,11,0.08)",
-    border: "1px solid rgba(245,158,11,0.2)",
+    background: "rgba(0,180,216,0.08)",
+    border: "1px solid rgba(0,180,216,0.2)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

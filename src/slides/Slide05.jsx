@@ -59,7 +59,7 @@ export default function Slide05({ isActive }) {
   return (
     <div ref={wrapRef} style={styles.wrap}>
       <SlideBackground
-        orbColor="radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%)"
+        orbColor="radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 70%)"
         orbPosition={{ top: "50%", left: "50%" }}
       />
 
@@ -187,7 +187,7 @@ const styles = {
     borderRadius: 12,
     overflow: "hidden",
     position: "relative",
-    background: "#080E24",
+    background: "#0C1424",
   },
   projectImage: {
     width: "100%",
@@ -224,9 +224,9 @@ const styles = {
     fontSize: 11,
     fontFamily: "var(--font-sans)",
     fontWeight: 600,
-    color: "#F59E0B",
-    background: "rgba(245, 158, 11, 0.12)",
-    border: "1px solid rgba(245, 158, 11, 0.25)",
+    color: "#00B4D8",
+    background: "rgba(0, 180, 216, 0.12)",
+    border: "1px solid rgba(0, 180, 216, 0.25)",
     padding: "4px 10px",
     borderRadius: 9999,
   },
@@ -240,7 +240,7 @@ const styles = {
     fontFamily: "var(--font-sans)",
     fontSize: 13,
     fontWeight: 600,
-    color: "#F59E0B",
+    color: "#00B4D8",
     cursor: "pointer",
     display: "inline-flex",
     alignItems: "center",

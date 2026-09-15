@@ -50,7 +50,7 @@ export default function Slide01({ isActive, onNavigate }) {
   return (
     <div ref={wrapRef} style={styles.wrap}>
       <SlideBackground
-        orbColor="radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%)"
+        orbColor="radial-gradient(circle, rgba(0,180,216,0.15) 0%, transparent 70%)"
         orbPosition={{ top: "45%", left: "75%" }}
       />
 
@@ -156,7 +156,7 @@ const styles = {
     marginBottom: 22,
   },
   headlineHighlight: {
-    background: "linear-gradient(90deg, #FFFFFF 0%, #FDE68A 60%, #F59E0B 100%)",
+    background: "linear-gradient(90deg, #FFFFFF 0%, #7DD3FC 60%, #00B4D8 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   },
@@ -187,8 +187,8 @@ const styles = {
     height: "clamp(320px, 46vh, 440px)",
     borderRadius: "160px 24px 24px 160px",
     padding: 2,
-    background: "linear-gradient(135deg, rgba(245,158,11,0.6) 0%, rgba(56,189,248,0.2) 60%, transparent 100%)",
-    boxShadow: "0 20px 60px -15px rgba(0,0,0,0.8), 0 0 40px rgba(245,158,11,0.18)",
+    background: "linear-gradient(135deg, rgba(0,180,216,0.6) 0%, rgba(56,189,248,0.2) 60%, transparent 100%)",
+    boxShadow: "0 20px 60px -15px rgba(0,0,0,0.8), 0 0 40px rgba(0,180,216,0.18)",
   },
   imageMaskInner: {
     width: "100%",
@@ -213,7 +213,7 @@ const styles = {
     position: "absolute",
     inset: -1,
     borderRadius: "160px 24px 24px 160px",
-    border: "1px solid rgba(245,158,11,0.4)",
+    border: "1px solid rgba(0,180,216,0.4)",
     pointerEvents: "none",
   },
 };

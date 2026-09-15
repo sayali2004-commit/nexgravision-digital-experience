@@ -46,21 +46,21 @@ export default function Slide06({ isActive }) {
 
   const stepIcons = [
     // 01 Discuss
-    <svg key="discuss" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="discuss" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
     </svg>,
     // 02 Plan & Design
-    <svg key="plan" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="plan" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 20h9" />
       <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
     </svg>,
     // 03 Develop
-    <svg key="develop" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="develop" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="16 18 22 12 16 6" />
       <polyline points="8 6 2 12 8 18" />
     </svg>,
     // 04 Launch
-    <svg key="launch" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="launch" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
       <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
       <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
@@ -71,7 +71,7 @@ export default function Slide06({ isActive }) {
   return (
     <div ref={wrapRef} style={styles.wrap}>
       <SlideBackground
-        orbColor="radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%)"
+        orbColor="radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%)"
         orbPosition={{ top: "45%", left: "50%" }}
       />
 
@@ -164,7 +164,7 @@ const styles = {
     left: "10%",
     right: "10%",
     height: 2,
-    background: "linear-gradient(90deg, rgba(245,158,11,0.2) 0%, rgba(245,158,11,0.7) 50%, rgba(56,189,248,0.4) 100%)",
+    background: "linear-gradient(90deg, rgba(0,180,216,0.2) 0%, rgba(0,180,216,0.7) 50%, rgba(56,189,248,0.4) 100%)",
     zIndex: 1,
   },
   stepsRow: {
@@ -184,13 +184,13 @@ const styles = {
     width: 58,
     height: 58,
     borderRadius: "50%",
-    background: "#0A122E",
-    border: "2px solid #F59E0B",
+    background: "#0E1830",
+    border: "2px solid #00B4D8",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 24,
-    boxShadow: "0 0 24px rgba(245, 158, 11, 0.35)",
+    boxShadow: "0 0 24px rgba(0, 180, 216, 0.35)",
   },
   stepContent: {
     display: "flex",
@@ -202,7 +202,7 @@ const styles = {
     fontFamily: "var(--font-mono)",
     fontSize: 12,
     fontWeight: 700,
-    color: "#F59E0B",
+    color: "#00B4D8",
     letterSpacing: "0.08em",
   },
   stepTitle: {

@@ -52,20 +52,20 @@ export default function Slide02({ isActive }) {
 
   const valueIcons = [
     // Innovation Driven
-    <svg key="inno" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="inno" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
     </svg>,
     // Client Focused
-    <svg key="client" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="client" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
     </svg>,
     // Quality First
-    <svg key="quality" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="quality" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
       <path d="m9 12 2 2 4-4" />
     </svg>,
     // Long-Term Support
-    <svg key="support" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg key="support" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>,
   ];
@@ -73,7 +73,7 @@ export default function Slide02({ isActive }) {
   return (
     <div ref={wrapRef} style={styles.wrap}>
       <SlideBackground
-        orbColor="radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%)"
+        orbColor="radial-gradient(circle, rgba(0,180,216,0.12) 0%, transparent 70%)"
         orbPosition={{ top: "35%", left: "65%" }}
       />
 
@@ -195,8 +195,8 @@ const styles = {
     width: 48,
     height: 48,
     borderRadius: 14,
-    background: "rgba(245, 158, 11, 0.08)",
-    border: "1px solid rgba(245, 158, 11, 0.25)",
+    background: "rgba(0, 180, 216, 0.08)",
+    border: "1px solid rgba(0, 180, 216, 0.25)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -224,8 +224,8 @@ const styles = {
     height: "clamp(280px, 42vh, 380px)",
     borderRadius: "140px 24px 24px 140px",
     padding: 2,
-    background: "linear-gradient(135deg, rgba(245, 158, 11, 0.5) 0%, rgba(56, 189, 248, 0.15) 100%)",
-    boxShadow: "0 20px 50px -10px rgba(0,0,0,0.7), 0 0 35px rgba(245,158,11,0.15)",
+    background: "linear-gradient(135deg, rgba(0, 180, 216, 0.5) 0%, rgba(56, 189, 248, 0.15) 100%)",
+    boxShadow: "0 20px 50px -10px rgba(0,0,0,0.7), 0 0 35px rgba(0,180,216,0.15)",
   },
   curvedFrameInner: {
     width: "100%",
@@ -249,7 +249,7 @@ const styles = {
     position: "absolute",
     inset: -1,
     borderRadius: "140px 24px 24px 140px",
-    border: "1px solid rgba(245, 158, 11, 0.35)",
+    border: "1px solid rgba(0, 180, 216, 0.35)",
     pointerEvents: "none",
   },
 };

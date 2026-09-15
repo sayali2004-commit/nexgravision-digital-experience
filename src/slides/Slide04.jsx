@@ -74,7 +74,7 @@ export default function Slide04({ isActive }) {
               className="glass-card"
               style={styles.techCard}
               onMouseEnter={(e) => {
-                gsap.to(e.currentTarget, { y: -4, borderColor: "rgba(245, 158, 11, 0.4)", duration: 0.25 });
+                gsap.to(e.currentTarget, { y: -4, borderColor: "rgba(0, 180, 216, 0.4)", duration: 0.25 });
               }}
               onMouseLeave={(e) => {
                 gsap.to(e.currentTarget, { y: 0, borderColor: "rgba(255, 255, 255, 0.08)", duration: 0.25 });

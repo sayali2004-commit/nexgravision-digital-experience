@@ -55,7 +55,7 @@ export default function Slide11({ isActive }) {
   return (
     <div ref={wrapRef} style={styles.wrap}>
       <SlideBackground
-        orbColor="radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%)"
+        orbColor="radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 70%)"
         orbPosition={{ top: "45%", left: "50%" }}
       />
 
@@ -82,16 +82,16 @@ export default function Slide11({ isActive }) {
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget.querySelector(".team-avatar-ring"), {
                   scale: 1.06,
-                  borderColor: "rgba(245, 158, 11, 0.8)",
-                  boxShadow: "0 0 30px rgba(245, 158, 11, 0.4)",
+                  borderColor: "rgba(0, 180, 216, 0.8)",
+                  boxShadow: "0 0 30px rgba(0, 180, 216, 0.4)",
                   duration: 0.3,
                 });
               }}
               onMouseLeave={(e) => {
                 gsap.to(e.currentTarget.querySelector(".team-avatar-ring"), {
                   scale: 1.0,
-                  borderColor: "rgba(245, 158, 11, 0.4)",
-                  boxShadow: "0 0 16px rgba(245, 158, 11, 0.2)",
+                  borderColor: "rgba(0, 180, 216, 0.4)",
+                  boxShadow: "0 0 16px rgba(0, 180, 216, 0.2)",
                   duration: 0.3,
                 });
               }}
@@ -175,11 +175,11 @@ const styles = {
     height: 104,
     borderRadius: "50%",
     padding: 3,
-    border: "2px solid rgba(245, 158, 11, 0.4)",
-    boxShadow: "0 0 16px rgba(245, 158, 11, 0.2)",
+    border: "2px solid rgba(0, 180, 216, 0.4)",
+    boxShadow: "0 0 16px rgba(0, 180, 216, 0.2)",
     marginBottom: 18,
     transition: "all 0.3s ease",
-    background: "#080E24",
+    background: "#0C1424",
   },
   avatarImg: {
     width: "100%",
