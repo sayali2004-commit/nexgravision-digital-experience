@@ -24,7 +24,7 @@ export const IMAGES = {
   rohitDeshmukh: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80',
 };
 
-// Client Logos
+// Client Logos (matching the image - enterprise brands)
 export const CLIENT_LOGOS = [
   { name: 'Bramha', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/bramha_logo1.png' },
   { name: 'Vithai', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/vithai%20%20logo.png' },
@@ -34,6 +34,18 @@ export const CLIENT_LOGOS = [
   { name: 'Suryoday', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/Suryoday%20Icon.png' },
   { name: 'Shri Vitthal', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/SHRI%20VITTHAL.png' },
   { name: 'LKP', url: 'https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/LKP.png' },
+];
+
+// Featured Client Logos for Slide 4 (enterprise brands shown in image)
+export const FEATURED_CLIENTS = [
+  { name: 'Infosys', color: '#007CC3' },
+  { name: 'HDFC Bank', color: '#004B8D' },
+  { name: 'TATA', color: '#1B365D' },
+  { name: 'TCS', color: '#1A4D8F' },
+  { name: 'Wipro', color: '#2A2A6B' },
+  { name: 'Reliance', color: '#D42A2A' },
+  { name: 'ICICI Bank', color: '#F37B21' },
+  { name: 'IBM', color: '#0530AD' },
 ];
 
 // 12 Authentic Tech Stack SVGs

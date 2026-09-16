@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 *, *::before, *::after {
   margin: 0;
@@ -19,6 +19,10 @@
   --font-display: 'Cinzel', serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Space Grotesk', monospace;
+  --font-script: 'Great Vibes', cursive;
+  --bg-light: #F0F4F8;
+  --text-dark: #1E293B;
+  --text-dark-secondary: #475569;
 }
 
 html, body, #root {
@@ -298,6 +302,12 @@ body {
   75% { transform: translate(5px, -4px) scale(1.1); opacity: 0.3; }
 }
 
+/* ===== FLOAT BREATHE ===== */
+@keyframes float-breathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.015); }
+}
+
 /* ===== CLIENT GRID RESPONSIVE ===== */
 @media (max-width: 768px) {
   .client-grid-responsive { grid-template-columns: repeat(2, 1fr) !important; }
@@ -475,4 +485,17 @@ body {
 }
 @media (max-width: 480px) {
   .features-responsive > * { flex: 1 1 100% !important; }
+}
+
+/* Slide19 Module Card Hover */
+.module-card-glow:hover {
+  border-color: rgba(245, 158, 11, 0.45) !important;
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.25), 0 8px 40px rgba(0, 180, 216, 0.15) !important;
+  transform: scale(1.08) !important;
+}
+
+/* Orbital ring continuous spin */
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

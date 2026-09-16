@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
-import Slide01 from "../slides/Slide01";
-import Slide10 from "../slides/Slide10";
-import Slide16 from "../slides/Slide16";
-import Slide17 from "../slides/Slide17";
-import Slide18 from "../slides/Slide18";
+import SlideHome from "../slides/SlideHome";
+import SlideSoftware from "../slides/SlideSoftware";
+import SlideProjects from "../slides/SlideProjects";
+import SlideClients from "../slides/SlideClients";
+import SlideThankYou from "../slides/SlideThankYou";
 import Navigation from "./Navigation";
 import Progress from "./Progress";
 
 const SLIDE_COMPONENTS = [
-  Slide01,
-  Slide17,
-  Slide18,
-  Slide10,
-  Slide16,
+  SlideHome,
+  SlideSoftware,
+  SlideProjects,
+  SlideClients,
+  SlideThankYou,
 ];
 const TOTAL = SLIDE_COMPONENTS.length;
 

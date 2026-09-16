@@ -1,7 +1,7 @@
 export const BRAND = {
   name: "NexGravision",
-  tagline: "Ideas to Intelligent Solutions",
-  headline: "Innovative Software Solutions for a Smarter Tomorrow",
+  tagline: "Digital Experiences. Real Impact.",
+  headline: "Welcome to NEXGRAVISION",
 
   primaryColor: "#00B4D8",
   primaryLight: "#7DD3FC",

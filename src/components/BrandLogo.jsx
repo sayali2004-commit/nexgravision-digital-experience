@@ -41,7 +41,7 @@ export default function BrandLogo({ size = 38 }) {
           marginTop: 4,
         }}
       >
-        Ideas to Intelligent Solutions
+        Digital Experiences. Real Impact.
       </div>
     </div>
   );
