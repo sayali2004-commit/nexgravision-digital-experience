@@ -1,25 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { SLIDES } from "../config/content";
 import { BrandLogo } from "../config/assets";
 
 const data = SLIDES[3];
 
-const CLIENT_CAROUSEL = [
-  { name: "HCL", color: "#00A5EC" },
-  { name: "Infosys", color: "#007CC3" },
-  { name: "HDFC Bank", color: "#004B8D" },
-  { name: "TATA", color: "#1B365D", center: true },
-  { name: "TCS", color: "#1A4D8F" },
-  { name: "TCS", color: "#1A4D8F", subtitle: "Tata Consultancy Services" },
-  { name: "TCS", color: "#FF6B35" },
+const CAROUSEL_LOGOS = [
+  { id: "hcl", name: "HCL", textColor: "#00A5EC", bg: "linear-gradient(135deg, #E8F4FD 0%, #D1ECFA 100%)" },
+  { id: "infosys", name: "Infosys", textColor: "#007CC3", bg: "linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%)" },
+  { id: "hdfc", name: "HDFC BANK", textColor: "#004B8D", bg: "linear-gradient(135deg, #FFFFFF 0%, #F5F8FF 100%)" },
+  { id: "tata", name: "TATA", textColor: "#1B365D", bg: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%)", center: true },
+  { id: "tcs1", name: "tcs", textColor: "#FF6B35", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F5 100%)" },
+  { id: "tcs2", name: "tcs", textColor: "#1A4D8F", bg: "linear-gradient(135deg, #FFFFFF 0%, #F0F5FF 100%)", subtitle: "TATA CONSULTANCY SERVICES" },
+  { id: "tcs3", name: "tcs", textColor: "#E85D24", bg: "linear-gradient(135deg, #FFF5F0 0%, #FFE8DD 100%)" },
 ];
 
 const BOTTOM_LOGOS = [
-  { name: "wipro", color: "#2A2A6B" },
-  { name: "Reliance", color: "#D42A2A" },
-  { name: "ICICI Bank", color: "#F37B21" },
-  { name: "IBM", color: "#0530AD" },
+  { id: "wipro", name: "wipro", textColor: "#2A2A6B", bg: "linear-gradient(135deg, #FFFFFF 0%, #F8F8FF 100%)" },
+  { id: "reliance", name: "Reliance", textColor: "#D42A2A", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F8 100%)", subtitle: "Industries Limited" },
+  { id: "icici", name: "ICICI Bank", textColor: "#F37B21", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFFAF5 100%)" },
+  { id: "ibm", name: "IBM", textColor: "#0530AD", bg: "linear-gradient(135deg, #FFFFFF 0%, #F5F8FF 100%)" },
 ];
 
 export default function SlideClients({ isActive }) {
@@ -33,8 +33,27 @@ export default function SlideClients({ isActive }) {
   const statsRef = useRef(null);
   const counterRef = useRef(null);
   const ringsRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(3);
+  const particlesRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(3);
+  const autoRotateRef = useRef(null);
   const hasAnimated = useRef(false);
+
+  const rotateNext = useCallback(() => {
+    setActiveIdx((prev) => (prev + 1) % CAROUSEL_LOGOS.length);
+  }, []);
+
+  const rotatePrev = useCallback(() => {
+    setActiveIdx((prev) => (prev - 1 + CAROUSEL_LOGOS.length) % CAROUSEL_LOGOS.length);
+  }, []);
+
+  useEffect(() => {
+    if (!isActive) {
+      clearInterval(autoRotateRef.current);
+      return;
+    }
+    autoRotateRef.current = setInterval(rotateNext, 3000);
+    return () => clearInterval(autoRotateRef.current);
+  }, [isActive, rotateNext]);
 
   useEffect(() => {
     if (!isActive || hasAnimated.current) return;
@@ -48,97 +67,128 @@ export default function SlideClients({ isActive }) {
     gsap.set(topRightRef.current, { opacity: 0, x: 20 });
     tl.to(topRightRef.current, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.15);
 
-    gsap.set(tagRef.current, { opacity: 0, x: -20 });
-    tl.to(tagRef.current, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+    gsap.set(tagRef.current, { opacity: 0, scaleX: 0 });
+    tl.to(tagRef.current, { opacity: 1, scaleX: 1, duration: 0.8, ease: "power3.out" }, 0.2);
 
-    gsap.set(headlineRef.current, { opacity: 0, y: 30, filter: "blur(8px)" });
+    gsap.set(headlineRef.current, { opacity: 0, y: 40, filter: "blur(10px)" });
     tl.to(headlineRef.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.0, ease: "power3.out" }, 0.3);
 
     gsap.set(descRef.current, { opacity: 0, y: 20 });
     tl.to(descRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.5);
 
-    gsap.set(ringsRef.current, { opacity: 0, scale: 0.8 });
-    tl.to(ringsRef.current, { opacity: 1, scale: 1, duration: 1.2, ease: "expo.out" }, 0.4);
+    gsap.set(ringsRef.current, { opacity: 0, scale: 0.7, rotateX: 20 });
+    tl.to(ringsRef.current, { opacity: 1, scale: 1, rotateX: 0, duration: 1.4, ease: "expo.out" }, 0.4);
 
-    gsap.set(carouselRef.current, { opacity: 0, y: 50, scale: 0.9 });
-    tl.to(carouselRef.current, { opacity: 1, y: 0, scale: 1, duration: 1.1, ease: "expo.out" }, 0.5);
+    gsap.set(carouselRef.current, { opacity: 0, y: 60, scale: 0.85 });
+    tl.to(carouselRef.current, { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "expo.out" }, 0.5);
+
+    if (particlesRef.current) {
+      gsap.set(particlesRef.current.children, { opacity: 0, scale: 0 });
+      tl.to(particlesRef.current.children, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.05,
+        ease: "back.out(2)",
+      }, 0.8);
+    }
 
     gsap.set(bottomLogosRef.current, { opacity: 0, y: 30 });
-    tl.to(bottomLogosRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.8);
+    tl.to(bottomLogosRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.9);
 
     gsap.set(statsRef.current, { opacity: 0, y: 20 });
-    tl.to(statsRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.9);
+    tl.to(statsRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.0);
 
     gsap.set(counterRef.current, { opacity: 0 });
-    tl.to(counterRef.current, { opacity: 1, duration: 0.5 }, 1.0);
+    tl.to(counterRef.current, { opacity: 1, duration: 0.5 }, 1.1);
   }, [isActive]);
 
-  const goNext = () => setActiveIndex((prev) => (prev + 1) % CLIENT_CAROUSEL.length);
-  const goPrev = () => setActiveIndex((prev) => (prev - 1 + CLIENT_CAROUSEL.length) % CLIENT_CAROUSEL.length);
+  const getCardTransform = (index) => {
+    const n = CAROUSEL_LOGOS.length;
+    let diff = index - activeIdx;
+    if (diff > n / 2) diff -= n;
+    if (diff < -n / 2) diff += n;
 
-  const getCardStyle = (index) => {
-    const diff = index - activeIndex;
-    const normalized = ((diff + CLIENT_CAROUSEL.length + Math.floor(CLIENT_CAROUSEL.length / 2)) % CLIENT_CAROUSEL.length) - Math.floor(CLIENT_CAROUSEL.length / 2);
+    const absD = Math.abs(diff);
+    const isCenter = diff === 0;
+    const isNear = absD === 1;
+    const isMid = absD === 2;
+    const isFar = absD >= 3;
 
-    const absNorm = Math.abs(normalized);
-    const isCenter = normalized === 0;
-    const isNear = absNorm === 1;
-    const isFar = absNorm === 2;
-
-    let scale = 1;
-    let translateX = 0;
-    let translateZ = 0;
-    let opacity = 1;
-    let zIndex = 5;
+    let scale, tx, tz, opacity, zIndex, rotateY;
 
     if (isCenter) {
-      scale = 1.35;
-      translateX = 0;
-      translateZ = 60;
-      zIndex = 10;
+      scale = 1.4; tx = 0; tz = 80; opacity = 1; zIndex = 10; rotateY = 0;
     } else if (isNear) {
-      scale = 0.95;
-      translateX = normalized * 160;
-      translateZ = -20;
-      opacity = 0.85;
-      zIndex = 4;
-    } else if (isFar) {
-      scale = 0.75;
-      translateX = normalized * 180;
-      translateZ = -60;
-      opacity = 0.5;
-      zIndex = 2;
+      scale = 1.0; tx = diff * 175; tz = 20; opacity = 0.9; zIndex = 6; rotateY = diff * -12;
+    } else if (isMid) {
+      scale = 0.78; tx = diff * 195; tz = -30; opacity = 0.6; zIndex = 3; rotateY = diff * -15;
     } else {
-      scale = 0.6;
-      translateX = normalized * 160;
-      translateZ = -100;
-      opacity = 0.25;
-      zIndex = 1;
+      scale = 0.55; tx = diff * 180; tz = -80; opacity = 0.25; zIndex = 1; rotateY = diff * -18;
     }
 
     return {
-      transform: `translateX(${translateX}px) scale(${scale}) perspective(800px) rotateY(${normalized * -8}deg)`,
+      transform: `translateX(${tx}px) scale(${scale}) translateZ(${tz}px) perspective(900px) rotateY(${rotateY}deg)`,
       opacity,
       zIndex,
-      transition: "all 0.6s cubic-bezier(0.22, 1, 0.36, 1)",
     };
   };
 
   return (
     <div style={S.wrap}>
-      {/* Wave background */}
-      <div style={S.waveBg}>
-        <svg viewBox="0 0 1440 400" style={S.waveSvg1} preserveAspectRatio="none">
-          <path d="M0,200 C360,350 720,50 1440,200 L1440,400 L0,400 Z" fill="rgba(0,60,120,0.15)" />
+      {/* Animated wave background */}
+      <div style={S.waveContainer}>
+        <svg viewBox="0 0 1440 500" preserveAspectRatio="none" style={S.wave1}>
+          <defs>
+            <linearGradient id="wg1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(0,100,200,0)" />
+              <stop offset="50%" stopColor="rgba(0,140,230,0.25)" />
+              <stop offset="100%" stopColor="rgba(0,100,200,0)" />
+            </linearGradient>
+          </defs>
+          <path d="M0,300 C240,200 480,380 720,280 C960,180 1200,350 1440,300 L1440,500 L0,500 Z" fill="url(#wg1)" />
         </svg>
-        <svg viewBox="0 0 1440 400" style={S.waveSvg2} preserveAspectRatio="none">
-          <path d="M0,250 C480,100 960,350 1440,250 L1440,400 L0,400 Z" fill="rgba(0,80,160,0.1)" />
+        <svg viewBox="0 0 1440 500" preserveAspectRatio="none" style={S.wave2}>
+          <defs>
+            <linearGradient id="wg2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(0,80,180,0)" />
+              <stop offset="50%" stopColor="rgba(0,120,220,0.15)" />
+              <stop offset="100%" stopColor="rgba(0,80,180,0)" />
+            </linearGradient>
+          </defs>
+          <path d="M0,350 C360,250 720,400 1080,300 C1260,250 1380,320 1440,350 L1440,500 L0,500 Z" fill="url(#wg2)" />
+        </svg>
+        {/* Wave line strokes */}
+        <svg viewBox="0 0 1440 500" preserveAspectRatio="none" style={S.waveLine1}>
+          <path d="M0,320 C240,220 480,400 720,300 C960,200 1200,370 1440,320" fill="none" stroke="rgba(0,160,240,0.3)" strokeWidth="1.5" />
+        </svg>
+        <svg viewBox="0 0 1440 500" preserveAspectRatio="none" style={S.waveLine2}>
+          <path d="M0,360 C360,260 720,420 1080,320 C1260,270 1380,340 1440,360" fill="none" stroke="rgba(0,140,220,0.2)" strokeWidth="1" />
         </svg>
       </div>
 
-      {/* Ambient glow orbs */}
-      <div style={S.orbGlow1} />
-      <div style={S.orbGlow2} />
+      {/* Ambient glow */}
+      <div style={S.glowTop} />
+      <div style={S.glowCenter} />
+
+      {/* Floating particles */}
+      <div ref={particlesRef} style={S.particlesWrap}>
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              width: Math.random() * 3 + 1,
+              height: Math.random() * 3 + 1,
+              borderRadius: "50%",
+              background: `rgba(0,180,216,${0.2 + Math.random() * 0.4})`,
+              left: `${10 + Math.random() * 80}%`,
+              top: `${20 + Math.random() * 60}%`,
+              boxShadow: `0 0 ${4 + Math.random() * 6}px rgba(0,180,216,0.3)`,
+            }}
+          />
+        ))}
+      </div>
 
       <div style={S.container}>
         {/* Header */}
@@ -152,128 +202,145 @@ export default function SlideClients({ isActive }) {
           </div>
         </div>
 
-        {/* Center content */}
+        {/* Main content */}
         <div style={S.centerContent}>
+          {/* Section tag */}
           <div ref={tagRef} style={S.sectionTag}>
-            <span style={S.tagLine} />
+            <span style={S.tagDecorLine} />
             <span style={S.tagText}>{data.sectionTag}</span>
-            <span style={S.tagLine} />
+            <span style={S.tagDecorLine} />
           </div>
 
+          {/* Headline */}
           <h2 ref={headlineRef} style={S.headline}>
             {data.headline}{" "}
             <span style={S.headlineAccent}>{data.headlineAccent}</span>
           </h2>
 
+          {/* Description */}
           <p ref={descRef} style={S.description}>{data.description}</p>
 
-          {/* 3D Carousel Area */}
+          {/* Carousel Area */}
           <div style={S.carouselArea}>
-            {/* Glowing rings */}
-            <div ref={ringsRef} style={S.ringsWrap}>
-              <div style={S.ring1} />
-              <div style={S.ring2} />
-              <div style={S.ring3} />
-              <div style={S.ringGlow} />
-              <div style={S.centerLightBeam} />
+            {/* Glowing elliptical rings */}
+            <div ref={ringsRef} style={S.ringsContainer}>
+              <div style={S.ringOuter} />
+              <div style={S.ringMiddle} />
+              <div style={S.ringInner} />
+              <div style={S.ringGlowEffect} />
+              <div style={S.ringReflection} />
+              {/* Center vertical light beam */}
+              <div style={S.lightBeam} />
+              <div style={S.lightBeamGlow} />
             </div>
 
             {/* Navigation arrows */}
-            <button onClick={goPrev} style={S.navArrowLeft}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <button
+              onClick={() => { rotatePrev(); clearInterval(autoRotateRef.current); }}
+              style={S.navLeft}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(0,40,80,0.8)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.6)"; e.currentTarget.style.boxShadow = "0 0 25px rgba(0,180,216,0.3)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(0,20,40,0.5)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.25)"; e.currentTarget.style.boxShadow = "0 0 12px rgba(0,180,216,0.1)"; }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </button>
 
             {/* Carousel */}
-            <div ref={carouselRef} style={S.carouselContainer}>
+            <div ref={carouselRef} style={S.carouselWrap}>
               <div style={S.carouselInner}>
-                {CLIENT_CAROUSEL.map((client, i) => {
-                  const cardStyle = getCardStyle(i);
-                  const isCenter = i === activeIndex;
+                {CAROUSEL_LOGOS.map((logo, i) => {
+                  const cardStyle = getCardTransform(i);
+                  const isActiveCard = i === activeIdx;
                   return (
                     <div
-                      key={i}
+                      key={logo.id}
                       style={{
-                        ...S.carouselCard,
+                        ...S.card,
                         ...cardStyle,
-                        boxShadow: isCenter
-                          ? "0 0 40px rgba(0,180,216,0.4), 0 0 80px rgba(0,180,216,0.2), 0 20px 40px rgba(0,0,0,0.5)"
-                          : "0 8px 30px rgba(0,0,0,0.4)",
-                        borderColor: isCenter ? "rgba(0,180,216,0.6)" : "rgba(255,255,255,0.1)",
+                        background: logo.bg,
+                        borderColor: isActiveCard ? "rgba(0,180,216,0.7)" : "rgba(255,255,255,0.2)",
+                        boxShadow: isActiveCard
+                          ? "0 0 50px rgba(0,180,216,0.4), 0 0 100px rgba(0,180,216,0.15), 0 20px 50px rgba(0,0,0,0.5)"
+                          : "0 8px 30px rgba(0,0,0,0.35), 0 2px 10px rgba(0,0,0,0.2)",
                       }}
                     >
-                      <div style={S.cardInner}>
-                        <div style={{
-                          ...S.cardLogo,
-                          color: client.color,
-                          fontSize: isCenter ? "clamp(22px, 3vw, 34px)" : "clamp(14px, 1.8vw, 22px)",
-                        }}>
-                          {client.name}
+                      {isActiveCard && <div style={S.activeCardBorder} />}
+                      <div style={S.cardContent}>
+                        <div style={{ ...S.logoText, color: logo.textColor, fontSize: isActiveCard ? "clamp(26px, 3.5vw, 40px)" : "clamp(14px, 1.8vw, 22px)" }}>
+                          {logo.name}
                         </div>
-                        {client.subtitle && (
-                          <div style={S.cardSubtitle}>{client.subtitle}</div>
+                        {logo.subtitle && (
+                          <div style={S.logoSubtitle}>{logo.subtitle}</div>
                         )}
                       </div>
-                      {isCenter && <div style={S.cardGlow} />}
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            <button onClick={goNext} style={S.navArrowRight}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <button
+              onClick={() => { rotateNext(); clearInterval(autoRotateRef.current); }}
+              style={S.navRight}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(0,40,80,0.8)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.6)"; e.currentTarget.style.boxShadow = "0 0 25px rgba(0,180,216,0.3)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(0,20,40,0.5)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.25)"; e.currentTarget.style.boxShadow = "0 0 12px rgba(0,180,216,0.1)"; }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </button>
           </div>
 
-          {/* Bottom logos row */}
-          <div ref={bottomLogosRef} style={S.bottomLogosRow}>
-            {BOTTOM_LOGOS.map((client, i) => (
-              <div key={i} style={S.bottomCard}>
-                <div style={S.bottomCardInner}>
-                  <div style={{ ...S.bottomLogo, color: client.color }}>
-                    {client.name}
+          {/* Bottom logos */}
+          <div ref={bottomLogosRef} style={S.bottomRow}>
+            {BOTTOM_LOGOS.map((logo) => (
+              <div
+                key={logo.id}
+                style={S.bottomCard}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px) scale(1.03)"; e.currentTarget.style.boxShadow = "0 12px 35px rgba(0,0,0,0.4), 0 0 25px rgba(0,180,216,0.15)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.3), 0 0 15px rgba(0,180,216,0.08)"; }}
+              >
+                <div style={S.bottomCardContent}>
+                  <div style={{ ...S.bottomLogoText, color: logo.textColor }}>
+                    {logo.name}
                   </div>
+                  {logo.subtitle && <div style={S.bottomSubtitle}>{logo.subtitle}</div>}
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Stats row */}
+        {/* Stats */}
         <div ref={statsRef} style={S.statsRow}>
           {data.stats.map((stat, i) => (
             <div key={i} style={S.statItem}>
-              <div style={S.statIconWrap}>
+              <div style={S.statIcon}>
                 {i === 0 && (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
                   </svg>
                 )}
                 {i === 1 && (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                    <line x1="16" y1="2" x2="16" y2="6" />
-                    <line x1="8" y1="2" x2="8" y2="6" />
-                    <line x1="3" y1="10" x2="21" y2="10" />
-                    <polyline points="9 16 10 17 14 13" />
+                    <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" /><polyline points="9 16 10 17 14 13" />
                   </svg>
                 )}
                 {i === 2 && (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     <polyline points="9 12 11 14 15 10" />
                   </svg>
                 )}
               </div>
-              <div style={S.statValue}>{stat.value}</div>
-              <div style={S.statLabel}>{stat.label}</div>
+              <div style={S.statContent}>
+                <div style={S.statValue}>{stat.value}</div>
+                <div style={S.statLabel}>{stat.label}</div>
+              </div>
             </div>
           ))}
         </div>
@@ -281,8 +348,10 @@ export default function SlideClients({ isActive }) {
 
       {/* Counter */}
       <div ref={counterRef} style={S.counterWrap}>
-        <span className="slide-counter" style={{ position: "static" }}>04 / 05</span>
-        <div style={S.counterLine} />
+        <span style={S.counterText}>04 / 05</span>
+        <div style={S.counterBar}>
+          <div style={S.counterFill} />
+        </div>
       </div>
     </div>
   );
@@ -297,58 +366,52 @@ const S = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "clamp(16px, 3vw, 40px) clamp(16px, 4vw, 60px)",
+    padding: "clamp(14px, 2.5vw, 36px) clamp(16px, 4vw, 56px)",
     overflow: "hidden",
-    background: "linear-gradient(180deg, #060E1F 0%, #0A1A35 30%, #0C2040 60%, #081830 100%)",
+    background: "linear-gradient(175deg, #050D1F 0%, #081830 25%, #0A2040 50%, #0C1E3A 75%, #060E1F 100%)",
   },
-  waveBg: {
+  waveContainer: {
     position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    height: "40%",
+    height: "45%",
     pointerEvents: "none",
     zIndex: 0,
   },
-  waveSvg1: {
+  wave1: { position: "absolute", bottom: 0, left: 0, width: "100%", height: "100%", opacity: 0.7 },
+  wave2: { position: "absolute", bottom: 0, left: 0, width: "100%", height: "85%", opacity: 0.5 },
+  waveLine1: { position: "absolute", bottom: 0, left: 0, width: "100%", height: "100%", opacity: 0.8 },
+  waveLine2: { position: "absolute", bottom: 0, left: 0, width: "100%", height: "85%", opacity: 0.6 },
+  glowTop: {
     position: "absolute",
-    bottom: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    opacity: 0.6,
-  },
-  waveSvg2: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    width: "100%",
-    height: "80%",
-    opacity: 0.4,
-  },
-  orbGlow1: {
-    position: "absolute",
-    top: "25%",
+    top: "15%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "clamp(400px, 55vw, 800px)",
-    height: "clamp(300px, 40vw, 600px)",
+    width: "clamp(500px, 60vw, 900px)",
+    height: "clamp(250px, 30vw, 450px)",
     borderRadius: "50%",
-    background: "radial-gradient(ellipse, rgba(0,120,216,0.15) 0%, rgba(0,80,180,0.05) 50%, transparent 70%)",
-    filter: "blur(60px)",
+    background: "radial-gradient(ellipse, rgba(0,120,216,0.12) 0%, rgba(0,80,180,0.04) 50%, transparent 70%)",
+    filter: "blur(50px)",
     pointerEvents: "none",
   },
-  orbGlow2: {
+  glowCenter: {
     position: "absolute",
-    bottom: "5%",
+    top: "45%",
     left: "50%",
-    transform: "translateX(-50%)",
-    width: "clamp(300px, 40vw, 500px)",
-    height: "clamp(100px, 15vw, 200px)",
+    transform: "translate(-50%, -50%)",
+    width: "clamp(300px, 35vw, 500px)",
+    height: "clamp(150px, 18vw, 250px)",
     borderRadius: "50%",
-    background: "radial-gradient(ellipse, rgba(0,100,200,0.2) 0%, transparent 70%)",
-    filter: "blur(30px)",
+    background: "radial-gradient(ellipse, rgba(0,160,240,0.18) 0%, transparent 65%)",
+    filter: "blur(40px)",
     pointerEvents: "none",
+  },
+  particlesWrap: {
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    zIndex: 1,
   },
   container: {
     width: "100%",
@@ -368,10 +431,10 @@ const S = {
   topRightWrap: {
     display: "flex",
     alignItems: "center",
-    gap: 12,
+    gap: 14,
   },
   topRightLine: {
-    width: 40,
+    width: 48,
     height: 2,
     background: "linear-gradient(90deg, transparent, #00B4D8)",
     borderRadius: 1,
@@ -381,7 +444,7 @@ const S = {
     fontSize: "clamp(11px, 1.1vw, 14px)",
     fontWeight: 500,
     color: "#94A3B8",
-    letterSpacing: "0.05em",
+    letterSpacing: "0.06em",
   },
   centerContent: {
     flex: 1,
@@ -394,13 +457,13 @@ const S = {
   sectionTag: {
     display: "flex",
     alignItems: "center",
-    gap: 16,
-    marginBottom: 12,
+    gap: 18,
+    marginBottom: 10,
   },
-  tagLine: {
-    width: 40,
+  tagDecorLine: {
+    width: 44,
     height: 1.5,
-    background: "linear-gradient(90deg, transparent, rgba(0,180,216,0.5))",
+    background: "linear-gradient(90deg, transparent, rgba(0,180,216,0.5), transparent)",
     borderRadius: 1,
   },
   tagText: {
@@ -408,19 +471,19 @@ const S = {
     fontSize: "clamp(12px, 1.2vw, 15px)",
     fontWeight: 600,
     color: "#00B4D8",
-    letterSpacing: "0.2em",
+    letterSpacing: "0.25em",
   },
   headline: {
     fontFamily: "var(--font-serif)",
-    fontSize: "clamp(32px, 4.5vw, 56px)",
+    fontSize: "clamp(34px, 5vw, 60px)",
     fontWeight: 700,
     color: "#FFFFFF",
-    lineHeight: 1.1,
-    letterSpacing: "-0.02em",
+    lineHeight: 1.08,
+    letterSpacing: "-0.025em",
     marginBottom: 14,
   },
   headlineAccent: {
-    background: "linear-gradient(90deg, #7DD3FC 0%, #00B4D8 40%, #0284C7 100%)",
+    background: "linear-gradient(135deg, #7DD3FC 0%, #00B4D8 45%, #0284C7 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   },
@@ -430,20 +493,19 @@ const S = {
     color: "#94A3B8",
     lineHeight: 1.7,
     maxWidth: 520,
-    marginBottom: 28,
-    textAlign: "center",
+    marginBottom: 20,
   },
   carouselArea: {
     position: "relative",
     width: "100%",
-    maxWidth: 900,
-    height: "clamp(200px, 28vh, 320px)",
+    maxWidth: 950,
+    height: "clamp(180px, 26vh, 300px)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 16,
+    marginBottom: 12,
   },
-  ringsWrap: {
+  ringsContainer: {
     position: "absolute",
     inset: 0,
     display: "flex",
@@ -451,93 +513,114 @@ const S = {
     justifyContent: "center",
     pointerEvents: "none",
   },
-  ring1: {
+  ringOuter: {
     position: "absolute",
-    width: "clamp(400px, 50vw, 650px)",
-    height: "clamp(80px, 10vw, 130px)",
+    width: "clamp(500px, 62vw, 780px)",
+    height: "clamp(90px, 11vw, 140px)",
     borderRadius: "50%",
-    border: "1.5px solid rgba(0,150,220,0.25)",
-    transform: "perspective(600px) rotateX(65deg)",
+    border: "1.5px solid rgba(0,140,220,0.2)",
+    transform: "perspective(700px) rotateX(68deg)",
+    boxShadow: "0 0 20px rgba(0,140,220,0.08), inset 0 0 20px rgba(0,140,220,0.05)",
   },
-  ring2: {
+  ringMiddle: {
     position: "absolute",
-    width: "clamp(340px, 42vw, 550px)",
-    height: "clamp(68px, 8.5vw, 110px)",
+    width: "clamp(420px, 52vw, 660px)",
+    height: "clamp(76px, 9.5vw, 120px)",
     borderRadius: "50%",
-    border: "1px solid rgba(0,150,220,0.15)",
-    transform: "perspective(600px) rotateX(65deg)",
+    border: "1.5px solid rgba(0,160,240,0.3)",
+    transform: "perspective(700px) rotateX(68deg)",
+    boxShadow: "0 0 30px rgba(0,160,240,0.12), inset 0 0 25px rgba(0,160,240,0.08)",
   },
-  ring3: {
+  ringInner: {
     position: "absolute",
-    width: "clamp(460px, 58vw, 750px)",
-    height: "clamp(92px, 11.5vw, 150px)",
+    width: "clamp(340px, 42vw, 540px)",
+    height: "clamp(62px, 8vw, 100px)",
     borderRadius: "50%",
-    border: "1px solid rgba(0,120,200,0.1)",
-    transform: "perspective(600px) rotateX(65deg)",
+    border: "2px solid rgba(0,180,255,0.35)",
+    transform: "perspective(700px) rotateX(68deg)",
+    boxShadow: "0 0 40px rgba(0,180,255,0.2), inset 0 0 30px rgba(0,180,255,0.1)",
   },
-  ringGlow: {
+  ringGlowEffect: {
     position: "absolute",
-    width: "clamp(380px, 48vw, 620px)",
-    height: "clamp(76px, 9.5vw, 124px)",
+    width: "clamp(400px, 50vw, 640px)",
+    height: "clamp(72px, 9vw, 115px)",
     borderRadius: "50%",
-    background: "radial-gradient(ellipse, rgba(0,150,230,0.2) 0%, transparent 60%)",
-    transform: "perspective(600px) rotateX(65deg)",
+    background: "radial-gradient(ellipse, rgba(0,180,255,0.15) 0%, rgba(0,140,220,0.05) 50%, transparent 70%)",
+    transform: "perspective(700px) rotateX(68deg)",
+    filter: "blur(6px)",
+  },
+  ringReflection: {
+    position: "absolute",
+    bottom: "15%",
+    width: "clamp(350px, 44vw, 560px)",
+    height: "clamp(40px, 5vw, 65px)",
+    borderRadius: "50%",
+    background: "radial-gradient(ellipse, rgba(0,140,220,0.1) 0%, transparent 70%)",
+    transform: "perspective(700px) rotateX(68deg)",
     filter: "blur(8px)",
   },
-  centerLightBeam: {
+  lightBeam: {
     position: "absolute",
     width: 2,
-    height: "clamp(150px, 20vh, 250px)",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,216,0.4) 40%, rgba(0,180,216,0.6) 50%, rgba(0,180,216,0.4) 60%, transparent 100%)",
-    filter: "blur(2px)",
-    top: "10%",
+    height: "clamp(160px, 22vh, 280px)",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,255,0.5) 35%, rgba(0,200,255,0.7) 50%, rgba(0,180,255,0.5) 65%, transparent 100%)",
+    top: "5%",
   },
-  navArrowLeft: {
+  lightBeamGlow: {
     position: "absolute",
-    left: 0,
+    width: 8,
+    height: "clamp(140px, 18vh, 240px)",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,255,0.15) 35%, rgba(0,200,255,0.2) 50%, rgba(0,180,255,0.15) 65%, transparent 100%)",
+    filter: "blur(4px)",
+    top: "8%",
+  },
+  navLeft: {
+    position: "absolute",
+    left: "clamp(-4px, 0vw, 8px)",
     top: "50%",
     transform: "translateY(-50%)",
-    width: 40,
-    height: 40,
+    width: 42,
+    height: 42,
     borderRadius: "50%",
-    border: "1.5px solid rgba(0,180,216,0.3)",
-    background: "rgba(0,20,40,0.6)",
-    backdropFilter: "blur(8px)",
+    border: "1.5px solid rgba(0,180,216,0.25)",
+    background: "rgba(0,20,40,0.5)",
+    backdropFilter: "blur(10px)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
     zIndex: 20,
     transition: "all 0.3s ease",
-    boxShadow: "0 0 15px rgba(0,180,216,0.15)",
+    boxShadow: "0 0 12px rgba(0,180,216,0.1)",
+    outline: "none",
   },
-  navArrowRight: {
+  navRight: {
     position: "absolute",
-    right: 0,
+    right: "clamp(-4px, 0vw, 8px)",
     top: "50%",
     transform: "translateY(-50%)",
-    width: 40,
-    height: 40,
+    width: 42,
+    height: 42,
     borderRadius: "50%",
-    border: "1.5px solid rgba(0,180,216,0.3)",
-    background: "rgba(0,20,40,0.6)",
-    backdropFilter: "blur(8px)",
+    border: "1.5px solid rgba(0,180,216,0.25)",
+    background: "rgba(0,20,40,0.5)",
+    backdropFilter: "blur(10px)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
     zIndex: 20,
     transition: "all 0.3s ease",
-    boxShadow: "0 0 15px rgba(0,180,216,0.15)",
+    boxShadow: "0 0 12px rgba(0,180,216,0.1)",
+    outline: "none",
   },
-  carouselContainer: {
+  carouselWrap: {
     width: "100%",
     height: "100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    position: "relative",
-    perspective: "1000px",
+    perspective: "1200px",
   },
   carouselInner: {
     position: "relative",
@@ -547,125 +630,159 @@ const S = {
     alignItems: "center",
     justifyContent: "center",
   },
-  carouselCard: {
+  card: {
     position: "absolute",
-    width: "clamp(100px, 12vw, 150px)",
-    height: "clamp(70px, 8vw, 100px)",
-    borderRadius: 14,
-    background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(240,245,255,0.9) 100%)",
-    border: "1px solid rgba(255,255,255,0.1)",
+    width: "clamp(110px, 13vw, 165px)",
+    height: "clamp(75px, 9vw, 110px)",
+    borderRadius: 16,
+    border: "1.5px solid rgba(255,255,255,0.2)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     overflow: "hidden",
+    transition: "all 0.65s cubic-bezier(0.22, 1, 0.36, 1)",
+    backdropFilter: "blur(8px)",
   },
-  cardInner: {
+  activeCardBorder: {
+    position: "absolute",
+    inset: -2,
+    borderRadius: 18,
+    border: "2px solid rgba(0,180,216,0.6)",
+    boxShadow: "0 0 25px rgba(0,180,216,0.3), inset 0 0 25px rgba(0,180,216,0.08)",
+    pointerEvents: "none",
+    animation: "ring-pulse 2s ease-in-out infinite",
+  },
+  cardContent: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: 4,
-    padding: 8,
+    gap: 3,
+    padding: "10px 14px",
   },
-  cardLogo: {
+  logoText: {
     fontFamily: "var(--font-sans)",
     fontWeight: 800,
     letterSpacing: "0.02em",
     lineHeight: 1.1,
+    transition: "font-size 0.6s ease",
   },
-  cardSubtitle: {
+  logoSubtitle: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(6px, 0.6vw, 8px)",
-    color: "#64748B",
+    fontSize: "clamp(5px, 0.5vw, 7px)",
+    color: "#94A3B8",
     textAlign: "center",
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
   },
-  cardGlow: {
-    position: "absolute",
-    inset: -2,
-    borderRadius: 16,
-    border: "2px solid rgba(0,180,216,0.5)",
-    boxShadow: "0 0 20px rgba(0,180,216,0.3), inset 0 0 20px rgba(0,180,216,0.1)",
-    pointerEvents: "none",
-  },
-  bottomLogosRow: {
+  bottomRow: {
     display: "flex",
     justifyContent: "center",
-    gap: "clamp(14px, 2vw, 28px)",
+    gap: "clamp(16px, 2.2vw, 30px)",
     flexWrap: "wrap",
-    marginBottom: 8,
+    marginBottom: 4,
   },
   bottomCard: {
-    width: "clamp(90px, 10vw, 130px)",
-    height: "clamp(60px, 7vw, 85px)",
-    borderRadius: 12,
-    background: "linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(240,245,255,0.88) 100%)",
-    border: "1px solid rgba(255,255,255,0.15)",
+    width: "clamp(100px, 11.5vw, 145px)",
+    height: "clamp(65px, 7.5vw, 95px)",
+    borderRadius: 14,
+    background: "linear-gradient(135deg, rgba(255,255,255,0.93) 0%, rgba(240,248,255,0.88) 100%)",
+    border: "1px solid rgba(255,255,255,0.2)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: "0 6px 24px rgba(0,0,0,0.3), 0 0 20px rgba(0,180,216,0.1)",
-    transition: "all 0.3s ease",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.3), 0 0 15px rgba(0,180,216,0.08)",
+    transition: "all 0.35s cubic-bezier(0.22, 1, 0.36, 1)",
+    cursor: "default",
   },
-  bottomCardInner: {
+  bottomCardContent: {
     display: "flex",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    gap: 2,
     padding: 8,
   },
-  bottomLogo: {
+  bottomLogoText: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(12px, 1.4vw, 18px)",
+    fontSize: "clamp(13px, 1.5vw, 19px)",
     fontWeight: 800,
     letterSpacing: "0.02em",
+  },
+  bottomSubtitle: {
+    fontFamily: "var(--font-sans)",
+    fontSize: "clamp(6px, 0.55vw, 8px)",
+    color: "#64748B",
+    letterSpacing: "0.04em",
   },
   statsRow: {
     display: "flex",
     justifyContent: "center",
-    gap: "clamp(32px, 5vw, 80px)",
-    paddingTop: 8,
+    gap: "clamp(28px, 4.5vw, 70px)",
     flexWrap: "wrap",
   },
   statItem: {
     display: "flex",
     alignItems: "center",
-    gap: 12,
+    gap: 14,
   },
-  statIconWrap: {
-    width: 44,
-    height: 44,
-    borderRadius: 12,
-    background: "rgba(0,180,216,0.08)",
-    border: "1px solid rgba(0,180,216,0.2)",
+  statIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 14,
+    background: "rgba(0,180,216,0.06)",
+    border: "1.5px solid rgba(0,180,216,0.18)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    flexShrink: 0,
+  },
+  statContent: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 1,
   },
   statValue: {
     fontFamily: "var(--font-mono)",
-    fontSize: "clamp(26px, 3.2vw, 40px)",
+    fontSize: "clamp(28px, 3.5vw, 44px)",
     fontWeight: 700,
     color: "#FFFFFF",
+    lineHeight: 1,
   },
   statLabel: {
     fontFamily: "var(--font-sans)",
     fontSize: "clamp(11px, 1vw, 13px)",
     color: "#94A3B8",
-    marginLeft: -4,
   },
   counterWrap: {
     position: "absolute",
-    bottom: 28,
-    right: 48,
+    bottom: 24,
+    right: 44,
     display: "flex",
     alignItems: "center",
-    gap: 10,
+    gap: 12,
     zIndex: 10,
     pointerEvents: "none",
   },
-  counterLine: {
-    width: 40,
-    height: 2,
-    background: "linear-gradient(90deg, #00B4D8, rgba(0,180,216,0.3))",
-    borderRadius: 1,
+  counterText: {
+    fontFamily: "var(--font-mono)",
+    fontSize: 12,
+    fontWeight: 500,
+    color: "#64748B",
+    letterSpacing: "0.1em",
+  },
+  counterBar: {
+    width: 44,
+    height: 3,
+    borderRadius: 2,
+    background: "rgba(0,180,216,0.15)",
+    overflow: "hidden",
+  },
+  counterFill: {
+    width: "80%",
+    height: "100%",
+    borderRadius: 2,
+    background: "linear-gradient(90deg, #0284C7, #00B4D8)",
+    boxShadow: "0 0 8px rgba(0,180,216,0.5)",
   },
 };
