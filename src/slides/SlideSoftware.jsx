@@ -151,7 +151,7 @@ export default function SlideSoftware({ isActive }) {
         {/* Header */}
         <div style={S.headerRow}>
           <div ref={logoRef}>
-            <BrandLogo size={42} />
+            <BrandLogo size={42} dark />
           </div>
           <div ref={topRightRef} style={S.topRightWrap}>
             <div style={S.topRightLine} />

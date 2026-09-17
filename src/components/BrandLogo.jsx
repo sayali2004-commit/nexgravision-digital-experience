@@ -1,7 +1,9 @@
 import React from "react";
 
-export default function BrandLogo({ size = 38 }) {
+export default function BrandLogo({ size = 38, dark = false }) {
   const textOffset = size + 10;
+  const nameColor = dark ? "#0F172A" : "#FFFFFF";
+  const tagColor = dark ? "#64748B" : "#64748B";
 
   return (
     <div style={{ display: "inline-flex", flexDirection: "column", gap: 0 }}>
@@ -22,7 +24,7 @@ export default function BrandLogo({ size = 38 }) {
             fontSize: size * 0.5,
             fontWeight: 700,
             letterSpacing: "0.03em",
-            color: "#FFFFFF",
+            color: nameColor,
             lineHeight: 1.1,
           }}
         >
@@ -36,7 +38,7 @@ export default function BrandLogo({ size = 38 }) {
           fontWeight: 400,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
-          color: "#64748B",
+          color: tagColor,
           paddingLeft: textOffset,
           marginTop: 4,
         }}
