@@ -118,13 +118,13 @@ export default function SlideClients({ isActive }) {
     let scale, tx, tz, opacity, zIndex, rotateY;
 
     if (isCenter) {
-      scale = 1.4; tx = 0; tz = 80; opacity = 1; zIndex = 10; rotateY = 0;
+      scale = 1.5; tx = 0; tz = 100; opacity = 1; zIndex = 10; rotateY = 0;
     } else if (isNear) {
-      scale = 1.0; tx = diff * 175; tz = 20; opacity = 0.9; zIndex = 6; rotateY = diff * -12;
+      scale = 1.05; tx = diff * 230; tz = 30; opacity = 0.92; zIndex = 6; rotateY = diff * -10;
     } else if (isMid) {
-      scale = 0.78; tx = diff * 195; tz = -30; opacity = 0.6; zIndex = 3; rotateY = diff * -15;
+      scale = 0.75; tx = diff * 270; tz = -20; opacity = 0.55; zIndex = 3; rotateY = diff * -14;
     } else {
-      scale = 0.55; tx = diff * 180; tz = -80; opacity = 0.25; zIndex = 1; rotateY = diff * -18;
+      scale = 0.5; tx = diff * 280; tz = -70; opacity = 0.2; zIndex = 1; rotateY = diff * -18;
     }
 
     return {
@@ -142,7 +142,7 @@ export default function SlideClients({ isActive }) {
           <defs>
             <linearGradient id="wg1" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="rgba(0,100,200,0)" />
-              <stop offset="50%" stopColor="rgba(0,140,230,0.25)" />
+              <stop offset="50%" stopColor="rgba(0,140,230,0.35)" />
               <stop offset="100%" stopColor="rgba(0,100,200,0)" />
             </linearGradient>
           </defs>
@@ -152,7 +152,7 @@ export default function SlideClients({ isActive }) {
           <defs>
             <linearGradient id="wg2" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="rgba(0,80,180,0)" />
-              <stop offset="50%" stopColor="rgba(0,120,220,0.15)" />
+              <stop offset="50%" stopColor="rgba(0,120,220,0.22)" />
               <stop offset="100%" stopColor="rgba(0,80,180,0)" />
             </linearGradient>
           </defs>
@@ -160,10 +160,10 @@ export default function SlideClients({ isActive }) {
         </svg>
         {/* Wave line strokes */}
         <svg viewBox="0 0 1440 500" preserveAspectRatio="none" style={S.waveLine1}>
-          <path d="M0,320 C240,220 480,400 720,300 C960,200 1200,370 1440,320" fill="none" stroke="rgba(0,160,240,0.3)" strokeWidth="1.5" />
+          <path d="M0,320 C240,220 480,400 720,300 C960,200 1200,370 1440,320" fill="none" stroke="rgba(0,160,240,0.4)" strokeWidth="2" />
         </svg>
         <svg viewBox="0 0 1440 500" preserveAspectRatio="none" style={S.waveLine2}>
-          <path d="M0,360 C360,260 720,420 1080,320 C1260,270 1380,340 1440,360" fill="none" stroke="rgba(0,140,220,0.2)" strokeWidth="1" />
+          <path d="M0,360 C360,260 720,420 1080,320 C1260,270 1380,340 1440,360" fill="none" stroke="rgba(0,140,220,0.3)" strokeWidth="1.5" />
         </svg>
       </div>
 
@@ -241,7 +241,7 @@ export default function SlideClients({ isActive }) {
               onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(0,40,80,0.8)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.6)"; e.currentTarget.style.boxShadow = "0 0 25px rgba(0,180,216,0.3)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(0,20,40,0.5)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.25)"; e.currentTarget.style.boxShadow = "0 0 12px rgba(0,180,216,0.1)"; }}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </button>
@@ -261,13 +261,13 @@ export default function SlideClients({ isActive }) {
                         background: logo.bg,
                         borderColor: isActiveCard ? "rgba(0,180,216,0.7)" : "rgba(255,255,255,0.2)",
                         boxShadow: isActiveCard
-                          ? "0 0 50px rgba(0,180,216,0.4), 0 0 100px rgba(0,180,216,0.15), 0 20px 50px rgba(0,0,0,0.5)"
+                          ? "0 0 60px rgba(0,180,216,0.5), 0 0 120px rgba(0,180,216,0.2), 0 25px 60px rgba(0,0,0,0.5)"
                           : "0 8px 30px rgba(0,0,0,0.35), 0 2px 10px rgba(0,0,0,0.2)",
                       }}
                     >
                       {isActiveCard && <div style={S.activeCardBorder} />}
                       <div style={S.cardContent}>
-                        <div style={{ ...S.logoText, color: logo.textColor, fontSize: isActiveCard ? "clamp(26px, 3.5vw, 40px)" : "clamp(14px, 1.8vw, 22px)" }}>
+                        <div style={{ ...S.logoText, color: logo.textColor, fontSize: isActiveCard ? "clamp(30px, 4vw, 46px)" : "clamp(15px, 1.9vw, 24px)" }}>
                           {logo.name}
                         </div>
                         {logo.subtitle && (
@@ -286,7 +286,7 @@ export default function SlideClients({ isActive }) {
               onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(0,40,80,0.8)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.6)"; e.currentTarget.style.boxShadow = "0 0 25px rgba(0,180,216,0.3)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(0,20,40,0.5)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.25)"; e.currentTarget.style.boxShadow = "0 0 12px rgba(0,180,216,0.1)"; }}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </button>
@@ -388,10 +388,10 @@ const S = {
     top: "15%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "clamp(500px, 60vw, 900px)",
-    height: "clamp(250px, 30vw, 450px)",
+    width: "clamp(550px, 65vw, 950px)",
+    height: "clamp(280px, 33vw, 480px)",
     borderRadius: "50%",
-    background: "radial-gradient(ellipse, rgba(0,120,216,0.12) 0%, rgba(0,80,180,0.04) 50%, transparent 70%)",
+    background: "radial-gradient(ellipse, rgba(0,120,216,0.16) 0%, rgba(0,80,180,0.06) 50%, transparent 70%)",
     filter: "blur(50px)",
     pointerEvents: "none",
   },
@@ -400,10 +400,10 @@ const S = {
     top: "45%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "clamp(300px, 35vw, 500px)",
-    height: "clamp(150px, 18vw, 250px)",
+    width: "clamp(340px, 38vw, 550px)",
+    height: "clamp(170px, 20vw, 280px)",
     borderRadius: "50%",
-    background: "radial-gradient(ellipse, rgba(0,160,240,0.18) 0%, transparent 65%)",
+    background: "radial-gradient(ellipse, rgba(0,160,240,0.22) 0%, transparent 65%)",
     filter: "blur(40px)",
     pointerEvents: "none",
   },
@@ -498,8 +498,8 @@ const S = {
   carouselArea: {
     position: "relative",
     width: "100%",
-    maxWidth: 950,
-    height: "clamp(180px, 26vh, 300px)",
+    maxWidth: 1050,
+    height: "clamp(220px, 32vh, 370px)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -515,103 +515,103 @@ const S = {
   },
   ringOuter: {
     position: "absolute",
-    width: "clamp(500px, 62vw, 780px)",
-    height: "clamp(90px, 11vw, 140px)",
+    width: "clamp(540px, 66vw, 840px)",
+    height: "clamp(100px, 12vw, 155px)",
     borderRadius: "50%",
-    border: "1.5px solid rgba(0,140,220,0.2)",
+    border: "1.5px solid rgba(0,140,220,0.25)",
     transform: "perspective(700px) rotateX(68deg)",
-    boxShadow: "0 0 20px rgba(0,140,220,0.08), inset 0 0 20px rgba(0,140,220,0.05)",
+    boxShadow: "0 0 30px rgba(0,140,220,0.12), inset 0 0 30px rgba(0,140,220,0.08)",
   },
   ringMiddle: {
     position: "absolute",
-    width: "clamp(420px, 52vw, 660px)",
-    height: "clamp(76px, 9.5vw, 120px)",
+    width: "clamp(460px, 56vw, 720px)",
+    height: "clamp(85px, 10.5vw, 132px)",
     borderRadius: "50%",
-    border: "1.5px solid rgba(0,160,240,0.3)",
+    border: "1.5px solid rgba(0,160,240,0.35)",
     transform: "perspective(700px) rotateX(68deg)",
-    boxShadow: "0 0 30px rgba(0,160,240,0.12), inset 0 0 25px rgba(0,160,240,0.08)",
+    boxShadow: "0 0 40px rgba(0,160,240,0.18), inset 0 0 35px rgba(0,160,240,0.12)",
   },
   ringInner: {
     position: "absolute",
-    width: "clamp(340px, 42vw, 540px)",
-    height: "clamp(62px, 8vw, 100px)",
+    width: "clamp(370px, 46vw, 590px)",
+    height: "clamp(70px, 9vw, 110px)",
     borderRadius: "50%",
-    border: "2px solid rgba(0,180,255,0.35)",
+    border: "2.5px solid rgba(0,180,255,0.45)",
     transform: "perspective(700px) rotateX(68deg)",
-    boxShadow: "0 0 40px rgba(0,180,255,0.2), inset 0 0 30px rgba(0,180,255,0.1)",
+    boxShadow: "0 0 55px rgba(0,180,255,0.3), inset 0 0 40px rgba(0,180,255,0.15)",
   },
   ringGlowEffect: {
     position: "absolute",
-    width: "clamp(400px, 50vw, 640px)",
-    height: "clamp(72px, 9vw, 115px)",
+    width: "clamp(430px, 53vw, 690px)",
+    height: "clamp(80px, 10vw, 125px)",
     borderRadius: "50%",
-    background: "radial-gradient(ellipse, rgba(0,180,255,0.15) 0%, rgba(0,140,220,0.05) 50%, transparent 70%)",
+    background: "radial-gradient(ellipse, rgba(0,180,255,0.2) 0%, rgba(0,140,220,0.08) 50%, transparent 70%)",
     transform: "perspective(700px) rotateX(68deg)",
-    filter: "blur(6px)",
+    filter: "blur(8px)",
   },
   ringReflection: {
     position: "absolute",
     bottom: "15%",
-    width: "clamp(350px, 44vw, 560px)",
-    height: "clamp(40px, 5vw, 65px)",
+    width: "clamp(380px, 48vw, 610px)",
+    height: "clamp(45px, 5.5vw, 72px)",
     borderRadius: "50%",
-    background: "radial-gradient(ellipse, rgba(0,140,220,0.1) 0%, transparent 70%)",
+    background: "radial-gradient(ellipse, rgba(0,140,220,0.15) 0%, transparent 70%)",
     transform: "perspective(700px) rotateX(68deg)",
-    filter: "blur(8px)",
+    filter: "blur(10px)",
   },
   lightBeam: {
     position: "absolute",
-    width: 2,
-    height: "clamp(160px, 22vh, 280px)",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,255,0.5) 35%, rgba(0,200,255,0.7) 50%, rgba(0,180,255,0.5) 65%, transparent 100%)",
+    width: 2.5,
+    height: "clamp(180px, 25vh, 310px)",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,255,0.6) 35%, rgba(0,200,255,0.8) 50%, rgba(0,180,255,0.6) 65%, transparent 100%)",
     top: "5%",
   },
   lightBeamGlow: {
     position: "absolute",
-    width: 8,
-    height: "clamp(140px, 18vh, 240px)",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,255,0.15) 35%, rgba(0,200,255,0.2) 50%, rgba(0,180,255,0.15) 65%, transparent 100%)",
-    filter: "blur(4px)",
+    width: 10,
+    height: "clamp(160px, 20vh, 260px)",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,255,0.2) 35%, rgba(0,200,255,0.3) 50%, rgba(0,180,255,0.2) 65%, transparent 100%)",
+    filter: "blur(5px)",
     top: "8%",
   },
   navLeft: {
     position: "absolute",
-    left: "clamp(-4px, 0vw, 8px)",
+    left: "clamp(-8px, -1vw, -4px)",
     top: "50%",
     transform: "translateY(-50%)",
-    width: 42,
-    height: 42,
+    width: 52,
+    height: 52,
     borderRadius: "50%",
-    border: "1.5px solid rgba(0,180,216,0.25)",
-    background: "rgba(0,20,40,0.5)",
-    backdropFilter: "blur(10px)",
+    border: "2px solid rgba(0,180,216,0.4)",
+    background: "rgba(0,20,50,0.65)",
+    backdropFilter: "blur(12px)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
     zIndex: 20,
     transition: "all 0.3s ease",
-    boxShadow: "0 0 12px rgba(0,180,216,0.1)",
+    boxShadow: "0 0 18px rgba(0,180,216,0.2), inset 0 0 12px rgba(0,180,216,0.08)",
     outline: "none",
   },
   navRight: {
     position: "absolute",
-    right: "clamp(-4px, 0vw, 8px)",
+    right: "clamp(-8px, -1vw, -4px)",
     top: "50%",
     transform: "translateY(-50%)",
-    width: 42,
-    height: 42,
+    width: 52,
+    height: 52,
     borderRadius: "50%",
-    border: "1.5px solid rgba(0,180,216,0.25)",
-    background: "rgba(0,20,40,0.5)",
-    backdropFilter: "blur(10px)",
+    border: "2px solid rgba(0,180,216,0.4)",
+    background: "rgba(0,20,50,0.65)",
+    backdropFilter: "blur(12px)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
     zIndex: 20,
     transition: "all 0.3s ease",
-    boxShadow: "0 0 12px rgba(0,180,216,0.1)",
+    boxShadow: "0 0 18px rgba(0,180,216,0.2), inset 0 0 12px rgba(0,180,216,0.08)",
     outline: "none",
   },
   carouselWrap: {
@@ -620,7 +620,7 @@ const S = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    perspective: "1200px",
+    perspective: "1400px",
   },
   carouselInner: {
     position: "relative",
@@ -632,9 +632,9 @@ const S = {
   },
   card: {
     position: "absolute",
-    width: "clamp(110px, 13vw, 165px)",
-    height: "clamp(75px, 9vw, 110px)",
-    borderRadius: 16,
+    width: "clamp(130px, 15vw, 200px)",
+    height: "clamp(88px, 10.5vw, 135px)",
+    borderRadius: 18,
     border: "1.5px solid rgba(255,255,255,0.2)",
     display: "flex",
     alignItems: "center",
@@ -646,9 +646,9 @@ const S = {
   activeCardBorder: {
     position: "absolute",
     inset: -2,
-    borderRadius: 18,
-    border: "2px solid rgba(0,180,216,0.6)",
-    boxShadow: "0 0 25px rgba(0,180,216,0.3), inset 0 0 25px rgba(0,180,216,0.08)",
+    borderRadius: 20,
+    border: "2px solid rgba(0,180,216,0.7)",
+    boxShadow: "0 0 35px rgba(0,180,216,0.4), inset 0 0 30px rgba(0,180,216,0.1)",
     pointerEvents: "none",
     animation: "ring-pulse 2s ease-in-out infinite",
   },
