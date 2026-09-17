@@ -6,20 +6,21 @@ import { BrandLogo } from "../config/assets";
 const data = SLIDES[3];
 
 const CAROUSEL_LOGOS = [
-  { id: "hcl", name: "HCL", textColor: "#00A5EC", bg: "linear-gradient(135deg, #E8F4FD 0%, #D1ECFA 100%)" },
-  { id: "infosys", name: "Infosys", textColor: "#007CC3", bg: "linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%)" },
-  { id: "hdfc", name: "HDFC BANK", textColor: "#004B8D", bg: "linear-gradient(135deg, #FFFFFF 0%, #F5F8FF 100%)" },
-  { id: "tata", name: "TATA", textColor: "#1B365D", bg: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%)", center: true },
-  { id: "tcs1", name: "tcs", textColor: "#FF6B35", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F5 100%)" },
-  { id: "tcs2", name: "tcs", textColor: "#1A4D8F", bg: "linear-gradient(135deg, #FFFFFF 0%, #F0F5FF 100%)", subtitle: "TATA CONSULTANCY SERVICES" },
-  { id: "tcs3", name: "tcs", textColor: "#E85D24", bg: "linear-gradient(135deg, #FFF5F0 0%, #FFE8DD 100%)" },
+  { id: "vithai", name: "Vithai", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/vithai%20%20logo.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%)" },
+  { id: "bramha", name: "Bramha", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/bramha_logo1.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%)" },
+  { id: "dafalapur", name: "Dafalapur Urban", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/Dafalapur%20Urban.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F5F8FF 100%)" },
+  { id: "dhasampada", name: "Dhasampada", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/Dhasampada%20Logo.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%)", center: true },
+  { id: "padmavati", name: "Padmavati", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/padmavati%20logo.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F5 100%)" },
+  { id: "suryoday", name: "Suryoday", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/Suryoday%20Icon.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F0F5FF 100%)" },
+  { id: "shri_vitthal", name: "Shri Vitthal", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/SHRI%20VITTHAL.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F5F8FF 100%)" },
+  { id: "lkp", name: "LKP", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/LKP.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%)" },
 ];
 
 const BOTTOM_LOGOS = [
-  { id: "wipro", name: "wipro", textColor: "#2A2A6B", bg: "linear-gradient(135deg, #FFFFFF 0%, #F8F8FF 100%)" },
-  { id: "reliance", name: "Reliance", textColor: "#D42A2A", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F8 100%)", subtitle: "Industries Limited" },
-  { id: "icici", name: "ICICI Bank", textColor: "#F37B21", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFFAF5 100%)" },
-  { id: "ibm", name: "IBM", textColor: "#0530AD", bg: "linear-gradient(135deg, #FFFFFF 0%, #F5F8FF 100%)" },
+  { id: "hcl", name: "HCL", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/LKP.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F8F8FF 100%)" },
+  { id: "reliance", name: "Reliance", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/Suryoday%20Icon.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F8 100%)" },
+  { id: "icici", name: "ICICI Bank", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/padmavati%20logo.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFFAF5 100%)" },
+  { id: "ibm", name: "IBM", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/SHRI%20VITTHAL.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F5F8FF 100%)" },
 ];
 
 export default function SlideClients({ isActive }) {
@@ -267,9 +268,22 @@ export default function SlideClients({ isActive }) {
                     >
                       {isActiveCard && <div style={S.activeCardBorder} />}
                       <div style={S.cardContent}>
-                        <div style={{ ...S.logoText, color: logo.textColor, fontSize: isActiveCard ? "clamp(30px, 4vw, 46px)" : "clamp(15px, 1.9vw, 24px)" }}>
-                          {logo.name}
-                        </div>
+                        {logo.img ? (
+                          <img
+                            src={logo.img}
+                            alt={logo.name}
+                            style={{
+                              maxWidth: isActiveCard ? "70%" : "65%",
+                              maxHeight: isActiveCard ? "60px" : "38px",
+                              objectFit: "contain",
+                              filter: isActiveCard ? "drop-shadow(0 2px 8px rgba(0,0,0,0.15))" : "drop-shadow(0 1px 4px rgba(0,0,0,0.1))",
+                            }}
+                          />
+                        ) : (
+                          <div style={{ ...S.logoText, color: logo.textColor, fontSize: isActiveCard ? "clamp(30px, 4vw, 46px)" : "clamp(15px, 1.9vw, 24px)" }}>
+                            {logo.name}
+                          </div>
+                        )}
                         {logo.subtitle && (
                           <div style={S.logoSubtitle}>{logo.subtitle}</div>
                         )}
@@ -302,9 +316,22 @@ export default function SlideClients({ isActive }) {
                 onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.3), 0 0 15px rgba(0,180,216,0.08)"; }}
               >
                 <div style={S.bottomCardContent}>
-                  <div style={{ ...S.bottomLogoText, color: logo.textColor }}>
-                    {logo.name}
-                  </div>
+                  {logo.img ? (
+                    <img
+                      src={logo.img}
+                      alt={logo.name}
+                      style={{
+                        maxWidth: "70%",
+                        maxHeight: "40px",
+                        objectFit: "contain",
+                        filter: "drop-shadow(0 1px 4px rgba(0,0,0,0.1))",
+                      }}
+                    />
+                  ) : (
+                    <div style={{ ...S.bottomLogoText, color: logo.textColor }}>
+                      {logo.name}
+                    </div>
+                  )}
                   {logo.subtitle && <div style={S.bottomSubtitle}>{logo.subtitle}</div>}
                 </div>
               </div>
