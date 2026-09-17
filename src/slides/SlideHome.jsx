@@ -80,17 +80,34 @@ export default function SlideHome({ isActive }) {
 
   return (
     <div style={S.wrap}>
-      {/* Ambient background effects */}
+      {/* Deep background gradient layer */}
+      <div style={S.bgDeepLayer} />
+
+      {/* Subtle grid overlay */}
       <div className="bg-grid" />
+
+      {/* Right-side strong cyan ambient glow */}
+      <div style={S.rightGlow} />
+
+      {/* Bottom subtle blue glow */}
+      <div style={S.bottomGlow} />
+
+      {/* Center ambient orb */}
       <div style={S.orbGlow} />
 
-      {/* Diagonal light streaks */}
+      {/* Diagonal light streaks - thick and glowing */}
       <div style={S.streaksWrap}>
         <div style={S.streak1} />
         <div style={S.streak2} />
-        <div style={{ ...S.streak1, right: "18%", width: 2, opacity: 0.5, filter: "blur(4px)" }} />
-        <div style={{ ...S.streak2, right: "22%", width: 2, opacity: 0.3, filter: "blur(5px)" }} />
+        <div style={S.streak3} />
+        <div style={S.streak4} />
+        <div style={S.streak5} />
+        <div style={S.streak6} />
       </div>
+
+      {/* Vertical subtle light bars on right */}
+      <div style={S.verticalBar1} />
+      <div style={S.verticalBar2} />
 
       <div style={S.container}>
         {/* Header row: Logo + Top Right text */}
@@ -199,17 +216,48 @@ const S = {
     justifyContent: "center",
     padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
     overflow: "hidden",
-    background: "linear-gradient(180deg, #080D1A 0%, #0C1222 50%, #101828 100%)",
+    background: "linear-gradient(135deg, #050A14 0%, #080D1A 25%, #0A1628 50%, #0C1A30 75%, #080D1A 100%)",
+  },
+  bgDeepLayer: {
+    position: "absolute",
+    inset: 0,
+    background: "radial-gradient(ellipse at 70% 50%, rgba(0,40,80,0.25) 0%, rgba(0,20,50,0.1) 40%, transparent 70%)",
+    pointerEvents: "none",
+    zIndex: 0,
+  },
+  rightGlow: {
+    position: "absolute",
+    top: "10%",
+    right: "-5%",
+    width: "clamp(400px, 45vw, 650px)",
+    height: "clamp(400px, 50vh, 700px)",
+    borderRadius: "30%",
+    background: "radial-gradient(ellipse at center, rgba(0,140,220,0.18) 0%, rgba(0,100,200,0.1) 30%, rgba(0,60,140,0.05) 55%, transparent 75%)",
+    filter: "blur(40px)",
+    pointerEvents: "none",
+    zIndex: 0,
+  },
+  bottomGlow: {
+    position: "absolute",
+    bottom: "-10%",
+    left: "20%",
+    width: "clamp(500px, 60vw, 900px)",
+    height: "clamp(200px, 25vh, 350px)",
+    borderRadius: "50%",
+    background: "radial-gradient(ellipse at center, rgba(0,120,200,0.1) 0%, rgba(0,80,160,0.04) 40%, transparent 70%)",
+    filter: "blur(50px)",
+    pointerEvents: "none",
+    zIndex: 0,
   },
   orbGlow: {
     position: "absolute",
-    top: "35%",
-    right: "20%",
-    width: "clamp(300px, 40vw, 500px)",
-    height: "clamp(300px, 40vw, 500px)",
+    top: "30%",
+    right: "15%",
+    width: "clamp(350px, 42vw, 550px)",
+    height: "clamp(350px, 42vw, 550px)",
     borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(0,180,216,0.15) 0%, transparent 70%)",
-    filter: "blur(60px)",
+    background: "radial-gradient(circle, rgba(0,180,216,0.12) 0%, rgba(0,120,200,0.06) 40%, transparent 70%)",
+    filter: "blur(70px)",
     pointerEvents: "none",
     zIndex: 0,
   },
@@ -222,23 +270,83 @@ const S = {
   },
   streak1: {
     position: "absolute",
-    top: "-20%",
-    right: "5%",
-    width: 3,
-    height: "140%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,216,0.25) 40%, rgba(0,180,216,0.4) 50%, rgba(0,180,216,0.25) 60%, transparent 100%)",
-    transform: "rotate(25deg)",
+    top: "-25%",
+    right: "3%",
+    width: 4,
+    height: "150%",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,160,240,0.35) 30%, rgba(0,180,255,0.55) 50%, rgba(0,160,240,0.35) 70%, transparent 100%)",
+    transform: "rotate(22deg)",
     filter: "blur(2px)",
   },
   streak2: {
     position: "absolute",
+    top: "-15%",
+    right: "8%",
+    width: 3,
+    height: "140%",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,140,220,0.25) 35%, rgba(0,160,240,0.4) 50%, rgba(0,140,220,0.25) 65%, transparent 100%)",
+    transform: "rotate(20deg)",
+    filter: "blur(3px)",
+  },
+  streak3: {
+    position: "absolute",
+    top: "-20%",
+    right: "14%",
+    width: 6,
+    height: "145%",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,120,200,0.2) 30%, rgba(0,140,220,0.35) 50%, rgba(0,120,200,0.2) 70%, transparent 100%)",
+    transform: "rotate(18deg)",
+    filter: "blur(5px)",
+  },
+  streak4: {
+    position: "absolute",
     top: "-10%",
-    right: "12%",
+    right: "20%",
     width: 2,
     height: "130%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,216,0.12) 45%, rgba(0,180,216,0.25) 50%, rgba(0,180,216,0.12) 55%, transparent 100%)",
-    transform: "rotate(22deg)",
-    filter: "blur(3px)",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,100,180,0.15) 40%, rgba(0,120,200,0.25) 50%, rgba(0,100,180,0.15) 60%, transparent 100%)",
+    transform: "rotate(16deg)",
+    filter: "blur(4px)",
+  },
+  streak5: {
+    position: "absolute",
+    top: "-30%",
+    right: "1%",
+    width: 8,
+    height: "160%",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,255,0.08) 25%, rgba(0,200,255,0.15) 50%, rgba(0,180,255,0.08) 75%, transparent 100%)",
+    transform: "rotate(24deg)",
+    filter: "blur(8px)",
+  },
+  streak6: {
+    position: "absolute",
+    top: "-5%",
+    right: "28%",
+    width: 2,
+    height: "115%",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,80,160,0.1) 45%, rgba(0,100,180,0.18) 50%, rgba(0,80,160,0.1) 55%, transparent 100%)",
+    transform: "rotate(14deg)",
+    filter: "blur(6px)",
+  },
+  verticalBar1: {
+    position: "absolute",
+    top: "5%",
+    right: "6%",
+    width: 1,
+    height: "90%",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,160,240,0.08) 30%, rgba(0,180,255,0.12) 50%, rgba(0,160,240,0.08) 70%, transparent 100%)",
+    pointerEvents: "none",
+    zIndex: 0,
+  },
+  verticalBar2: {
+    position: "absolute",
+    top: "10%",
+    right: "15%",
+    width: 1,
+    height: "80%",
+    background: "linear-gradient(180deg, transparent 0%, rgba(0,120,200,0.06) 35%, rgba(0,140,220,0.1) 50%, rgba(0,120,200,0.06) 65%, transparent 100%)",
+    pointerEvents: "none",
+    zIndex: 0,
   },
   container: {
     width: "100%",
@@ -323,10 +431,10 @@ const S = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "120%",
-    height: "130%",
-    background: "radial-gradient(ellipse at center, rgba(0,180,216,0.18) 0%, rgba(0,180,216,0.06) 40%, transparent 70%)",
-    filter: "blur(30px)",
+    width: "140%",
+    height: "150%",
+    background: "radial-gradient(ellipse at center, rgba(0,160,240,0.22) 0%, rgba(0,120,200,0.1) 30%, rgba(0,80,160,0.04) 55%, transparent 75%)",
+    filter: "blur(35px)",
     pointerEvents: "none",
     zIndex: 0,
   },
@@ -345,7 +453,7 @@ const S = {
     border: "2px solid #1E293B",
     overflow: "hidden",
     position: "relative",
-    boxShadow: "0 0 40px rgba(0,180,216,0.2), 0 20px 60px rgba(0,0,0,0.5)",
+    boxShadow: "0 0 50px rgba(0,160,240,0.25), 0 0 100px rgba(0,120,200,0.1), 0 25px 70px rgba(0,0,0,0.6)",
   },
   screenContent: {
     width: "100%",
