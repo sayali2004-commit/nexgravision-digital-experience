@@ -80,6 +80,12 @@ export default function SlideHome({ isActive }) {
 
   return (
     <div style={S.wrap}>
+      {/* Real photographic office background */}
+      <div style={S.photoBg} />
+
+      {/* Dark blue tint overlay */}
+      <div style={S.tintOverlay} />
+
       {/* Deep background gradient layer */}
       <div style={S.bgDeepLayer} />
 
@@ -216,14 +222,31 @@ const S = {
     justifyContent: "center",
     padding: "clamp(20px, 4vw, 48px) clamp(16px, 5vw, 72px)",
     overflow: "hidden",
-    background: "linear-gradient(135deg, #050A14 0%, #080D1A 25%, #0A1628 50%, #0C1A30 75%, #080D1A 100%)",
+    background: "#050A14",
+  },
+  photoBg: {
+    position: "absolute",
+    inset: 0,
+    backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80')",
+    backgroundSize: "cover",
+    backgroundPosition: "center 40%",
+    filter: "brightness(0.3) saturate(0.6)",
+    pointerEvents: "none",
+    zIndex: 0,
+  },
+  tintOverlay: {
+    position: "absolute",
+    inset: 0,
+    background: "linear-gradient(135deg, rgba(5,10,20,0.85) 0%, rgba(8,13,26,0.7) 30%, rgba(10,22,40,0.6) 60%, rgba(5,10,20,0.8) 100%)",
+    pointerEvents: "none",
+    zIndex: 1,
   },
   bgDeepLayer: {
     position: "absolute",
     inset: 0,
-    background: "radial-gradient(ellipse at 70% 50%, rgba(0,40,80,0.25) 0%, rgba(0,20,50,0.1) 40%, transparent 70%)",
+    background: "radial-gradient(ellipse at 70% 50%, rgba(0,40,80,0.2) 0%, rgba(0,20,50,0.08) 40%, transparent 70%)",
     pointerEvents: "none",
-    zIndex: 0,
+    zIndex: 2,
   },
   rightGlow: {
     position: "absolute",
@@ -235,7 +258,7 @@ const S = {
     background: "radial-gradient(ellipse at center, rgba(0,140,220,0.18) 0%, rgba(0,100,200,0.1) 30%, rgba(0,60,140,0.05) 55%, transparent 75%)",
     filter: "blur(40px)",
     pointerEvents: "none",
-    zIndex: 0,
+    zIndex: 3,
   },
   bottomGlow: {
     position: "absolute",
@@ -247,7 +270,7 @@ const S = {
     background: "radial-gradient(ellipse at center, rgba(0,120,200,0.1) 0%, rgba(0,80,160,0.04) 40%, transparent 70%)",
     filter: "blur(50px)",
     pointerEvents: "none",
-    zIndex: 0,
+    zIndex: 3,
   },
   orbGlow: {
     position: "absolute",
@@ -259,13 +282,13 @@ const S = {
     background: "radial-gradient(circle, rgba(0,180,216,0.12) 0%, rgba(0,120,200,0.06) 40%, transparent 70%)",
     filter: "blur(70px)",
     pointerEvents: "none",
-    zIndex: 0,
+    zIndex: 3,
   },
   streaksWrap: {
     position: "absolute",
     inset: 0,
     pointerEvents: "none",
-    zIndex: 1,
+    zIndex: 4,
     overflow: "hidden",
   },
   streak1: {
@@ -336,7 +359,7 @@ const S = {
     height: "90%",
     background: "linear-gradient(180deg, transparent 0%, rgba(0,160,240,0.08) 30%, rgba(0,180,255,0.12) 50%, rgba(0,160,240,0.08) 70%, transparent 100%)",
     pointerEvents: "none",
-    zIndex: 0,
+    zIndex: 4,
   },
   verticalBar2: {
     position: "absolute",
@@ -346,7 +369,7 @@ const S = {
     height: "80%",
     background: "linear-gradient(180deg, transparent 0%, rgba(0,120,200,0.06) 35%, rgba(0,140,220,0.1) 50%, rgba(0,120,200,0.06) 65%, transparent 100%)",
     pointerEvents: "none",
-    zIndex: 0,
+    zIndex: 4,
   },
   container: {
     width: "100%",
@@ -355,7 +378,7 @@ const S = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    zIndex: 2,
+    zIndex: 10,
     position: "relative",
   },
   headerRow: {
