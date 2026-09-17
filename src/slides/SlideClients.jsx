@@ -273,8 +273,9 @@ export default function SlideClients({ isActive }) {
                             src={logo.img}
                             alt={logo.name}
                             style={{
-                              maxWidth: isActiveCard ? "70%" : "65%",
-                              maxHeight: isActiveCard ? "60px" : "38px",
+                              maxWidth: isActiveCard ? "80%" : "75%",
+                              maxHeight: isActiveCard ? "90px" : "55px",
+                              width: "auto",
                               objectFit: "contain",
                               filter: isActiveCard ? "drop-shadow(0 2px 8px rgba(0,0,0,0.15))" : "drop-shadow(0 1px 4px rgba(0,0,0,0.1))",
                             }}
@@ -321,8 +322,9 @@ export default function SlideClients({ isActive }) {
                       src={logo.img}
                       alt={logo.name}
                       style={{
-                        maxWidth: "70%",
-                        maxHeight: "40px",
+                        maxWidth: "80%",
+                        maxHeight: "55px",
+                        width: "auto",
                         objectFit: "contain",
                         filter: "drop-shadow(0 1px 4px rgba(0,0,0,0.1))",
                       }}
