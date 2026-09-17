@@ -267,17 +267,17 @@ export default function SlideClients({ isActive }) {
                       }}
                     >
                       {isActiveCard && <div style={S.activeCardBorder} />}
-                      <div style={S.cardContent}>
+                      <div style={isActiveCard ? S.cardContentCenter : S.cardContent}>
                         {logo.img ? (
                           <img
                             src={logo.img}
                             alt={logo.name}
                             style={{
-                              maxWidth: isActiveCard ? "80%" : "75%",
-                              maxHeight: isActiveCard ? "90px" : "55px",
+                              maxWidth: isActiveCard ? "85%" : "80%",
+                              maxHeight: isActiveCard ? "110px" : "70px",
                               width: "auto",
                               objectFit: "contain",
-                              filter: isActiveCard ? "drop-shadow(0 2px 8px rgba(0,0,0,0.15))" : "drop-shadow(0 1px 4px rgba(0,0,0,0.1))",
+                              filter: isActiveCard ? "drop-shadow(0 3px 10px rgba(0,0,0,0.2)) contrast(1.1)" : "drop-shadow(0 2px 6px rgba(0,0,0,0.15)) contrast(1.05)",
                             }}
                           />
                         ) : (
@@ -322,11 +322,11 @@ export default function SlideClients({ isActive }) {
                       src={logo.img}
                       alt={logo.name}
                       style={{
-                        maxWidth: "80%",
-                        maxHeight: "55px",
+                        maxWidth: "85%",
+                        maxHeight: "65px",
                         width: "auto",
                         objectFit: "contain",
-                        filter: "drop-shadow(0 1px 4px rgba(0,0,0,0.1))",
+                        filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.15)) contrast(1.05)",
                       }}
                     />
                   ) : (
@@ -687,7 +687,19 @@ const S = {
     alignItems: "center",
     justifyContent: "center",
     gap: 3,
-    padding: "10px 14px",
+    padding: "6px 10px",
+    width: "100%",
+    height: "100%",
+  },
+  cardContentCenter: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 4,
+    padding: "8px 12px",
+    width: "100%",
+    height: "100%",
   },
   logoText: {
     fontFamily: "var(--font-sans)",
@@ -730,7 +742,9 @@ const S = {
     alignItems: "center",
     justifyContent: "center",
     gap: 2,
-    padding: 8,
+    padding: "6px 8px",
+    width: "100%",
+    height: "100%",
   },
   bottomLogoText: {
     fontFamily: "var(--font-sans)",
