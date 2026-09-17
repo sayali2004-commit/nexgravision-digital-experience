@@ -22,7 +22,7 @@ export const SLIDES = [
     sectionTag: "OUR SOFTWARE",
     headline: "What We Give Our",
     headlineAccent: "Customers",
-    description: "We build custom, scalable and user-friendly software solutions that solve real problems. Our technology helps businesses save time, reduce costs and achieve more — in today's fast-changing world.",
+    description: "We build custom, scalable and secure software solutions that solve real problems. Our technology helps businesses grow, improve efficiency and stay ahead in a competitive world — today and for what's next.",
     features: [
       { icon: "code", title: "Custom Software Development", subtitle: "Tailored to your needs" },
       { icon: "cloud", title: "Cloud & Web Solutions", subtitle: "Secure & Scalable" },
