@@ -193,19 +193,16 @@ export default function SlideSoftware({ isActive }) {
           {/* RIGHT COLUMN - Circular Composition */}
           <div style={S.rightCol}>
             <div ref={compositionRef} style={S.composition}>
-              {/* Decorative rings */}
-              <div className="deco-ring" style={S.ringOuter} />
-              <div className="deco-ring" style={S.ringMiddle} />
+              {/* Slow-rotating orbit rings */}
+              <div className="orbit-ring orbit-ring-1" style={S.orbitRing1} />
+              <div className="orbit-ring orbit-ring-2" style={S.orbitRing2} />
+              <div className="orbit-ring orbit-ring-3" style={S.orbitRing3} />
 
-              {/* Center circle */}
-              <div className="center-circle" style={S.centerCircle}>
-                <div style={S.centerGlowRing} />
-                <img src="/LOGOIMG.png" alt="NexGravision" style={S.centerLogo} />
-                <div style={S.centerText}>NEXGRAVISION</div>
-              </div>
+              {/* Glow backdrop */}
+              <div style={S.compGlow} />
 
               {/* Photo 1: Top-right - woman professional */}
-              <div className="photo-item" style={S.photo1}>
+              <div className="photo-item photo-float-1" style={S.photo1}>
                 <img
                   src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
                   alt="Professional"
@@ -214,7 +211,7 @@ export default function SlideSoftware({ isActive }) {
               </div>
 
               {/* Photo 2: Right - developer coding */}
-              <div className="photo-item" style={S.photo2}>
+              <div className="photo-item photo-float-2" style={S.photo2}>
                 <img
                   src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80"
                   alt="Developer"
@@ -222,8 +219,8 @@ export default function SlideSoftware({ isActive }) {
                 />
               </div>
 
-              {/* Photo 3: Left - workspace */}
-              <div className="photo-item" style={S.photo3}>
+              {/* Photo 3: Left-bottom - workspace */}
+              <div className="photo-item photo-float-3" style={S.photo3}>
                 <img
                   src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=400&q=80"
                   alt="Workspace"
@@ -231,11 +228,19 @@ export default function SlideSoftware({ isActive }) {
                 />
               </div>
 
-              {/* Floating Badges */}
+              {/* Center circle */}
+              <div className="center-circle" style={S.centerCircle}>
+                <div style={S.centerGlowRing} />
+                <div style={S.centerPurpleRing} />
+                <img src="/LOGOIMG.png" alt="NexGravision" style={S.centerLogo} />
+                <div style={S.centerText}>NEXGRAVISION</div>
+              </div>
+
+              {/* Floating info cards */}
               {BADGES.map((badge, i) => (
                 <div
                   key={i}
-                  className="badge-item"
+                  className={`badge-item badge-float-${i + 1}`}
                   style={{
                     ...S.badge,
                     top: badge.top,
@@ -243,8 +248,8 @@ export default function SlideSoftware({ isActive }) {
                     bottom: badge.bottom,
                     left: badge.left,
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.06)"; e.currentTarget.style.boxShadow = "0 10px 35px rgba(0,140,216,0.15)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(0,0,0,0.08)"; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.06) translateY(-3px)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,140,216,0.18)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1) translateY(0)"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(0,0,0,0.08)"; }}
                 >
                   <div style={{ ...S.badgeIcon, background: badge.iconBg, borderColor: badge.iconBorder }}>
                     {badge.icon}
@@ -421,32 +426,54 @@ const S = {
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    minHeight: 460,
+    minHeight: 480,
   },
   composition: {
     position: "relative",
-    width: "clamp(380px, 42vw, 560px)",
-    height: "clamp(380px, 42vw, 560px)",
+    width: "clamp(400px, 44vw, 580px)",
+    height: "clamp(400px, 44vw, 580px)",
   },
-  ringOuter: {
+  orbitRing1: {
     position: "absolute",
     inset: 0,
     borderRadius: "50%",
-    border: "1.5px solid rgba(0,180,216,0.08)",
+    border: "1.5px solid rgba(0,180,216,0.12)",
+    boxShadow: "0 0 20px rgba(0,180,216,0.06), inset 0 0 20px rgba(0,180,216,0.03)",
   },
-  ringMiddle: {
+  orbitRing2: {
     position: "absolute",
-    inset: 30,
+    inset: 25,
     borderRadius: "50%",
-    border: "1px solid rgba(0,180,216,0.05)",
+    border: "1px solid rgba(120,80,220,0.1)",
+    boxShadow: "0 0 15px rgba(120,80,220,0.05), inset 0 0 15px rgba(120,80,220,0.02)",
+  },
+  orbitRing3: {
+    position: "absolute",
+    inset: 50,
+    borderRadius: "50%",
+    border: "1.5px solid rgba(0,200,240,0.15)",
+    boxShadow: "0 0 25px rgba(0,200,240,0.08), inset 0 0 20px rgba(0,200,240,0.04)",
+  },
+  compGlow: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "70%",
+    height: "70%",
+    borderRadius: "50%",
+    background: "radial-gradient(circle, rgba(0,180,216,0.1) 0%, rgba(120,80,220,0.05) 40%, transparent 70%)",
+    filter: "blur(30px)",
+    pointerEvents: "none",
+    zIndex: 0,
   },
   centerCircle: {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "clamp(160px, 18vw, 220px)",
-    height: "clamp(160px, 18vw, 220px)",
+    width: "clamp(170px, 19vw, 235px)",
+    height: "clamp(170px, 19vw, 235px)",
     borderRadius: "50%",
     background: "linear-gradient(145deg, #0B1120 0%, #162032 50%, #0F172A 100%)",
     display: "flex",
@@ -455,21 +482,30 @@ const S = {
     justifyContent: "center",
     gap: 8,
     zIndex: 5,
-    boxShadow: "0 20px 60px rgba(0,0,0,0.2), 0 0 50px rgba(0,180,216,0.15)",
+    boxShadow: "0 25px 70px rgba(0,0,0,0.25), 0 0 60px rgba(0,180,216,0.18), 0 0 100px rgba(120,80,220,0.08)",
   },
   centerGlowRing: {
     position: "absolute",
-    inset: -8,
+    inset: -10,
     borderRadius: "50%",
-    border: "3px solid rgba(0,180,216,0.5)",
-    boxShadow: "0 0 30px rgba(0,180,216,0.4), 0 0 60px rgba(0,180,216,0.15), inset 0 0 20px rgba(0,180,216,0.1)",
+    border: "3px solid rgba(0,180,216,0.55)",
+    boxShadow: "0 0 35px rgba(0,180,216,0.45), 0 0 70px rgba(0,180,216,0.18), inset 0 0 25px rgba(0,180,216,0.12)",
+    pointerEvents: "none",
+    animation: "core-pulse 3s ease-in-out infinite",
+  },
+  centerPurpleRing: {
+    position: "absolute",
+    inset: -20,
+    borderRadius: "50%",
+    border: "1.5px solid rgba(120,80,220,0.25)",
+    boxShadow: "0 0 20px rgba(120,80,220,0.15), inset 0 0 15px rgba(120,80,220,0.06)",
     pointerEvents: "none",
   },
   centerLogo: {
-    width: 52,
-    height: 52,
+    width: 56,
+    height: 56,
     objectFit: "contain",
-    filter: "drop-shadow(0 0 15px rgba(0,180,216,0.5))",
+    filter: "drop-shadow(0 0 18px rgba(0,180,216,0.55))",
   },
   centerText: {
     fontFamily: "var(--font-mono)",
@@ -480,38 +516,38 @@ const S = {
   },
   photo1: {
     position: "absolute",
-    top: "5%",
-    right: "15%",
-    width: "clamp(100px, 12vw, 160px)",
-    height: "clamp(100px, 12vw, 160px)",
-    borderRadius: "50%",
+    top: "2%",
+    right: "8%",
+    width: "clamp(130px, 15vw, 200px)",
+    height: "clamp(100px, 12vw, 155px)",
+    borderRadius: 18,
     overflow: "hidden",
-    border: "4px solid rgba(255,255,255,0.95)",
-    boxShadow: "0 10px 40px rgba(0,0,0,0.12)",
+    border: "3px solid rgba(255,255,255,0.9)",
+    boxShadow: "0 15px 50px rgba(0,0,0,0.18), 0 0 20px rgba(0,180,216,0.08)",
     zIndex: 4,
   },
   photo2: {
     position: "absolute",
-    right: "5%",
-    bottom: "20%",
-    width: "clamp(90px, 10.5vw, 140px)",
+    right: "-2%",
+    bottom: "18%",
+    width: "clamp(115px, 13.5vw, 180px)",
     height: "clamp(90px, 10.5vw, 140px)",
-    borderRadius: "50%",
+    borderRadius: 18,
     overflow: "hidden",
-    border: "4px solid rgba(255,255,255,0.95)",
-    boxShadow: "0 10px 40px rgba(0,0,0,0.12)",
+    border: "3px solid rgba(255,255,255,0.9)",
+    boxShadow: "0 15px 50px rgba(0,0,0,0.18), 0 0 20px rgba(0,180,216,0.08)",
     zIndex: 4,
   },
   photo3: {
     position: "absolute",
-    left: "8%",
-    bottom: "25%",
-    width: "clamp(85px, 10vw, 130px)",
-    height: "clamp(85px, 10vw, 130px)",
-    borderRadius: "50%",
+    left: "2%",
+    bottom: "15%",
+    width: "clamp(120px, 14vw, 185px)",
+    height: "clamp(95px, 11vw, 145px)",
+    borderRadius: 18,
     overflow: "hidden",
-    border: "4px solid rgba(255,255,255,0.95)",
-    boxShadow: "0 10px 40px rgba(0,0,0,0.12)",
+    border: "3px solid rgba(255,255,255,0.9)",
+    boxShadow: "0 15px 50px rgba(0,0,0,0.18), 0 0 20px rgba(0,180,216,0.08)",
     zIndex: 4,
   },
   photoImg: {
@@ -528,11 +564,11 @@ const S = {
     borderRadius: 14,
     background: "rgba(255,255,255,0.95)",
     border: "1px solid rgba(0,180,216,0.08)",
-    boxShadow: "0 6px 24px rgba(0,0,0,0.08)",
+    boxShadow: "0 8px 30px rgba(0,0,0,0.1), 0 0 15px rgba(0,180,216,0.05)",
     whiteSpace: "nowrap",
     transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
     zIndex: 10,
-    backdropFilter: "blur(10px)",
+    backdropFilter: "blur(12px)",
   },
   badgeIcon: {
     width: 38,
