@@ -5,7 +5,7 @@ export default function BrandLogo({ size = 38, dark = false }) {
   const tagColor = dark ? "#64748B" : "#94A3B8";
 
   return (
-    <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 0 }}>
+    <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "flex-start", gap: 0 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
         <img
           src="/LOGOIMG.png"
