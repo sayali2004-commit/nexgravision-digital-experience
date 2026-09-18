@@ -391,7 +391,7 @@ const S = {
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
-    marginTop: "-12vh",
+    marginTop: "-2vh",
   },
   sectionTag: {
     display: "flex",
@@ -442,6 +442,7 @@ const S = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 16,
     marginBottom: 12,
   },
   ringsContainer: {
