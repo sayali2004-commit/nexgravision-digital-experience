@@ -185,7 +185,7 @@ const S = {
   photoBg: {
     position: "absolute",
     inset: 0,
-    backgroundImage: "url('/background.png')",
+    backgroundImage: "url('/bgimg.png')",
     backgroundSize: "cover",
     backgroundPosition: "center center",
     pointerEvents: "none",
