@@ -25,6 +25,7 @@ const valueIcons = {
 
 export default function SlideThankYou({ isActive }) {
   const headlineRef = useRef(null);
+  const logoRef = useRef(null);
   const subRef = useRef(null);
   const descRef = useRef(null);
   const valuesRef = useRef(null);
@@ -38,6 +39,9 @@ export default function SlideThankYou({ isActive }) {
     hasAnimated.current = true;
 
     const tl = gsap.timeline({ delay: 0.3 });
+
+    gsap.set(logoRef.current, { opacity: 0, y: -20 });
+    tl.to(logoRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.1);
 
     gsap.set(headlineRef.current, { opacity: 0, scale: 0.8, filter: "blur(10px)" });
     tl.to(headlineRef.current, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.2, ease: "expo.out" }, 0.1);
@@ -77,7 +81,7 @@ export default function SlideThankYou({ isActive }) {
       <div style={S.container}>
         {/* Header */}
         <div style={S.headerRow}>
-          <div style={{ opacity: 0 }}>
+          <div ref={logoRef}>
             <BrandLogo size={48} />
           </div>
           <div style={S.topRight}>
