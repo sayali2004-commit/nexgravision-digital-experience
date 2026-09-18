@@ -5,18 +5,18 @@ export default function BrandLogo({ size = 38, dark = false }) {
   const tagColor = dark ? "#64748B" : "#94A3B8";
 
   return (
-    <div style={{ display: "inline-flex", flexDirection: "column", gap: 0 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-        <img
-          src="/LOGOIMG.png"
-          alt="NexGravision"
-          className="brand-logo-img"
-          style={{
-            height: size * 1.4,
-            width: "auto",
-            objectFit: "contain",
-          }}
-        />
+    <div style={{ display: "inline-flex", alignItems: "flex-start", gap: 0 }}>
+      <img
+        src="/LOGOIMG.png"
+        alt="NexGravision"
+        className="brand-logo-img"
+        style={{
+          height: size * 1.4,
+          width: "auto",
+          objectFit: "contain",
+        }}
+      />
+      <div style={{ display: "flex", flexDirection: "column", marginLeft: 14 }}>
         <div
           style={{
             fontFamily: "'Space Grotesk', sans-serif",
@@ -37,9 +37,7 @@ export default function BrandLogo({ size = 38, dark = false }) {
             letterSpacing: "0.1em",
             textTransform: "uppercase",
             color: tagColor,
-            borderLeft: `1px solid ${tagColor}33`,
-            paddingLeft: 12,
-            marginLeft: 4,
+            marginTop: 3,
           }}
         >
           Digital Solution and Services.
