@@ -19,6 +19,7 @@ const ORBIT_IMAGES = [
   "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80",
   "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=400&q=80",
   "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=400&q=80",
+  "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=400&q=80",
 ];
 
 const INFO_CARDS = [
@@ -28,12 +29,10 @@ const INFO_CARDS = [
     iconBg: "linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%)",
     iconBorder: "rgba(16,185,129,0.3)",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />
       </svg>
     ),
-    top: "2%",
-    left: "-6%",
   },
   {
     label: "Work Smarter",
@@ -41,13 +40,11 @@ const INFO_CARDS = [
     iconBg: "linear-gradient(135deg, #F3E8FF 0%, #E9D5FF 100%)",
     iconBorder: "rgba(124,58,237,0.3)",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 18h6" /><path d="M10 22h4" />
         <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14" />
       </svg>
     ),
-    top: "0%",
-    right: "-4%",
   },
   {
     label: "Better Experience",
@@ -55,12 +52,10 @@ const INFO_CARDS = [
     iconBg: "linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)",
     iconBorder: "rgba(59,130,246,0.3)",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" y1="9" x2="9.01" y2="9" /><line x1="15" y1="9" x2="15.01" y2="9" />
       </svg>
     ),
-    bottom: "12%",
-    right: "-6%",
   },
   {
     label: "Secure & Reliable",
@@ -68,12 +63,21 @@ const INFO_CARDS = [
     iconBg: "linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%)",
     iconBorder: "rgba(249,115,22,0.3)",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
-    bottom: "8%",
-    left: "-4%",
+  },
+  {
+    label: "24/7 Support",
+    desc: "Always With You",
+    iconBg: "linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%)",
+    iconBorder: "rgba(244,63,94,0.3)",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F43F5E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 18v-6a9 9 0 0 1 18 0v6" /><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" /><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+      </svg>
+    ),
   },
 ];
 
@@ -86,17 +90,18 @@ const featureIcons = {
   headset: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>,
 };
 
-const CARD_COUNT = 4;
+const CARD_COUNT = 5;
 const ANGLE_STEP = 360 / CARD_COUNT;
-const ORBIT_RADIUS = 185;
-const CARD_SIZE = 130;
-const INFO_WIDTH = 160;
-const INFO_HEIGHT = 68;
+const ORBIT_RADIUS = 175;
+const CARD_SIZE = 120;
+const INFO_WIDTH = 155;
+const INFO_HEIGHT = 64;
+const INFO_OFFSET = 80;
 const SPEED = 0.12;
-const FRONT_SCALE = 1.12;
-const BACK_SCALE = 0.82;
+const FRONT_SCALE = 1.15;
+const BACK_SCALE = 0.78;
 const FRONT_OPACITY = 1;
-const BACK_OPACITY = 0.55;
+const BACK_OPACITY = 0.45;
 
 export default function SlideSoftware({ isActive }) {
   const logoRef = useRef(null);
@@ -110,17 +115,20 @@ export default function SlideSoftware({ isActive }) {
   const hasAnimated = useRef(false);
 
   const cardRefs = useRef([]);
+  const infoRefs = useRef([]);
   const orbitAngle = useRef(0);
   const rafId = useRef(null);
   const isRunning = useRef(false);
 
   const setCardRef = useCallback((el, i) => { cardRefs.current[i] = el; }, []);
+  const setInfoRef = useCallback((el, i) => { infoRefs.current[i] = el; }, []);
 
   const updateOrbit = useCallback(() => {
     orbitAngle.current = (orbitAngle.current + SPEED) % 360;
 
     for (let i = 0; i < CARD_COUNT; i++) {
       const card = cardRefs.current[i];
+      const info = infoRefs.current[i];
       if (!card) continue;
 
       const rawAngle = i * ANGLE_STEP + orbitAngle.current;
@@ -142,6 +150,14 @@ export default function SlideSoftware({ isActive }) {
       card.style.opacity = opacity;
       card.style.zIndex = zIndex;
       card.style.filter = blur > 0.3 ? `blur(${blur}px)` : "none";
+
+      if (info) {
+        const infoY = y - CARD_SIZE / 2 - INFO_HEIGHT / 2 - 14;
+        info.style.transform = `translate(-50%, -50%) translate(${x}px, ${infoY}px) scale(${Math.max(scale, 0.85)})`;
+        info.style.opacity = opacity;
+        info.style.zIndex = zIndex;
+        info.style.filter = "none";
+      }
     }
 
     rafId.current = requestAnimationFrame(updateOrbit);
@@ -191,7 +207,10 @@ export default function SlideSoftware({ isActive }) {
       tl.to(center, { opacity: 1, scale: 1, duration: 1.1, ease: "back.out(1.3)" }, 0.4);
 
       cardRefs.current.forEach((c) => { if (c) gsap.set(c, { opacity: 0, scale: 0.4 }); });
-      tl.to(cardRefs.current.filter(Boolean), { opacity: 1, scale: 1, duration: 0.9, stagger: 0.12, ease: "back.out(1.5)" }, 0.7);
+      tl.to(cardRefs.current.filter(Boolean), { opacity: 1, scale: 1, duration: 0.9, stagger: 0.1, ease: "back.out(1.5)" }, 0.7);
+
+      infoRefs.current.forEach((c) => { if (c) gsap.set(c, { opacity: 0, y: 15 }); });
+      tl.to(infoRefs.current.filter(Boolean), { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "back.out(1.8)" }, 1.0);
     }
 
     gsap.set(counterRef.current, { opacity: 0 });
@@ -279,19 +298,12 @@ export default function SlideSoftware({ isActive }) {
                 </div>
               ))}
 
-              {/* Floating info cards - positioned at edges */}
+              {/* Floating info cards - attached to orbiting cards */}
               {INFO_CARDS.map((card, i) => (
                 <div
                   key={i}
-                  style={{
-                    ...S.infoCard,
-                    top: card.top,
-                    right: card.right,
-                    bottom: card.bottom,
-                    left: card.left,
-                  }}
-                  onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px) scale(1.03)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,0,0,0.12), 0 0 15px rgba(0,180,216,0.06)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(0,0,0,0.06), 0 0 10px rgba(0,180,216,0.03)"; }}
+                  ref={(el) => setInfoRef(el, i)}
+                  style={S.infoCard}
                 >
                   <div style={{ ...S.infoIcon, background: card.iconBg, borderColor: card.iconBorder }}>
                     {card.icon}
@@ -485,8 +497,8 @@ const S = {
   },
   composition: {
     position: "relative",
-    width: "clamp(440px, 48vw, 620px)",
-    height: "clamp(440px, 48vw, 620px)",
+    width: "clamp(460px, 50vw, 650px)",
+    height: "clamp(460px, 50vw, 650px)",
   },
   /* Background gradient blobs */
   bgBlob1: {
