@@ -328,8 +328,8 @@ export default function SlideWhyUs({ isActive }) {
               {/* Module cards - positioned around the laptop */}
               {MODULES.map((mod, i) => {
                 const positions = [
-                  { top: "0%", left: "5%" },
-                  { top: "0%", right: "2%" },
+                  { top: "2%", left: "0%" },
+                  { top: "-4%", right: "-10%" },
                   { top: "35%", left: "-18%" },
                   { top: "35%", right: "-16%" },
                   { bottom: "12%", left: "-8%" },
