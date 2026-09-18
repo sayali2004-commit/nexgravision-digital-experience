@@ -16,12 +16,7 @@ const CAROUSEL_LOGOS = [
   { id: "lkp", name: "LKP", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/LKP.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%)" },
 ];
 
-const BOTTOM_LOGOS = [
-  { id: "hcl", name: "HCL", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/LKP.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F8F8FF 100%)" },
-  { id: "reliance", name: "Reliance", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/Suryoday%20Icon.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F8 100%)" },
-  { id: "icici", name: "ICICI Bank", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/padmavati%20logo.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #FFFAF5 100%)" },
-  { id: "ibm", name: "IBM", img: "https://cglzadzphyxgiqwwuwle.supabase.co/storage/v1/object/public/Logo/SHRI%20VITTHAL.png", bg: "linear-gradient(135deg, #FFFFFF 0%, #F5F8FF 100%)" },
-];
+const BOTTOM_LOGOS = [];
 
 export default function SlideClients({ isActive }) {
   const logoRef = useRef(null);
@@ -235,18 +230,6 @@ export default function SlideClients({ isActive }) {
               <div style={S.lightBeamGlow} />
             </div>
 
-            {/* Navigation arrows */}
-            <button
-              onClick={() => { rotatePrev(); clearInterval(autoRotateRef.current); }}
-              style={S.navLeft}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(0,40,80,0.8)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.6)"; e.currentTarget.style.boxShadow = "0 0 25px rgba(0,180,216,0.3)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(0,20,40,0.5)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.25)"; e.currentTarget.style.boxShadow = "0 0 12px rgba(0,180,216,0.1)"; }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-            </button>
-
             {/* Carousel */}
             <div ref={carouselRef} style={S.carouselWrap}>
               <div style={S.carouselInner}>
@@ -294,50 +277,6 @@ export default function SlideClients({ isActive }) {
                 })}
               </div>
             </div>
-
-            <button
-              onClick={() => { rotateNext(); clearInterval(autoRotateRef.current); }}
-              style={S.navRight}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(0,40,80,0.8)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.6)"; e.currentTarget.style.boxShadow = "0 0 25px rgba(0,180,216,0.3)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(0,20,40,0.5)"; e.currentTarget.style.borderColor = "rgba(0,180,216,0.25)"; e.currentTarget.style.boxShadow = "0 0 12px rgba(0,180,216,0.1)"; }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Bottom logos */}
-          <div ref={bottomLogosRef} style={S.bottomRow}>
-            {BOTTOM_LOGOS.map((logo) => (
-              <div
-                key={logo.id}
-                style={S.bottomCard}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px) scale(1.03)"; e.currentTarget.style.boxShadow = "0 12px 35px rgba(0,0,0,0.4), 0 0 25px rgba(0,180,216,0.15)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.3), 0 0 15px rgba(0,180,216,0.08)"; }}
-              >
-                <div style={S.bottomCardContent}>
-                  {logo.img ? (
-                    <img
-                      src={logo.img}
-                      alt={logo.name}
-                      style={{
-                        maxWidth: "85%",
-                        maxHeight: "65px",
-                        width: "auto",
-                        objectFit: "contain",
-                        filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.15)) contrast(1.05)",
-                      }}
-                    />
-                  ) : (
-                    <div style={{ ...S.bottomLogoText, color: logo.textColor }}>
-                      {logo.name}
-                    </div>
-                  )}
-                  {logo.subtitle && <div style={S.bottomSubtitle}>{logo.subtitle}</div>}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
 
