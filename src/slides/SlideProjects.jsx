@@ -85,6 +85,13 @@ export default function SlideProjects({ isActive }) {
       <div style={S.container}>
         {/* Content */}
         <div style={S.contentArea}>
+          <div ref={tagRef} className="section-tag">{data.sectionTag}</div>
+          <h2 ref={headlineRef} style={S.headline}>
+            {data.headline}<br />
+            <span style={S.headlineAccent}>{data.headlineAccent}</span>
+          </h2>
+          <p ref={descRef} style={S.description}>{data.description}</p>
+
           <div ref={projectsRef} style={S.projectsRow}>
             {data.projects.map((proj, i) => (
               <div key={i} style={S.projectCard}>
@@ -173,12 +180,12 @@ const S = {
   },
   headline: {
     fontFamily: "var(--font-serif)",
-    fontSize: "clamp(28px, 3.5vw, 46px)",
+    fontSize: "clamp(22px, 2.8vw, 36px)",
     fontWeight: 700,
     color: "#FFFFFF",
     lineHeight: 1.15,
     letterSpacing: "-0.015em",
-    marginBottom: 12,
+    marginBottom: 8,
   },
   headlineAccent: {
     background: "linear-gradient(90deg, #7DD3FC 0%, #00B4D8 50%, #0284C7 100%)",
@@ -187,11 +194,11 @@ const S = {
   },
   description: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(13px, 1.3vw, 16px)",
+    fontSize: "clamp(11px, 1.1vw, 13px)",
     color: "#94A3B8",
-    lineHeight: 1.7,
-    maxWidth: 600,
-    marginBottom: 36,
+    lineHeight: 1.6,
+    maxWidth: 500,
+    marginBottom: 20,
   },
   projectsRow: {
     display: "grid",
