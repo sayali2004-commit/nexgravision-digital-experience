@@ -79,7 +79,7 @@ export default function SlideProjects({ isActive }) {
         {/* Header */}
         <div style={S.headerRow}>
           <div ref={logoRef}>
-            <BrandLogo size={42} />
+            <BrandLogo size={48} />
           </div>
           <div ref={topRightRef} style={S.topRight}>
             {data.topRight}

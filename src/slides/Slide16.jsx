@@ -53,7 +53,7 @@ export default function Slide16({ isActive }) {
         </p>
 
         <div ref={logoRef}>
-          <BrandLogo size={64} />
+          <BrandLogo size={48} />
         </div>
       </div>
 

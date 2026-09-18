@@ -68,7 +68,7 @@ export default function Slide01({ isActive, onNavigate }) {
 
       <div style={styles.container}>
         <div ref={logoRef} style={styles.logoRow}>
-          <BrandLogo size={64} />
+          <BrandLogo size={48} />
         </div>
 
         <div style={styles.bodyRow}>

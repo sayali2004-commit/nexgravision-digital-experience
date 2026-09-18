@@ -78,7 +78,7 @@ export default function SlideThankYou({ isActive }) {
         {/* Header */}
         <div style={S.headerRow}>
           <div style={{ opacity: 0 }}>
-            <BrandLogo size={42} />
+            <BrandLogo size={48} />
           </div>
           <div style={S.topRight}>
             Together We Grow
