@@ -374,6 +374,7 @@ const S = {
   featuresGrid: {
     display: "grid",
     gridTemplateColumns: "repeat(3, 1fr)",
+    gridAutoRows: "1fr",
     gap: "clamp(10px, 1.2vw, 16px)",
     width: "100%",
     maxWidth: 540,
@@ -389,7 +390,7 @@ const S = {
     boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
     transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
     cursor: "default",
-    minHeight: "clamp(68px, 8vh, 80px)",
+    height: "clamp(72px, 8.5vh, 84px)",
   },
   featureIconCircle: {
     width: 42,
@@ -406,8 +407,9 @@ const S = {
   featureTextCol: {
     display: "flex",
     flexDirection: "column",
-    gap: 3,
+    gap: 2,
     minWidth: 0,
+    overflow: "hidden",
   },
   featureTitle: {
     fontFamily: "var(--font-sans)",
@@ -415,12 +417,16 @@ const S = {
     fontWeight: 600,
     color: "#0F172A",
     lineHeight: 1.3,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
   featureSubtitle: {
     fontFamily: "var(--font-sans)",
     fontSize: "clamp(9px, 0.8vw, 11px)",
     color: "#64748B",
     lineHeight: 1.4,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
   rightCol: {
     flex: "1 1 440px",
