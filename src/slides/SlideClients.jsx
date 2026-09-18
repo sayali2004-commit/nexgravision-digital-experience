@@ -391,6 +391,7 @@ const S = {
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
+    marginTop: "-4vh",
   },
   sectionTag: {
     display: "flex",
