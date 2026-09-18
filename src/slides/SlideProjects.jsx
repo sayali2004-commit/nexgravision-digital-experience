@@ -63,9 +63,6 @@ export default function SlideProjects({ isActive }) {
     gsap.set(projectsRef.current, { opacity: 0, y: 40 });
     tl.to(projectsRef.current, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.6);
 
-    gsap.set(servicesRef.current, { opacity: 0, y: 20 });
-    tl.to(servicesRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.9);
-
     gsap.set(counterRef.current, { opacity: 0 });
     tl.to(counterRef.current, { opacity: 1, duration: 0.5 }, 1.0);
   }, [isActive]);
@@ -110,16 +107,6 @@ export default function SlideProjects({ isActive }) {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Bottom services */}
-        <div ref={servicesRef} style={S.servicesRow}>
-          {data.services.map((svc, i) => (
-            <div key={i} style={S.serviceItem}>
-              <div style={S.serviceIconWrap}>{serviceIcons[svc.icon]}</div>
-              <span style={S.serviceLabel}>{svc.label}</span>
-            </div>
-          ))}
         </div>
       </div>
 
