@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SLIDES } from "../config/content";
 import { BrandLogo } from "../config/assets";
@@ -6,102 +6,77 @@ import { BrandLogo } from "../config/assets";
 const data = SLIDES[1];
 
 const FEATURES = [
-  { icon: "gear", title: "Custom Software Development", subtitle: "Built for your unique needs" },
-  { icon: "cloud", title: "Cloud & SaaS Solutions", subtitle: "Flexible and scalable" },
+  { icon: "code", title: "Custom Software Development", subtitle: "Tailored to your needs" },
+  { icon: "cloud", title: "Cloud & Web Solutions", subtitle: "Secure & Scalable" },
   { icon: "mobile", title: "Mobile App Development", subtitle: "iOS & Android" },
-  { icon: "globe", title: "Web Solutions", subtitle: "Modern. Fast. Responsive." },
-  { icon: "pen", title: "UI/UX Design", subtitle: "Designs that engage" },
+  { icon: "pen", title: "UI/UX Design", subtitle: "Simple, Beautiful, Effective" },
   { icon: "headset", title: "Ongoing Support", subtitle: "Always with you" },
-];
-
-const ORBIT_IMAGES = [
-  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
-  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80",
-  "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=400&q=80",
-  "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=400&q=80",
-  "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=400&q=80",
+  { icon: "chart", title: "Digital Transformation", subtitle: "For a smarter tomorrow" },
 ];
 
 const INFO_CARDS = [
   {
     label: "Grow Faster",
     desc: "Scalable Solutions",
-    iconBg: "linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%)",
-    iconBorder: "rgba(16,185,129,0.3)",
+    iconBg: "linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)",
+    iconBorder: "rgba(59,130,246,0.3)",
     icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />
       </svg>
     ),
+    top: "8%",
+    left: "0%",
   },
   {
     label: "Work Smarter",
     desc: "Automate & Save Time",
-    iconBg: "linear-gradient(135deg, #F3E8FF 0%, #E9D5FF 100%)",
-    iconBorder: "rgba(124,58,237,0.3)",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 18h6" /><path d="M10 22h4" />
-        <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14" />
-      </svg>
-    ),
-  },
-  {
-    label: "Better Experience",
-    desc: "For Your Customers",
-    iconBg: "linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)",
+    iconBg: "linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)",
     iconBorder: "rgba(59,130,246,0.3)",
     icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" y1="9" x2="9.01" y2="9" /><line x1="15" y1="9" x2="15.01" y2="9" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
       </svg>
     ),
+    top: "4%",
+    right: "2%",
   },
   {
     label: "Secure & Reliable",
     desc: "Your Data, Our Priority",
-    iconBg: "linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%)",
-    iconBorder: "rgba(249,115,22,0.3)",
+    iconBg: "linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)",
+    iconBorder: "rgba(59,130,246,0.3)",
     icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" />
       </svg>
     ),
+    bottom: "18%",
+    left: "5%",
   },
   {
-    label: "24/7 Support",
-    desc: "Always With You",
-    iconBg: "linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%)",
-    iconBorder: "rgba(244,63,94,0.3)",
+    label: "Better Experience",
+    desc: "For Your Customers",
+    iconBg: "linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)",
+    iconBorder: "rgba(59,130,246,0.3)",
     icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F43F5E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 18v-6a9 9 0 0 1 18 0v6" /><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" /><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
       </svg>
     ),
+    bottom: "12%",
+    right: "0%",
   },
 ];
 
 const featureIcons = {
-  gear: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>,
-  cloud: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>,
-  mobile: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>,
-  globe: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>,
-  pen: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>,
-  headset: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>,
+  code: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>,
+  cloud: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>,
+  mobile: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>,
+  pen: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>,
+  headset: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>,
+  chart: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>,
 };
-
-const CARD_COUNT = 5;
-const ANGLE_STEP = 360 / CARD_COUNT;
-const ORBIT_RADIUS = 175;
-const CARD_SIZE = 120;
-const INFO_WIDTH = 155;
-const INFO_HEIGHT = 64;
-const INFO_OFFSET = 80;
-const SPEED = 0.12;
-const FRONT_SCALE = 1.15;
-const BACK_SCALE = 0.78;
-const FRONT_OPACITY = 1;
-const BACK_OPACITY = 0.45;
 
 export default function SlideSoftware({ isActive }) {
   const logoRef = useRef(null);
@@ -113,66 +88,6 @@ export default function SlideSoftware({ isActive }) {
   const compositionRef = useRef(null);
   const counterRef = useRef(null);
   const hasAnimated = useRef(false);
-
-  const cardRefs = useRef([]);
-  const infoRefs = useRef([]);
-  const orbitAngle = useRef(0);
-  const rafId = useRef(null);
-  const isRunning = useRef(false);
-
-  const setCardRef = useCallback((el, i) => { cardRefs.current[i] = el; }, []);
-  const setInfoRef = useCallback((el, i) => { infoRefs.current[i] = el; }, []);
-
-  const updateOrbit = useCallback(() => {
-    orbitAngle.current = (orbitAngle.current + SPEED) % 360;
-
-    for (let i = 0; i < CARD_COUNT; i++) {
-      const card = cardRefs.current[i];
-      const info = infoRefs.current[i];
-      if (!card) continue;
-
-      const rawAngle = i * ANGLE_STEP + orbitAngle.current;
-      const normalizedAngle = ((rawAngle % 360) + 360) % 360;
-      const rad = (normalizedAngle * Math.PI) / 180;
-
-      const x = Math.sin(rad) * ORBIT_RADIUS;
-      const y = -Math.cos(rad) * ORBIT_RADIUS;
-
-      const depthFactor = Math.cos(rad);
-      const t = (depthFactor + 1) / 2;
-      const scale = FRONT_SCALE + (BACK_SCALE - FRONT_SCALE) * (1 - t);
-      const opacity = FRONT_OPACITY + (BACK_OPACITY - FRONT_OPACITY) * (1 - t);
-      const zIndex = Math.round(t * 10);
-
-      const blur = (1 - t) * 2;
-
-      card.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${scale})`;
-      card.style.opacity = opacity;
-      card.style.zIndex = zIndex;
-      card.style.filter = blur > 0.3 ? `blur(${blur}px)` : "none";
-
-      if (info) {
-        const infoY = y - CARD_SIZE / 2 - INFO_HEIGHT / 2 - 14;
-        info.style.transform = `translate(-50%, -50%) translate(${x}px, ${infoY}px) scale(${Math.max(scale, 0.85)})`;
-        info.style.opacity = opacity;
-        info.style.zIndex = zIndex;
-        info.style.filter = "none";
-      }
-    }
-
-    rafId.current = requestAnimationFrame(updateOrbit);
-  }, []);
-
-  useEffect(() => {
-    if (isActive) {
-      isRunning.current = true;
-      rafId.current = requestAnimationFrame(updateOrbit);
-    }
-    return () => {
-      isRunning.current = false;
-      if (rafId.current) cancelAnimationFrame(rafId.current);
-    };
-  }, [isActive, updateOrbit]);
 
   useEffect(() => {
     if (!isActive || hasAnimated.current) return;
@@ -202,15 +117,15 @@ export default function SlideSoftware({ isActive }) {
 
     const comp = compositionRef.current;
     if (comp) {
-      const center = comp.querySelector('.center-circle');
-      gsap.set(center, { opacity: 0, scale: 0.5 });
-      tl.to(center, { opacity: 1, scale: 1, duration: 1.1, ease: "back.out(1.3)" }, 0.4);
+      const laptop = comp.querySelector('.laptop-wrap');
+      const phone = comp.querySelector('.phone-wrap');
+      const floats = comp.querySelectorAll('.float-el');
+      const infos = comp.querySelectorAll('.info-card-el');
 
-      cardRefs.current.forEach((c) => { if (c) gsap.set(c, { opacity: 0, scale: 0.4 }); });
-      tl.to(cardRefs.current.filter(Boolean), { opacity: 1, scale: 1, duration: 0.9, stagger: 0.1, ease: "back.out(1.5)" }, 0.7);
-
-      infoRefs.current.forEach((c) => { if (c) gsap.set(c, { opacity: 0, y: 15 }); });
-      tl.to(infoRefs.current.filter(Boolean), { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "back.out(1.8)" }, 1.0);
+      if (laptop) { gsap.set(laptop, { opacity: 0, y: 40, scale: 0.9 }); tl.to(laptop, { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "power3.out" }, 0.4); }
+      if (phone) { gsap.set(phone, { opacity: 0, y: 30, scale: 0.9 }); tl.to(phone, { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "power3.out" }, 0.6); }
+      if (floats.length) { gsap.set(floats, { opacity: 0, scale: 0.5 }); tl.to(floats, { opacity: 1, scale: 1, duration: 0.7, stagger: 0.08, ease: "back.out(1.5)" }, 0.7); }
+      if (infos.length) { gsap.set(infos, { opacity: 0, y: 15 }); tl.to(infos, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power3.out" }, 0.9); }
     }
 
     gsap.set(counterRef.current, { opacity: 0 });
@@ -225,8 +140,9 @@ export default function SlideSoftware({ isActive }) {
           <BrandLogo size={48} dark />
         </div>
         <div ref={topRightRef} style={S.topRightWrap}>
-          <div style={S.topRightLine} />
-          <span style={S.topRightText}>Trusted by Businesses Worldwide</span>
+          <span style={S.topRightText}>Smart Software</span>
+          <div style={S.topRightDivider} />
+          <span style={S.topRightText}>Better Business</span>
         </div>
       </div>
 
@@ -241,7 +157,7 @@ export default function SlideSoftware({ isActive }) {
               Our <span style={S.headlineAccent}>Customers</span>
             </h2>
             <p ref={descRef} style={S.description}>
-              We build custom, scalable and secure software solutions that solve real problems. Our technology helps businesses grow, improve efficiency and stay ahead in a competitive world — today and for what's next.
+              We build custom, scalable and user-friendly software solutions that solve real problems. Our technology helps businesses save time, reduce costs and achieve more — in today's fast-changing world.
             </p>
 
             <div ref={featuresRef} style={S.featuresGrid}>
@@ -249,7 +165,7 @@ export default function SlideSoftware({ isActive }) {
                 <div
                   key={i}
                   style={S.featureCard}
-                  onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(0,140,216,0.12)"; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(59,130,246,0.12)"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.04)"; }}
                 >
                   <div style={S.featureIconCircle}>{featureIcons[feat.icon]}</div>
@@ -262,48 +178,76 @@ export default function SlideSoftware({ isActive }) {
             </div>
           </div>
 
-          {/* RIGHT COLUMN - Circular Orbit Carousel */}
+          {/* RIGHT COLUMN - Laptop/Phone Composition */}
           <div style={S.rightCol}>
             <div ref={compositionRef} style={S.composition}>
-              {/* Background gradient shapes */}
+              {/* Background blobs */}
               <div style={S.bgBlob1} />
               <div style={S.bgBlob2} />
               <div style={S.bgBlob3} />
 
-              {/* Orbit ring decorations */}
-              <div style={S.orbitRingOuter} />
-              <div style={S.orbitRingMid} />
-              <div style={S.orbitRingInner} />
-
-              {/* Atmospheric glow */}
-              <div style={S.compGlow} />
-
-              {/* Center fixed hub */}
-              <div className="center-circle" style={S.centerCircle}>
-                <div style={S.centerGlowRing} />
-                <div style={S.centerPurpleRing} />
-                <img src="/LOGOIMG.png" alt="NexGravision" style={S.centerLogo} />
-                <div style={S.centerText}>NEXGRAVISION</div>
+              {/* Laptop */}
+              <div className="laptop-wrap" style={S.laptopWrap}>
+                <div style={S.laptopScreen}>
+                  <div style={S.laptopScreenInner}>
+                    {/* Code lines */}
+                    <div style={{ ...S.codeLine, width: "60%", background: "rgba(0,200,255,0.6)" }} />
+                    <div style={{ ...S.codeLine, width: "45%", background: "rgba(168,85,247,0.5)", marginLeft: 16 }} />
+                    <div style={{ ...S.codeLine, width: "70%", background: "rgba(59,130,246,0.5)", marginLeft: 8 }} />
+                    <div style={{ ...S.codeLine, width: "35%", background: "rgba(16,185,129,0.5)", marginLeft: 24 }} />
+                    <div style={{ ...S.codeLine, width: "55%", background: "rgba(0,200,255,0.4)", marginLeft: 12 }} />
+                    <div style={{ ...S.codeLine, width: "40%", background: "rgba(249,115,22,0.4)", marginLeft: 20 }} />
+                    <div style={{ ...S.codeLine, width: "65%", background: "rgba(59,130,246,0.4)", marginLeft: 8 }} />
+                    <div style={{ ...S.codeLine, width: "30%", background: "rgba(168,85,247,0.4)", marginLeft: 16 }} />
+                  </div>
+                </div>
+                <div style={S.laptopBase} />
               </div>
 
-              {/* Orbiting image cards */}
-              {ORBIT_IMAGES.map((img, i) => (
-                <div
-                  key={i}
-                  ref={(el) => setCardRef(el, i)}
-                  style={S.orbitCard}
-                >
-                  <div style={S.orbitCardRing} />
-                  <img src={img} alt={`Team ${i + 1}`} style={S.orbitCardImg} />
+              {/* Phone */}
+              <div className="phone-wrap" style={S.phoneWrap}>
+                <div style={S.phoneScreen}>
+                  <div style={S.phoneNotch} />
+                  <div style={S.phoneContent}>
+                    <div style={{ ...S.phoneBar, width: "70%", background: "rgba(59,130,246,0.5)" }} />
+                    <div style={{ ...S.phoneBar, width: "50%", background: "rgba(168,85,247,0.4)" }} />
+                    <div style={S.phoneCircle} />
+                    <div style={{ ...S.phoneBar, width: "80%", background: "rgba(0,200,255,0.4)" }} />
+                  </div>
                 </div>
-              ))}
+              </div>
 
-              {/* Floating info cards - attached to orbiting cards */}
+              {/* Floating UI elements */}
+              <div className="float-el" style={S.floatCode}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>
+              </div>
+              <div className="float-el" style={S.floatCloud}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+              </div>
+              <div className="float-el" style={S.floatChart}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="12" width="4" height="9" /><rect x="10" y="7" width="4" height="14" /><rect x="17" y="3" width="4" height="18" /></svg>
+              </div>
+
+              {/* Plant */}
+              <div style={S.plantWrap}>
+                <div style={S.plantPot} />
+                <div style={S.plantLeaf1} />
+                <div style={S.plantLeaf2} />
+                <div style={S.plantLeaf3} />
+              </div>
+
+              {/* Info cards */}
               {INFO_CARDS.map((card, i) => (
                 <div
                   key={i}
-                  ref={(el) => setInfoRef(el, i)}
-                  style={S.infoCard}
+                  className="info-card-el"
+                  style={{
+                    ...S.infoCard,
+                    top: card.top,
+                    right: card.right,
+                    bottom: card.bottom,
+                    left: card.left,
+                  }}
                 >
                   <div style={{ ...S.infoIcon, background: card.iconBg, borderColor: card.iconBorder }}>
                     {card.icon}
@@ -361,27 +305,27 @@ const S = {
     right: 0,
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "flex-start",
+    alignItems: "center",
     padding: "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
     zIndex: 20,
   },
   topRightWrap: {
     display: "flex",
     alignItems: "center",
-    gap: 14,
-  },
-  topRightLine: {
-    width: 48,
-    height: 2,
-    background: "linear-gradient(90deg, transparent, #00B4D8)",
-    borderRadius: 1,
+    gap: 16,
   },
   topRightText: {
     fontFamily: "var(--font-mono)",
-    fontSize: "clamp(11px, 1.1vw, 14px)",
+    fontSize: "clamp(12px, 1.1vw, 14px)",
     fontWeight: 500,
     color: "#64748B",
     letterSpacing: "0.05em",
+  },
+  topRightDivider: {
+    width: 2,
+    height: 16,
+    background: "rgba(0,180,216,0.3)",
+    borderRadius: 1,
   },
   bodyRow: {
     display: "flex",
@@ -403,7 +347,7 @@ const S = {
     fontFamily: "var(--font-mono)",
     fontSize: "clamp(12px, 1.1vw, 14px)",
     fontWeight: 600,
-    color: "#00B4D8",
+    color: "#3B82F6",
     letterSpacing: "0.22em",
     textTransform: "uppercase",
     marginBottom: 12,
@@ -446,7 +390,7 @@ const S = {
     padding: "clamp(20px, 2.2vw, 28px)",
     borderRadius: 16,
     background: "rgba(255,255,255,0.85)",
-    border: "1px solid rgba(0,180,216,0.08)",
+    border: "1px solid rgba(59,130,246,0.08)",
     boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
     transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
     cursor: "default",
@@ -457,8 +401,8 @@ const S = {
     height: 62,
     minWidth: 62,
     borderRadius: "50%",
-    background: "linear-gradient(135deg, #EFF8FF 0%, #E0F2FE 100%)",
-    border: "1px solid rgba(0,180,216,0.12)",
+    background: "linear-gradient(135deg, #EFF8FF 0%, #DBEAFE 100%)",
+    border: "1px solid rgba(59,130,246,0.15)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -477,50 +421,46 @@ const S = {
     fontWeight: 600,
     color: "#0F172A",
     lineHeight: 1.3,
-    overflow: "hidden",
-    textOverflow: "ellipsis",
   },
   featureSubtitle: {
     fontFamily: "var(--font-sans)",
     fontSize: "clamp(11px, 1vw, 13px)",
     color: "#64748B",
     lineHeight: 1.4,
-    overflow: "hidden",
-    textOverflow: "ellipsis",
   },
   rightCol: {
-    flex: "1 1 440px",
+    flex: "1 1 480px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    minHeight: 480,
+    minHeight: 500,
   },
   composition: {
     position: "relative",
-    width: "clamp(460px, 50vw, 650px)",
-    height: "clamp(460px, 50vw, 650px)",
+    width: "clamp(480px, 52vw, 680px)",
+    height: "clamp(420px, 46vw, 580px)",
   },
-  /* Background gradient blobs */
+  /* Background blobs */
   bgBlob1: {
     position: "absolute",
-    top: "-5%",
-    left: "10%",
-    width: "55%",
-    height: "50%",
+    top: "5%",
+    right: "0%",
+    width: "60%",
+    height: "55%",
     borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%)",
+    background: "radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%)",
     filter: "blur(40px)",
     pointerEvents: "none",
   },
   bgBlob2: {
     position: "absolute",
-    bottom: "0%",
-    right: "5%",
+    bottom: "5%",
+    left: "10%",
     width: "50%",
-    height: "45%",
+    height: "50%",
     borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(120,80,220,0.06) 0%, transparent 70%)",
+    background: "radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%)",
     filter: "blur(35px)",
     pointerEvents: "none",
   },
@@ -529,163 +469,201 @@ const S = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "80%",
-    height: "80%",
-    borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(0,180,216,0.04) 0%, transparent 60%)",
-    filter: "blur(50px)",
-    pointerEvents: "none",
-  },
-  /* Orbit ring decorations */
-  orbitRingOuter: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    width: ORBIT_RADIUS * 2 + CARD_SIZE + 20,
-    height: ORBIT_RADIUS * 2 + CARD_SIZE + 20,
-    borderRadius: "50%",
-    border: "1.5px solid rgba(0,180,216,0.15)",
-    boxShadow: "0 0 25px rgba(0,180,216,0.06), inset 0 0 25px rgba(0,180,216,0.03)",
-    transform: "translate(-50%, -50%)",
-    pointerEvents: "none",
-  },
-  orbitRingMid: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    width: ORBIT_RADIUS * 2 - 10,
-    height: ORBIT_RADIUS * 2 - 10,
-    borderRadius: "50%",
-    border: "1px solid rgba(0,180,216,0.12)",
-    boxShadow: "0 0 18px rgba(0,180,216,0.04), inset 0 0 18px rgba(0,180,216,0.02)",
-    transform: "translate(-50%, -50%)",
-    pointerEvents: "none",
-  },
-  orbitRingInner: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    width: ORBIT_RADIUS * 2 - CARD_SIZE - 30,
-    height: ORBIT_RADIUS * 2 - CARD_SIZE - 30,
-    borderRadius: "50%",
-    border: "1px solid rgba(120,80,220,0.08)",
-    boxShadow: "0 0 12px rgba(120,80,220,0.04), inset 0 0 12px rgba(120,80,220,0.02)",
-    transform: "translate(-50%, -50%)",
-    pointerEvents: "none",
-  },
-  /* Atmospheric glow */
-  compGlow: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
     width: "70%",
     height: "70%",
     borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(0,180,216,0.06) 0%, rgba(0,140,220,0.03) 40%, transparent 70%)",
-    filter: "blur(30px)",
+    background: "radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 60%)",
+    filter: "blur(50px)",
     pointerEvents: "none",
-    zIndex: 0,
   },
-  /* Center hub */
-  centerCircle: {
+  /* Laptop */
+  laptopWrap: {
     position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "clamp(140px, 16vw, 200px)",
-    height: "clamp(140px, 16vw, 200px)",
-    borderRadius: "50%",
-    background: "linear-gradient(145deg, #0B1120 0%, #162032 50%, #0F172A 100%)",
+    top: "18%",
+    left: "15%",
+    width: "clamp(280px, 30vw, 400px)",
+    zIndex: 3,
+  },
+  laptopScreen: {
+    width: "100%",
+    height: "clamp(180px, 20vw, 260px)",
+    background: "linear-gradient(135deg, #0B1120 0%, #1A1F35 100%)",
+    borderRadius: "12px 12px 0 0",
+    border: "3px solid #2A3050",
+    padding: 12,
+    overflow: "hidden",
+    boxShadow: "0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(59,130,246,0.15)",
+  },
+  laptopScreenInner: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
     gap: 6,
-    zIndex: 5,
-    boxShadow: "0 25px 70px rgba(0,0,0,0.25), 0 0 60px rgba(0,180,216,0.18), 0 0 100px rgba(120,80,220,0.08)",
+    paddingTop: 8,
   },
-  centerGlowRing: {
+  codeLine: {
+    height: 4,
+    borderRadius: 2,
+  },
+  laptopBase: {
+    width: "110%",
+    height: 12,
+    background: "linear-gradient(180deg, #3A4060 0%, #2A3050 100%)",
+    borderRadius: "0 0 8px 8px",
+    marginLeft: "-5%",
+    boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
+  },
+  /* Phone */
+  phoneWrap: {
     position: "absolute",
-    inset: -10,
-    borderRadius: "50%",
-    border: "3px solid rgba(0,180,216,0.55)",
-    boxShadow: "0 0 35px rgba(0,180,216,0.45), 0 0 70px rgba(0,180,216,0.18), inset 0 0 25px rgba(0,180,216,0.12)",
-    pointerEvents: "none",
-    animation: "core-pulse 3s ease-in-out infinite",
+    top: "25%",
+    right: "15%",
+    width: "clamp(80px, 8vw, 110px)",
+    zIndex: 4,
   },
-  centerPurpleRing: {
+  phoneScreen: {
+    width: "100%",
+    height: "clamp(160px, 17vw, 220px)",
+    background: "linear-gradient(180deg, #1E293B 0%, #0F172A 100%)",
+    borderRadius: 16,
+    border: "3px solid #334155",
+    padding: 8,
+    position: "relative",
+    overflow: "hidden",
+    boxShadow: "0 15px 40px rgba(0,0,0,0.3), 0 0 25px rgba(59,130,246,0.1)",
+  },
+  phoneNotch: {
+    width: "40%",
+    height: 6,
+    background: "#1A1F35",
+    borderRadius: 4,
+    margin: "0 auto 8px",
+  },
+  phoneContent: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 6,
+    alignItems: "center",
+  },
+  phoneBar: {
+    height: 3,
+    borderRadius: 2,
+  },
+  phoneCircle: {
+    width: 30,
+    height: 30,
+    borderRadius: "50%",
+    background: "linear-gradient(135deg, rgba(59,130,246,0.3) 0%, rgba(168,85,247,0.3) 100%)",
+    margin: "4px 0",
+  },
+  /* Floating UI elements */
+  floatCode: {
     position: "absolute",
-    inset: -20,
-    borderRadius: "50%",
-    border: "1.5px solid rgba(120,80,220,0.25)",
-    boxShadow: "0 0 20px rgba(120,80,220,0.15), inset 0 0 15px rgba(120,80,220,0.06)",
-    pointerEvents: "none",
-  },
-  centerLogo: {
+    top: "22%",
+    left: "35%",
     width: 52,
     height: 52,
-    objectFit: "contain",
-    filter: "drop-shadow(0 0 18px rgba(0,180,216,0.55))",
+    borderRadius: 14,
+    background: "rgba(255,255,255,0.95)",
+    border: "1px solid rgba(59,130,246,0.15)",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 6,
   },
-  centerText: {
-    fontFamily: "var(--font-mono)",
-    fontSize: "clamp(9px, 0.9vw, 12px)",
-    fontWeight: 700,
-    color: "#7DD3FC",
-    letterSpacing: "0.2em",
-  },
-  /* Orbiting image cards */
-  orbitCard: {
+  floatCloud: {
     position: "absolute",
-    top: "50%",
+    top: "35%",
+    right: "8%",
+    width: 52,
+    height: 52,
+    borderRadius: 14,
+    background: "rgba(255,255,255,0.95)",
+    border: "1px solid rgba(59,130,246,0.15)",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 6,
+  },
+  floatChart: {
+    position: "absolute",
+    bottom: "30%",
+    left: "8%",
+    width: 52,
+    height: 52,
+    borderRadius: 14,
+    background: "rgba(255,255,255,0.95)",
+    border: "1px solid rgba(59,130,246,0.15)",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 6,
+  },
+  /* Plant */
+  plantWrap: {
+    position: "absolute",
+    bottom: "20%",
+    right: "5%",
+    zIndex: 5,
+  },
+  plantPot: {
+    width: 30,
+    height: 24,
+    background: "linear-gradient(180deg, #D4A574 0%, #B8865A 100%)",
+    borderRadius: "0 0 6px 6px",
+    margin: "0 auto",
+  },
+  plantLeaf1: {
+    width: 14,
+    height: 20,
+    background: "#22C55E",
+    borderRadius: "50% 0 50% 0",
+    position: "absolute",
+    top: -16,
     left: "50%",
-    width: CARD_SIZE,
-    height: CARD_SIZE,
-    borderRadius: "50%",
-    overflow: "hidden",
-    border: "3px solid rgba(255,255,255,0.92)",
-    boxShadow: "0 14px 45px rgba(0,0,0,0.22), 0 0 20px rgba(0,180,216,0.1)",
-    zIndex: 4,
-    willChange: "transform, opacity, filter, z-index",
-    pointerEvents: "none",
-    transform: "translate(-50%, -50%)",
-    transition: "box-shadow 0.3s ease",
+    transform: "translateX(-50%) rotate(-15deg)",
   },
-  orbitCardRing: {
+  plantLeaf2: {
+    width: 12,
+    height: 18,
+    background: "#16A34A",
+    borderRadius: "0 50% 0 50%",
     position: "absolute",
-    inset: -6,
-    borderRadius: "50%",
-    border: "1.5px solid rgba(0,180,216,0.2)",
-    boxShadow: "0 0 12px rgba(0,180,216,0.1)",
-    pointerEvents: "none",
+    top: -14,
+    left: "30%",
+    transform: "rotate(20deg)",
   },
-  orbitCardImg: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
+  plantLeaf3: {
+    width: 12,
+    height: 18,
+    background: "#4ADE80",
+    borderRadius: "50% 0 50% 0",
+    position: "absolute",
+    top: -12,
+    left: "65%",
+    transform: "rotate(-25deg)",
   },
-  /* Floating info cards - positioned at edges */
+  /* Info cards */
   infoCard: {
     position: "absolute",
     display: "flex",
     alignItems: "center",
     gap: 10,
-    padding: "12px 14px",
+    padding: "12px 16px",
     borderRadius: 14,
     background: "rgba(255,255,255,0.96)",
-    border: "1px solid rgba(0,180,216,0.08)",
-    boxShadow: "0 6px 24px rgba(0,0,0,0.06), 0 0 10px rgba(0,180,216,0.03)",
+    border: "1px solid rgba(59,130,246,0.1)",
+    boxShadow: "0 6px 24px rgba(0,0,0,0.06), 0 0 10px rgba(59,130,246,0.03)",
     backdropFilter: "blur(10px)",
     zIndex: 10,
     whiteSpace: "nowrap",
-    transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
-    cursor: "default",
   },
   infoIcon: {
-    width: 38,
-    height: 38,
-    minWidth: 38,
+    width: 40,
+    height: 40,
+    minWidth: 40,
     borderRadius: "50%",
     border: "1px solid",
     display: "flex",
@@ -697,18 +675,17 @@ const S = {
     display: "flex",
     flexDirection: "column",
     gap: 1,
-    minWidth: 0,
   },
   infoLabel: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(11px, 1vw, 13px)",
+    fontSize: "clamp(12px, 1.1vw, 14px)",
     fontWeight: 600,
     color: "#0F172A",
     lineHeight: 1.3,
   },
   infoDesc: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(9px, 0.8vw, 11px)",
+    fontSize: "clamp(10px, 0.9vw, 12px)",
     color: "#64748B",
     lineHeight: 1.3,
   },
@@ -734,14 +711,14 @@ const S = {
     width: 44,
     height: 3,
     borderRadius: 2,
-    background: "rgba(0,180,216,0.12)",
+    background: "rgba(59,130,246,0.12)",
     overflow: "hidden",
   },
   counterFill: {
     width: "40%",
     height: "100%",
     borderRadius: 2,
-    background: "linear-gradient(90deg, #0284C7, #00B4D8)",
-    boxShadow: "0 0 8px rgba(0,180,216,0.5)",
+    background: "linear-gradient(90deg, #2563EB, #3B82F6)",
+    boxShadow: "0 0 8px rgba(59,130,246,0.5)",
   },
 };
