@@ -85,13 +85,6 @@ export default function SlideProjects({ isActive }) {
       <div style={S.container}>
         {/* Content */}
         <div style={S.contentArea}>
-          <div ref={tagRef} className="section-tag">{data.sectionTag}</div>
-          <h2 ref={headlineRef} style={S.headline}>
-            {data.headline}<br />
-            <span style={S.headlineAccent}>{data.headlineAccent}</span>
-          </h2>
-          <p ref={descRef} style={S.description}>{data.description}</p>
-
           <div ref={projectsRef} style={S.projectsRow}>
             {data.projects.map((proj, i) => (
               <div key={i} style={S.projectCard}>
@@ -175,6 +168,8 @@ const S = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
   },
   headline: {
     fontFamily: "var(--font-serif)",
@@ -203,6 +198,9 @@ const S = {
     gridTemplateColumns: "repeat(3, 1fr)",
     gap: "clamp(16px, 2vw, 28px)",
     width: "100%",
+    maxWidth: 1200,
+    height: "100%",
+    alignItems: "center",
   },
   projectCard: {
     borderRadius: 16,
@@ -210,12 +208,16 @@ const S = {
     background: "rgba(16,24,40,0.6)",
     border: "1px solid rgba(255,255,255,0.06)",
     transition: "all 0.3s ease",
+    height: "clamp(320px, 50vh, 460px)",
+    display: "flex",
+    flexDirection: "column",
   },
   projectImageWrap: {
     width: "100%",
-    height: "clamp(140px, 18vh, 200px)",
+    height: "55%",
     overflow: "hidden",
     position: "relative",
+    flexShrink: 0,
   },
   projectImage: {
     width: "100%",
@@ -229,25 +231,30 @@ const S = {
     background: "linear-gradient(180deg, transparent 40%, rgba(8,13,26,0.8) 100%)",
   },
   projectInfo: {
-    padding: "clamp(14px, 1.5vw, 20px)",
+    padding: "clamp(16px, 2vw, 24px)",
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
   },
   projectTitle: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(14px, 1.3vw, 17px)",
+    fontSize: "clamp(16px, 1.5vw, 20px)",
     fontWeight: 600,
     color: "#FFFFFF",
-    marginBottom: 8,
+    marginBottom: 10,
   },
   projectDesc: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(11px, 1vw, 13px)",
+    fontSize: "clamp(12px, 1.1vw, 14px)",
     color: "#94A3B8",
-    lineHeight: 1.6,
-    marginBottom: 12,
+    lineHeight: 1.7,
+    marginBottom: 16,
+    flex: 1,
   },
   projectLink: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(11px, 1vw, 13px)",
+    fontSize: "clamp(12px, 1.1vw, 14px)",
     fontWeight: 600,
     color: "#00B4D8",
     cursor: "pointer",
