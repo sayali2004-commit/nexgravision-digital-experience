@@ -111,13 +111,13 @@ export default function SlideClients({ isActive }) {
     let scale, tx, tz, opacity, zIndex, rotateY;
 
     if (isCenter) {
-      scale = 1.3; tx = 0; tz = 80; opacity = 1; zIndex = 10; rotateY = 0;
+      scale = 1.5; tx = 0; tz = 100; opacity = 1; zIndex = 10; rotateY = 0;
     } else if (isNear) {
-      scale = 0.95; tx = diff * 240; tz = 20; opacity = 0.92; zIndex = 6; rotateY = diff * -8;
+      scale = 1.0; tx = diff * 260; tz = 30; opacity = 0.95; zIndex = 6; rotateY = diff * -8;
     } else if (isMid) {
-      scale = 0.7; tx = diff * 270; tz = -20; opacity = 0.55; zIndex = 3; rotateY = diff * -12;
+      scale = 0.72; tx = diff * 290; tz = -10; opacity = 0.6; zIndex = 3; rotateY = diff * -12;
     } else {
-      scale = 0.5; tx = diff * 280; tz = -60; opacity = 0.2; zIndex = 1; rotateY = diff * -16;
+      scale = 0.52; tx = diff * 300; tz = -50; opacity = 0.25; zIndex = 1; rotateY = diff * -16;
     }
 
     return {
@@ -253,26 +253,17 @@ export default function SlideClients({ isActive }) {
                             src={logo.img}
                             alt={logo.name}
                             style={{
-                              width: isActiveCard ? "clamp(36px, 4vw, 50px)" : "clamp(26px, 2.8vw, 36px)",
-                              height: isActiveCard ? "clamp(36px, 4vw, 50px)" : "clamp(26px, 2.8vw, 36px)",
+                              width: isActiveCard ? "clamp(80px, 9vw, 120px)" : "clamp(50px, 5.5vw, 75px)",
+                              height: isActiveCard ? "clamp(80px, 9vw, 120px)" : "clamp(50px, 5.5vw, 75px)",
                               objectFit: "contain",
-                              filter: isActiveCard ? "drop-shadow(0 3px 10px rgba(0,0,0,0.2)) contrast(1.1)" : "drop-shadow(0 2px 6px rgba(0,0,0,0.15)) contrast(1.05)",
-                              flexShrink: 0,
+                              filter: isActiveCard ? "drop-shadow(0 4px 12px rgba(0,0,0,0.2)) contrast(1.1)" : "drop-shadow(0 2px 8px rgba(0,0,0,0.15)) contrast(1.05)",
                             }}
                           />
                         ) : (
-                          <div style={{ ...S.logoText, color: logo.textColor, fontSize: isActiveCard ? "clamp(22px, 2.5vw, 32px)" : "clamp(14px, 1.5vw, 20px)" }}>
+                          <div style={{ ...S.logoText, color: logo.textColor, fontSize: isActiveCard ? "clamp(28px, 3.5vw, 42px)" : "clamp(16px, 1.8vw, 24px)" }}>
                             {logo.name}
                           </div>
                         )}
-                        <div style={S.cardNameWrap}>
-                          <div style={{ ...S.cardName, fontSize: isActiveCard ? "clamp(14px, 1.4vw, 18px)" : "clamp(11px, 1.1vw, 14px)", color: isActiveCard ? "#FFFFFF" : "rgba(255,255,255,0.9)" }}>
-                            {logo.name}
-                          </div>
-                          {isActiveCard && (
-                            <div style={S.cardSubtext}>Trusted Partner</div>
-                          )}
-                        </div>
                       </div>
                     </div>
                   );
@@ -577,9 +568,9 @@ const S = {
   },
   card: {
     position: "absolute",
-    width: "clamp(160px, 18vw, 240px)",
-    height: "clamp(60px, 6.5vw, 85px)",
-    borderRadius: 14,
+    width: "clamp(180px, 20vw, 280px)",
+    height: "clamp(110px, 12vw, 170px)",
+    borderRadius: 18,
     border: "1.5px solid rgba(255,255,255,0.2)",
     display: "flex",
     alignItems: "center",
@@ -591,29 +582,29 @@ const S = {
   activeCardBorder: {
     position: "absolute",
     inset: -2,
-    borderRadius: 16,
+    borderRadius: 20,
     border: "2px solid rgba(0,180,216,0.7)",
-    boxShadow: "0 0 35px rgba(0,180,216,0.4), inset 0 0 30px rgba(0,180,216,0.1)",
+    boxShadow: "0 0 40px rgba(0,180,216,0.5), inset 0 0 30px rgba(0,180,216,0.1)",
     pointerEvents: "none",
     animation: "ring-pulse 2s ease-in-out infinite",
   },
   cardContent: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: 10,
-    padding: "8px 16px",
+    gap: 3,
+    padding: "10px 14px",
     width: "100%",
     height: "100%",
   },
   cardContentCenter: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: 12,
-    padding: "10px 20px",
+    gap: 4,
+    padding: "12px 18px",
     width: "100%",
     height: "100%",
   },
