@@ -111,13 +111,13 @@ export default function SlideClients({ isActive }) {
     let scale, tx, tz, opacity, zIndex, rotateY;
 
     if (isCenter) {
-      scale = 1.5; tx = 0; tz = 100; opacity = 1; zIndex = 10; rotateY = 0;
+      scale = 1.25; tx = 0; tz = 80; opacity = 1; zIndex = 10; rotateY = 0;
     } else if (isNear) {
-      scale = 1.0; tx = diff * 260; tz = 30; opacity = 0.95; zIndex = 6; rotateY = diff * -8;
+      scale = 0.92; tx = diff * 250; tz = 20; opacity = 1; zIndex = 6; rotateY = diff * -8;
     } else if (isMid) {
-      scale = 0.72; tx = diff * 290; tz = -10; opacity = 0.6; zIndex = 3; rotateY = diff * -12;
+      scale = 0.68; tx = diff * 270; tz = -15; opacity = 0.85; zIndex = 3; rotateY = diff * -12;
     } else {
-      scale = 0.52; tx = diff * 300; tz = -50; opacity = 0.25; zIndex = 1; rotateY = diff * -16;
+      scale = 0.5; tx = diff * 280; tz = -50; opacity = 0.5; zIndex = 1; rotateY = diff * -16;
     }
 
     return {
@@ -253,22 +253,19 @@ export default function SlideClients({ isActive }) {
                             src={logo.img}
                             alt={logo.name}
                             style={{
-                              width: isActiveCard ? "clamp(60px, 7vw, 90px)" : "clamp(40px, 4.5vw, 60px)",
-                              height: isActiveCard ? "clamp(60px, 7vw, 90px)" : "clamp(40px, 4.5vw, 60px)",
+                              width: isActiveCard ? "clamp(55px, 6vw, 80px)" : "clamp(36px, 4vw, 52px)",
+                              height: isActiveCard ? "clamp(55px, 6vw, 80px)" : "clamp(36px, 4vw, 52px)",
                               objectFit: "contain",
-                              filter: isActiveCard ? "drop-shadow(0 4px 12px rgba(0,0,0,0.2)) contrast(1.1)" : "drop-shadow(0 2px 8px rgba(0,0,0,0.15)) contrast(1.05)",
-                              flexShrink: 0,
+                              filter: isActiveCard ? "drop-shadow(0 3px 8px rgba(0,0,0,0.15))" : "drop-shadow(0 2px 5px rgba(0,0,0,0.1))",
                             }}
                           />
                         ) : (
-                          <div style={{ ...S.logoText, color: logo.textColor, fontSize: isActiveCard ? "clamp(28px, 3.5vw, 42px)" : "clamp(16px, 1.8vw, 24px)" }}>
+                          <div style={{ ...S.logoText, color: "#1E293B", fontSize: isActiveCard ? "clamp(26px, 3vw, 38px)" : "clamp(14px, 1.5vw, 20px)" }}>
                             {logo.name}
                           </div>
                         )}
-                        <div style={S.cardNameWrap}>
-                          <div style={{ ...S.cardName, fontSize: isActiveCard ? "clamp(16px, 1.6vw, 22px)" : "clamp(12px, 1.2vw, 16px)", color: isActiveCard ? "#FFFFFF" : "rgba(255,255,255,0.9)" }}>
-                            {logo.name}
-                          </div>
+                        <div style={{ ...S.cardName, fontSize: isActiveCard ? "clamp(13px, 1.3vw, 17px)" : "clamp(10px, 1vw, 13px)", color: isActiveCard ? "#1E293B" : "#334155" }}>
+                          {logo.name}
                         </div>
                       </div>
                     </div>
@@ -596,21 +593,21 @@ const S = {
   },
   cardContent: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: 10,
+    gap: 6,
     padding: "10px 14px",
     width: "100%",
     height: "100%",
   },
   cardContentCenter: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: 14,
-    padding: "12px 20px",
+    gap: 8,
+    padding: "14px 20px",
     width: "100%",
     height: "100%",
   },
@@ -621,20 +618,16 @@ const S = {
     lineHeight: 1.1,
     transition: "font-size 0.6s ease",
   },
-  cardNameWrap: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 1,
-    minWidth: 0,
-  },
   cardName: {
     fontFamily: "var(--font-sans)",
-    fontWeight: 700,
+    fontWeight: 600,
     lineHeight: 1.2,
     transition: "all 0.6s ease",
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
+    textAlign: "center",
+    letterSpacing: "0.01em",
   },
   cardSubtext: {
     fontFamily: "var(--font-sans)",
