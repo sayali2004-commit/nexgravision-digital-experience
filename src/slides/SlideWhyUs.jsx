@@ -328,12 +328,12 @@ export default function SlideWhyUs({ isActive }) {
               {/* Module cards - positioned around the laptop */}
               {MODULES.map((mod, i) => {
                 const positions = [
-                  { top: "-2%", left: "10%" },
-                  { top: "2%", right: "-2%" },
-                  { top: "32%", left: "-14%" },
-                  { top: "30%", right: "-12%" },
-                  { bottom: "2%", left: "-4%" },
-                  { bottom: "-2%", right: "0%" },
+                  { top: "0%", left: "5%" },
+                  { top: "0%", right: "2%" },
+                  { top: "35%", left: "-18%" },
+                  { top: "35%", right: "-16%" },
+                  { bottom: "12%", left: "-8%" },
+                  { bottom: "12%", right: "-4%" },
                 ];
                 const pos = positions[i];
                 const colors = ["#3B82F6", "#8B5CF6", "#EC4899", "#10B981", "#F59E0B", "#06B6D4"];
@@ -595,7 +595,7 @@ const S = {
   composition: {
     position: "relative",
     width: "clamp(480px, 55vw, 680px)",
-    height: "clamp(480px, 55vw, 620px)",
+    height: "clamp(500px, 58vw, 650px)",
   },
   connLines: {
     position: "absolute",
@@ -644,7 +644,7 @@ const S = {
   /* Laptop mockup */
   laptopWrap: {
     position: "absolute",
-    top: "18%",
+    top: "22%",
     left: "50%",
     transform: "translateX(-50%)",
     width: "clamp(260px, 30vw, 380px)",
@@ -827,8 +827,8 @@ const S = {
   /* Plant pot */
   plantWrap: {
     position: "absolute",
-    bottom: "18%",
-    left: "2%",
+    bottom: "22%",
+    left: "4%",
     zIndex: 4,
   },
   plantPot: {
