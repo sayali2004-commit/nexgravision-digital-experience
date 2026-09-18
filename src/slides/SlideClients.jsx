@@ -114,13 +114,13 @@ export default function SlideClients({ isActive }) {
     let scale, tx, tz, opacity, zIndex, rotateY;
 
     if (isCenter) {
-      scale = 1.5; tx = 0; tz = 100; opacity = 1; zIndex = 10; rotateY = 0;
+      scale = 1.4; tx = 0; tz = 80; opacity = 1; zIndex = 10; rotateY = 0;
     } else if (isNear) {
-      scale = 1.05; tx = diff * 230; tz = 30; opacity = 0.92; zIndex = 6; rotateY = diff * -10;
+      scale = 1.0; tx = diff * 190; tz = 20; opacity = 0.92; zIndex = 6; rotateY = diff * -10;
     } else if (isMid) {
-      scale = 0.75; tx = diff * 270; tz = -20; opacity = 0.55; zIndex = 3; rotateY = diff * -14;
+      scale = 0.7; tx = diff * 220; tz = -20; opacity = 0.55; zIndex = 3; rotateY = diff * -14;
     } else {
-      scale = 0.5; tx = diff * 280; tz = -70; opacity = 0.2; zIndex = 1; rotateY = diff * -18;
+      scale = 0.45; tx = diff * 230; tz = -60; opacity = 0.2; zIndex = 1; rotateY = diff * -18;
     }
 
     return {
@@ -466,7 +466,7 @@ const S = {
     position: "relative",
     width: "100%",
     maxWidth: 1050,
-    height: "clamp(220px, 32vh, 370px)",
+    height: "clamp(180px, 26vh, 300px)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -599,8 +599,8 @@ const S = {
   },
   card: {
     position: "absolute",
-    width: "clamp(130px, 15vw, 200px)",
-    height: "clamp(130px, 15vw, 200px)",
+    width: "clamp(100px, 12vw, 160px)",
+    height: "clamp(100px, 12vw, 160px)",
     borderRadius: "50%",
     border: "1.5px solid rgba(255,255,255,0.2)",
     display: "flex",
