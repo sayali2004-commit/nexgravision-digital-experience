@@ -174,8 +174,9 @@ const S = {
     flex: 1,
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
     height: "100%",
   },
   headline: {
@@ -199,6 +200,7 @@ const S = {
     lineHeight: 1.6,
     maxWidth: 500,
     marginBottom: 20,
+    textAlign: "center",
   },
   projectsRow: {
     display: "grid",
