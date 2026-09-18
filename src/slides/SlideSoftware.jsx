@@ -437,7 +437,7 @@ const S = {
     gridAutoRows: "1fr",
     gap: "clamp(10px, 1.2vw, 16px)",
     width: "100%",
-    maxWidth: 540,
+    maxWidth: 620,
   },
   featureCard: {
     display: "flex",
