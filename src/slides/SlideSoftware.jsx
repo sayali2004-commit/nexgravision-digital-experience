@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { SLIDES } from "../config/content";
 import { BrandLogo } from "../config/assets";
@@ -14,63 +14,67 @@ const FEATURES = [
   { icon: "headset", title: "Ongoing Support", subtitle: "Always with you" },
 ];
 
-const BADGES = [
+const ORBIT_CARDS = [
   {
-    label: "Clean Code",
-    subtitle: "Efficient & Reliable",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+    label: "Custom Software",
+    desc: "Tailored solutions for your business",
+    iconBg: "linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%)",
+    iconBorder: "rgba(0,180,216,0.25)",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
       </svg>
     ),
-    iconBg: "linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%)",
-    iconBorder: "rgba(0,180,216,0.25)",
-    top: "12%",
-    left: "-8%",
   },
   {
-    label: "Smart Solutions",
-    subtitle: "Innovative. Scalable. Future-ready.",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80",
+    label: "Cloud & SaaS",
+    desc: "Scalable cloud infrastructure",
+    iconBg: "linear-gradient(135deg, #F3E8FF 0%, #E9D5FF 100%)",
+    iconBorder: "rgba(124,58,237,0.25)",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 18h6" /><path d="M10 22h4" />
         <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14" />
       </svg>
     ),
-    iconBg: "linear-gradient(135deg, #F3E8FF 0%, #E9D5FF 100%)",
-    iconBorder: "rgba(124,58,237,0.25)",
-    top: "0%",
-    right: "-5%",
   },
   {
-    label: "Secure & Reliable",
-    subtitle: "Your Data. Our Priority.",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <polyline points="9 12 11 14 15 10" />
-      </svg>
-    ),
+    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=400&q=80",
+    label: "Mobile Apps",
+    desc: "Native iOS & Android development",
     iconBg: "linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)",
     iconBorder: "rgba(59,130,246,0.25)",
-    bottom: "22%",
-    left: "5%",
-  },
-  {
-    label: "Business Growth",
-    subtitle: "Technology that scales.",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-        <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" />
       </svg>
     ),
+  },
+  {
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=400&q=80",
+    label: "UI/UX Design",
+    desc: "Engaging user experiences",
     iconBg: "linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%)",
     iconBorder: "rgba(139,92,246,0.25)",
-    bottom: "10%",
-    right: "-5%",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    ),
+  },
+  {
+    image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=400&q=80",
+    label: "Ongoing Support",
+    desc: "Always with you",
+    iconBg: "linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%)",
+    iconBorder: "rgba(16,185,129,0.25)",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 18v-6a9 9 0 0 1 18 0v6" /><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" /><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+      </svg>
+    ),
   },
 ];
 
@@ -83,6 +87,19 @@ const featureIcons = {
   headset: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>,
 };
 
+const CARD_COUNT = 5;
+const ANGLE_STEP = 360 / CARD_COUNT;
+const ORBIT_RADIUS = 190;
+const CARD_SIZE = 90;
+const CARD_IMG_SIZE = 80;
+const INFO_WIDTH = 145;
+const INFO_HEIGHT = 72;
+const SPEED = 0.12;
+const FRONT_SCALE = 1.18;
+const BACK_SCALE = 0.82;
+const FRONT_OPACITY = 1;
+const BACK_OPACITY = 0.55;
+
 export default function SlideSoftware({ isActive }) {
   const logoRef = useRef(null);
   const topRightRef = useRef(null);
@@ -93,6 +110,63 @@ export default function SlideSoftware({ isActive }) {
   const compositionRef = useRef(null);
   const counterRef = useRef(null);
   const hasAnimated = useRef(false);
+
+  const cardRefs = useRef([]);
+  const infoRefs = useRef([]);
+  const orbitAngle = useRef(0);
+  const rafId = useRef(null);
+  const isRunning = useRef(false);
+
+  const setCardRef = useCallback((el, i) => { cardRefs.current[i] = el; }, []);
+  const setInfoRef = useCallback((el, i) => { infoRefs.current[i] = el; }, []);
+
+  const updateOrbit = useCallback(() => {
+    orbitAngle.current = (orbitAngle.current + SPEED) % 360;
+
+    for (let i = 0; i < CARD_COUNT; i++) {
+      const card = cardRefs.current[i];
+      const info = infoRefs.current[i];
+      if (!card || !info) continue;
+
+      const rawAngle = i * ANGLE_STEP + orbitAngle.current;
+      const normalizedAngle = ((rawAngle % 360) + 360) % 360;
+      const rad = (normalizedAngle * Math.PI) / 180;
+
+      const x = Math.sin(rad) * ORBIT_RADIUS;
+      const y = -Math.cos(rad) * ORBIT_RADIUS;
+
+      const depthFactor = Math.cos(rad);
+      const t = (depthFactor + 1) / 2;
+      const scale = FRONT_SCALE + (BACK_SCALE - FRONT_SCALE) * (1 - t);
+      const opacity = FRONT_OPACITY + (BACK_OPACITY - FRONT_OPACITY) * (1 - t);
+      const zIndex = Math.round(t * 10);
+
+      const blur = (1 - t) * 2;
+
+      card.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${scale})`;
+      card.style.opacity = opacity;
+      card.style.zIndex = zIndex;
+      card.style.filter = blur > 0.3 ? `blur(${blur}px)` : "none";
+
+      info.style.transform = `translate(-50%, -50%) translate(${x}px, ${y - CARD_SIZE / 2 - INFO_HEIGHT / 2 - 12}px) scale(${Math.max(scale, 0.88)})`;
+      info.style.opacity = opacity;
+      info.style.zIndex = zIndex;
+      info.style.filter = "none";
+    }
+
+    rafId.current = requestAnimationFrame(updateOrbit);
+  }, []);
+
+  useEffect(() => {
+    if (isActive) {
+      isRunning.current = true;
+      rafId.current = requestAnimationFrame(updateOrbit);
+    }
+    return () => {
+      isRunning.current = false;
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+    };
+  }, [isActive, updateOrbit]);
 
   useEffect(() => {
     if (!isActive || hasAnimated.current) return;
@@ -120,25 +194,17 @@ export default function SlideSoftware({ isActive }) {
       tl.to(featuresRef.current.children, { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: "power3.out" }, 0.55);
     }
 
-    // Composition entrance
     const comp = compositionRef.current;
     if (comp) {
       const center = comp.querySelector('.center-circle');
-      const photos = comp.querySelectorAll('.photo-item');
-      const badges = comp.querySelectorAll('.badge-item');
-      const rings = comp.querySelectorAll('.deco-ring');
-
-      gsap.set(rings, { opacity: 0, scale: 0.8 });
-      tl.to(rings, { opacity: 1, scale: 1, duration: 1.0, stagger: 0.1, ease: "expo.out" }, 0.3);
-
       gsap.set(center, { opacity: 0, scale: 0.5 });
       tl.to(center, { opacity: 1, scale: 1, duration: 1.1, ease: "back.out(1.3)" }, 0.4);
 
-      gsap.set(photos, { opacity: 0, scale: 0.4 });
-      tl.to(photos, { opacity: 1, scale: 1, duration: 0.9, stagger: 0.12, ease: "back.out(1.5)" }, 0.7);
+      cardRefs.current.forEach((c) => { if (c) gsap.set(c, { opacity: 0, scale: 0.4 }); });
+      tl.to(cardRefs.current.filter(Boolean), { opacity: 1, scale: 1, duration: 0.9, stagger: 0.1, ease: "back.out(1.5)" }, 0.7);
 
-      gsap.set(badges, { opacity: 0, scale: 0.6, y: 15 });
-      tl.to(badges, { opacity: 1, scale: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "back.out(1.8)" }, 1.0);
+      infoRefs.current.forEach((c) => { if (c) gsap.set(c, { opacity: 0, y: 15 }); });
+      tl.to(infoRefs.current.filter(Boolean), { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "back.out(1.8)" }, 1.0);
     }
 
     gsap.set(counterRef.current, { opacity: 0 });
@@ -190,46 +256,19 @@ export default function SlideSoftware({ isActive }) {
             </div>
           </div>
 
-          {/* RIGHT COLUMN - Circular Radial Composition */}
+          {/* RIGHT COLUMN - Circular Orbit Carousel */}
           <div style={S.rightCol}>
             <div ref={compositionRef} style={S.composition}>
-              {/* Concentric orbit rings */}
-              <div className="orbit-ring orbit-ring-1" style={S.orbitRing1} />
-              <div className="orbit-ring orbit-ring-2" style={S.orbitRing2} />
-              <div className="orbit-ring orbit-ring-3" style={S.orbitRing3} />
+              {/* Orbit ring decorations */}
+              <div style={S.orbitRingOuter} />
+              <div style={S.orbitRingMid} />
+              <div style={S.orbitRingInner} />
 
               {/* Atmospheric glow */}
               <div style={S.compGlow} />
               <div style={S.compGlowPurple} />
 
-              {/* Photo 1: Top-right quadrant - woman professional at desk */}
-              <div className="photo-item photo-float-1" style={S.photo1}>
-                <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
-                  alt="Professional"
-                  style={S.photoImg}
-                />
-              </div>
-
-              {/* Photo 2: Bottom-left quadrant - developer coding */}
-              <div className="photo-item photo-float-2" style={S.photo2}>
-                <img
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80"
-                  alt="Developer"
-                  style={S.photoImg}
-                />
-              </div>
-
-              {/* Photo 3: Right side - laptop workspace */}
-              <div className="photo-item photo-float-3" style={S.photo3}>
-                <img
-                  src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=400&q=80"
-                  alt="Workspace"
-                  style={S.photoImg}
-                />
-              </div>
-
-              {/* Central Hub */}
+              {/* Center fixed hub */}
               <div className="center-circle" style={S.centerCircle}>
                 <div style={S.centerGlowRing} />
                 <div style={S.centerPurpleRing} />
@@ -237,27 +276,31 @@ export default function SlideSoftware({ isActive }) {
                 <div style={S.centerText}>NEXGRAVISION</div>
               </div>
 
-              {/* Floating Feature Cards - positioned radially around the composition */}
-              {BADGES.map((badge, i) => (
+              {/* Orbiting image cards */}
+              {ORBIT_CARDS.map((card, i) => (
                 <div
                   key={i}
-                  className={`badge-item badge-float-${i + 1}`}
-                  style={{
-                    ...S.badge,
-                    top: badge.top,
-                    right: badge.right,
-                    bottom: badge.bottom,
-                    left: badge.left,
-                  }}
-                  onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.05) translateY(-3px)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,140,216,0.18)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1) translateY(0)"; e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.1), 0 0 15px rgba(0,180,216,0.05)"; }}
+                  ref={(el) => setCardRef(el, i)}
+                  style={S.orbitCard}
                 >
-                  <div style={{ ...S.badgeIcon, background: badge.iconBg, borderColor: badge.iconBorder }}>
-                    {badge.icon}
+                  <div style={S.orbitCardRing} />
+                  <img src={card.image} alt={card.label} style={S.orbitCardImg} />
+                </div>
+              ))}
+
+              {/* Floating info cards */}
+              {ORBIT_CARDS.map((card, i) => (
+                <div
+                  key={i}
+                  ref={(el) => setInfoRef(el, i)}
+                  style={S.infoCard}
+                >
+                  <div style={{ ...S.infoIcon, background: card.iconBg, borderColor: card.iconBorder }}>
+                    {card.icon}
                   </div>
-                  <div>
-                    <div style={S.badgeLabel}>{badge.label}</div>
-                    <div style={S.badgeSubtitle}>{badge.subtitle}</div>
+                  <div style={S.infoTextCol}>
+                    <div style={S.infoLabel}>{card.label}</div>
+                    <div style={S.infoDesc}>{card.desc}</div>
                   </div>
                 </div>
               ))}
@@ -438,30 +481,43 @@ const S = {
   },
   composition: {
     position: "relative",
-    width: "clamp(400px, 44vw, 580px)",
-    height: "clamp(400px, 44vw, 580px)",
+    width: "clamp(420px, 46vw, 600px)",
+    height: "clamp(420px, 46vw, 600px)",
   },
-  orbitRing1: {
+  /* Orbit ring decorations */
+  orbitRingOuter: {
     position: "absolute",
     inset: 0,
     borderRadius: "50%",
-    border: "1.5px solid rgba(0,180,216,0.12)",
-    boxShadow: "0 0 20px rgba(0,180,216,0.06), inset 0 0 20px rgba(0,180,216,0.03)",
+    border: "1.5px solid rgba(0,180,216,0.1)",
+    boxShadow: "0 0 20px rgba(0,180,216,0.05), inset 0 0 20px rgba(0,180,216,0.02)",
+    pointerEvents: "none",
   },
-  orbitRing2: {
+  orbitRingMid: {
     position: "absolute",
-    inset: 25,
+    top: "50%",
+    left: "50%",
+    width: ORBIT_RADIUS * 2 + CARD_SIZE + 40,
+    height: ORBIT_RADIUS * 2 + CARD_SIZE + 40,
     borderRadius: "50%",
-    border: "1px solid rgba(120,80,220,0.1)",
-    boxShadow: "0 0 15px rgba(120,80,220,0.05), inset 0 0 15px rgba(120,80,220,0.02)",
+    border: "1px solid rgba(0,180,216,0.12)",
+    boxShadow: "0 0 15px rgba(0,180,216,0.04), inset 0 0 15px rgba(0,180,216,0.02)",
+    transform: "translate(-50%, -50%)",
+    pointerEvents: "none",
   },
-  orbitRing3: {
+  orbitRingInner: {
     position: "absolute",
-    inset: 50,
+    top: "50%",
+    left: "50%",
+    width: ORBIT_RADIUS * 2 - CARD_SIZE,
+    height: ORBIT_RADIUS * 2 - CARD_SIZE,
     borderRadius: "50%",
-    border: "1.5px solid rgba(0,200,240,0.15)",
-    boxShadow: "0 0 25px rgba(0,200,240,0.08), inset 0 0 20px rgba(0,200,240,0.04)",
+    border: "1px solid rgba(120,80,220,0.08)",
+    boxShadow: "0 0 12px rgba(120,80,220,0.04), inset 0 0 12px rgba(120,80,220,0.02)",
+    transform: "translate(-50%, -50%)",
+    pointerEvents: "none",
   },
+  /* Atmospheric glow */
   compGlow: {
     position: "absolute",
     top: "50%",
@@ -470,7 +526,7 @@ const S = {
     width: "75%",
     height: "75%",
     borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(0,180,216,0.1) 0%, rgba(0,140,220,0.05) 40%, transparent 70%)",
+    background: "radial-gradient(circle, rgba(0,180,216,0.08) 0%, rgba(0,140,220,0.04) 40%, transparent 70%)",
     filter: "blur(30px)",
     pointerEvents: "none",
     zIndex: 0,
@@ -483,25 +539,26 @@ const S = {
     width: "60%",
     height: "60%",
     borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(120,80,220,0.08) 0%, rgba(100,60,200,0.03) 40%, transparent 70%)",
+    background: "radial-gradient(circle, rgba(120,80,220,0.06) 0%, rgba(100,60,200,0.03) 40%, transparent 70%)",
     filter: "blur(25px)",
     pointerEvents: "none",
     zIndex: 0,
   },
+  /* Center hub */
   centerCircle: {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "clamp(170px, 19vw, 235px)",
-    height: "clamp(170px, 19vw, 235px)",
+    width: "clamp(140px, 16vw, 200px)",
+    height: "clamp(140px, 16vw, 200px)",
     borderRadius: "50%",
     background: "linear-gradient(145deg, #0B1120 0%, #162032 50%, #0F172A 100%)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
+    gap: 6,
     zIndex: 5,
     boxShadow: "0 25px 70px rgba(0,0,0,0.25), 0 0 60px rgba(0,180,216,0.18), 0 0 100px rgba(120,80,220,0.08)",
   },
@@ -523,77 +580,73 @@ const S = {
     pointerEvents: "none",
   },
   centerLogo: {
-    width: 56,
-    height: 56,
+    width: 48,
+    height: 48,
     objectFit: "contain",
     filter: "drop-shadow(0 0 18px rgba(0,180,216,0.55))",
   },
   centerText: {
     fontFamily: "var(--font-mono)",
-    fontSize: "clamp(10px, 1vw, 13px)",
+    fontSize: "clamp(9px, 0.9vw, 12px)",
     fontWeight: 700,
     color: "#7DD3FC",
     letterSpacing: "0.2em",
   },
-  photo1: {
+  /* Orbiting image cards */
+  orbitCard: {
     position: "absolute",
-    top: "0%",
-    right: "5%",
-    width: "clamp(140px, 16vw, 210px)",
-    height: "clamp(110px, 13vw, 165px)",
-    borderRadius: 20,
+    top: "50%",
+    left: "50%",
+    width: CARD_SIZE,
+    height: CARD_SIZE,
+    borderRadius: "50%",
     overflow: "hidden",
     border: "3px solid rgba(255,255,255,0.92)",
-    boxShadow: "0 18px 55px rgba(0,0,0,0.2), 0 0 25px rgba(0,180,216,0.1)",
+    boxShadow: "0 14px 45px rgba(0,0,0,0.22), 0 0 20px rgba(0,180,216,0.1)",
     zIndex: 4,
+    willChange: "transform, opacity, filter, z-index",
+    pointerEvents: "none",
+    transform: "translate(-50%, -50%)",
+    transition: "box-shadow 0.3s ease",
   },
-  photo2: {
+  orbitCardRing: {
     position: "absolute",
-    left: "0%",
-    bottom: "12%",
-    width: "clamp(130px, 15vw, 195px)",
-    height: "clamp(105px, 12.5vw, 160px)",
-    borderRadius: 20,
-    overflow: "hidden",
-    border: "3px solid rgba(255,255,255,0.92)",
-    boxShadow: "0 18px 55px rgba(0,0,0,0.2), 0 0 25px rgba(0,180,216,0.1)",
-    zIndex: 4,
+    inset: -6,
+    borderRadius: "50%",
+    border: "1.5px solid rgba(0,180,216,0.2)",
+    boxShadow: "0 0 12px rgba(0,180,216,0.1)",
+    pointerEvents: "none",
   },
-  photo3: {
-    position: "absolute",
-    right: "-4%",
-    bottom: "28%",
-    width: "clamp(120px, 14vw, 180px)",
-    height: "clamp(95px, 11vw, 145px)",
-    borderRadius: 20,
-    overflow: "hidden",
-    border: "3px solid rgba(255,255,255,0.92)",
-    boxShadow: "0 18px 55px rgba(0,0,0,0.2), 0 0 25px rgba(0,180,216,0.1)",
-    zIndex: 3,
-  },
-  photoImg: {
+  orbitCardImg: {
     width: "100%",
     height: "100%",
     objectFit: "cover",
   },
-  badge: {
+  /* Floating info cards */
+  infoCard: {
     position: "absolute",
+    top: "50%",
+    left: "50%",
+    width: INFO_WIDTH,
+    height: INFO_HEIGHT,
+    borderRadius: 12,
+    background: "rgba(255,255,255,0.96)",
+    border: "1px solid rgba(0,180,216,0.08)",
+    boxShadow: "0 8px 30px rgba(0,0,0,0.1), 0 0 12px rgba(0,180,216,0.04)",
     display: "flex",
     alignItems: "center",
-    gap: 10,
-    padding: "12px 16px",
-    borderRadius: 14,
-    background: "rgba(255,255,255,0.95)",
-    border: "1px solid rgba(0,180,216,0.08)",
-    boxShadow: "0 8px 30px rgba(0,0,0,0.1), 0 0 15px rgba(0,180,216,0.05)",
-    whiteSpace: "nowrap",
-    transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
+    gap: 8,
+    padding: "0 10px",
+    backdropFilter: "blur(10px)",
     zIndex: 10,
-    backdropFilter: "blur(12px)",
+    willChange: "transform, opacity, filter, z-index",
+    pointerEvents: "none",
+    transform: "translate(-50%, -50%)",
   },
-  badgeIcon: {
-    width: 38,
-    height: 38,
+  infoIcon: {
+    width: 32,
+    height: 32,
+    minWidth: 32,
     borderRadius: "50%",
     border: "1px solid",
     display: "flex",
@@ -601,17 +654,33 @@ const S = {
     justifyContent: "center",
     flexShrink: 0,
   },
-  badgeLabel: {
+  infoTextCol: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 1,
+    minWidth: 0,
+    overflow: "hidden",
+  },
+  infoLabel: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(11px, 1vw, 13px)",
+    fontSize: "clamp(10px, 0.9vw, 12px)",
     fontWeight: 600,
     color: "#0F172A",
+    lineHeight: 1.3,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   },
-  badgeSubtitle: {
+  infoDesc: {
     fontFamily: "var(--font-sans)",
     fontSize: "clamp(8px, 0.7vw, 10px)",
     color: "#64748B",
+    lineHeight: 1.3,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   },
+  /* Counter */
   counterWrap: {
     position: "absolute",
     bottom: 24,
