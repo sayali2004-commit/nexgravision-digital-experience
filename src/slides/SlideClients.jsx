@@ -111,13 +111,13 @@ export default function SlideClients({ isActive }) {
     let scale, tx, tz, opacity, zIndex, rotateY;
 
     if (isCenter) {
-      scale = 1.4; tx = 0; tz = 80; opacity = 1; zIndex = 10; rotateY = 0;
+      scale = 1.3; tx = 0; tz = 80; opacity = 1; zIndex = 10; rotateY = 0;
     } else if (isNear) {
-      scale = 1.0; tx = diff * 190; tz = 20; opacity = 0.92; zIndex = 6; rotateY = diff * -10;
+      scale = 0.95; tx = diff * 240; tz = 20; opacity = 0.92; zIndex = 6; rotateY = diff * -8;
     } else if (isMid) {
-      scale = 0.7; tx = diff * 220; tz = -20; opacity = 0.55; zIndex = 3; rotateY = diff * -14;
+      scale = 0.7; tx = diff * 270; tz = -20; opacity = 0.55; zIndex = 3; rotateY = diff * -12;
     } else {
-      scale = 0.45; tx = diff * 230; tz = -60; opacity = 0.2; zIndex = 1; rotateY = diff * -18;
+      scale = 0.5; tx = diff * 280; tz = -60; opacity = 0.2; zIndex = 1; rotateY = diff * -16;
     }
 
     return {
@@ -253,20 +253,26 @@ export default function SlideClients({ isActive }) {
                             src={logo.img}
                             alt={logo.name}
                             style={{
-                              width: "100%",
-                              height: "100%",
+                              width: isActiveCard ? "clamp(36px, 4vw, 50px)" : "clamp(26px, 2.8vw, 36px)",
+                              height: isActiveCard ? "clamp(36px, 4vw, 50px)" : "clamp(26px, 2.8vw, 36px)",
                               objectFit: "contain",
                               filter: isActiveCard ? "drop-shadow(0 3px 10px rgba(0,0,0,0.2)) contrast(1.1)" : "drop-shadow(0 2px 6px rgba(0,0,0,0.15)) contrast(1.05)",
+                              flexShrink: 0,
                             }}
                           />
                         ) : (
-                          <div style={{ ...S.logoText, color: logo.textColor, fontSize: isActiveCard ? "clamp(30px, 4vw, 46px)" : "clamp(15px, 1.9vw, 24px)" }}>
+                          <div style={{ ...S.logoText, color: logo.textColor, fontSize: isActiveCard ? "clamp(22px, 2.5vw, 32px)" : "clamp(14px, 1.5vw, 20px)" }}>
                             {logo.name}
                           </div>
                         )}
-                        {logo.subtitle && (
-                          <div style={S.logoSubtitle}>{logo.subtitle}</div>
-                        )}
+                        <div style={S.cardNameWrap}>
+                          <div style={{ ...S.cardName, fontSize: isActiveCard ? "clamp(14px, 1.4vw, 18px)" : "clamp(11px, 1.1vw, 14px)", color: isActiveCard ? "#FFFFFF" : "rgba(255,255,255,0.9)" }}>
+                            {logo.name}
+                          </div>
+                          {isActiveCard && (
+                            <div style={S.cardSubtext}>Trusted Partner</div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   );
@@ -571,9 +577,9 @@ const S = {
   },
   card: {
     position: "absolute",
-    width: "clamp(100px, 12vw, 160px)",
-    height: "clamp(100px, 12vw, 160px)",
-    borderRadius: "50%",
+    width: "clamp(160px, 18vw, 240px)",
+    height: "clamp(60px, 6.5vw, 85px)",
+    borderRadius: 14,
     border: "1.5px solid rgba(255,255,255,0.2)",
     display: "flex",
     alignItems: "center",
@@ -585,7 +591,7 @@ const S = {
   activeCardBorder: {
     position: "absolute",
     inset: -2,
-    borderRadius: "50%",
+    borderRadius: 16,
     border: "2px solid rgba(0,180,216,0.7)",
     boxShadow: "0 0 35px rgba(0,180,216,0.4), inset 0 0 30px rgba(0,180,216,0.1)",
     pointerEvents: "none",
@@ -593,21 +599,21 @@ const S = {
   },
   cardContent: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 3,
-    padding: "6px 10px",
+    gap: 10,
+    padding: "8px 16px",
     width: "100%",
     height: "100%",
   },
   cardContentCenter: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 4,
-    padding: "8px 12px",
+    gap: 12,
+    padding: "10px 20px",
     width: "100%",
     height: "100%",
   },
@@ -618,13 +624,27 @@ const S = {
     lineHeight: 1.1,
     transition: "font-size 0.6s ease",
   },
-  logoSubtitle: {
+  cardNameWrap: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 1,
+    minWidth: 0,
+  },
+  cardName: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(5px, 0.5vw, 7px)",
-    color: "#94A3B8",
-    textAlign: "center",
-    letterSpacing: "0.08em",
-    textTransform: "uppercase",
+    fontWeight: 700,
+    lineHeight: 1.2,
+    transition: "all 0.6s ease",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+  cardSubtext: {
+    fontFamily: "var(--font-sans)",
+    fontSize: "clamp(9px, 0.8vw, 11px)",
+    color: "rgba(0,180,216,0.8)",
+    fontWeight: 500,
+    letterSpacing: "0.05em",
   },
   bottomRow: {
     display: "flex",
