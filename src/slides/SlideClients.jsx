@@ -253,10 +253,11 @@ export default function SlideClients({ isActive }) {
                             src={logo.img}
                             alt={logo.name}
                             style={{
-                              width: isActiveCard ? "clamp(80px, 9vw, 120px)" : "clamp(50px, 5.5vw, 75px)",
-                              height: isActiveCard ? "clamp(80px, 9vw, 120px)" : "clamp(50px, 5.5vw, 75px)",
+                              width: isActiveCard ? "clamp(60px, 7vw, 90px)" : "clamp(40px, 4.5vw, 60px)",
+                              height: isActiveCard ? "clamp(60px, 7vw, 90px)" : "clamp(40px, 4.5vw, 60px)",
                               objectFit: "contain",
                               filter: isActiveCard ? "drop-shadow(0 4px 12px rgba(0,0,0,0.2)) contrast(1.1)" : "drop-shadow(0 2px 8px rgba(0,0,0,0.15)) contrast(1.05)",
+                              flexShrink: 0,
                             }}
                           />
                         ) : (
@@ -264,6 +265,11 @@ export default function SlideClients({ isActive }) {
                             {logo.name}
                           </div>
                         )}
+                        <div style={S.cardNameWrap}>
+                          <div style={{ ...S.cardName, fontSize: isActiveCard ? "clamp(16px, 1.6vw, 22px)" : "clamp(12px, 1.2vw, 16px)", color: isActiveCard ? "#FFFFFF" : "rgba(255,255,255,0.9)" }}>
+                            {logo.name}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   );
@@ -388,7 +394,7 @@ const S = {
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
-    marginTop: "-8vh",
+    marginTop: "-12vh",
   },
   sectionTag: {
     display: "flex",
@@ -590,21 +596,21 @@ const S = {
   },
   cardContent: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 3,
+    gap: 10,
     padding: "10px 14px",
     width: "100%",
     height: "100%",
   },
   cardContentCenter: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 4,
-    padding: "12px 18px",
+    gap: 14,
+    padding: "12px 20px",
     width: "100%",
     height: "100%",
   },
