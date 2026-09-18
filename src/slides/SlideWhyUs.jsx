@@ -16,7 +16,7 @@ const MODULES = [
   },
   {
     title: "HR & Payroll",
-    desc: "Manage your team",
+    desc: "Manage your entire team",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
@@ -60,7 +60,7 @@ const MODULES = [
   },
   {
     title: "Support",
-    desc: "24/7 helpdesk",
+    desc: "24/7 helpdesk & tickets",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 18v-6a9 9 0 0 1 18 0v6" /><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" /><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
@@ -170,13 +170,18 @@ export default function SlideWhyUs({ isActive }) {
         <div style={S.bodyRow}>
           {/* LEFT COLUMN */}
           <div style={S.leftCol}>
-            <div ref={tagRef} style={S.sectionTag}>WHY NEXGRAVISION</div>
+            {/* Tagline Banner */}
+            <div ref={tagRef} style={S.taglineBanner}>
+              <div style={S.taglineDot} />
+              <span style={S.taglineText}>One Company • One Software • Endless Possibilities</span>
+            </div>
+
             <h2 ref={headlineRef} style={S.headline}>
-              One Software.<br />
-              <span style={S.headlineAccent}>Everything Managed.</span>
+              Why Manage <span style={S.headlineAccent}>10 Tools</span><br />
+              When You Can Have <span style={S.headlineAccent}>Just One?</span>
             </h2>
             <p ref={descRef} style={S.description}>
-              Why juggle ten different tools when one platform can do it all? NexGravision brings sales, HR, finance, operations, marketing and support into a single, powerful software — so you can focus on growing your business, not managing tools.
+              Most businesses waste time and money switching between different software for sales, HR, finance, operations and support. NexGravision brings it all together — <strong style={{ color: "#0F172A" }}>one company, one software, one dashboard</strong> — so your entire business runs smoothly from a single powerful platform.
             </p>
 
             {/* Stats */}
@@ -195,19 +200,28 @@ export default function SlideWhyUs({ isActive }) {
                 <div style={{ ...S.previewIcon, background: "linear-gradient(135deg, #EFF6FF, #DBEAFE)", border: "1px solid rgba(59,130,246,0.15)" }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                 </div>
-                <div style={S.previewText}>No multiple subscriptions</div>
+                <div style={S.previewTextCol}>
+                  <div style={S.previewTitle}>No Multiple Subscriptions</div>
+                  <div style={S.previewDesc}>One software replaces all your tools</div>
+                </div>
               </div>
               <div className="preview-card" style={S.previewCard}>
                 <div style={{ ...S.previewIcon, background: "linear-gradient(135deg, #ECFDF5, #D1FAE5)", border: "1px solid rgba(16,185,129,0.15)" }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                 </div>
-                <div style={S.previewText}>One dashboard for everything</div>
+                <div style={S.previewTextCol}>
+                  <div style={S.previewTitle}>One Dashboard for Everything</div>
+                  <div style={S.previewDesc}>See your entire business at a glance</div>
+                </div>
               </div>
               <div className="preview-card" style={S.previewCard}>
                 <div style={{ ...S.previewIcon, background: "linear-gradient(135deg, #F5F3FF, #EDE9FE)", border: "1px solid rgba(139,92,246,0.15)" }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                 </div>
-                <div style={S.previewText}>Saves time & money</div>
+                <div style={S.previewTextCol}>
+                  <div style={S.previewTitle}>Saves Time & Money</div>
+                  <div style={S.previewDesc}>Cut costs by up to 60% on software</div>
+                </div>
               </div>
             </div>
           </div>
@@ -239,7 +253,7 @@ export default function SlideWhyUs({ isActive }) {
                 <div style={S.hubPurpleRing} />
                 <img src="/LOGOIMG.png" alt="NexGravision" style={S.hubLogo} />
                 <div style={S.hubText}>NEXGRAVISION</div>
-                <div style={S.hubSubtext}>One Platform</div>
+                <div style={S.hubSubtext}>One Company</div>
               </div>
 
               {/* Module cards */}
@@ -377,6 +391,31 @@ const S = {
     textTransform: "uppercase",
     marginBottom: 12,
   },
+  taglineBanner: {
+    display: "flex",
+    alignItems: "center",
+    gap: 10,
+    padding: "8px 18px",
+    borderRadius: 100,
+    background: "linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(59,130,246,0.06) 100%)",
+    border: "1px solid rgba(139,92,246,0.15)",
+    marginBottom: 20,
+  },
+  taglineDot: {
+    width: 8,
+    height: 8,
+    borderRadius: "50%",
+    background: "linear-gradient(135deg, #8B5CF6, #3B82F6)",
+    flexShrink: 0,
+  },
+  taglineText: {
+    fontFamily: "var(--font-mono)",
+    fontSize: "clamp(11px, 1vw, 13px)",
+    fontWeight: 600,
+    color: "#7C3AED",
+    letterSpacing: "0.08em",
+    whiteSpace: "nowrap",
+  },
   headline: {
     fontFamily: "var(--font-serif)",
     fontSize: "clamp(32px, 4.2vw, 54px)",
@@ -450,11 +489,23 @@ const S = {
     justifyContent: "center",
     flexShrink: 0,
   },
-  previewText: {
+  previewTextCol: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 1,
+  },
+  previewTitle: {
     fontFamily: "var(--font-sans)",
     fontSize: "clamp(12px, 1.1vw, 14px)",
-    fontWeight: 500,
-    color: "#334155",
+    fontWeight: 600,
+    color: "#0F172A",
+    lineHeight: 1.3,
+  },
+  previewDesc: {
+    fontFamily: "var(--font-sans)",
+    fontSize: "clamp(10px, 0.9vw, 12px)",
+    color: "#64748B",
+    lineHeight: 1.3,
   },
 
   /* RIGHT COLUMN */
