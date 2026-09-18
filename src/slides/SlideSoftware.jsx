@@ -379,7 +379,7 @@ const S = {
   },
   featureCard: {
     display: "flex",
-    alignItems: "flex-start",
+    alignItems: "center",
     gap: 10,
     padding: "14px 12px",
     borderRadius: 14,
@@ -388,6 +388,7 @@ const S = {
     boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
     transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
     cursor: "default",
+    minHeight: "clamp(68px, 8vh, 80px)",
   },
   featureIconCircle: {
     width: 42,

@@ -227,7 +227,7 @@ const S = {
   photoBg: {
     position: "absolute",
     inset: 0,
-    backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80')",
+    backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80')",
     backgroundSize: "cover",
     backgroundPosition: "center 40%",
     filter: "brightness(0.3) saturate(0.6)",
