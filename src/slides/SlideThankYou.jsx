@@ -220,6 +220,7 @@ const S = {
     justifyContent: "space-between",
     zIndex: 2,
     position: "relative",
+    paddingTop: "clamp(80px, 10vh, 120px)",
   },
   headerRow: {
     position: "absolute",
