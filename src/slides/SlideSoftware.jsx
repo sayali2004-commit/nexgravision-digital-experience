@@ -200,18 +200,18 @@ export default function SlideSoftware({ isActive }) {
 
   return (
     <div style={S.wrap}>
-      <div style={S.container}>
-        {/* Header */}
-        <div style={S.headerRow}>
-          <div ref={logoRef}>
-            <BrandLogo size={48} dark />
-          </div>
-          <div ref={topRightRef} style={S.topRightWrap}>
-            <div style={S.topRightLine} />
-            <span style={S.topRightText}>Trusted by Businesses Worldwide</span>
-          </div>
+      {/* Header - full width */}
+      <div style={S.headerRow}>
+        <div ref={logoRef}>
+          <BrandLogo size={48} dark />
         </div>
+        <div ref={topRightRef} style={S.topRightWrap}>
+          <div style={S.topRightLine} />
+          <span style={S.topRightText}>Trusted by Businesses Worldwide</span>
+        </div>
+      </div>
 
+      <div style={S.container}>
         {/* Body */}
         <div style={S.bodyRow}>
           {/* LEFT COLUMN */}
@@ -342,9 +342,15 @@ const S = {
     position: "relative",
   },
   headerRow: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
+    padding: "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
+    zIndex: 20,
   },
   topRightWrap: {
     display: "flex",

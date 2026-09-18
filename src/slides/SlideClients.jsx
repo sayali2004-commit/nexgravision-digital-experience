@@ -186,18 +186,18 @@ export default function SlideClients({ isActive }) {
         ))}
       </div>
 
-      <div style={S.container}>
-        {/* Header */}
-        <div style={S.headerRow}>
-          <div ref={logoRef}>
-            <BrandLogo size={48} />
-          </div>
-          <div ref={topRightRef} style={S.topRightWrap}>
-            <div style={S.topRightLine} />
-            <span style={S.topRight}>{data.topRight}</span>
-          </div>
+      {/* Header - full width */}
+      <div style={S.headerRow}>
+        <div ref={logoRef}>
+          <BrandLogo size={48} />
         </div>
+        <div ref={topRightRef} style={S.topRightWrap}>
+          <div style={S.topRightLine} />
+          <span style={S.topRight}>{data.topRight}</span>
+        </div>
+      </div>
 
+      <div style={S.container}>
         {/* Main content */}
         <div style={S.centerContent}>
           {/* Section tag */}
@@ -391,9 +391,15 @@ const S = {
     position: "relative",
   },
   headerRow: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
+    padding: "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
+    zIndex: 20,
   },
   topRightWrap: {
     display: "flex",

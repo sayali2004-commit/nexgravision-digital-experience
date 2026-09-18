@@ -75,17 +75,17 @@ export default function SlideProjects({ isActive }) {
       <div className="bg-grid" />
       <div style={S.orbGlow} />
 
-      <div style={S.container}>
-        {/* Header */}
-        <div style={S.headerRow}>
-          <div ref={logoRef}>
-            <BrandLogo size={48} />
-          </div>
-          <div ref={topRightRef} style={S.topRight}>
-            {data.topRight}
-          </div>
+      {/* Header - full width */}
+      <div style={S.headerRow}>
+        <div ref={logoRef}>
+          <BrandLogo size={48} />
         </div>
+        <div ref={topRightRef} style={S.topRight}>
+          {data.topRight}
+        </div>
+      </div>
 
+      <div style={S.container}>
         {/* Content */}
         <div style={S.contentArea}>
           <div ref={tagRef} className="section-tag">{data.sectionTag}</div>
@@ -165,9 +165,15 @@ const S = {
     position: "relative",
   },
   headerRow: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
+    padding: "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
+    zIndex: 20,
   },
   topRight: {
     fontFamily: "var(--font-mono)",

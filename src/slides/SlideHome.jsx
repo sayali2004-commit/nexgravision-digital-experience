@@ -98,17 +98,17 @@ export default function SlideHome({ isActive }) {
       {/* Bottom subtle blue glow */}
       <div style={S.bottomGlow} />
 
-      <div style={S.container}>
-        {/* Header row: Logo + Top Right text */}
-        <div style={S.headerRow}>
-          <div ref={logoRef}>
-            <BrandLogo size={48} />
-          </div>
-          <div ref={topRightRef} style={S.topRight}>
-            {data.topRight}
-          </div>
+      {/* Header row: Logo + Top Right text - full width */}
+      <div style={S.headerRow}>
+        <div ref={logoRef}>
+          <BrandLogo size={48} />
         </div>
+        <div ref={topRightRef} style={S.topRight}>
+          {data.topRight}
+        </div>
+      </div>
 
+      <div style={S.container}>
         {/* Main content */}
         <div style={S.bodyRow}>
           <div style={S.leftCol}>
@@ -230,9 +230,15 @@ const S = {
     position: "relative",
   },
   headerRow: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
+    padding: "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
+    zIndex: 20,
   },
   topRight: {
     fontFamily: "var(--font-mono)",
