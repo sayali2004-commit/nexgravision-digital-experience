@@ -41,7 +41,7 @@ export default function BrandLogo({ size = 38, dark = false }) {
           marginTop: 6,
         }}
       >
-        Digital Experiences. Real Impact.
+        Digital Solution and Services.
       </div>
     </div>
   );
