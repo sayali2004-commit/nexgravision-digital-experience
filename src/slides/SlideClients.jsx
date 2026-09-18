@@ -253,8 +253,8 @@ export default function SlideClients({ isActive }) {
                             src={logo.img}
                             alt={logo.name}
                             style={{
-                              width: isActiveCard ? "clamp(55px, 6vw, 80px)" : "clamp(36px, 4vw, 52px)",
-                              height: isActiveCard ? "clamp(55px, 6vw, 80px)" : "clamp(36px, 4vw, 52px)",
+                              width: isActiveCard ? "clamp(80px, 9vw, 120px)" : "clamp(50px, 5.5vw, 72px)",
+                              height: isActiveCard ? "clamp(80px, 9vw, 120px)" : "clamp(50px, 5.5vw, 72px)",
                               objectFit: "contain",
                               filter: isActiveCard ? "drop-shadow(0 3px 8px rgba(0,0,0,0.15))" : "drop-shadow(0 2px 5px rgba(0,0,0,0.1))",
                             }}
