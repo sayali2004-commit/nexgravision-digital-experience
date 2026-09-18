@@ -3,6 +3,7 @@ import React from "react";
 export default function BrandLogo({ size = 38, dark = false }) {
   const nameColor = dark ? "#0F172A" : "#FFFFFF";
   const tagColor = dark ? "#64748B" : "#94A3B8";
+  const logoWidth = size * 1.4;
 
   return (
     <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "flex-start", gap: 0 }}>
@@ -12,7 +13,7 @@ export default function BrandLogo({ size = 38, dark = false }) {
           alt="NexGravision"
           className="brand-logo-img"
           style={{
-            height: size * 1.4,
+            height: logoWidth,
             width: "auto",
             objectFit: "contain",
           }}
@@ -38,7 +39,8 @@ export default function BrandLogo({ size = 38, dark = false }) {
           letterSpacing: "0.12em",
           textTransform: "uppercase",
           color: tagColor,
-          marginTop: 6,
+          marginLeft: logoWidth + 14,
+          marginTop: 2,
         }}
       >
         Digital Solution and Services.
