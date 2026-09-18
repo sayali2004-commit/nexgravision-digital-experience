@@ -265,7 +265,7 @@ export default function SlideSoftware({ isActive }) {
 
       {/* Counter */}
       <div ref={counterRef} style={S.counterWrap}>
-        <span style={S.counterText}>02 / 05</span>
+        <span style={S.counterText}>02 / 06</span>
         <div style={S.counterBar}>
           <div style={S.counterFill} />
         </div>
@@ -715,7 +715,7 @@ const S = {
     overflow: "hidden",
   },
   counterFill: {
-    width: "40%",
+    width: "33%",
     height: "100%",
     borderRadius: 2,
     background: "linear-gradient(90deg, #2563EB, #3B82F6)",

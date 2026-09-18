@@ -124,7 +124,7 @@ export default function SlideProjects({ isActive }) {
       </div>
 
       <div ref={counterRef} style={S.counterWrap}>
-        <span className="slide-counter" style={{ position: "static" }}>03 / 05</span>
+        <span className="slide-counter" style={{ position: "static" }}>04 / 06</span>
       </div>
     </div>
   );

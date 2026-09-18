@@ -152,7 +152,7 @@ export default function SlideHome({ isActive }) {
       {/* Slide counter */}
       <div ref={counterRef} style={S.counterWrap}>
         <span className="slide-counter" style={{ position: "static" }}>
-          01 / 05
+          01 / 06
         </span>
       </div>
     </div>
