@@ -6,76 +6,64 @@ import { BrandLogo } from "../config/assets";
 const data = SLIDES[1];
 
 const FEATURES = [
-  { icon: "code", title: "Custom Software Development", subtitle: "Tailored to your needs" },
-  { icon: "cloud", title: "Cloud & Web Solutions", subtitle: "Secure & Scalable" },
-  { icon: "mobile", title: "Mobile App Development", subtitle: "iOS & Android" },
-  { icon: "pen", title: "UI/UX Design", subtitle: "Simple, Beautiful, Effective" },
+  { icon: "code", title: "Custom Software", subtitle: "Tailored to your needs" },
+  { icon: "cloud", title: "Cloud & Web", subtitle: "Secure & Scalable" },
+  { icon: "mobile", title: "Mobile Apps", subtitle: "iOS & Android" },
+  { icon: "pen", title: "UI/UX Design", subtitle: "Beautiful & Effective" },
   { icon: "headset", title: "Ongoing Support", subtitle: "Always with you" },
-  { icon: "chart", title: "Digital Transformation", subtitle: "For a smarter tomorrow" },
+  { icon: "chart", title: "Digital Transform", subtitle: "Smarter tomorrow" },
 ];
 
 const INFO_CARDS = [
   {
     label: "Grow Faster",
     desc: "Scalable Solutions",
-    iconBg: "linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)",
-    iconBorder: "rgba(59,130,246,0.3)",
+    color: "#3B82F6",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />
       </svg>
     ),
-    top: "8%",
-    left: "0%",
   },
   {
     label: "Work Smarter",
     desc: "Automate & Save Time",
-    iconBg: "linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)",
-    iconBorder: "rgba(59,130,246,0.3)",
+    color: "#8B5CF6",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
       </svg>
     ),
-    top: "4%",
-    right: "2%",
   },
   {
     label: "Secure & Reliable",
     desc: "Your Data, Our Priority",
-    iconBg: "linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)",
-    iconBorder: "rgba(59,130,246,0.3)",
+    color: "#10B981",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" />
       </svg>
     ),
-    bottom: "18%",
-    left: "5%",
   },
   {
     label: "Better Experience",
     desc: "For Your Customers",
-    iconBg: "linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)",
-    iconBorder: "rgba(59,130,246,0.3)",
+    color: "#F59E0B",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
       </svg>
     ),
-    bottom: "12%",
-    right: "0%",
   },
 ];
 
 const featureIcons = {
-  code: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>,
-  cloud: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>,
-  mobile: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>,
-  pen: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>,
-  headset: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>,
-  chart: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>,
+  code: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>,
+  cloud: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>,
+  mobile: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>,
+  pen: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>,
+  headset: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>,
+  chart: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg>,
 };
 
 export default function SlideSoftware({ isActive }) {
@@ -119,13 +107,11 @@ export default function SlideSoftware({ isActive }) {
     if (comp) {
       const laptop = comp.querySelector('.laptop-wrap');
       const phone = comp.querySelector('.phone-wrap');
-      const floats = comp.querySelectorAll('.float-el');
       const infos = comp.querySelectorAll('.info-card-el');
 
       if (laptop) { gsap.set(laptop, { opacity: 0, y: 40, scale: 0.9 }); tl.to(laptop, { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "power3.out" }, 0.4); }
       if (phone) { gsap.set(phone, { opacity: 0, y: 30, scale: 0.9 }); tl.to(phone, { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "power3.out" }, 0.6); }
-      if (floats.length) { gsap.set(floats, { opacity: 0, scale: 0.5 }); tl.to(floats, { opacity: 1, scale: 1, duration: 0.7, stagger: 0.08, ease: "back.out(1.5)" }, 0.7); }
-      if (infos.length) { gsap.set(infos, { opacity: 0, y: 15 }); tl.to(infos, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power3.out" }, 0.9); }
+      if (infos.length) { gsap.set(infos, { opacity: 0, y: 15 }); tl.to(infos, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power3.out" }, 0.8); }
     }
 
     gsap.set(counterRef.current, { opacity: 0 });
@@ -134,7 +120,6 @@ export default function SlideSoftware({ isActive }) {
 
   return (
     <div style={S.wrap}>
-      {/* Header - full width */}
       <div style={S.headerRow}>
         <div ref={logoRef}>
           <BrandLogo size={48} dark />
@@ -147,7 +132,6 @@ export default function SlideSoftware({ isActive }) {
       </div>
 
       <div style={S.container}>
-        {/* Body */}
         <div style={S.bodyRow}>
           {/* LEFT COLUMN */}
           <div style={S.leftCol}>
@@ -157,7 +141,7 @@ export default function SlideSoftware({ isActive }) {
               Our <span style={S.headlineAccent}>Customers</span>
             </h2>
             <p ref={descRef} style={S.description}>
-              We build custom, scalable and user-friendly software solutions that solve real problems. Our technology helps businesses save time, reduce costs and achieve more — in today's fast-changing world.
+              We build custom, scalable and user-friendly software solutions that solve real problems. Our technology helps businesses save time, reduce costs and achieve more.
             </p>
 
             <div ref={featuresRef} style={S.featuresGrid}>
@@ -178,27 +162,22 @@ export default function SlideSoftware({ isActive }) {
             </div>
           </div>
 
-          {/* RIGHT COLUMN - Laptop/Phone Composition */}
+          {/* RIGHT COLUMN */}
           <div style={S.rightCol}>
             <div ref={compositionRef} style={S.composition}>
-              {/* Background blobs */}
               <div style={S.bgBlob1} />
               <div style={S.bgBlob2} />
-              <div style={S.bgBlob3} />
 
               {/* Laptop */}
               <div className="laptop-wrap" style={S.laptopWrap}>
                 <div style={S.laptopScreen}>
                   <div style={S.laptopScreenInner}>
-                    {/* Code lines */}
                     <div style={{ ...S.codeLine, width: "60%", background: "rgba(0,200,255,0.6)" }} />
                     <div style={{ ...S.codeLine, width: "45%", background: "rgba(168,85,247,0.5)", marginLeft: 16 }} />
                     <div style={{ ...S.codeLine, width: "70%", background: "rgba(59,130,246,0.5)", marginLeft: 8 }} />
                     <div style={{ ...S.codeLine, width: "35%", background: "rgba(16,185,129,0.5)", marginLeft: 24 }} />
                     <div style={{ ...S.codeLine, width: "55%", background: "rgba(0,200,255,0.4)", marginLeft: 12 }} />
                     <div style={{ ...S.codeLine, width: "40%", background: "rgba(249,115,22,0.4)", marginLeft: 20 }} />
-                    <div style={{ ...S.codeLine, width: "65%", background: "rgba(59,130,246,0.4)", marginLeft: 8 }} />
-                    <div style={{ ...S.codeLine, width: "30%", background: "rgba(168,85,247,0.4)", marginLeft: 16 }} />
                   </div>
                 </div>
                 <div style={S.laptopBase} />
@@ -217,53 +196,35 @@ export default function SlideSoftware({ isActive }) {
                 </div>
               </div>
 
-              {/* Floating UI elements */}
-              <div className="float-el" style={S.floatCode}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>
-              </div>
-              <div className="float-el" style={S.floatCloud}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-              </div>
-              <div className="float-el" style={S.floatChart}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="12" width="4" height="9" /><rect x="10" y="7" width="4" height="14" /><rect x="17" y="3" width="4" height="18" /></svg>
-              </div>
-
-              {/* Plant */}
-              <div style={S.plantWrap}>
-                <div style={S.plantPot} />
-                <div style={S.plantLeaf1} />
-                <div style={S.plantLeaf2} />
-                <div style={S.plantLeaf3} />
-              </div>
-
-              {/* Info cards */}
-              {INFO_CARDS.map((card, i) => (
-                <div
-                  key={i}
-                  className="info-card-el"
-                  style={{
-                    ...S.infoCard,
-                    top: card.top,
-                    right: card.right,
-                    bottom: card.bottom,
-                    left: card.left,
-                  }}
-                >
-                  <div style={{ ...S.infoIcon, background: card.iconBg, borderColor: card.iconBorder }}>
-                    {card.icon}
+              {/* Info cards - positioned in corners */}
+              {INFO_CARDS.map((card, i) => {
+                const positions = [
+                  { top: "2%", left: "0%" },
+                  { top: "2%", right: "0%" },
+                  { bottom: "15%", left: "-5%" },
+                  { bottom: "15%", right: "-5%" },
+                ];
+                return (
+                  <div
+                    key={i}
+                    className="info-card-el"
+                    style={{ ...S.infoCard, ...positions[i] }}
+                  >
+                    <div style={{ ...S.infoIcon, background: `${card.color}12`, border: `1.5px solid ${card.color}25`, color: card.color }}>
+                      {card.icon}
+                    </div>
+                    <div style={S.infoTextCol}>
+                      <div style={S.infoLabel}>{card.label}</div>
+                      <div style={S.infoDesc}>{card.desc}</div>
+                    </div>
                   </div>
-                  <div style={S.infoTextCol}>
-                    <div style={S.infoLabel}>{card.label}</div>
-                    <div style={S.infoDesc}>{card.desc}</div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Counter */}
       <div ref={counterRef} style={S.counterWrap}>
         <span style={S.counterText}>02 / 06</span>
         <div style={S.counterBar}>
@@ -329,37 +290,38 @@ const S = {
   },
   bodyRow: {
     display: "flex",
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "space-between",
-    gap: "clamp(20px, 4vw, 60px)",
+    gap: "clamp(20px, 3vw, 48px)",
     marginTop: "auto",
     marginBottom: "auto",
     flexWrap: "wrap",
   },
   leftCol: {
-    flex: "1 1 420px",
+    flex: "1 1 400px",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
     minWidth: 0,
+    maxWidth: 480,
   },
   sectionTag: {
     fontFamily: "var(--font-mono)",
-    fontSize: "clamp(12px, 1.1vw, 14px)",
+    fontSize: "clamp(11px, 1vw, 13px)",
     fontWeight: 600,
     color: "#3B82F6",
     letterSpacing: "0.22em",
     textTransform: "uppercase",
-    marginBottom: 12,
+    marginBottom: 10,
   },
   headline: {
     fontFamily: "var(--font-serif)",
-    fontSize: "clamp(32px, 4.2vw, 54px)",
+    fontSize: "clamp(26px, 3.2vw, 42px)",
     fontWeight: 700,
     color: "#0F172A",
-    lineHeight: 1.08,
+    lineHeight: 1.1,
     letterSpacing: "-0.025em",
-    marginBottom: 18,
+    marginBottom: 14,
   },
   headlineAccent: {
     background: "linear-gradient(135deg, #7C3AED 0%, #6366F1 35%, #3B82F6 70%, #00B4D8 100%)",
@@ -368,38 +330,35 @@ const S = {
   },
   description: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(13px, 1.3vw, 16px)",
+    fontSize: "clamp(12px, 1.1vw, 14px)",
     color: "#475569",
-    lineHeight: 1.75,
-    maxWidth: 480,
-    marginBottom: 30,
+    lineHeight: 1.7,
+    maxWidth: 420,
+    marginBottom: 24,
     fontWeight: 400,
   },
   featuresGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gridAutoRows: "1fr",
-    gap: "clamp(10px, 1.2vw, 16px)",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: "clamp(8px, 1vw, 12px)",
     width: "100%",
-    maxWidth: 620,
   },
   featureCard: {
     display: "flex",
     alignItems: "center",
-    gap: 14,
-    padding: "clamp(20px, 2.2vw, 28px)",
-    borderRadius: 16,
+    gap: 12,
+    padding: "clamp(12px, 1.2vw, 16px)",
+    borderRadius: 12,
     background: "rgba(255,255,255,0.85)",
     border: "1px solid rgba(59,130,246,0.08)",
     boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
     transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
     cursor: "default",
-    height: "clamp(120px, 15vh, 160px)",
   },
   featureIconCircle: {
-    width: 62,
-    height: 62,
-    minWidth: 62,
+    width: 44,
+    height: 44,
+    minWidth: 44,
     borderRadius: "50%",
     background: "linear-gradient(135deg, #EFF8FF 0%, #DBEAFE 100%)",
     border: "1px solid rgba(59,130,246,0.15)",
@@ -411,20 +370,19 @@ const S = {
   featureTextCol: {
     display: "flex",
     flexDirection: "column",
-    gap: 2,
+    gap: 1,
     minWidth: 0,
-    overflow: "hidden",
   },
   featureTitle: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(13px, 1.2vw, 15px)",
+    fontSize: "clamp(12px, 1.1vw, 14px)",
     fontWeight: 600,
     color: "#0F172A",
     lineHeight: 1.3,
   },
   featureSubtitle: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(11px, 1vw, 13px)",
+    fontSize: "clamp(10px, 0.9vw, 12px)",
     color: "#64748B",
     lineHeight: 1.4,
   },
@@ -434,114 +392,99 @@ const S = {
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    minHeight: 500,
+    minHeight: 480,
   },
   composition: {
     position: "relative",
-    width: "clamp(480px, 52vw, 680px)",
-    height: "clamp(420px, 46vw, 580px)",
+    width: "clamp(440px, 48vw, 600px)",
+    height: "clamp(400px, 44vw, 520px)",
   },
-  /* Background blobs */
   bgBlob1: {
     position: "absolute",
-    top: "5%",
-    right: "0%",
-    width: "60%",
-    height: "55%",
+    top: "10%",
+    right: "5%",
+    width: "55%",
+    height: "50%",
     borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%)",
+    background: "radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)",
     filter: "blur(40px)",
     pointerEvents: "none",
   },
   bgBlob2: {
     position: "absolute",
-    bottom: "5%",
+    bottom: "10%",
     left: "10%",
-    width: "50%",
-    height: "50%",
+    width: "45%",
+    height: "45%",
     borderRadius: "50%",
     background: "radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%)",
     filter: "blur(35px)",
     pointerEvents: "none",
   },
-  bgBlob3: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "70%",
-    height: "70%",
-    borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 60%)",
-    filter: "blur(50px)",
-    pointerEvents: "none",
-  },
-  /* Laptop */
   laptopWrap: {
     position: "absolute",
-    top: "18%",
-    left: "15%",
-    width: "clamp(280px, 30vw, 400px)",
+    top: "20%",
+    left: "18%",
+    width: "clamp(240px, 26vw, 340px)",
     zIndex: 3,
   },
   laptopScreen: {
     width: "100%",
-    height: "clamp(180px, 20vw, 260px)",
+    height: "clamp(150px, 16vw, 220px)",
     background: "linear-gradient(135deg, #0B1120 0%, #1A1F35 100%)",
-    borderRadius: "12px 12px 0 0",
+    borderRadius: "10px 10px 0 0",
     border: "3px solid #2A3050",
-    padding: 12,
+    padding: 10,
     overflow: "hidden",
     boxShadow: "0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(59,130,246,0.15)",
   },
   laptopScreenInner: {
     display: "flex",
     flexDirection: "column",
-    gap: 6,
-    paddingTop: 8,
+    gap: 5,
+    paddingTop: 6,
   },
   codeLine: {
-    height: 4,
+    height: 3,
     borderRadius: 2,
   },
   laptopBase: {
     width: "110%",
-    height: 12,
+    height: 10,
     background: "linear-gradient(180deg, #3A4060 0%, #2A3050 100%)",
-    borderRadius: "0 0 8px 8px",
+    borderRadius: "0 0 6px 6px",
     marginLeft: "-5%",
     boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
   },
-  /* Phone */
   phoneWrap: {
     position: "absolute",
-    top: "25%",
-    right: "15%",
-    width: "clamp(80px, 8vw, 110px)",
+    top: "28%",
+    right: "18%",
+    width: "clamp(70px, 7vw, 95px)",
     zIndex: 4,
   },
   phoneScreen: {
     width: "100%",
-    height: "clamp(160px, 17vw, 220px)",
+    height: "clamp(130px, 14vw, 180px)",
     background: "linear-gradient(180deg, #1E293B 0%, #0F172A 100%)",
-    borderRadius: 16,
+    borderRadius: 14,
     border: "3px solid #334155",
-    padding: 8,
+    padding: 6,
     position: "relative",
     overflow: "hidden",
     boxShadow: "0 15px 40px rgba(0,0,0,0.3), 0 0 25px rgba(59,130,246,0.1)",
   },
   phoneNotch: {
-    width: "40%",
-    height: 6,
+    width: "35%",
+    height: 5,
     background: "#1A1F35",
     borderRadius: 4,
-    margin: "0 auto 8px",
+    margin: "0 auto 6px",
   },
   phoneContent: {
     display: "flex",
     flexDirection: "column",
-    gap: 6,
+    gap: 5,
     alignItems: "center",
   },
   phoneBar: {
@@ -549,123 +492,32 @@ const S = {
     borderRadius: 2,
   },
   phoneCircle: {
-    width: 30,
-    height: 30,
+    width: 24,
+    height: 24,
     borderRadius: "50%",
     background: "linear-gradient(135deg, rgba(59,130,246,0.3) 0%, rgba(168,85,247,0.3) 100%)",
-    margin: "4px 0",
+    margin: "3px 0",
   },
-  /* Floating UI elements */
-  floatCode: {
-    position: "absolute",
-    top: "22%",
-    left: "35%",
-    width: 52,
-    height: 52,
-    borderRadius: 14,
-    background: "rgba(255,255,255,0.95)",
-    border: "1px solid rgba(59,130,246,0.15)",
-    boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 6,
-  },
-  floatCloud: {
-    position: "absolute",
-    top: "35%",
-    right: "8%",
-    width: 52,
-    height: 52,
-    borderRadius: 14,
-    background: "rgba(255,255,255,0.95)",
-    border: "1px solid rgba(59,130,246,0.15)",
-    boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 6,
-  },
-  floatChart: {
-    position: "absolute",
-    bottom: "30%",
-    left: "8%",
-    width: 52,
-    height: 52,
-    borderRadius: 14,
-    background: "rgba(255,255,255,0.95)",
-    border: "1px solid rgba(59,130,246,0.15)",
-    boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 6,
-  },
-  /* Plant */
-  plantWrap: {
-    position: "absolute",
-    bottom: "20%",
-    right: "5%",
-    zIndex: 5,
-  },
-  plantPot: {
-    width: 30,
-    height: 24,
-    background: "linear-gradient(180deg, #D4A574 0%, #B8865A 100%)",
-    borderRadius: "0 0 6px 6px",
-    margin: "0 auto",
-  },
-  plantLeaf1: {
-    width: 14,
-    height: 20,
-    background: "#22C55E",
-    borderRadius: "50% 0 50% 0",
-    position: "absolute",
-    top: -16,
-    left: "50%",
-    transform: "translateX(-50%) rotate(-15deg)",
-  },
-  plantLeaf2: {
-    width: 12,
-    height: 18,
-    background: "#16A34A",
-    borderRadius: "0 50% 0 50%",
-    position: "absolute",
-    top: -14,
-    left: "30%",
-    transform: "rotate(20deg)",
-  },
-  plantLeaf3: {
-    width: 12,
-    height: 18,
-    background: "#4ADE80",
-    borderRadius: "50% 0 50% 0",
-    position: "absolute",
-    top: -12,
-    left: "65%",
-    transform: "rotate(-25deg)",
-  },
-  /* Info cards */
   infoCard: {
     position: "absolute",
     display: "flex",
     alignItems: "center",
     gap: 10,
-    padding: "12px 16px",
-    borderRadius: 14,
+    padding: "10px 14px",
+    borderRadius: 12,
     background: "rgba(255,255,255,0.96)",
-    border: "1px solid rgba(59,130,246,0.1)",
-    boxShadow: "0 6px 24px rgba(0,0,0,0.06), 0 0 10px rgba(59,130,246,0.03)",
+    border: "1px solid rgba(0,0,0,0.05)",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.06)",
     backdropFilter: "blur(10px)",
     zIndex: 10,
     whiteSpace: "nowrap",
   },
   infoIcon: {
-    width: 40,
-    height: 40,
-    minWidth: 40,
+    width: 36,
+    height: 36,
+    minWidth: 36,
     borderRadius: "50%",
-    border: "1px solid",
+    border: "1.5px solid",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -678,18 +530,17 @@ const S = {
   },
   infoLabel: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(12px, 1.1vw, 14px)",
+    fontSize: "clamp(11px, 1vw, 13px)",
     fontWeight: 600,
     color: "#0F172A",
     lineHeight: 1.3,
   },
   infoDesc: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(10px, 0.9vw, 12px)",
+    fontSize: "clamp(9px, 0.8vw, 11px)",
     color: "#64748B",
     lineHeight: 1.3,
   },
-  /* Counter */
   counterWrap: {
     position: "absolute",
     bottom: 24,
