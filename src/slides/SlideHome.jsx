@@ -133,16 +133,6 @@ export default function SlideHome({ isActive }) {
           </div>
 
           <div ref={visualRef} style={S.rightCol}>
-            {/* Floating text overlay matching the reference design */}
-            <div style={S.floatingText}>
-              <span style={{ color: "#7DD3FC" }}>Ideas</span>
-              <br />
-              <span style={{ color: "#94A3B8", fontSize: "clamp(11px, 1.2vw, 14px)" }}>into</span>
-              <br />
-              <span style={{ color: "#FFFFFF", fontWeight: 600 }}>Digital</span>
-              <br />
-              <span style={{ color: "#FFFFFF", fontWeight: 600 }}>Solutions</span>
-            </div>
           </div>
         </div>
 
