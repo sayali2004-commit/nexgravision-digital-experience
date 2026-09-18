@@ -212,120 +212,156 @@ export default function SlideWhyUs({ isActive }) {
             </div>
           </div>
 
-          {/* RIGHT COLUMN - Dashboard Mockup + Modules */}
+          {/* RIGHT COLUMN - Laptop Mockup + Floating Modules */}
           <div style={S.rightCol}>
-            {/* Dashboard mockup */}
-            <div ref={mockupRef} style={S.mockupWrap}>
-              {/* Dashboard frame */}
-              <div style={S.dashFrame}>
-                {/* Top bar */}
-                <div style={S.dashTopBar}>
-                  <div style={S.dashDots}>
-                    <div style={{ ...S.dashDot, background: "#EF4444" }} />
-                    <div style={{ ...S.dashDot, background: "#F59E0B" }} />
-                    <div style={{ ...S.dashDot, background: "#22C55E" }} />
-                  </div>
-                  <div style={S.dashUrl}>nexgravision.com/dashboard</div>
-                </div>
-                {/* Content */}
-                <div style={S.dashContent}>
-                  {/* Sidebar */}
-                  <div style={S.dashSidebar}>
-                    <div style={S.sidebarItem}>
-                      <div style={{ ...S.sidebarIcon, background: "rgba(59,130,246,0.15)" }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></svg>
-                      </div>
-                    </div>
-                    <div style={S.sidebarItem}>
-                      <div style={{ ...S.sidebarIcon, background: "rgba(139,92,246,0.15)" }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
-                      </div>
-                    </div>
-                    <div style={S.sidebarItem}>
-                      <div style={{ ...S.sidebarIcon, background: "rgba(16,185,129,0.15)" }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-                      </div>
-                    </div>
-                    <div style={S.sidebarItem}>
-                      <div style={{ ...S.sidebarIcon, background: "rgba(236,72,153,0.15)" }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EC4899" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Main area */}
-                  <div style={S.dashMain}>
-                    <div style={S.dashMainHeader}>
-                      <div style={S.dashMainTitle}>Dashboard Overview</div>
-                      <div style={S.dashMainBadge}>Live</div>
-                    </div>
-                    {/* Metric cards */}
-                    <div style={S.dashMetrics}>
-                      <div style={S.dashMetric}>
-                        <div style={{ ...S.metricDot, background: "#3B82F6" }} />
-                        <div style={S.metricLabel}>Revenue</div>
-                        <div style={S.metricValue}>₹12.5L</div>
-                      </div>
-                      <div style={S.dashMetric}>
-                        <div style={{ ...S.metricDot, background: "#10B981" }} />
-                        <div style={S.metricLabel}>Clients</div>
-                        <div style={S.metricValue}>50+</div>
-                      </div>
-                      <div style={S.dashMetric}>
-                        <div style={{ ...S.metricDot, background: "#8B5CF6" }} />
-                        <div style={S.metricLabel}>Projects</div>
-                        <div style={S.metricValue}>100+</div>
-                      </div>
-                    </div>
-                    {/* Chart placeholder */}
-                    <div style={S.dashChart}>
-                      <div style={S.chartBars}>
-                        {[65, 45, 80, 55, 70, 90, 60, 75, 85, 50, 72, 88].map((h, i) => (
-                          <div key={i} style={{ ...S.chartBar, height: `${h}%` }} />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div style={S.composition}>
+              {/* Background decorative clouds */}
+              <div style={S.cloud1} />
+              <div style={S.cloud2} />
+              <div style={S.cloud3} />
 
-            {/* Module cards - positioned around the mockup */}
-            {MODULES.map((mod, i) => {
-              const positions = [
-                { top: "-2%", right: "0%" },
-                { top: "18%", right: "-8%" },
-                { bottom: "35%", right: "-5%" },
-                { bottom: "12%", right: "2%" },
-                { bottom: "12%", left: "2%" },
-                { bottom: "35%", left: "-5%" },
-              ];
-              const pos = positions[i];
-              return (
-                <div
-                  key={i}
-                  ref={(el) => (modulesRef.current[i] = el)}
-                  style={{ ...S.moduleCard, ...pos }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-3px)";
-                    e.currentTarget.style.boxShadow = `0 12px 32px ${mod.border}`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = `0 4px 16px rgba(0,0,0,0.04)`;
-                  }}
-                >
-                  <div style={{ ...S.moduleIcon, background: mod.bgLight, color: mod.gradient.includes("#3B82F6") ? "#3B82F6" : mod.gradient.includes("#8B5CF6") ? "#8B5CF6" : mod.gradient.includes("#10B981") ? "#10B981" : mod.gradient.includes("#F59E0B") ? "#F59E0B" : mod.gradient.includes("#EC4899") ? "#EC4899" : "#06B6D4" }}>
-                    {mod.icon}
-                  </div>
-                  <div style={S.moduleTextCol}>
-                    <div style={{ ...S.moduleTitle, color: mod.gradient.includes("#3B82F6") ? "#2563EB" : mod.gradient.includes("#8B5CF6") ? "#7C3AED" : mod.gradient.includes("#10B981") ? "#059669" : mod.gradient.includes("#F59E0B") ? "#D97706" : mod.gradient.includes("#EC4899") ? "#DB2777" : "#0891B2" }}>
-                      {mod.title}
+              {/* Connection lines SVG */}
+              <svg style={S.connLines} viewBox="0 0 600 500" fill="none">
+                <path d="M300 200 Q300 100 180 60" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+                <path d="M300 200 Q380 120 500 80" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+                <path d="M300 220 Q200 240 60 220" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+                <path d="M320 220 Q420 240 560 230" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+                <path d="M300 280 Q220 380 100 420" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+                <path d="M300 280 Q380 380 480 430" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+                <defs>
+                  <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="rgba(99,102,241,0.3)" />
+                    <stop offset="50%" stopColor="rgba(59,130,246,0.5)" />
+                    <stop offset="100%" stopColor="rgba(99,102,241,0.3)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              {/* Laptop mockup */}
+              <div ref={mockupRef} style={S.laptopWrap}>
+                <div style={S.laptopScreen}>
+                  <div style={S.laptopScreenInner}>
+                    {/* NexGravision header */}
+                    <div style={S.dashHeader}>
+                      <div style={S.dashLogoMark}>N</div>
+                      <span style={S.dashLogoText}>NexGravision</span>
+                      <div style={S.dashSearch}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                        <span style={S.dashSearchText}>Search anything...</span>
+                      </div>
                     </div>
-                    <div style={S.moduleDesc}>{mod.desc}</div>
+                    {/* Dashboard content */}
+                    <div style={S.dashBody}>
+                      <div style={S.dashSideNav}>
+                        <div style={{ ...S.dashNavItem, background: "rgba(99,102,241,0.1)", color: "#6366F1" }}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></svg>
+                          Dashboard
+                        </div>
+                        <div style={S.dashNavItem}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /></svg>
+                          Sales
+                        </div>
+                        <div style={S.dashNavItem}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
+                          HR
+                        </div>
+                        <div style={S.dashNavItem}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /></svg>
+                          Projects
+                        </div>
+                        <div style={S.dashNavItem}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg>
+                          Reports
+                        </div>
+                        <div style={S.dashNavItem}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4" /></svg>
+                          Settings
+                        </div>
+                      </div>
+                      <div style={S.dashMainArea}>
+                        <div style={S.dashTitle}>Dashboard Overview</div>
+                        <div style={S.dashMetricRow}>
+                          <div style={S.dashMetricCard}>
+                            <div style={{ ...S.dashMetricDot, background: "#3B82F6" }} />
+                            <div style={S.dashMetricLabel}>Revenue</div>
+                            <div style={S.dashMetricVal}>₹12.5L</div>
+                            <div style={{ ...S.dashMetricChange, color: "#10B981" }}>↑ 12%</div>
+                          </div>
+                          <div style={S.dashMetricCard}>
+                            <div style={{ ...S.dashMetricDot, background: "#10B981" }} />
+                            <div style={S.dashMetricLabel}>Clients</div>
+                            <div style={S.dashMetricVal}>50+</div>
+                            <div style={{ ...S.dashMetricChange, color: "#10B981" }}>↑ 8%</div>
+                          </div>
+                          <div style={S.dashMetricCard}>
+                            <div style={{ ...S.dashMetricDot, background: "#8B5CF6" }} />
+                            <div style={S.dashMetricLabel}>Projects</div>
+                            <div style={S.dashMetricVal}>100+</div>
+                            <div style={{ ...S.dashMetricChange, color: "#10B981" }}>↑ 15%</div>
+                          </div>
+                        </div>
+                        <div style={S.dashChartArea}>
+                          <div style={S.dashChartBars}>
+                            {[55, 40, 70, 50, 65, 80, 45, 60, 75, 55, 68, 82].map((h, i) => (
+                              <div key={i} style={{ ...S.dashChartBar, height: `${h}%` }} />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              );
-            })}
+                <div style={S.laptopBase} />
+                {/* Screen glow */}
+                <div style={S.laptopGlow} />
+              </div>
+
+              {/* Plant pot */}
+              <div style={S.plantWrap}>
+                <div style={S.plantLeaf1} />
+                <div style={S.plantLeaf2} />
+                <div style={S.plantLeaf3} />
+                <div style={S.plantStem} />
+                <div style={S.plantPot} />
+              </div>
+
+              {/* Module cards - positioned around the laptop */}
+              {MODULES.map((mod, i) => {
+                const positions = [
+                  { top: "2%", left: "22%" },
+                  { top: "6%", right: "2%" },
+                  { top: "38%", left: "-4%" },
+                  { top: "38%", right: "-6%" },
+                  { bottom: "8%", left: "2%" },
+                  { bottom: "4%", right: "6%" },
+                ];
+                const pos = positions[i];
+                const colors = ["#3B82F6", "#8B5CF6", "#EC4899", "#10B981", "#F59E0B", "#06B6D4"];
+                return (
+                  <div
+                    key={i}
+                    ref={(el) => (modulesRef.current[i] = el)}
+                    style={{ ...S.moduleCard, ...pos }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-4px) scale(1.02)";
+                      e.currentTarget.style.boxShadow = "0 14px 36px rgba(0,0,0,0.1)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0) scale(1)";
+                      e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.06)";
+                    }}
+                  >
+                    <div style={{ ...S.moduleIcon, background: `${colors[i]}12`, border: `1.5px solid ${colors[i]}20` }}>
+                      <div style={{ color: colors[i] }}>{mod.icon}</div>
+                    </div>
+                    <div style={S.moduleTextCol}>
+                      <div style={{ ...S.moduleTitle, color: colors[i] }}>{mod.title}</div>
+                      <div style={S.moduleDesc}>{mod.desc}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -551,165 +587,300 @@ const S = {
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    minHeight: 480,
+    minHeight: 500,
+  },
+  composition: {
+    position: "relative",
+    width: "clamp(420px, 48vw, 600px)",
+    height: "clamp(420px, 48vw, 560px)",
+  },
+  connLines: {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    pointerEvents: "none",
+    zIndex: 1,
+  },
+  cloud1: {
+    position: "absolute",
+    top: "5%",
+    right: "5%",
+    width: 80,
+    height: 40,
+    borderRadius: 40,
+    background: "rgba(255,255,255,0.6)",
+    boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
+    pointerEvents: "none",
+  },
+  cloud2: {
+    position: "absolute",
+    bottom: "15%",
+    left: "0%",
+    width: 60,
+    height: 30,
+    borderRadius: 30,
+    background: "rgba(255,255,255,0.5)",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.02)",
+    pointerEvents: "none",
+  },
+  cloud3: {
+    position: "absolute",
+    top: "50%",
+    right: "-2%",
+    width: 50,
+    height: 25,
+    borderRadius: 25,
+    background: "rgba(255,255,255,0.4)",
+    pointerEvents: "none",
   },
 
-  /* Dashboard mockup */
-  mockupWrap: {
-    position: "relative",
-    width: "clamp(340px, 38vw, 480px)",
-    zIndex: 2,
+  /* Laptop mockup */
+  laptopWrap: {
+    position: "absolute",
+    top: "22%",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "clamp(260px, 30vw, 380px)",
+    zIndex: 3,
   },
-  dashFrame: {
-    borderRadius: 14,
-    border: "1px solid rgba(0,0,0,0.08)",
+  laptopScreen: {
+    width: "100%",
+    borderRadius: "10px 10px 0 0",
+    border: "3px solid #D1D5DB",
+    borderBottom: "none",
     background: "#FFFFFF",
-    boxShadow: "0 20px 60px rgba(0,0,0,0.08), 0 0 40px rgba(139,92,246,0.05)",
     overflow: "hidden",
+    boxShadow: "0 20px 60px rgba(0,0,0,0.12), 0 0 40px rgba(99,102,241,0.08)",
   },
-  dashTopBar: {
-    display: "flex",
-    alignItems: "center",
-    gap: 12,
-    padding: "10px 14px",
-    background: "#F8FAFC",
-    borderBottom: "1px solid rgba(0,0,0,0.05)",
-  },
-  dashDots: {
-    display: "flex",
-    gap: 5,
-  },
-  dashDot: {
-    width: 8,
-    height: 8,
-    borderRadius: "50%",
-  },
-  dashUrl: {
-    fontFamily: "var(--font-mono)",
-    fontSize: 10,
-    color: "#94A3B8",
-    background: "#FFFFFF",
-    padding: "3px 10px",
-    borderRadius: 6,
-    border: "1px solid rgba(0,0,0,0.05)",
-    flex: 1,
-  },
-  dashContent: {
-    display: "flex",
-    minHeight: 240,
-  },
-  dashSidebar: {
-    width: 48,
-    background: "#F8FAFC",
-    borderRight: "1px solid rgba(0,0,0,0.05)",
-    padding: "10px 0",
+  laptopScreenInner: {
     display: "flex",
     flexDirection: "column",
+    minHeight: "clamp(160px, 18vw, 220px)",
+  },
+  laptopBase: {
+    width: "115%",
+    height: 10,
+    background: "linear-gradient(180deg, #D1D5DB 0%, #B8BCC4 100%)",
+    borderRadius: "0 0 6px 6px",
+    marginLeft: "-7.5%",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+  },
+  laptopGlow: {
+    position: "absolute",
+    bottom: "15%",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "80%",
+    height: 40,
+    borderRadius: "50%",
+    background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)",
+    filter: "blur(20px)",
+    pointerEvents: "none",
+    zIndex: 2,
+  },
+  /* Dashboard header */
+  dashHeader: {
+    display: "flex",
     alignItems: "center",
-    gap: 6,
+    gap: 8,
+    padding: "8px 12px",
+    borderBottom: "1px solid rgba(0,0,0,0.06)",
+    background: "#FAFBFC",
   },
-  sidebarItem: {
-    padding: "6px",
-  },
-  sidebarIcon: {
-    width: 30,
-    height: 30,
-    borderRadius: 8,
+  dashLogoMark: {
+    width: 22,
+    height: 22,
+    borderRadius: 6,
+    background: "linear-gradient(135deg, #6366F1, #3B82F6)",
+    color: "#FFF",
+    fontFamily: "var(--font-sans)",
+    fontSize: 11,
+    fontWeight: 700,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
-  dashMain: {
-    flex: 1,
-    padding: "12px 14px",
-    display: "flex",
-    flexDirection: "column",
-    gap: 10,
+  dashLogoText: {
+    fontFamily: "var(--font-sans)",
+    fontSize: "clamp(9px, 1vw, 12px)",
+    fontWeight: 600,
+    color: "#1E293B",
   },
-  dashMainHeader: {
+  dashSearch: {
+    marginLeft: "auto",
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
+    gap: 5,
+    padding: "3px 8px",
+    borderRadius: 6,
+    background: "#F1F5F9",
+    border: "1px solid rgba(0,0,0,0.06)",
   },
-  dashMainTitle: {
-    fontFamily: "var(--font-sans)",
-    fontSize: 12,
-    fontWeight: 600,
-    color: "#0F172A",
-  },
-  dashMainBadge: {
-    fontFamily: "var(--font-mono)",
-    fontSize: 9,
-    fontWeight: 600,
-    color: "#10B981",
-    background: "#ECFDF5",
-    padding: "2px 8px",
-    borderRadius: 10,
-    border: "1px solid rgba(16,185,129,0.2)",
-  },
-  dashMetrics: {
-    display: "flex",
-    gap: 8,
-  },
-  dashMetric: {
-    flex: 1,
-    padding: "8px 10px",
-    borderRadius: 8,
-    background: "#F8FAFC",
-    border: "1px solid rgba(0,0,0,0.04)",
-  },
-  metricDot: {
-    width: 5,
-    height: 5,
-    borderRadius: "50%",
-    marginBottom: 4,
-  },
-  metricLabel: {
+  dashSearchText: {
     fontFamily: "var(--font-sans)",
     fontSize: 9,
     color: "#94A3B8",
-    marginBottom: 2,
   },
-  metricValue: {
+  /* Dashboard body */
+  dashBody: {
+    display: "flex",
+    flex: 1,
+  },
+  dashSideNav: {
+    width: "clamp(70px, 8vw, 100px)",
+    borderRight: "1px solid rgba(0,0,0,0.06)",
+    padding: "6px 0",
+    display: "flex",
+    flexDirection: "column",
+    gap: 2,
+  },
+  dashNavItem: {
+    display: "flex",
+    alignItems: "center",
+    gap: 5,
+    padding: "5px 8px",
     fontFamily: "var(--font-sans)",
-    fontSize: 14,
+    fontSize: "clamp(8px, 0.8vw, 10px)",
+    color: "#64748B",
+    cursor: "pointer",
+    borderRadius: 4,
+    margin: "0 4px",
+  },
+  dashMainArea: {
+    flex: 1,
+    padding: "8px 10px",
+    display: "flex",
+    flexDirection: "column",
+    gap: 6,
+  },
+  dashTitle: {
+    fontFamily: "var(--font-sans)",
+    fontSize: "clamp(9px, 0.9vw, 11px)",
+    fontWeight: 600,
+    color: "#0F172A",
+  },
+  dashMetricRow: {
+    display: "flex",
+    gap: 6,
+  },
+  dashMetricCard: {
+    flex: 1,
+    padding: "5px 6px",
+    borderRadius: 6,
+    background: "#F8FAFC",
+    border: "1px solid rgba(0,0,0,0.04)",
+  },
+  dashMetricDot: {
+    width: 4,
+    height: 4,
+    borderRadius: "50%",
+    marginBottom: 3,
+  },
+  dashMetricLabel: {
+    fontFamily: "var(--font-sans)",
+    fontSize: 7,
+    color: "#94A3B8",
+    marginBottom: 1,
+  },
+  dashMetricVal: {
+    fontFamily: "var(--font-sans)",
+    fontSize: "clamp(10px, 1.1vw, 14px)",
     fontWeight: 700,
     color: "#0F172A",
   },
-  dashChart: {
+  dashMetricChange: {
+    fontFamily: "var(--font-sans)",
+    fontSize: 7,
+    fontWeight: 500,
+    marginTop: 1,
+  },
+  dashChartArea: {
     flex: 1,
-    padding: "8px",
-    borderRadius: 8,
+    padding: "6px",
+    borderRadius: 6,
     background: "#F8FAFC",
     border: "1px solid rgba(0,0,0,0.04)",
     display: "flex",
     alignItems: "flex-end",
   },
-  chartBars: {
+  dashChartBars: {
     display: "flex",
     alignItems: "flex-end",
-    gap: 4,
+    gap: 3,
     width: "100%",
     height: "100%",
   },
-  chartBar: {
+  dashChartBar: {
     flex: 1,
-    borderRadius: 3,
-    background: "linear-gradient(180deg, rgba(139,92,246,0.4) 0%, rgba(59,130,246,0.3) 100%)",
-    minWidth: 6,
+    borderRadius: 2,
+    background: "linear-gradient(180deg, rgba(99,102,241,0.5) 0%, rgba(59,130,246,0.35) 100%)",
+    minWidth: 4,
   },
 
-  /* Module cards - floating around the mockup */
+  /* Plant pot */
+  plantWrap: {
+    position: "absolute",
+    bottom: "14%",
+    left: "8%",
+    zIndex: 4,
+  },
+  plantPot: {
+    width: 28,
+    height: 22,
+    background: "linear-gradient(180deg, #D4A574 0%, #B8865A 100%)",
+    borderRadius: "0 0 6px 6px",
+    margin: "0 auto",
+  },
+  plantStem: {
+    width: 3,
+    height: 16,
+    background: "#16A34A",
+    margin: "0 auto",
+    borderRadius: 2,
+  },
+  plantLeaf1: {
+    width: 14,
+    height: 18,
+    background: "#22C55E",
+    borderRadius: "50% 0 50% 0",
+    position: "absolute",
+    top: -20,
+    left: "50%",
+    transform: "translateX(-50%) rotate(-15deg)",
+  },
+  plantLeaf2: {
+    width: 12,
+    height: 16,
+    background: "#16A34A",
+    borderRadius: "0 50% 0 50%",
+    position: "absolute",
+    top: -16,
+    left: "25%",
+    transform: "rotate(20deg)",
+  },
+  plantLeaf3: {
+    width: 12,
+    height: 16,
+    background: "#4ADE80",
+    borderRadius: "50% 0 50% 0",
+    position: "absolute",
+    top: -14,
+    left: "65%",
+    transform: "rotate(-25deg)",
+  },
+
+  /* Module cards */
   moduleCard: {
     position: "absolute",
     display: "flex",
     alignItems: "center",
     gap: 10,
     padding: "10px 14px",
-    borderRadius: 12,
+    borderRadius: 14,
     background: "rgba(255,255,255,0.96)",
     border: "1px solid rgba(0,0,0,0.05)",
-    boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.06)",
     backdropFilter: "blur(10px)",
     zIndex: 10,
     whiteSpace: "nowrap",
@@ -733,13 +904,13 @@ const S = {
   },
   moduleTitle: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(12px, 1.05vw, 14px)",
+    fontSize: "clamp(11px, 1vw, 13px)",
     fontWeight: 600,
     lineHeight: 1.3,
   },
   moduleDesc: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(10px, 0.85vw, 11px)",
+    fontSize: "clamp(9px, 0.8vw, 11px)",
     color: "#64748B",
     lineHeight: 1.3,
   },
