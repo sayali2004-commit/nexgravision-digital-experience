@@ -98,23 +98,6 @@ export default function SlideHome({ isActive }) {
       {/* Bottom subtle blue glow */}
       <div style={S.bottomGlow} />
 
-      {/* Center ambient orb */}
-      <div style={S.orbGlow} />
-
-      {/* Diagonal light streaks - thick and glowing */}
-      <div style={S.streaksWrap}>
-        <div style={S.streak1} />
-        <div style={S.streak2} />
-        <div style={S.streak3} />
-        <div style={S.streak4} />
-        <div style={S.streak5} />
-        <div style={S.streak6} />
-      </div>
-
-      {/* Vertical subtle light bars on right */}
-      <div style={S.verticalBar1} />
-      <div style={S.verticalBar2} />
-
       <div style={S.container}>
         {/* Header row: Logo + Top Right text */}
         <div style={S.headerRow}>
@@ -150,32 +133,7 @@ export default function SlideHome({ isActive }) {
           </div>
 
           <div ref={visualRef} style={S.rightCol}>
-            {/* Glow behind laptop */}
-            <div style={S.laptopGlow} />
-            <div style={S.laptopFrame}>
-              <div style={S.laptopScreen}>
-                <div style={S.screenContent}>
-                  <div style={S.screenHeader}>
-                    <div style={S.screenDot} />
-                    <div style={{ ...S.screenDot, background: "#F59E0B" }} />
-                    <div style={{ ...S.screenDot, background: "#10B981" }} />
-                  </div>
-                  <div style={S.screenCode}>
-                    <div style={{ ...S.codeLine, width: "60%" }} />
-                    <div style={{ ...S.codeLine, width: "80%", opacity: 0.6 }} />
-                    <div style={{ ...S.codeLine, width: "45%", opacity: 0.4 }} />
-                    <div style={{ ...S.codeLine, width: "70%", opacity: 0.7 }} />
-                    <div style={{ ...S.codeLine, width: "55%", opacity: 0.5 }} />
-                  </div>
-                  <div style={S.screenLogoOverlay}>
-                    <img src="/LOGOIMG.png" alt="NexGravision" style={S.screenLogo} />
-                    <div style={S.screenLogoText}>NEXGRAVISION</div>
-                  </div>
-                </div>
-              </div>
-              <div style={S.laptopBase} />
-            </div>
-            {/* Floating text overlay */}
+            {/* Floating text overlay matching the reference design */}
             <div style={S.floatingText}>
               <span style={{ color: "#7DD3FC" }}>Ideas</span>
               <br />
@@ -227,24 +185,23 @@ const S = {
   photoBg: {
     position: "absolute",
     inset: 0,
-    backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80')",
+    backgroundImage: "url('/background.png')",
     backgroundSize: "cover",
-    backgroundPosition: "center 40%",
-    filter: "brightness(0.3) saturate(0.6)",
+    backgroundPosition: "center center",
     pointerEvents: "none",
     zIndex: 0,
   },
   tintOverlay: {
     position: "absolute",
     inset: 0,
-    background: "linear-gradient(135deg, rgba(5,10,20,0.85) 0%, rgba(8,13,26,0.7) 30%, rgba(10,22,40,0.6) 60%, rgba(5,10,20,0.8) 100%)",
+    background: "linear-gradient(90deg, rgba(5,10,20,0.92) 0%, rgba(5,10,20,0.75) 35%, rgba(5,10,20,0.2) 65%, transparent 100%)",
     pointerEvents: "none",
     zIndex: 1,
   },
   bgDeepLayer: {
     position: "absolute",
     inset: 0,
-    background: "radial-gradient(ellipse at 70% 50%, rgba(0,40,80,0.2) 0%, rgba(0,20,50,0.08) 40%, transparent 70%)",
+    background: "linear-gradient(180deg, rgba(5,10,20,0.3) 0%, transparent 30%, transparent 70%, rgba(5,10,20,0.4) 100%)",
     pointerEvents: "none",
     zIndex: 2,
   },
@@ -271,105 +228,6 @@ const S = {
     filter: "blur(50px)",
     pointerEvents: "none",
     zIndex: 3,
-  },
-  orbGlow: {
-    position: "absolute",
-    top: "30%",
-    right: "15%",
-    width: "clamp(350px, 42vw, 550px)",
-    height: "clamp(350px, 42vw, 550px)",
-    borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(0,180,216,0.12) 0%, rgba(0,120,200,0.06) 40%, transparent 70%)",
-    filter: "blur(70px)",
-    pointerEvents: "none",
-    zIndex: 3,
-  },
-  streaksWrap: {
-    position: "absolute",
-    inset: 0,
-    pointerEvents: "none",
-    zIndex: 4,
-    overflow: "hidden",
-  },
-  streak1: {
-    position: "absolute",
-    top: "-25%",
-    right: "3%",
-    width: 4,
-    height: "150%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,160,240,0.35) 30%, rgba(0,180,255,0.55) 50%, rgba(0,160,240,0.35) 70%, transparent 100%)",
-    transform: "rotate(22deg)",
-    filter: "blur(2px)",
-  },
-  streak2: {
-    position: "absolute",
-    top: "-15%",
-    right: "8%",
-    width: 3,
-    height: "140%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,140,220,0.25) 35%, rgba(0,160,240,0.4) 50%, rgba(0,140,220,0.25) 65%, transparent 100%)",
-    transform: "rotate(20deg)",
-    filter: "blur(3px)",
-  },
-  streak3: {
-    position: "absolute",
-    top: "-20%",
-    right: "14%",
-    width: 6,
-    height: "145%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,120,200,0.2) 30%, rgba(0,140,220,0.35) 50%, rgba(0,120,200,0.2) 70%, transparent 100%)",
-    transform: "rotate(18deg)",
-    filter: "blur(5px)",
-  },
-  streak4: {
-    position: "absolute",
-    top: "-10%",
-    right: "20%",
-    width: 2,
-    height: "130%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,100,180,0.15) 40%, rgba(0,120,200,0.25) 50%, rgba(0,100,180,0.15) 60%, transparent 100%)",
-    transform: "rotate(16deg)",
-    filter: "blur(4px)",
-  },
-  streak5: {
-    position: "absolute",
-    top: "-30%",
-    right: "1%",
-    width: 8,
-    height: "160%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,180,255,0.08) 25%, rgba(0,200,255,0.15) 50%, rgba(0,180,255,0.08) 75%, transparent 100%)",
-    transform: "rotate(24deg)",
-    filter: "blur(8px)",
-  },
-  streak6: {
-    position: "absolute",
-    top: "-5%",
-    right: "28%",
-    width: 2,
-    height: "115%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,80,160,0.1) 45%, rgba(0,100,180,0.18) 50%, rgba(0,80,160,0.1) 55%, transparent 100%)",
-    transform: "rotate(14deg)",
-    filter: "blur(6px)",
-  },
-  verticalBar1: {
-    position: "absolute",
-    top: "5%",
-    right: "6%",
-    width: 1,
-    height: "90%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,160,240,0.08) 30%, rgba(0,180,255,0.12) 50%, rgba(0,160,240,0.08) 70%, transparent 100%)",
-    pointerEvents: "none",
-    zIndex: 4,
-  },
-  verticalBar2: {
-    position: "absolute",
-    top: "10%",
-    right: "15%",
-    width: 1,
-    height: "80%",
-    background: "linear-gradient(180deg, transparent 0%, rgba(0,120,200,0.06) 35%, rgba(0,140,220,0.1) 50%, rgba(0,120,200,0.06) 65%, transparent 100%)",
-    pointerEvents: "none",
-    zIndex: 4,
   },
   container: {
     width: "100%",
@@ -448,94 +306,6 @@ const S = {
     alignItems: "center",
     position: "relative",
     minWidth: 0,
-  },
-  laptopGlow: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "140%",
-    height: "150%",
-    background: "radial-gradient(ellipse at center, rgba(0,160,240,0.22) 0%, rgba(0,120,200,0.1) 30%, rgba(0,80,160,0.04) 55%, transparent 75%)",
-    filter: "blur(35px)",
-    pointerEvents: "none",
-    zIndex: 0,
-  },
-  laptopFrame: {
-    position: "relative",
-    zIndex: 1,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  laptopScreen: {
-    width: "clamp(280px, 32vw, 460px)",
-    height: "clamp(180px, 20vw, 290px)",
-    background: "#0F172A",
-    borderRadius: "12px 12px 0 0",
-    border: "2px solid #1E293B",
-    overflow: "hidden",
-    position: "relative",
-    boxShadow: "0 0 50px rgba(0,160,240,0.25), 0 0 100px rgba(0,120,200,0.1), 0 25px 70px rgba(0,0,0,0.6)",
-  },
-  screenContent: {
-    width: "100%",
-    height: "100%",
-    padding: "12px 16px",
-    position: "relative",
-  },
-  screenHeader: {
-    display: "flex",
-    gap: 6,
-    marginBottom: 16,
-  },
-  screenDot: {
-    width: 8,
-    height: 8,
-    borderRadius: "50%",
-    background: "#EF4444",
-  },
-  screenCode: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-  },
-  codeLine: {
-    height: 6,
-    borderRadius: 3,
-    background: "linear-gradient(90deg, rgba(0,180,216,0.4) 0%, rgba(0,180,216,0.15) 100%)",
-  },
-  screenLogoOverlay: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: 6,
-    opacity: 0.8,
-  },
-  screenLogo: {
-    width: 36,
-    height: 36,
-    objectFit: "contain",
-    filter: "drop-shadow(0 0 10px rgba(0,180,216,0.5))",
-  },
-  screenLogoText: {
-    fontFamily: "var(--font-mono)",
-    fontSize: 10,
-    fontWeight: 700,
-    color: "#7DD3FC",
-    letterSpacing: "0.15em",
-  },
-  laptopBase: {
-    width: "clamp(320px, 36vw, 520px)",
-    height: 14,
-    background: "linear-gradient(180deg, #1E293B 0%, #0F172A 100%)",
-    borderRadius: "0 0 8px 8px",
-    border: "2px solid #1E293B",
-    borderTop: "none",
   },
   floatingText: {
     position: "absolute",
