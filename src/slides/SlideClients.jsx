@@ -256,9 +256,8 @@ export default function SlideClients({ isActive }) {
                             src={logo.img}
                             alt={logo.name}
                             style={{
-                              maxWidth: isActiveCard ? "85%" : "80%",
-                              maxHeight: isActiveCard ? "110px" : "70px",
-                              width: "auto",
+                              width: isActiveCard ? "60%" : "55%",
+                              height: isActiveCard ? "60%" : "55%",
                               objectFit: "contain",
                               filter: isActiveCard ? "drop-shadow(0 3px 10px rgba(0,0,0,0.2)) contrast(1.1)" : "drop-shadow(0 2px 6px rgba(0,0,0,0.15)) contrast(1.05)",
                             }}
@@ -601,8 +600,8 @@ const S = {
   card: {
     position: "absolute",
     width: "clamp(130px, 15vw, 200px)",
-    height: "clamp(88px, 10.5vw, 135px)",
-    borderRadius: 18,
+    height: "clamp(130px, 15vw, 200px)",
+    borderRadius: "50%",
     border: "1.5px solid rgba(255,255,255,0.2)",
     display: "flex",
     alignItems: "center",
@@ -614,7 +613,7 @@ const S = {
   activeCardBorder: {
     position: "absolute",
     inset: -2,
-    borderRadius: 20,
+    borderRadius: "50%",
     border: "2px solid rgba(0,180,216,0.7)",
     boxShadow: "0 0 35px rgba(0,180,216,0.4), inset 0 0 30px rgba(0,180,216,0.1)",
     pointerEvents: "none",
