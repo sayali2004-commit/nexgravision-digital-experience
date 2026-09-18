@@ -1,19 +1,18 @@
 import React from "react";
 
 export default function BrandLogo({ size = 38, dark = false }) {
-  const textOffset = size + 10;
   const nameColor = dark ? "#0F172A" : "#FFFFFF";
-  const tagColor = dark ? "#64748B" : "#64748B";
+  const tagColor = dark ? "#64748B" : "#94A3B8";
 
   return (
-    <div style={{ display: "inline-flex", flexDirection: "column", gap: 0 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 0 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
         <img
           src="/LOGOIMG.png"
           alt="NexGravision"
           className="brand-logo-img"
           style={{
-            height: size,
+            height: size * 1.4,
             width: "auto",
             objectFit: "contain",
           }}
@@ -21,7 +20,7 @@ export default function BrandLogo({ size = 38, dark = false }) {
         <div
           style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: size * 0.5,
+            fontSize: size * 0.62,
             fontWeight: 700,
             letterSpacing: "0.03em",
             color: nameColor,
@@ -34,13 +33,12 @@ export default function BrandLogo({ size = 38, dark = false }) {
       <div
         style={{
           fontFamily: "'Plus Jakarta Sans', sans-serif",
-          fontSize: Math.max(8, size * 0.2),
+          fontSize: Math.max(10, size * 0.26),
           fontWeight: 400,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
           color: tagColor,
-          paddingLeft: textOffset,
-          marginTop: 4,
+          marginTop: 6,
         }}
       >
         Digital Experiences. Real Impact.
