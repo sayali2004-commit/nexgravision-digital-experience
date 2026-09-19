@@ -296,8 +296,8 @@ export default function SlideSoftware({ isActive }) {
               {/* Module cards */}
               {MODULES.map((mod, i) => {
                 const positions = [
-                  { top: "-2%", left: "5%" },
-                  { top: "-2%", right: "0%" },
+                  { top: "-2%", left: "0%" },
+                  { top: "-4%", right: "-10%" },
                   { top: "35%", left: "-18%" },
                   { top: "35%", right: "-16%" },
                   { bottom: "12%", left: "-8%" },
