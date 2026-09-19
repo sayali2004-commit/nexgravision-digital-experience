@@ -102,7 +102,6 @@ export default function SlideProjects({ isActive }) {
                 <div style={S.projectInfo}>
                   <div style={S.projectTitle}>{proj.title}</div>
                   <div style={S.projectDesc}>{proj.description}</div>
-                  <div style={S.projectLink}>View Project &rarr;</div>
                 </div>
               </div>
             ))}
