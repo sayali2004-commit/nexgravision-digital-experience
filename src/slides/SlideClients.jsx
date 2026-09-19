@@ -47,7 +47,7 @@ export default function SlideClients({ isActive }) {
       clearInterval(autoRotateRef.current);
       return;
     }
-    autoRotateRef.current = setInterval(rotateNext, 3000);
+    autoRotateRef.current = setInterval(rotateNext, 1200);
     return () => clearInterval(autoRotateRef.current);
   }, [isActive, rotateNext]);
 
