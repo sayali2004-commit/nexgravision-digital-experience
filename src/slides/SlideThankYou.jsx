@@ -141,7 +141,7 @@ export default function SlideThankYou({ isActive }) {
       </div>
 
       <div ref={counterRef} style={S.counterWrap}>
-        <span className="slide-counter" style={{ position: "static" }}>06 / 06</span>
+        <span className="slide-counter" style={{ position: "static" }}>05 / 05</span>
       </div>
     </div>
   );

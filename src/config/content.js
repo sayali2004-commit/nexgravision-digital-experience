@@ -58,9 +58,9 @@ export const SLIDES = [
         image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80",
       },
       {
-        title: "E-commerce Platform",
-        description: "Build your online store with secure, fast and feature-rich solutions.",
-        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
+        title: "Fuel Management System",
+        description: "Track fuel consumption, monitor vehicle efficiency and optimize fleet operations with real-time analytics and reporting.",
+        image: "https://images.unsplash.com/photo-1545262810-77515befe149?auto=format&fit=crop&w=800&q=80",
       },
     ],
     services: [

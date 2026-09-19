@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import SlideHome from "../slides/SlideHome";
-import SlideSoftware from "../slides/SlideSoftware";
 import SlideWhyUs from "../slides/SlideWhyUs";
 import SlideProjects from "../slides/SlideProjects";
 import SlideClients from "../slides/SlideClients";
@@ -11,7 +10,6 @@ import Progress from "./Progress";
 
 const SLIDE_COMPONENTS = [
   SlideHome,
-  SlideSoftware,
   SlideWhyUs,
   SlideProjects,
   SlideClients,
@@ -26,14 +24,12 @@ function getTransitionStyle(from, to) {
   const transitions = {
     "0->1": { type: "gradientWipe", duration: 0.8 },
     "1->0": { type: "gradientWipe", duration: 0.8 },
-    "1->2": { type: "converge", duration: 0.8 },
-    "2->1": { type: "converge", duration: 0.8 },
-    "2->3": { type: "neuralMorph", duration: 0.8 },
-    "3->2": { type: "neuralMorph", duration: 0.8 },
-    "3->4": { type: "maskReveal", duration: 0.75 },
-    "4->3": { type: "maskReveal", duration: 0.75 },
-    "4->5": { type: "morphSlide", duration: 0.75 },
-    "5->4": { type: "morphSlide", duration: 0.75 },
+    "1->2": { type: "neuralMorph", duration: 0.8 },
+    "2->1": { type: "neuralMorph", duration: 0.8 },
+    "2->3": { type: "maskReveal", duration: 0.75 },
+    "3->2": { type: "maskReveal", duration: 0.75 },
+    "3->4": { type: "morphSlide", duration: 0.75 },
+    "4->3": { type: "morphSlide", duration: 0.75 },
   };
 
   return transitions[pair] || { type: "default", duration: 0.65, dir };

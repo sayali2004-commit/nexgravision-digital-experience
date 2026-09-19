@@ -368,7 +368,7 @@ export default function SlideWhyUs({ isActive }) {
 
       {/* Counter */}
       <div ref={counterRef} style={S.counterWrap}>
-        <span style={S.counterText}>03 / 06</span>
+        <span style={S.counterText}>02 / 05</span>
         <div style={S.counterBar}>
           <div style={S.counterFill} />
         </div>
@@ -947,7 +947,7 @@ const S = {
     overflow: "hidden",
   },
   counterFill: {
-    width: "50%",
+    width: "40%",
     height: "100%",
     borderRadius: 2,
     background: "linear-gradient(90deg, #7C3AED, #8B5CF6)",
