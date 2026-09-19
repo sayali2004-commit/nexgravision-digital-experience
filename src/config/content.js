@@ -53,9 +53,9 @@ export const SLIDES = [
         image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80",
       },
       {
-        title: "Consultant Website",
-        description: "A professional website for consultants to showcase their expertise and services.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+        title: "Smart Business Card",
+        description: "Create stunning digital business cards. Share your profile, services, portfolio and contact info with one simple link.",
+        image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80",
       },
       {
         title: "E-commerce Platform",
