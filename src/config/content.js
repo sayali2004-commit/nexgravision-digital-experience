@@ -22,7 +22,7 @@ export const SLIDES = [
     sectionTag: "OUR SOFTWARE",
     headline: "What We Give Our",
     headlineAccent: "Customers",
-    description: "We build custom, scalable and secure software solutions that solve real problems. Our technology helps businesses grow, improve efficiency and stay ahead in a competitive world — today and for what's next.",
+    description: "We build custom, scalable and secure software solutions that solve real problems. Our technology helps businesses grow, improve efficiency and stay ahead in a competitive world, today and for what's next.",
     features: [
       { icon: "code", title: "Custom Software Development", subtitle: "Tailored to your needs" },
       { icon: "cloud", title: "Cloud & Web Solutions", subtitle: "Secure & Scalable" },
@@ -48,19 +48,115 @@ export const SLIDES = [
     description: "We create powerful, user-friendly and scalable software solutions for businesses of all sizes. Here are some of our featured projects:",
     projects: [
       {
+        id: "employee-management",
         title: "Employee Management System",
+        tagline: "Intelligent workforce management, simplified",
+        category: "Enterprise HR Software",
+        client: "Enterprise & Mid-Sized Businesses",
+        year: "2024",
+        duration: "12 Weeks",
         description: "Simplify HR processes with our smart and secure employee management system.",
+        overview:
+          "A complete HR operations platform that digitises employee records, attendance, payroll workflows and leave management — giving teams one secure source of truth for workforce data.",
+        challenge:
+          "HR teams were juggling spreadsheets, paper registers and disconnected tools. Attendance errors, delayed payroll and no clear visibility over leave balances slowed decisions and created compliance risk.",
+        solution:
+          "We designed a role-based employee management platform with automated attendance capture, payroll-ready reports, self-service leave requests and a real-time HR analytics dashboard — all in one secure web app.",
+        features: [
+          "Employee Profiles & Records",
+          "Attendance Tracking",
+          "Payroll Automation",
+          "Leave Management",
+          "Role-Based Access",
+          "HR Analytics Dashboard",
+        ],
+        techStack: ["React", "Node.js", "MongoDB", "Express.js"],
+        results: [
+          { value: "40%", label: "Faster HR Operations" },
+          { value: "100%", label: "Digital Employee Records" },
+          { value: "3x", label: "Quicker Payroll Reporting" },
+        ],
+        highlights: [
+          "Self-service portal for employees and managers",
+          "Audit-ready attendance and payroll exports",
+          "Secure access controls for HR data",
+        ],
         image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80",
+        accent: "#00B4D8",
       },
       {
+        id: "smart-business-card",
         title: "Smart Business Card",
+        tagline: "One link that carries your entire brand",
+        category: "Digital Identity Platform",
+        client: "Professionals & Modern Businesses",
+        year: "2024",
+        duration: "8 Weeks",
         description: "Create stunning digital business cards. Share your profile, services, portfolio and contact info with one simple link.",
+        overview:
+          "A premium digital business card platform that turns a single link into a full brand experience — profiles, services, portfolio, contact capture and shareable links, built for modern networking.",
+        challenge:
+          "Paper cards get lost, go out of date and cannot showcase a full portfolio. Businesses needed a way to share complete professional profiles instantly, on any device, without printing waste.",
+        solution:
+          "We built a mobile-first digital business card with beautiful templates, instant QR/link sharing, live profile updates, analytics on views and one-tap contact saving — all managed from a simple dashboard.",
+        features: [
+          "Instant Link & QR Sharing",
+          "Custom Brand Templates",
+          "Profile & Portfolio Blocks",
+          "Contact Capture",
+          "View Analytics",
+          "Mobile-First Experience",
+        ],
+        techStack: ["React", "Next.js", "Node.js", "MongoDB"],
+        results: [
+          { value: "1", label: "Link Replaces 100+ Paper Cards" },
+          { value: "2x", label: "Faster Professional Networking" },
+          { value: "0", label: "Printing Waste" },
+        ],
+        highlights: [
+          "Live profile updates without reprinting",
+          "Share via QR code, WhatsApp or email",
+          "Built-in leads capture for businesses",
+        ],
         image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80",
+        accent: "#38BDF8",
       },
       {
+        id: "fuel-management",
         title: "Fuel Management System",
+        tagline: "Fuel intelligence for smarter fleet operations",
+        category: "Fleet Operations Software",
+        client: "Logistics & Fleet Businesses",
+        year: "2024",
+        duration: "14 Weeks",
         description: "Track fuel consumption, monitor vehicle efficiency and optimize fleet operations with real-time analytics and reporting.",
+        overview:
+          "A fleet fuel intelligence platform that tracks consumption in real time, surfaces inefficiencies, and turns fuel data into operational decisions — from vehicle-level monitoring to boardroom reports.",
+        challenge:
+          "Fleets were losing money to untracked fuel usage, route inefficiencies and manual reporting. Managers had no real-time view of consumption, mileage or vehicle health across large operations.",
+        solution:
+          "We engineered a real-time fuel management system with live consumption tracking, vehicle efficiency scoring, automated anomaly alerts, route-level analytics and role-based reporting for operations teams.",
+        features: [
+          "Real-Time Fuel Tracking",
+          "Vehicle Efficiency Scoring",
+          "Consumption Reports",
+          "Fleet Alerts & Exceptions",
+          "Route-Level Analytics",
+          "Role-Based Controls",
+        ],
+        techStack: ["React", "Node.js", "MySQL", "AWS"],
+        results: [
+          { value: "25%", label: "Average Fuel Savings" },
+          { value: "Real-Time", label: "Fleet Visibility" },
+          { value: "100%", label: "Audit-Ready Reports" },
+        ],
+        highlights: [
+          "Early detection of fuel theft and leakage",
+          "Automated daily and monthly operations reports",
+          "Scalable for multi-vehicle, multi-depot fleets",
+        ],
         image: "https://images.unsplash.com/photo-1545262810-77515befe149?auto=format&fit=crop&w=800&q=80",
+        accent: "#7DD3FC",
       },
     ],
     services: [

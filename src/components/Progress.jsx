@@ -4,7 +4,15 @@ export default function Progress({ current, total }) {
   const progress = ((current + 1) / total) * 100;
 
   return (
-    <div style={styles.wrap}>
+    <div
+      style={styles.wrap}
+      role="progressbar"
+      aria-label="Presentation progress"
+      aria-valuemin={1}
+      aria-valuemax={total}
+      aria-valuenow={current + 1}
+      aria-valuetext={`Section ${current + 1} of ${total}`}
+    >
       <div style={styles.track}>
         <div
           style={{

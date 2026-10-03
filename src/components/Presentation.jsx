@@ -2,18 +2,22 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import SlideHome from "../slides/SlideHome";
 import SlideWhyUs from "../slides/SlideWhyUs";
-import SlideProjects from "../slides/SlideProjects";
-import SlideClients from "../slides/SlideClients";
+import SlideSoftwareTour from "../slides/SlideSoftwareTour";
+import SlideWorkAndClients from "../slides/SlideWorkAndClients";
 import SlideThankYou from "../slides/SlideThankYou";
+import SlideProjectDetail from "../slides/SlideProjectDetail";
 import Navigation from "./Navigation";
 import Progress from "./Progress";
 
 const SLIDE_COMPONENTS = [
-  SlideHome,
-  SlideWhyUs,
-  SlideProjects,
-  SlideClients,
-  SlideThankYou,
+  { Comp: SlideHome },
+  { Comp: SlideWhyUs },
+  { Comp: SlideSoftwareTour },
+  { Comp: SlideWorkAndClients },
+  { Comp: SlideProjectDetail, projectIndex: 0 },
+  { Comp: SlideProjectDetail, projectIndex: 1 },
+  { Comp: SlideProjectDetail, projectIndex: 2 },
+  { Comp: SlideThankYou },
 ];
 const TOTAL = SLIDE_COMPONENTS.length;
 
@@ -28,8 +32,14 @@ function getTransitionStyle(from, to) {
     "2->1": { type: "neuralMorph", duration: 0.8 },
     "2->3": { type: "maskReveal", duration: 0.75 },
     "3->2": { type: "maskReveal", duration: 0.75 },
-    "3->4": { type: "morphSlide", duration: 0.75 },
-    "4->3": { type: "morphSlide", duration: 0.75 },
+    "3->4": { type: "maskReveal", duration: 0.75 },
+    "4->3": { type: "maskReveal", duration: 0.75 },
+    "4->5": { type: "zoomType", duration: 0.75 },
+    "5->4": { type: "zoomType", duration: 0.75 },
+    "5->6": { type: "zoomType", duration: 0.75 },
+    "6->5": { type: "zoomType", duration: 0.75 },
+    "6->7": { type: "morphSlide", duration: 0.75 },
+    "7->6": { type: "morphSlide", duration: 0.75 },
   };
 
   return transitions[pair] || { type: "default", duration: 0.65, dir };
@@ -155,6 +165,14 @@ export default function Presentation() {
         return;
       }
 
+      if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+        gsap.set(fromEl, { opacity: 0, pointerEvents: "none", x: 0, y: 0, scale: 1, filter: "none", clipPath: "none" });
+        gsap.set(toEl, { opacity: 1, pointerEvents: "auto", x: 0, y: 0, scale: 1, filter: "none", clipPath: "none" });
+        setCurrent(to);
+        setIsAnimating(false);
+        return;
+      }
+
       const transStyle = getTransitionStyle(from, to);
 
       applyTransition(fromEl, toEl, transStyle, () => {
@@ -192,6 +210,9 @@ export default function Presentation() {
 
   useEffect(() => {
     const handleKey = (e) => {
+      const target = e.target instanceof Element ? e.target : null;
+      if (target?.closest("button, a, input, select, textarea, [contenteditable='true']")) return;
+
       if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
         e.preventDefault();
         next();
@@ -215,6 +236,14 @@ export default function Presentation() {
 
   useEffect(() => {
     const handleWheel = (e) => {
+      const scrollRegion = e.target instanceof Element ? e.target.closest("[data-slide-scroll]") : null;
+      if (scrollRegion && scrollRegion.scrollHeight > scrollRegion.clientHeight + 1) {
+        const atBoundary = e.deltaY > 0
+          ? scrollRegion.scrollTop + scrollRegion.clientHeight >= scrollRegion.scrollHeight - 1
+          : scrollRegion.scrollTop <= 0;
+        if (!atBoundary) return;
+      }
+
       e.preventDefault();
       if (wheelTimeout.current) return;
       wheelTimeout.current = setTimeout(() => {
@@ -273,16 +302,27 @@ export default function Presentation() {
 
   return (
     <div ref={containerRef} style={styles.container}>
-      {SLIDE_COMPONENTS.map((Comp, i) => (
-        <div
-          key={i}
-          ref={(el) => (slideRefs.current[i] = el)}
-          className={`slide ${i === current ? "active" : ""}`}
-          style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 2 : 1 }}
-        >
-          <Comp isActive={i === current} slideIndex={i} onNavigate={goTo} />
-        </div>
-      ))}
+      {SLIDE_COMPONENTS.map((entry, i) => {
+        const Comp = entry.Comp;
+        return (
+          <div
+            key={i}
+            ref={(el) => (slideRefs.current[i] = el)}
+            className={`slide ${i === current ? "active" : ""}`}
+            style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 2 : 1 }}
+            aria-hidden={i !== current}
+            inert={i !== current}
+          >
+            <Comp
+              isActive={i === current}
+              slideIndex={i}
+              total={TOTAL}
+              onNavigate={goTo}
+              projectIndex={entry.projectIndex}
+            />
+          </div>
+        );
+      })}
 
       <div
         style={{

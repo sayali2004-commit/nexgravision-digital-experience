@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { BrandLogo } from "../config/assets";
+import { useIsMobile } from "../hooks/useMediaQuery";
 
 const MODULES = [
   {
@@ -84,6 +85,8 @@ const STATS = [
 ];
 
 export default function SlideWhyUs({ isActive }) {
+  const isMobile = useIsMobile();
+  const S = createStyles(isMobile);
   const logoRef = useRef(null);
   const tagRef = useRef(null);
   const headlineRef = useRef(null);
@@ -98,6 +101,7 @@ export default function SlideWhyUs({ isActive }) {
   useEffect(() => {
     if (!isActive || hasAnimated.current) return;
     hasAnimated.current = true;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
 
     const tl = gsap.timeline({ delay: 0.15 });
 
@@ -186,7 +190,7 @@ export default function SlideWhyUs({ isActive }) {
 
             {/* Description */}
             <p ref={descRef} style={S.description}>
-              Most businesses waste time switching between different software for sales, HR, finance, operations and support. <strong style={{ color: "#0F172A" }}>NexGravision brings it all together</strong> — one company, one software, one dashboard — so your entire business runs smoothly from a single powerful platform.
+              Most businesses waste time switching between different software for sales, HR, finance, operations and support. <strong style={{ color: "#0F172A" }}>NexGravision brings it all together</strong>, one company, one software, one dashboard, so your entire business runs smoothly from a single powerful platform.
             </p>
 
             {/* Stats */}
@@ -201,10 +205,10 @@ export default function SlideWhyUs({ isActive }) {
 
             {/* CTA */}
             <div ref={ctaRef} style={S.ctaRow}>
-              <div style={S.ctaBtn}>
+              <a href="mailto:info@nexgravision.com?subject=Start%20a%20NexGravision%20project" style={{ ...S.ctaBtn, textDecoration: "none" }}>
                 <span>Start Your Journey</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-              </div>
+              </a>
               <div style={S.ctaSubtext}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                 <span style={{ color: "#64748B", fontSize: "clamp(11px, 1vw, 13px)" }}>No credit card required</span>
@@ -368,7 +372,7 @@ export default function SlideWhyUs({ isActive }) {
 
       {/* Counter */}
       <div ref={counterRef} style={S.counterWrap}>
-        <span style={S.counterText}>02 / 05</span>
+        <span style={S.counterText}>02 / 08</span>
         <div style={S.counterBar}>
           <div style={S.counterFill} />
         </div>
@@ -377,7 +381,7 @@ export default function SlideWhyUs({ isActive }) {
   );
 }
 
-const S = {
+const createStyles = (isMobile) => ({
   wrap: {
     position: "absolute",
     inset: 0,
@@ -435,7 +439,7 @@ const S = {
     justifyContent: "space-between",
     zIndex: 2,
     position: "relative",
-    paddingTop: "clamp(80px, 10vh, 120px)",
+    paddingTop: isMobile ? "clamp(60px, 8vh, 80px)" : "clamp(80px, 10vh, 120px)",
   },
   headerRow: {
     position: "absolute",
@@ -445,7 +449,7 @@ const S = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
+    padding: isMobile ? "clamp(12px, 2vw, 24px) clamp(12px, 3vw, 36px)" : "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
     zIndex: 20,
   },
   topRightWrap: {
@@ -467,14 +471,16 @@ const S = {
     marginTop: "auto",
     marginBottom: "auto",
     flexWrap: "wrap",
+    flexDirection: isMobile ? "column" : "row",
   },
 
   /* LEFT COLUMN */
   leftCol: {
-    flex: "1 1 400px",
+    flex: isMobile ? "1 1 100%" : "1 1 400px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-start",
+    alignItems: isMobile ? "center" : "flex-start",
+    textAlign: isMobile ? "center" : "left",
     minWidth: 0,
   },
   taglineWrap: {
@@ -506,7 +512,7 @@ const S = {
   },
   headline: {
     fontFamily: "var(--font-serif)",
-    fontSize: "clamp(30px, 3.8vw, 50px)",
+    fontSize: isMobile ? "clamp(24px, 5vw, 36px)" : "clamp(30px, 3.8vw, 50px)",
     fontWeight: 700,
     color: "#0F172A",
     lineHeight: 1.1,
@@ -520,17 +526,19 @@ const S = {
   },
   description: {
     fontFamily: "var(--font-sans)",
-    fontSize: "clamp(13px, 1.2vw, 15px)",
+    fontSize: isMobile ? "clamp(11px, 2.5vw, 14px)" : "clamp(13px, 1.2vw, 15px)",
     color: "#475569",
     lineHeight: 1.7,
-    maxWidth: 460,
+    maxWidth: isMobile ? "90%" : 460,
     marginBottom: 24,
     fontWeight: 400,
   },
   statsRow: {
     display: "flex",
-    gap: "clamp(24px, 3vw, 44px)",
+    gap: isMobile ? "clamp(16px, 2vw, 44px)" : "clamp(24px, 3vw, 44px)",
     marginBottom: 28,
+    flexWrap: "wrap",
+    justifyContent: isMobile ? "center" : "flex-start",
   },
   statItem: {
     display: "flex",
@@ -585,17 +593,17 @@ const S = {
 
   /* RIGHT COLUMN */
   rightCol: {
-    flex: "1 1 550px",
-    display: "flex",
+    flex: isMobile ? "1 1 100%" : "1 1 550px",
+    display: isMobile ? "none" : "flex",
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    minHeight: 560,
+    minHeight: isMobile ? undefined : 560,
   },
   composition: {
     position: "relative",
-    width: "clamp(480px, 55vw, 680px)",
-    height: "clamp(500px, 58vw, 650px)",
+    width: isMobile ? "100%" : "clamp(480px, 55vw, 680px)",
+    height: isMobile ? "auto" : "clamp(500px, 58vw, 650px)",
   },
   connLines: {
     position: "absolute",
@@ -924,8 +932,8 @@ const S = {
   /* Counter */
   counterWrap: {
     position: "absolute",
-    bottom: 24,
-    right: 44,
+    bottom: isMobile ? 16 : 24,
+    right: isMobile ? 20 : 44,
     display: "flex",
     alignItems: "center",
     gap: 12,
@@ -953,4 +961,4 @@ const S = {
     background: "linear-gradient(90deg, #7C3AED, #8B5CF6)",
     boxShadow: "0 0 8px rgba(139,92,246,0.5)",
   },
-};
+});
