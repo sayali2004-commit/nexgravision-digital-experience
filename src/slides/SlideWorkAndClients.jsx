@@ -47,12 +47,12 @@ export default function SlideWorkAndClients({ isActive }) {
       <div className="work-clients__shell">
         <header className="work-clients__header">
           <BrandLogo size={46} />
-          <span>Real projects · Trusted relationships</span>
+          <span>Proven products · Enduring partnerships</span>
         </header>
 
         <div className="work-clients__intro" ref={introRef}>
-          <div className="section-tag">OUR WORK & CLIENTS</div>
-          <h2>{isProjects ? <>Solutions we’ve built for a <span>smarter tomorrow.</span></> : <>Trusted by the people who <span>work with us.</span></>}</h2>
+          <div className="section-tag">WORK & PARTNERS</div>
+          <h2>{isProjects ? <>Products engineered for <span>measurable growth.</span></> : <>Trusted by teams who <span>choose excellence.</span></>}</h2>
           <p>{isProjects ? SLIDES[2].description : SLIDES[3].description}</p>
           <div className="work-clients__tabs" role="group" aria-label="Choose projects or clients">
             <button type="button" onClick={() => setView("projects")} aria-pressed={isProjects} aria-controls="work-clients-content">
@@ -93,7 +93,7 @@ export default function SlideWorkAndClients({ isActive }) {
         </div>
 
         <footer className="work-clients__footer">
-          <span>Explore projects and client partners · detailed case studies follow</span>
+          <span>Explore our products and client partners · detailed case studies follow</span>
           <span className="slide-counter" style={{ position: "static" }}>04 / 08</span>
         </footer>
       </div>

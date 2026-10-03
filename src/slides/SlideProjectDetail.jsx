@@ -43,7 +43,7 @@ export default function SlideProjectDetail({ isActive, projectIndex = 0, slideIn
         <header className="project-detail__header" data-pd-header>
           <div className="project-detail__header-left">
             <BrandLogo size={42} />
-            <span>Featured case study</span>
+            <span>Flagship case study</span>
           </div>
           <div className="project-detail__header-right">
             <span className="project-detail__project-counter">
@@ -74,11 +74,11 @@ export default function SlideProjectDetail({ isActive, projectIndex = 0, slideIn
             </div>
             <div className="project-detail__visual-side">
               <div className="project-detail__side-card">
-                <span className="project-detail__side-label">Client</span>
+                <span className="project-detail__side-label">Partner</span>
                 <strong>{project.client}</strong>
               </div>
               <div className="project-detail__side-card">
-                <span className="project-detail__side-label">Delivery</span>
+                <span className="project-detail__side-label">Timeline</span>
                 <strong>{project.duration}</strong>
               </div>
               <div className="project-detail__side-card">
@@ -96,17 +96,17 @@ export default function SlideProjectDetail({ isActive, projectIndex = 0, slideIn
 
             <div className="project-detail__panels">
               <article className="project-detail__panel">
-                <h3>Challenge</h3>
+                <h3>The Challenge</h3>
                 <p>{project.challenge}</p>
               </article>
               <article className="project-detail__panel project-detail__panel--solution">
-                <h3>Solution</h3>
+                <h3>Our Approach</h3>
                 <p>{project.solution}</p>
               </article>
             </div>
 
             <div className="project-detail__block">
-              <h3 className="project-detail__block-title">Key Features</h3>
+              <h3 className="project-detail__block-title">Core Capabilities</h3>
               <div className="project-detail__features">
                 {project.features.map((feature) => (
                   <span className="project-detail__feature" key={feature}>
@@ -147,12 +147,12 @@ export default function SlideProjectDetail({ isActive, projectIndex = 0, slideIn
 
         <footer className="project-detail__footer" data-pd-footer>
           <span>
-            {projectIndex > 0 ? `Previous · ${PROJECTS[projectIndex - 1].title}` : "Start of project case studies"}
+            {projectIndex > 0 ? `Previous · ${PROJECTS[projectIndex - 1].title}` : "Case study series begins here"}
           </span>
           <span className="project-detail__footer-mid">
             {projectIndex < PROJECTS.length - 1
               ? `Next · ${PROJECTS[projectIndex + 1].title}`
-              : "Continue to our clients"}
+              : "Continue to our client partners"}
           </span>
           <span className="slide-counter" style={{ position: "static" }}>
             {current} / {totalCount}

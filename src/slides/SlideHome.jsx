@@ -143,7 +143,7 @@ export default function SlideHome({ isActive }) {
           </div>
 
           <div className="home-hero-visual-col" ref={visualRef} style={S.rightCol}>
-            <div className={`hero-software-visual${isActive ? " is-active" : ""}`} role="img" aria-label="Illustration of NexGravision business software areas">
+            <div className={`hero-software-visual${isActive ? " is-active" : ""}`} role="img" aria-label="Illustration of NexGravision connected business products">
               <svg className="hero-software-visual__links" viewBox="0 0 520 390" fill="none" aria-hidden="true">
                 <path className="hero-system-link" d="M260 195 130 92M260 195 390 92M260 195 130 298M260 195 390 298" />
                 <circle className="hero-system-node" cx="260" cy="195" r="4" />
@@ -154,11 +154,11 @@ export default function SlideHome({ isActive }) {
               </svg>
               <div className="hero-software-visual__core" data-hero-node>
                 <span className="hero-software-visual__mark">N</span>
-                <span>One platform</span>
+                <span>Unified core</span>
               </div>
               {[
                 { label: "Sales & CRM", pos: "top-left" },
-                { label: "HR & Payroll", pos: "top-right" },
+                { label: "People & Payroll", pos: "top-right" },
                 { label: "Projects", pos: "bottom-left" },
                 { label: "Finance", pos: "bottom-right" },
               ].map(({ label, pos }) => (
@@ -167,7 +167,7 @@ export default function SlideHome({ isActive }) {
                   <span>{label}</span>
                 </div>
               ))}
-              <span className="hero-software-visual__caption">Connected business areas</span>
+              <span className="hero-software-visual__caption">Connected product suite</span>
             </div>
           </div>
         </div>

@@ -57,7 +57,7 @@ export default function Navigation({ onPrev, onNext, current, total }) {
             e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.35)";
             e.currentTarget.style.boxShadow = "0 0 12px rgba(0, 180, 216, 0.15)";
           }}
-          aria-label="Previous Slide"
+          aria-label="Previous slide"
         >
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
             <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
@@ -84,7 +84,7 @@ export default function Navigation({ onPrev, onNext, current, total }) {
             e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.35)";
             e.currentTarget.style.boxShadow = "0 0 12px rgba(0, 180, 216, 0.15)";
           }}
-          aria-label="Next Slide"
+          aria-label="Next slide"
         >
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
             <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>

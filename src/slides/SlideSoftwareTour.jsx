@@ -6,50 +6,50 @@ const MODULES = [
   {
     id: "sales",
     title: "Sales & CRM",
-    description: "Track leads, manage pipelines and close deals faster.",
-    examples: ["Track leads", "Manage pipelines", "Close deals"],
+    description: "Capture leads, nurture pipelines and close revenue faster.",
+    examples: ["Lead capture", "Pipeline control", "Deal acceleration"],
   },
   {
     id: "hr",
-    title: "HR & Payroll",
-    description: "Hire, manage and pay your team from one place.",
-    examples: ["Hire", "Manage your team", "Payroll"],
+    title: "People & Payroll",
+    description: "Recruit, manage and compensate your entire team from one hub.",
+    examples: ["Recruitment", "Team management", "Payroll runs"],
   },
   {
     id: "projects",
     title: "Projects",
-    description: "Keep project work visible alongside your other business areas.",
-    examples: ["Projects", "Project overview", "Dashboard"],
+    description: "Keep delivery work visible and aligned with every business function.",
+    examples: ["Delivery boards", "Project health", "Team dashboards"],
   },
   {
     id: "finance",
     title: "Finance",
-    description: "Handle invoicing, expenses and accounting in one place.",
-    examples: ["Invoicing", "Expenses", "Accounting"],
+    description: "Control invoicing, expenses and accounting in one financial core.",
+    examples: ["Invoicing", "Expense control", "Accounting"],
   },
   {
     id: "operations",
     title: "Operations",
-    description: "Automate workflows and streamline daily tasks.",
-    examples: ["Workflows", "Daily tasks", "Operations"],
+    description: "Automate workflows and remove friction from daily execution.",
+    examples: ["Workflow automation", "Task queues", "Ops control"],
   },
   {
     id: "marketing",
     title: "Marketing",
-    description: "Run campaigns and track performance with analytics.",
-    examples: ["Campaigns", "Performance", "Analytics"],
+    description: "Launch campaigns and measure impact with real analytics.",
+    examples: ["Campaigns", "Performance", "Insights"],
   },
   {
     id: "support",
     title: "Support",
-    description: "Manage helpdesk requests, tickets and customer support.",
-    examples: ["Helpdesk", "Tickets", "Customers"],
+    description: "Run helpdesks, tickets and customer care at enterprise quality.",
+    examples: ["Helpdesk", "Ticketing", "Customer care"],
   },
   {
     id: "reports",
     title: "Reports",
-    description: "See reports alongside the rest of your business overview.",
-    examples: ["Business overview", "Reports", "Dashboard"],
+    description: "Turn operational data into clear, decision-ready reporting.",
+    examples: ["Executive views", "Reports", "Live dashboards"],
   },
 ];
 
@@ -105,21 +105,21 @@ export default function SlideSoftwareTour({ isActive }) {
   }, [activeId, isActive]);
 
   return (
-    <section ref={rootRef} className="software-tour-slide" data-slide-scroll aria-label="Software tour">
+    <section ref={rootRef} className="software-tour-slide" data-slide-scroll aria-label="Product tour">
       <div className="software-tour__glow software-tour__glow--one" />
       <div className="software-tour__glow software-tour__glow--two" />
       <div className="software-tour__shell">
         <header className="software-tour__header">
           <BrandLogo size={46} />
-          <span className="software-tour__header-note">A clearer view of everyday work</span>
+          <span className="software-tour__header-note">A clearer view of how work really happens</span>
         </header>
 
         <div className="software-tour__heading" ref={headingRef}>
           <div>
-            <div className="section-tag">SOFTWARE TOUR</div>
-            <h2>One platform, <span>many ways to work.</span></h2>
+            <div className="section-tag">PRODUCT TOUR</div>
+            <h2>One platform, <span>endless ways to work.</span></h2>
           </div>
-          <p>Choose a business area to see, in plain language, what it helps people do.</p>
+          <p>Explore each business area and see exactly how it helps modern teams move faster.</p>
         </div>
 
         <div className="software-tour__layout">
@@ -143,7 +143,7 @@ export default function SlideSoftwareTour({ isActive }) {
           <div className="software-tour__preview" ref={previewRef} id="software-tour-detail" aria-live="polite" aria-atomic="true">
             <div className="software-tour__window-bar" aria-hidden="true">
               <span className="software-tour__window-dots"><i /><i /><i /></span>
-              <span className="software-tour__search">Search anything...</span>
+              <span className="software-tour__search">Search products, clients, reports...</span>
               <span className="software-tour__avatar">N</span>
             </div>
             <div className="software-tour__signal" key={activeId} aria-hidden="true" />
@@ -152,19 +152,19 @@ export default function SlideSoftwareTour({ isActive }) {
                 <span className="software-tour__sidebar-brand">N</span>
                 <span>Dashboard</span>
                 <span className={activeId === "sales" ? "is-current" : ""}>Sales</span>
-                <span className={activeId === "hr" ? "is-current" : ""}>HR</span>
+                <span className={activeId === "hr" ? "is-current" : ""}>People</span>
                 <span className={activeId === "projects" ? "is-current" : ""}>Projects</span>
                 <span className={activeId === "reports" ? "is-current" : ""}>Reports</span>
                 <span>Settings</span>
               </div>
               <div className="software-tour__detail">
-                <span className="software-tour__detail-kicker">WHAT THIS AREA COVERS</span>
+                <span className="software-tour__detail-kicker">WHAT THIS PRODUCT COVERS</span>
                 <div className="software-tour__detail-title">
                   <span className="software-tour__detail-icon"><ModuleIcon name={selected.id} /></span>
                   <h3>{selected.title}</h3>
                 </div>
                 <p>{selected.description}</p>
-                <div className="software-tour__example-label">A quick overview</div>
+                <div className="software-tour__example-label">Quick capability snapshot</div>
                 <div className="software-tour__examples">
                   {selected.examples.map((example, index) => (
                     <div className="software-tour__example" key={example}>
@@ -180,7 +180,7 @@ export default function SlideSoftwareTour({ isActive }) {
         </div>
 
         <div className="software-tour__footer">
-          <span>Explore each area to learn more</span>
+          <span>Tap any area to explore the product</span>
           <span className="slide-counter" style={{ position: "static" }}>03 / 08</span>
         </div>
       </div>

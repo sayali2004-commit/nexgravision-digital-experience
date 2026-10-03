@@ -6,7 +6,7 @@ import { useIsMobile } from "../hooks/useMediaQuery";
 const MODULES = [
   {
     title: "Sales & CRM",
-    desc: "Track leads, manage pipelines and close deals faster",
+    desc: "Capture leads, guide pipelines and accelerate deal cycles",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />
@@ -17,8 +17,8 @@ const MODULES = [
     border: "rgba(59,130,246,0.12)",
   },
   {
-    title: "HR & Payroll",
-    desc: "Hire, manage and pay your entire team seamlessly",
+    title: "People & Payroll",
+    desc: "Onboard talent, manage teams and process payroll end-to-end",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
@@ -30,7 +30,7 @@ const MODULES = [
   },
   {
     title: "Finance",
-    desc: "Invoicing, expenses and accounting in one place",
+    desc: "Invoices, expenses and accounting in a single control centre",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
@@ -42,7 +42,7 @@ const MODULES = [
   },
   {
     title: "Operations",
-    desc: "Automate workflows and streamline daily tasks",
+    desc: "Automate workflows and keep daily execution friction-free",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
@@ -54,7 +54,7 @@ const MODULES = [
   },
   {
     title: "Marketing",
-    desc: "Run campaigns and track performance with analytics",
+    desc: "Launch campaigns and measure what truly drives growth",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -66,7 +66,7 @@ const MODULES = [
   },
   {
     title: "Support",
-    desc: "24/7 helpdesk, tickets and customer management",
+    desc: "Round-the-clock helpdesk, tickets and customer care",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 18v-6a9 9 0 0 1 18 0v6" /><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" /><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
@@ -79,9 +79,9 @@ const MODULES = [
 ];
 
 const STATS = [
-  { value: "10x", label: "Faster\nManagement" },
-  { value: "60%", label: "Cost\nReduction" },
-  { value: "1", label: "Platform\nfor All" },
+  { value: "10x", label: "Faster\nExecution" },
+  { value: "60%", label: "Lower\nOperating Cost" },
+  { value: "1", label: "Platform\nfor Everything" },
 ];
 
 export default function SlideWhyUs({ isActive }) {
@@ -177,20 +177,20 @@ export default function SlideWhyUs({ isActive }) {
             <div ref={tagRef} style={S.taglineWrap}>
               <div style={S.taglinePill}>
                 <div style={S.taglineDot} />
-                <span style={S.taglineText}>One Company • One Software • Endless Possibilities</span>
+                <span style={S.taglineText}>One Vision • One Platform • Unlimited Momentum</span>
               </div>
             </div>
 
             {/* Headline */}
             <h2 ref={headlineRef} style={S.headline}>
-              Why Manage <span style={S.headlineAccent}>10 Tools</span><br />
-              When You Can Have<br />
-              <span style={S.headlineAccent}>Just One?</span>
+              Why juggle <span style={S.headlineAccent}>Ten Tools</span><br />
+              When One Platform<br />
+              <span style={S.headlineAccent}>Does It All?</span>
             </h2>
 
             {/* Description */}
             <p ref={descRef} style={S.description}>
-              Most businesses waste time switching between different software for sales, HR, finance, operations and support. <strong style={{ color: "#0F172A" }}>NexGravision brings it all together</strong>, one company, one software, one dashboard, so your entire business runs smoothly from a single powerful platform.
+              Most growing businesses lose hours jumping between separate apps for sales, people, finance, operations and support. <strong style={{ color: "#0F172A" }}>NexGravision unifies every workflow</strong> — one vision, one platform, one dashboard — so your entire organisation runs as one connected engine.
             </p>
 
             {/* Stats */}
@@ -206,12 +206,12 @@ export default function SlideWhyUs({ isActive }) {
             {/* CTA */}
             <div ref={ctaRef} style={S.ctaRow}>
               <a href="mailto:info@nexgravision.com?subject=Start%20a%20NexGravision%20project" style={{ ...S.ctaBtn, textDecoration: "none" }}>
-                <span>Start Your Journey</span>
+                <span>Book a Free Consult</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </a>
               <div style={S.ctaSubtext}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                <span style={{ color: "#64748B", fontSize: "clamp(11px, 1vw, 13px)" }}>No credit card required</span>
+                <span style={{ color: "#64748B", fontSize: "clamp(11px, 1vw, 13px)" }}>Free 30-minute discovery call</span>
               </div>
             </div>
           </div>
@@ -251,7 +251,7 @@ export default function SlideWhyUs({ isActive }) {
                       <span style={S.dashLogoText}>NexGravision</span>
                       <div style={S.dashSearch}>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-                        <span style={S.dashSearchText}>Search anything...</span>
+                        <span style={S.dashSearchText}>Search products, clients, reports...</span>
                       </div>
                     </div>
                     {/* Dashboard content */}
@@ -267,7 +267,7 @@ export default function SlideWhyUs({ isActive }) {
                         </div>
                         <div style={S.dashNavItem}>
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
-                          HR
+                          People
                         </div>
                         <div style={S.dashNavItem}>
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /></svg>
@@ -283,7 +283,7 @@ export default function SlideWhyUs({ isActive }) {
                         </div>
                       </div>
                       <div style={S.dashMainArea}>
-                        <div style={S.dashTitle}>Dashboard Overview</div>
+                        <div style={S.dashTitle}>Business Command Center</div>
                         <div style={S.dashMetricRow}>
                           <div style={S.dashMetricCard}>
                             <div style={{ ...S.dashMetricDot, background: "#3B82F6" }} />
