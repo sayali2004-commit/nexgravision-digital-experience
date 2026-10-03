@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SLIDES } from "../config/content";
 import { BrandLogo } from "../config/assets";
-import { useIsMobile } from "../hooks/useMediaQuery";
 
 const data = SLIDES[0];
 
@@ -34,8 +33,6 @@ const serviceIcons = {
 };
 
 export default function SlideHome({ isActive }) {
-  const isMobile = useIsMobile();
-  const S = createStyles(isMobile);
   const logoRef = useRef(null);
   const topRightRef = useRef(null);
   const headlineRef = useRef(null);
@@ -50,7 +47,6 @@ export default function SlideHome({ isActive }) {
   useEffect(() => {
     if (!isActive || hasAnimated.current) return;
     hasAnimated.current = true;
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
 
     const tl = gsap.timeline({ delay: 0.2 });
 
@@ -74,12 +70,6 @@ export default function SlideHome({ isActive }) {
 
     gsap.set(visualRef.current, { opacity: 0, x: 60, scale: 0.95 });
     tl.to(visualRef.current, { opacity: 1, x: 0, scale: 1, duration: 1.1, ease: "expo.out" }, 0.4);
-    tl.fromTo(
-      visualRef.current?.querySelectorAll("[data-hero-node]"),
-      { opacity: 0, y: 16, scale: 0.94 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.09, ease: "back.out(1.35)" },
-      0.75
-    );
 
     gsap.set(servicesRef.current, { opacity: 0, y: 20 });
     tl.to(servicesRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.9);
@@ -120,7 +110,7 @@ export default function SlideHome({ isActive }) {
 
       <div style={S.container}>
         {/* Main content */}
-        <div className="home-hero-body-row" style={S.bodyRow}>
+        <div style={S.bodyRow}>
           <div style={S.leftCol}>
             <h1 ref={headlineRef} style={S.headline}>
               {data.headline}<br />
@@ -136,39 +126,13 @@ export default function SlideHome({ isActive }) {
             </p>
 
             <div ref={ctaRef}>
-              <a className="btn-gold" href="mailto:info@nexgravision.com?subject=Let%E2%80%99s%20build%20your%20future">
+              <button className="btn-gold">
                 {data.cta} &nbsp;&#8594;
-              </a>
+              </button>
             </div>
           </div>
 
-          <div className="home-hero-visual-col" ref={visualRef} style={S.rightCol}>
-            <div className={`hero-software-visual${isActive ? " is-active" : ""}`} role="img" aria-label="Illustration of NexGravision connected business products">
-              <svg className="hero-software-visual__links" viewBox="0 0 520 390" fill="none" aria-hidden="true">
-                <path className="hero-system-link" d="M260 195 130 92M260 195 390 92M260 195 130 298M260 195 390 298" />
-                <circle className="hero-system-node" cx="260" cy="195" r="4" />
-                <circle className="hero-system-node" cx="130" cy="92" r="3" />
-                <circle className="hero-system-node" cx="390" cy="92" r="3" />
-                <circle className="hero-system-node" cx="130" cy="298" r="3" />
-                <circle className="hero-system-node" cx="390" cy="298" r="3" />
-              </svg>
-              <div className="hero-software-visual__core" data-hero-node>
-                <span className="hero-software-visual__mark">N</span>
-                <span>Unified core</span>
-              </div>
-              {[
-                { label: "Sales & CRM", pos: "top-left" },
-                { label: "People & Payroll", pos: "top-right" },
-                { label: "Projects", pos: "bottom-left" },
-                { label: "Finance", pos: "bottom-right" },
-              ].map(({ label, pos }) => (
-                <div className={`hero-software-visual__area hero-software-visual__area--${pos}`} key={label} data-hero-node>
-                  <span className="hero-software-visual__area-dot" />
-                  <span>{label}</span>
-                </div>
-              ))}
-              <span className="hero-software-visual__caption">Connected product suite</span>
-            </div>
+          <div ref={visualRef} style={S.rightCol}>
           </div>
         </div>
 
@@ -188,14 +152,14 @@ export default function SlideHome({ isActive }) {
       {/* Slide counter */}
       <div ref={counterRef} style={S.counterWrap}>
         <span className="slide-counter" style={{ position: "static" }}>
-          01 / 08
+          01 / 05
         </span>
       </div>
     </div>
   );
 }
 
-const createStyles = (isMobile) => ({
+const S = {
   wrap: {
     position: "absolute",
     inset: 0,
@@ -264,7 +228,7 @@ const createStyles = (isMobile) => ({
     justifyContent: "space-between",
     zIndex: 10,
     position: "relative",
-    paddingTop: isMobile ? "clamp(60px, 8vh, 80px)" : "clamp(80px, 10vh, 120px)",
+    paddingTop: "clamp(80px, 10vh, 120px)",
   },
   headerRow: {
     position: "absolute",
@@ -274,7 +238,7 @@ const createStyles = (isMobile) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    padding: isMobile ? "clamp(12px, 2vw, 24px) clamp(12px, 3vw, 36px)" : "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
+    padding: "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
     zIndex: 20,
   },
   topRight: {
@@ -292,19 +256,17 @@ const createStyles = (isMobile) => ({
     marginTop: "auto",
     marginBottom: "auto",
     flexWrap: "wrap",
-    flexDirection: isMobile ? "column" : "row",
   },
   leftCol: {
-    flex: isMobile ? "1 1 100%" : "1 1 420px",
+    flex: "1 1 420px",
     display: "flex",
     flexDirection: "column",
-    alignItems: isMobile ? "center" : "flex-start",
-    textAlign: isMobile ? "center" : "left",
+    alignItems: "flex-start",
     minWidth: 0,
   },
   headline: {
     fontFamily: "var(--font-serif)",
-    fontSize: isMobile ? "clamp(28px, 6vw, 40px)" : "clamp(32px, 4.5vw, 58px)",
+    fontSize: "clamp(32px, 4.5vw, 58px)",
     fontWeight: 700,
     color: "#FFFFFF",
     lineHeight: 1.1,
@@ -315,7 +277,7 @@ const createStyles = (isMobile) => ({
     background: "linear-gradient(90deg, #7DD3FC 0%, #00B4D8 50%, #0284C7 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
-    fontSize: isMobile ? "clamp(32px, 7vw, 48px)" : "clamp(36px, 5vw, 64px)",
+    fontSize: "clamp(36px, 5vw, 64px)",
   },
   subheadline: {
     fontFamily: "var(--font-mono)",
@@ -335,13 +297,12 @@ const createStyles = (isMobile) => ({
     fontWeight: 400,
   },
   rightCol: {
-    flex: isMobile ? "1 1 100%" : "1 1 380px",
+    flex: "1 1 380px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
     minWidth: 0,
-    minHeight: isMobile ? 200 : undefined,
   },
   floatingText: {
     position: "absolute",
@@ -357,10 +318,9 @@ const createStyles = (isMobile) => ({
   servicesRow: {
     display: "flex",
     alignItems: "center",
-    gap: "clamp(12px, 2vw, 48px)",
+    gap: "clamp(20px, 3vw, 48px)",
     paddingTop: 16,
     flexWrap: "wrap",
-    justifyContent: isMobile ? "center" : "flex-start",
   },
   serviceItem: {
     display: "flex",
@@ -385,9 +345,9 @@ const createStyles = (isMobile) => ({
   },
   counterWrap: {
     position: "absolute",
-    bottom: isMobile ? 16 : 36,
-    right: isMobile ? 20 : 56,
+    bottom: 36,
+    right: 56,
     zIndex: 10,
     pointerEvents: "none",
   },
-});
+};

@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SLIDES } from "../config/content";
 import { BrandLogo } from "../config/assets";
-import { useIsMobile } from "../hooks/useMediaQuery";
 
 const data = SLIDES[2];
 
@@ -30,7 +29,6 @@ const serviceIcons = {
 };
 
 export default function SlideProjects({ isActive }) {
-  const isMobile = useIsMobile();
   const logoRef = useRef(null);
   const topRightRef = useRef(null);
   const tagRef = useRef(null);
@@ -151,7 +149,7 @@ const S = {
     justifyContent: "space-between",
     zIndex: 2,
     position: "relative",
-    paddingTop: isMobile ? "clamp(60px, 8vh, 80px)" : "clamp(80px, 10vh, 120px)",
+    paddingTop: "clamp(80px, 10vh, 120px)",
   },
   headerRow: {
     position: "absolute",
@@ -161,7 +159,7 @@ const S = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    padding: isMobile ? "clamp(12px, 2vw, 24px) clamp(12px, 3vw, 36px)" : "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
+    padding: "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
     zIndex: 20,
   },
   topRight: {
@@ -182,7 +180,7 @@ const S = {
   },
   headline: {
     fontFamily: "var(--font-serif)",
-    fontSize: isMobile ? "clamp(18px, 4vw, 28px)" : "clamp(22px, 2.8vw, 36px)",
+    fontSize: "clamp(22px, 2.8vw, 36px)",
     fontWeight: 700,
     color: "#FFFFFF",
     lineHeight: 1.15,
@@ -196,17 +194,17 @@ const S = {
   },
   description: {
     fontFamily: "var(--font-sans)",
-    fontSize: isMobile ? "clamp(10px, 2vw, 12px)" : "clamp(11px, 1.1vw, 13px)",
+    fontSize: "clamp(11px, 1.1vw, 13px)",
     color: "#94A3B8",
     lineHeight: 1.6,
-    maxWidth: isMobile ? "90%" : 500,
+    maxWidth: 500,
     marginBottom: 20,
     textAlign: "center",
   },
   projectsRow: {
     display: "grid",
-    gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
-    gap: "clamp(12px, 1.5vw, 28px)",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "clamp(16px, 2vw, 28px)",
     width: "100%",
     maxWidth: 1200,
     height: "100%",
@@ -218,7 +216,7 @@ const S = {
     background: "rgba(16,24,40,0.6)",
     border: "1px solid rgba(255,255,255,0.06)",
     transition: "all 0.3s ease",
-    height: isMobile ? "clamp(200px, 30vh, 280px)" : "clamp(320px, 50vh, 460px)",
+    height: "clamp(320px, 50vh, 460px)",
     display: "flex",
     flexDirection: "column",
   },
@@ -299,8 +297,8 @@ const S = {
   },
   counterWrap: {
     position: "absolute",
-    bottom: isMobile ? 16 : 36,
-    right: isMobile ? 20 : 56,
+    bottom: 36,
+    right: 56,
     zIndex: 10,
     pointerEvents: "none",
   },

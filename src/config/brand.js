@@ -1,6 +1,6 @@
 export const BRAND = {
   name: "NexGravision",
-  tagline: "Digital Products. Real Business Impact.",
+  tagline: "Digital Experiences. Real Impact.",
   headline: "Welcome to NEXGRAVISION",
 
   primaryColor: "#00B4D8",

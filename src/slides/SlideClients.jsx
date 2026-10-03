@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { SLIDES } from "../config/content";
 import { BrandLogo } from "../config/assets";
-import { useIsMobile } from "../hooks/useMediaQuery";
 
 const data = SLIDES[3];
 
@@ -20,7 +19,6 @@ const CAROUSEL_LOGOS = [
 const BOTTOM_LOGOS = [];
 
 export default function SlideClients({ isActive }) {
-  const isMobile = useIsMobile();
   const logoRef = useRef(null);
   const topRightRef = useRef(null);
   const tagRef = useRef(null);
@@ -355,7 +353,7 @@ const S = {
     justifyContent: "space-between",
     zIndex: 2,
     position: "relative",
-    paddingTop: isMobile ? "clamp(60px, 8vh, 80px)" : "clamp(80px, 10vh, 120px)",
+    paddingTop: "clamp(80px, 10vh, 120px)",
   },
   headerRow: {
     position: "absolute",
@@ -365,7 +363,7 @@ const S = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    padding: isMobile ? "clamp(12px, 2vw, 24px) clamp(12px, 3vw, 36px)" : "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
+    padding: "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
     zIndex: 20,
   },
   topRightWrap: {
@@ -393,7 +391,7 @@ const S = {
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
-    marginTop: isMobile ? "-5vh" : "-10vh",
+    marginTop: "-10vh",
   },
   sectionTag: {
     display: "flex",
@@ -416,7 +414,7 @@ const S = {
   },
   headline: {
     fontFamily: "var(--font-serif)",
-    fontSize: isMobile ? "clamp(24px, 6vw, 40px)" : "clamp(34px, 5vw, 60px)",
+    fontSize: "clamp(34px, 5vw, 60px)",
     fontWeight: 700,
     color: "#FFFFFF",
     lineHeight: 1.08,
@@ -430,27 +428,27 @@ const S = {
   },
   description: {
     fontFamily: "var(--font-sans)",
-    fontSize: isMobile ? "clamp(11px, 2.5vw, 14px)" : "clamp(13px, 1.3vw, 16px)",
+    fontSize: "clamp(13px, 1.3vw, 16px)",
     color: "#94A3B8",
     lineHeight: 1.7,
-    maxWidth: isMobile ? "90%" : 520,
+    maxWidth: 520,
     marginBottom: 20,
   },
   carouselArea: {
     position: "relative",
     width: "100%",
     maxWidth: 1050,
-    height: isMobile ? "clamp(150px, 20vh, 200px)" : "clamp(200px, 28vh, 320px)",
+    height: "clamp(200px, 28vh, 320px)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: isMobile ? 20 : 50,
+    marginTop: 50,
     marginBottom: 12,
   },
   ringsContainer: {
     position: "absolute",
     inset: 0,
-    display: isMobile ? "none" : "flex",
+    display: "flex",
     alignItems: "center",
     justifyContent: "center",
     pointerEvents: "none",
@@ -574,8 +572,8 @@ const S = {
   },
   card: {
     position: "absolute",
-    width: isMobile ? "clamp(120px, 30vw, 180px)" : "clamp(180px, 20vw, 280px)",
-    height: isMobile ? "clamp(90px, 22vw, 140px)" : "clamp(140px, 15vw, 210px)",
+    width: "clamp(180px, 20vw, 280px)",
+    height: "clamp(140px, 15vw, 210px)",
     borderRadius: 18,
     border: "1.5px solid rgba(255,255,255,0.2)",
     display: "flex",
@@ -722,8 +720,8 @@ const S = {
   },
   counterWrap: {
     position: "absolute",
-    bottom: isMobile ? 16 : 24,
-    right: isMobile ? 20 : 44,
+    bottom: 24,
+    right: 44,
     display: "flex",
     alignItems: "center",
     gap: 12,

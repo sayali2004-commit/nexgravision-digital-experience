@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SLIDES } from "../config/content";
 import { BrandLogo } from "../config/assets";
-import { useIsMobile } from "../hooks/useMediaQuery";
 
 const data = SLIDES[4];
 
@@ -25,8 +24,6 @@ const valueIcons = {
 };
 
 export default function SlideThankYou({ isActive }) {
-  const isMobile = useIsMobile();
-  const S = createStyles(isMobile);
   const headlineRef = useRef(null);
   const logoRef = useRef(null);
   const subRef = useRef(null);
@@ -40,7 +37,6 @@ export default function SlideThankYou({ isActive }) {
   useEffect(() => {
     if (!isActive || hasAnimated.current) return;
     hasAnimated.current = true;
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
 
     const tl = gsap.timeline({ delay: 0.3 });
 
@@ -121,9 +117,9 @@ export default function SlideThankYou({ isActive }) {
 
           {/* CTA Button */}
           <div ref={ctaRef} style={S.ctaWrap}>
-            <a className="btn-gold" href="mailto:info@nexgravision.com?subject=Let%E2%80%99s%20create%20something%20great">
+            <button className="btn-gold">
               {data.cta} &nbsp;&#8594;
-            </a>
+            </button>
           </div>
         </div>
 
@@ -133,25 +129,25 @@ export default function SlideThankYou({ isActive }) {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
             </svg>
-            <a href={`mailto:${data.contact.email}`} style={{ ...S.contactText, textDecoration: "none" }}>{data.contact.email}</a>
+            <span style={S.contactText}>{data.contact.email}</span>
           </div>
           <div style={S.contactItem}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
             </svg>
-            <a href="https://www.nexgravision.com" style={{ ...S.contactText, textDecoration: "none" }}>{data.contact.website}</a>
+            <span style={S.contactText}>{data.contact.website}</span>
           </div>
         </div>
       </div>
 
       <div ref={counterRef} style={S.counterWrap}>
-        <span className="slide-counter" style={{ position: "static" }}>08 / 08</span>
+        <span className="slide-counter" style={{ position: "static" }}>05 / 05</span>
       </div>
     </div>
   );
 }
 
-const createStyles = (isMobile) => ({
+const S = {
   wrap: {
     position: "absolute",
     inset: 0,
@@ -224,7 +220,7 @@ const createStyles = (isMobile) => ({
     justifyContent: "space-between",
     zIndex: 2,
     position: "relative",
-    paddingTop: isMobile ? "clamp(60px, 8vh, 80px)" : "clamp(80px, 10vh, 120px)",
+    paddingTop: "clamp(80px, 10vh, 120px)",
   },
   headerRow: {
     position: "absolute",
@@ -234,7 +230,7 @@ const createStyles = (isMobile) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    padding: isMobile ? "clamp(12px, 2vw, 24px) clamp(12px, 3vw, 36px)" : "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
+    padding: "clamp(16px, 3vw, 36px) clamp(16px, 4vw, 56px)",
     zIndex: 20,
   },
   topRight: {
@@ -254,7 +250,7 @@ const createStyles = (isMobile) => ({
   },
   headline: {
     fontFamily: "var(--font-script)",
-    fontSize: isMobile ? "clamp(36px, 10vw, 60px)" : "clamp(48px, 8vw, 100px)",
+    fontSize: "clamp(48px, 8vw, 100px)",
     fontWeight: 400,
     color: "#FFFFFF",
     lineHeight: 1.1,
@@ -263,23 +259,23 @@ const createStyles = (isMobile) => ({
   },
   subheadline: {
     fontFamily: "var(--font-serif)",
-    fontSize: isMobile ? "clamp(14px, 4vw, 20px)" : "clamp(18px, 2.5vw, 28px)",
+    fontSize: "clamp(18px, 2.5vw, 28px)",
     fontWeight: 600,
     color: "#F1F5F9",
     marginBottom: 16,
   },
   description: {
     fontFamily: "var(--font-sans)",
-    fontSize: isMobile ? "clamp(11px, 2.5vw, 14px)" : "clamp(13px, 1.3vw, 16px)",
+    fontSize: "clamp(13px, 1.3vw, 16px)",
     color: "#94A3B8",
     lineHeight: 1.7,
-    maxWidth: isMobile ? "90%" : 500,
+    maxWidth: 500,
     marginBottom: 36,
   },
   valuesRow: {
     display: "flex",
     alignItems: "center",
-    gap: isMobile ? "clamp(16px, 2vw, 32px)" : "clamp(24px, 3vw, 48px)",
+    gap: "clamp(24px, 3vw, 48px)",
     marginBottom: 36,
     flexWrap: "wrap",
     justifyContent: "center",
@@ -312,7 +308,7 @@ const createStyles = (isMobile) => ({
   footerRow: {
     display: "flex",
     justifyContent: "center",
-    gap: isMobile ? "clamp(16px, 2vw, 32px)" : "clamp(24px, 3vw, 48px)",
+    gap: "clamp(24px, 3vw, 48px)",
     paddingBottom: 8,
     flexWrap: "wrap",
   },
@@ -328,9 +324,9 @@ const createStyles = (isMobile) => ({
   },
   counterWrap: {
     position: "absolute",
-    bottom: isMobile ? 16 : 36,
-    right: isMobile ? 20 : 56,
+    bottom: 36,
+    right: 56,
     zIndex: 10,
     pointerEvents: "none",
   },
-});
+};
